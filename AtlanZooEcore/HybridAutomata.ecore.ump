@@ -1,0 +1,29 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace HybridAutomata;
+
+class FiniteTransition
+{
+	String trigger;
+	String guard;
+	String action;
+}
+
+class FiniteState
+{
+	String name;
+	String position;
+	Boolean isInit;
+}

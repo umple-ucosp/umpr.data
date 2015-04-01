@@ -1,0 +1,95 @@
+namespace USECASE1;
+
+class Task
+{
+	1..* task -- 1..* Service service;
+}
+
+class User
+{
+	* user -- * Actor actor;
+	* user -- 1..* UseCase useCase;
+}
+
+class Actor
+{
+	1..* actor -- * Goal goal;
+	* actor -- 1..* UseCase useCase;
+}
+
+class Goal
+{
+	1..* goal -- 1..* Service service;
+}
+
+class UseCase
+{
+	1..* useCase -- * Service service;
+	1..* useCase -- * Context context;
+}
+
+class Service
+{
+}
+
+class Scenario
+{
+}
+
+class Context
+{
+	* context -- 1..* PreCondition preCondition;
+	* context -- 1..* PostCondition postCondition;
+}
+
+class PreCondition
+{
+}
+
+class PostCondition
+{
+}
+
+class Episode
+{
+	1..* episode -- * Event event;
+}
+
+class Event
+{
+}
+
+class Action
+{
+	isA Event;
+}
+
+class Responce
+{
+	isA Event;
+	1..* responce -- * Parameter parameter;
+}
+
+class Stimilus
+{
+	isA Event;
+	1..* stimilus -- * Parameter parameter;
+}
+
+class Parameter
+{
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}

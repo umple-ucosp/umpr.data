@@ -1,0 +1,134 @@
+namespace CompleteWebApplication;
+
+class HyperLink
+{
+	0..1 link -- * Server/ServerPage server;
+}
+
+class ClientPage
+{
+	0..1 -> 1..* HyperLink hyperlink;
+}
+
+class ClientPageModule
+{
+	0..1 -> 1..* Client/ClientPage consistsOf;
+	0..1 -> 1..* Server/ServerPageModule representsSMP;
+}
+
+class LogicInterface
+{
+	isA Client/ClientPageModule;
+	0..1 -> 1..* Server/LogicModule represents;
+	0..1 -> 1..* Server/Renderer generatedBy;
+}
+
+class DesignElement
+{
+	isA Client/ClientPageModule;
+	0..1 -> 1..* Server/DesignModule represents;
+}
+
+class ServerPage
+{
+	0..1 server -- * HyperLink link;
+	0..1 -> * Client/ClientPage generates;
+	0..1 contains -- 1..* Server/ServerPageModule module;
+}
+
+class ServerPageModule
+{
+	0..1 module -- 1..* Server/ServerPage contains;
+	0..1 -> 1..* Server/Link link;
+	0..1 -> 1..* Server/DesignModule containsModule;
+}
+
+class DesignModule
+{
+	isA Server/ServerPageModule;
+}
+
+class LogicModule
+{
+	isA Server/ServerPageModule;
+	0..1 -> 1..* Server/UseCase useCase;
+	0..1 -> 1..* Server/LogicElement logicElement;
+}
+
+class Link
+{
+	0..1 -> 1..* Server/ServerPage page;
+	0..1 -> 1..* Server/Data posts;
+}
+
+class BeginUseCase
+{
+	isA Server/Link;
+	0..1 -> 1..* Server/UseCase useCase;
+}
+
+class UseCase
+{
+	isA Server/Link;
+	0..1 uses -- 1..* Server/LogicElement logicElem;
+}
+
+class LogicElement
+{
+	0..1 logicElem -- 1..* Server/UseCase uses;
+	0..1 next -- 1..* Server/LogicElement generatedBy;
+	0..1 generatedBy -- 1..* Server/LogicElement next;
+}
+
+class Alternative
+{
+	isA Server/LogicElement;
+}
+
+class UserDecision
+{
+	isA Server/LogicElement;
+	0..1 -> 1..* Server/Alternative allows;
+}
+
+class ServerDecision
+{
+	isA Server/LogicElement;
+	0..1 -> 1..* Server/Processor evaluatesResultOf;
+}
+
+class Processor
+{
+	isA Server/LogicElement;
+	0..1 persist -- * Server/Data persistentData;
+	0..1 uses -- * Server/Data inputData;
+	0..1 computes -- 1..* Server/Data outputData;
+}
+
+class Renderer
+{
+	isA Server/LogicElement;
+	0..1 renderer -- 1..* Server/Data renders;
+}
+
+class Data
+{
+	0..1 renders -- * Server/Renderer renderer;
+	0..1 persistentData -- * Server/Processor persist;
+	0..1 inputData -- * Server/Processor uses;
+	0..1 outputData -- * Server/Processor computes;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

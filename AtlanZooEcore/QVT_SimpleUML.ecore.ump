@@ -1,0 +1,55 @@
+namespace SimpleUML;
+
+class UMLModelElement
+{
+	String kind;
+	String name;
+}
+
+class Attribute
+{
+	isA UMLModelElement;
+	* typeOpposite -- 1..* Classifier type;
+	* attribute -- 1..* Class owner;
+}
+
+class Package
+{
+	isA UMLModelElement;
+	1..* namespace -- * PackageElement elements;
+}
+
+class PackageElement
+{
+	isA UMLModelElement;
+}
+
+class Classifier
+{
+	isA PackageElement;
+}
+
+class Class
+{
+	isA Classifier;
+	* generalOpposite -- * Class general;
+	* general -- * Class generalOpposite;
+	0..1 source -- * Association reverse;
+	1..* destination -- * Association forward;
+}
+
+class PrimitiveDataType
+{
+	isA Classifier;
+}
+
+class Association
+{
+	isA PackageElement;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

@@ -1,0 +1,125 @@
+namespace BibTeX;
+
+class BibTeXFile
+{
+	0..1 -> * BibTeXEntry entries;
+}
+
+class Author
+{
+	String author;
+}
+
+class BibTeXEntry
+{
+	String id;
+}
+
+class AuthoredEntry
+{
+	isA BibTeXEntry;
+	0..1 -> 1..* Author authors;
+}
+
+class DatedEntry
+{
+	isA BibTeXEntry;
+	String year;
+}
+
+class TitledEntry
+{
+	isA BibTeXEntry;
+	String title;
+}
+
+class BookTitledEntry
+{
+	isA BibTeXEntry;
+	String booktitle;
+}
+
+class Article
+{
+	isA AuthoredEntry ;
+	String journal;
+}
+
+class TechReport
+{
+	isA AuthoredEntry ;
+}
+
+class Unpublished
+{
+	isA AuthoredEntry ;
+	String note;
+}
+
+class Manual
+{
+	isA TitledEntry;
+}
+
+class Proceedings
+{
+	isA DatedEntry ;
+}
+
+class InProceedings
+{
+	isA Proceedings ;
+}
+
+class Booklet
+{
+	isA DatedEntry;
+}
+
+class Book
+{
+	isA AuthoredEntry ;
+	String publisher;
+}
+
+class InCollection
+{
+	isA Book ;
+}
+
+class InBook
+{
+	isA Book;
+	Integer chapter;
+}
+
+class Misc
+{
+	isA BibTeXEntry;
+}
+
+class ThesisEntry
+{
+	isA AuthoredEntry ;
+	String school;
+}
+
+class PhDThesis
+{
+	isA ThesisEntry;
+}
+
+class MasterThesis
+{
+	isA ThesisEntry;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

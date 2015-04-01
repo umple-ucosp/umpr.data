@@ -1,0 +1,107 @@
+namespace XAML;
+
+class Page
+{
+	String title;
+	0..1 -> * NameSpace xmlns;
+	0..1 -> 1..* GraphicalContainer graphContainer;
+	0..1 -> 1..* PageResource pageResources;
+}
+
+class NameSpace
+{
+	String namespace;
+	String identifier;
+}
+
+class PageResource
+{
+	0..1 -> * ResourceDictionary dictionaries;
+}
+
+class GraphicalContainer
+{
+}
+
+class WinFXElement
+{
+	0..1 -> 1..* NameSpace namespace;
+}
+
+class PerspectiveElement
+{
+	0..1 -> 1..* NameSpace namespace;
+}
+
+class ResourceDictionary
+{
+	String source;
+}
+
+class Grid
+{
+	isA GraphicalContainer;
+	0..1 -> * Object3D object3D;
+}
+
+class Object3D
+{
+}
+
+class Workshop3D
+{
+	isA Object3D ;
+	0..1 -> * Element3D elements3D;
+}
+
+class Element3D
+{
+}
+
+class UI3Delement
+{
+	isA Element3D;
+	String transform;
+	String material;
+	0..1 -> 1..* Name name;
+}
+
+class XyzAxis3D
+{
+	isA Element3D ;
+	Double length;
+}
+
+class Box3D
+{
+	isA UI3Delement ;
+}
+
+class Square3D
+{
+	isA UI3Delement ;
+}
+
+class Name
+{
+	isA WinFXElement;
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class Double
+{
+}

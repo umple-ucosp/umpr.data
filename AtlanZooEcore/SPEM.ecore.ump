@@ -1,0 +1,92 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+namespace SPEM;
+
+class ArtifactUsageName
+{
+	Boolean isInput;
+	Boolean isOutput;
+	Boolean hasWorkPerArtifact;
+	* artifactUsageNames -- 1..* ArtifactKind artifactKind;
+	* artifactUsageNames -- 1..* WorkDefinition workDefinition;
+}
+
+class ProcessDefinitionElement
+{
+	1..* processDefinitionElements -- * Guidance guidances;
+	* processDefinitionElements -- * ProcessComponent processComponents;
+}
+
+class Guidance
+{
+	isA ProcessDefinitionElement;
+}
+
+class ArtifactKind
+{
+	isA ProcessDefinitionElement;
+	* artifactKinds -- * RoleKind responsible;
+}
+
+class WorkItem
+{
+	isA ProcessDefinitionElement;
+}
+
+class RoleKind
+{
+	isA ProcessDefinitionElement;
+}
+
+class Condition
+{
+	isA ProcessDefinitionElement;
+}
+
+class ProcessComponent
+{
+	isA ProcessDefinitionElement;
+}
+
+class Goal
+{
+	isA Condition;
+	* goal -- 1..* WorkDefinition workDefinition;
+}
+
+class Precondition
+{
+	isA Condition;
+	* precondition -- 1..* WorkDefinition workDefinition;
+}
+
+class WorkDefinition
+{
+	isA WorkItem;
+}
+
+class ActivityKind
+{
+	isA WorkDefinition;
+	0..1 -> 1..* RoleKind performer;
+	0..1 -> * RoleKind assistant;
+}
+
+class Iteration
+{
+	isA WorkDefinition;
+}
+
+class Phase
+{
+	isA WorkDefinition;
+}
+
+class Lifecycle
+{
+	isA WorkDefinition;
+}

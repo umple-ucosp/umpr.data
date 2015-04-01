@@ -1,0 +1,28 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+namespace Book;
+
+class Book
+{
+	String title;
+	1..* book -- * Chapter chapters;
+}
+
+class Chapter
+{
+	String title;
+	Integer nbPages;
+	String author;
+}

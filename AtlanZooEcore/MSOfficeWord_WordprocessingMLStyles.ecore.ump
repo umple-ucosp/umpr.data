@@ -1,0 +1,502 @@
+namespace WordprocessingMLStyles;
+
+class DateTimeType
+{
+	Integer year;
+	Integer month;
+	Integer day;
+	Integer hour;
+	Integer minute;
+	Integer second;
+}
+
+class VersionType
+{
+	Integer n;
+	Integer nn;
+}
+
+class ValueType
+{
+}
+
+class StringValue
+{
+	isA ValueType;
+	String value;
+}
+
+class FloatValue
+{
+	isA ValueType;
+	Double value;
+}
+
+class DateTimeTypeValue
+{
+	isA ValueType;
+	0..1 -> 1..* DateTimeType value;
+}
+
+class BooleanValue
+{
+	isA ValueType;
+	Boolean value;
+}
+
+class DocumentPropertiesCollection
+{
+	String title;
+	String subject;
+	String keywords;
+	String description;
+	String category;
+	String author;
+	String lastAuthor;
+	String manager;
+	String company;
+	String hyperlinkBase;
+	Integer revision;
+	String presentationFormat;
+	String guid;
+	String appName;
+	Integer totalTime;
+	Integer pages;
+	Integer words;
+	Integer characters;
+	Integer charactersWithSpaces;
+	Integer bytes;
+	Integer lines;
+	Integer paragraphs;
+	0..1 -> * VersionType version;
+	0..1 -> * DateTimeType lastPrinted;
+	0..1 -> * DateTimeType created;
+	0..1 -> * DateTimeType lastSaved;
+	* wd_docProperties -- 1..* WordDocument dp_wordDocument;
+}
+
+class CustomDocumentPropertiesCollection
+{
+	1..* customDocumentProperty_cdpe -- 1..* CustomDocumentProperty customDocumentProperties;
+	* wd_customDocProperties -- 1..* WordDocument cdp_wordDocument;
+}
+
+class CustomDocumentProperty
+{
+	String name;
+	0..1 -> 1..* ValueType value;
+}
+
+class SmartTagType
+{
+	String namespaceuri;
+	String name;
+	String url;
+	* smartTagTypes -- 1..* SmartTagsCollection smartTagType_ste;
+}
+
+class SmartTagsCollection
+{
+	* wd_smartTags -- 1..* WordDocument st_wordDocument;
+}
+
+class StringProperty
+{
+	isA StringType;
+}
+
+class StringType
+{
+	String val;
+}
+
+class UnderlineProperty
+{
+	UnderlineValues val;
+	String color;
+}
+
+class WordDocument
+{
+	0..1 -> * StringProperty ignoreSubtree;
+	0..1 -> * StringProperty ignoreElements;
+	1..* dpe_wordDocument -- * DocPrElt docPr;
+	1..* be_wordDocument -- 1..* BodyElt body;
+	1..* fle_wordDocument -- * FontsListElt fonts;
+	1..* se_wordDocument -- * StylesElt styles;
+	1..* le_wordDocument -- * ListsElt lists;
+}
+
+class DocPrElt
+{
+}
+
+class BodyElt
+{
+	1..* ble_bodyElt -- * BlockLevelElt blockLevelElts;
+	1..* spe_bodyElt -- * SectPrElt sectPr;
+}
+
+class BlockLevelElt
+{
+	1..* n_blockLevelElts -- 1..* NoteElt ble_note;
+	1..* tce_content -- 1..* TableCellElt ble_tableCellElt;
+}
+
+class BlockLevelChunkElt
+{
+	isA BlockLevelElt;
+}
+
+class ParaElt
+{
+	isA BlockLevelChunkElt;
+	1..* ppe_pElt -- * ParaPrElt pPr;
+	1..* pce_pElt -- * ParaContentElt pContentElts;
+}
+
+class ParaPrElt
+{
+	OnOffType keepNext;
+	OnOffType keepLines;
+	OnOffType pageBreakBefore;
+	OnOffType supressLineNumbers;
+	OnOffType suppressAutoHyphens;
+	OnOffType contextualSpacing;
+	OnOffType bidi;
+	JustificationValue justification;
+	0..1 -> * StringProperty pStyle;
+	* se_pPr -- 1..* StyleElt ppe_styleElt;
+}
+
+class ParaContentElt
+{
+}
+
+class RunElt
+{
+	isA ParaContentElt;
+	1..* rpe_rElt -- * RunPrElt rPr;
+	1..* rce_rElt -- * RunContentElt rContentElts;
+}
+
+class RunPrElt
+{
+	OnOffType bold;
+	OnOffType bold_cs;
+	OnOffType italic;
+	OnOffType italic_cs;
+	OnOffType capitals;
+	OnOffType smallCapitals;
+	OnOffType strike;
+	OnOffType doubleStrike;
+	OnOffType outline;
+	OnOffType shadow;
+	OnOffType emboss;
+	OnOffType imprint;
+	OnOffType noProof;
+	OnOffType vanish;
+	OnOffType specVanish;
+	OnOffType rtl;
+	OnOffType cs;
+	String color;
+	HighlightColorValues highlight;
+	VerticalAlignRunType verticalAlign;
+	0..1 -> * StringProperty rStyle;
+	0..1 -> * UnderlineProperty underline;
+	1..* le_runPrElt -- * LangElt language;
+	1..* fse_runPrElt -- * FontsElt rFonts;
+	* se_rPr -- 1..* StyleElt rpe_styleElt;
+}
+
+class LangElt
+{
+	String val;
+	String bidi;
+}
+
+class RunContentElt
+{
+}
+
+class BreakElt
+{
+	isA RunContentElt;
+	BreakType type;
+}
+
+class Text
+{
+	isA RunContentElt ;
+}
+
+class DelText
+{
+	isA RunContentElt ;
+}
+
+class InstrText
+{
+	isA RunContentElt ;
+}
+
+class DelInstrText
+{
+	isA RunContentElt ;
+}
+
+class NoBreakHyphen
+{
+	isA RunContentElt;
+}
+
+class SoftHyphen
+{
+	isA RunContentElt;
+}
+
+class AnnotationRef
+{
+	isA RunContentElt;
+}
+
+class FootnoteRef
+{
+	isA RunContentElt;
+}
+
+class EndnoteRef
+{
+	isA RunContentElt;
+}
+
+class Separator
+{
+	isA RunContentElt;
+}
+
+class ContinuationSeparator
+{
+	isA RunContentElt;
+}
+
+class PgNum
+{
+	isA RunContentElt;
+}
+
+class Cr
+{
+	isA RunContentElt;
+}
+
+class Footnote
+{
+	isA RunContentElt ;
+}
+
+class Endnote
+{
+	isA RunContentElt ;
+}
+
+class NoteElt
+{
+	NoteValue type;
+	OnOffType suppressRef;
+}
+
+class Picture
+{
+	isA RunContentElt ;
+}
+
+class Symbol
+{
+	isA RunContentElt ;
+}
+
+class SymElt
+{
+	0..1 -> 1..* StringType font;
+	0..1 -> 1..* StringType char;
+}
+
+class Tab
+{
+	isA RunContentElt ;
+}
+
+class FldChar
+{
+	isA RunContentElt ;
+}
+
+class FldCharElt
+{
+	FldCharTypeProperty fldCharType;
+	OnOffType fldLock;
+	0..1 -> * StringType fldData;
+}
+
+class TableElt
+{
+	isA BlockLevelChunkElt;
+	1..* tpe_tblElt -- 1..* TablePrElt tblPr;
+	1..* tge_tblElt -- 1..* TableGridElt tblGrid;
+	1..* tce_tblElt -- 1..* TableContentElt tblContent;
+}
+
+class TablePrElt
+{
+	* se_tblPr -- 1..* StyleElt tpe_styleElt;
+}
+
+class TableGridElt
+{
+}
+
+class TableContentElt
+{
+	1..* re_tblContentElt -- * RowElt tr;
+	1..* rle_tblContentElt -- * RunLevelElt tce_runLevelElts;
+}
+
+class RowElt
+{
+	1..* tpee_rowElt -- * TablePrExElt tblPrEx;
+	1..* tpe_rowElt -- * TableRowPrElt trPr;
+	1..* rce_rowElt -- 1..* RowContentElt rowContent;
+}
+
+class TablePrExElt
+{
+}
+
+class TableRowPrElt
+{
+	* se_trPr -- 1..* StyleElt trpe_styleElt;
+}
+
+class RowContentElt
+{
+	1..* tce_rowContentElt -- * TableCellElt tc;
+	1..* rle_rowContentElt -- * RunLevelElt rce_runLevelElts;
+}
+
+class TableCellElt
+{
+	1..* tcpe_tableCellElt -- * TableCellPrElt tcPr;
+}
+
+class TableCellPrElt
+{
+	* se_tcPr -- 1..* StyleElt tcpe_styleElt;
+}
+
+class FontsListElt
+{
+	1..* fse_fontsListElt -- * FontsElt defaultFonts;
+	1..* fe_fontsListElt -- * FontElt fonts;
+}
+
+class FontsElt
+{
+	HintType hint;
+	0..1 -> 1..* StringType ascii;
+	0..1 -> 1..* StringType h_ansi;
+	0..1 -> 1..* StringType fareast;
+	0..1 -> 1..* StringType cs;
+}
+
+class FontElt
+{
+	0..1 -> 1..* StringType name;
+	0..1 -> * StringProperty altName;
+}
+
+class StylesElt
+{
+	Double versionOfBuiltInStylenames;
+	1..* se_stylesElt -- * StyleElt styles;
+}
+
+class StyleElt
+{
+	StyleKindValue type;
+	OnOffType default;
+	Double sti;
+	OnOffType autoRedefine;
+	OnOffType hidden;
+	OnOffType semiHidden;
+	OnOffType locked;
+	OnOffType personal;
+	OnOffType personalCompose;
+	OnOffType personalReply;
+	0..1 -> * StringType styleId;
+	0..1 -> * StringProperty name;
+	0..1 -> * StringProperty aliases;
+	0..1 -> * StringProperty basedOn;
+	0..1 -> * StringProperty next;
+	0..1 -> * StringProperty link;
+	0..1 -> * StringType rsid;
+}
+
+class ListsElt
+{
+}
+
+class SectPrElt
+{
+}
+
+class RunLevelElt
+{
+	isA BlockLevelChunkElt;
+}
+
+class CfChunk
+{
+	isA BlockLevelElt;
+}
+
+class SimpleFieldElt
+{
+	isA ParaContentElt;
+}
+
+class HLinkElt
+{
+	isA ParaContentElt;
+}
+
+class SubDocElt
+{
+	isA ParaContentElt;
+}
+
+class PictureType
+{
+}
+
+class TabElt
+{
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

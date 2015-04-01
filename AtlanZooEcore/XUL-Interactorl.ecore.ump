@@ -1,0 +1,232 @@
+namespace XULInteractorMetaModel;
+
+class UIModel
+{
+	0..1 -> * Windows windows;
+	1..* functionUIModel -- * Function functions;
+}
+
+class Windows
+{
+	isA Container;
+	String id;
+	String title;
+	Orients orient;
+	String style;
+	0..1 -> * HeaderCss headers;
+	0..1 -> * HeaderJScript headersJScript;
+}
+
+class Button
+{
+	isA Containement;
+	String tooltiptext;
+	String image;
+}
+
+class Image
+{
+	isA Containement;
+	String src;
+}
+
+class RadioGroup
+{
+	isA Containement;
+	0..1 -> * Radio radiobuttons;
+}
+
+class Radio
+{
+	isA Interactor;
+	String id;
+	String label;
+	Boolean selected;
+	Boolean disabled;
+}
+
+class ListBox
+{
+	isA Containement;
+	Integer rows;
+	0..1 -> * ListItem listitems;
+}
+
+class ListItem
+{
+	isA Interactor;
+	String label;
+	String value;
+}
+
+class MenuList
+{
+	isA Containement;
+	0..1 -> * MenuItem menuitems;
+}
+
+class MenuItem
+{
+	isA Interactor;
+	String label;
+}
+
+class vbox
+{
+	isA Container;
+}
+
+class hbox
+{
+	isA Container;
+}
+
+class Containement
+{
+	isA Interactor;
+	String style;
+	String accesskey;
+	String class;
+	Integer maxlength;
+	String label;
+	Orients orient;
+	String minlength;
+	String onclick;
+	String disabled;
+}
+
+class GroupBox
+{
+	isA Container;
+}
+
+class Container
+{
+	isA Interactor;
+	0..1 -> * Interactor xulInteractors;
+}
+
+class Interactor
+{
+	Integer flex;
+	String id;
+	String stat;
+	String style;
+	0..1 -> * Event events;
+}
+
+class TabBox
+{
+	isA Containement;
+	0..1 -> * Interactor tabPanels;
+}
+
+class TextBox
+{
+	isA Containement;
+	Boolean multiline;
+	String value;
+}
+
+class Spacer
+{
+	isA Containement;
+}
+
+class Label
+{
+	isA Containement;
+	String value;
+	String control;
+}
+
+class Grid
+{
+	isA Containement;
+	0..1 -> * column columns;
+	0..1 -> * row rows;
+}
+
+class row
+{
+	isA Container;
+}
+
+class column
+{
+	isA Container;
+}
+
+class CheckBox
+{
+	isA Containement;
+	Boolean checked;
+}
+
+class Caption
+{
+	isA Containement;
+	String label;
+}
+
+class Description
+{
+	isA Containement;
+	String value;
+}
+
+class HeaderCss
+{
+	String ref;
+	String type;
+}
+
+class HeaderJScript
+{
+	String ref;
+}
+
+class TabPanel
+{
+	isA Container;
+	String id;
+	Orients orient;
+}
+
+class Event
+{
+	String functionCalledName;
+	String name;
+	0..1 -> * Parameter functionCallParameters;
+}
+
+class Parameter
+{
+	String value;
+	String name;
+}
+
+class onClick
+{
+	isA Event;
+}
+
+class Function
+{
+	String name;
+	String body;
+}
+
+namespace primitivetype;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}

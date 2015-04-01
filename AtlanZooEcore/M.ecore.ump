@@ -1,0 +1,217 @@
+namespace M;
+
+class IdentifiedElement
+{
+	String[] qualifiers;
+	String identifier;
+}
+
+class MElement
+{
+	isA IdentifiedElement;
+}
+
+class MElementReference
+{
+	String alias;
+	0..1 -> 1..* MElement referencedElement;
+}
+
+class Module
+{
+	isA MElement;
+	1..* module -- * ModuleMember moduleMembers;
+	1..* module -- * ImportDirective imports;
+	1..* module -- * ExportDirective exports;
+}
+
+class ModuleMember
+{
+	isA MElement;
+}
+
+class ImportDirective
+{
+	0..1 -> 1..* MElementReference importedElements;
+}
+
+class ExportDirective
+{
+	0..1 -> 1..* ModuleMember exportedElements;
+}
+
+class Value
+{
+}
+
+class NumericalValue
+{
+	isA Value;
+}
+
+class StringValue
+{
+	isA Value;
+	String value;
+}
+
+class IntegerValue
+{
+	isA NumericalValue;
+	Integer value;
+}
+
+class DecimalValue
+{
+	isA NumericalValue;
+	Double value;
+}
+
+class BooleanValue
+{
+	isA Value;
+	Boolean value;
+}
+
+class DerivedType
+{
+	isA ModuleMember;
+	0..1 subtype -- * Types/TypeReference supertypes;
+	0..1 owner -- * Types/Field fields;
+	0..1 type -- * Expressions/InitializationExpression initializationExpression;
+	0..1 type -- * Expressions/WhereExpression whereExpression;
+	0..1 -> * Expressions/Expression expression;
+}
+
+class TypeReference
+{
+	Integer lowerBound;
+	Integer upperBound;
+	0..1 supertypes -- * Types/DerivedType subtype;
+	0..1 type -- * Types/Field field;
+}
+
+class IntrinsicTypeReference
+{
+	isA Types/TypeReference;
+	String typeIdentifier;
+}
+
+class DerivedTypeReference
+{
+	isA Types/TypeReference;
+	0..1 -> 1..* Types/DerivedType type;
+}
+
+class Field
+{
+	isA IdentifiedElement;
+	0..1 fields -- 1..* Types/DerivedType owner;
+	0..1 field -- 1..* Types/TypeReference type;
+}
+
+class Collection
+{
+	isA IdentifiedElement;
+}
+
+class ComputedValue
+{
+	isA IdentifiedElement;
+}
+
+class Expression
+{
+}
+
+class InitializationExpression
+{
+	isA Expressions/Expression;
+	0..1 initializationExpression -- 1..* Types/DerivedType type;
+	0..1 -> * Value values;
+}
+
+class WhereExpression
+{
+	isA Expressions/Expression;
+	0..1 whereExpression -- 1..* Types/DerivedType type;
+	0..1 whereExpression -- * Expressions/QueryExpression queryExpressions;
+}
+
+class IdentityExpression
+{
+	isA Expressions/WhereExpression;
+	0..1 -> 1..* Types/Field identity;
+}
+
+class QueryExpression
+{
+	isA Expressions/Expression;
+	0..1 queryExpressions -- 1..* Expressions/WhereExpression whereExpression;
+}
+
+class EqualExpression
+{
+	isA Expressions/QueryExpression;
+	0..1 -> 1..* Expressions/ValueExpression leftValue;
+	0..1 -> 1..* Expressions/ValueExpression rightValue;
+}
+
+class InExpression
+{
+	isA Expressions/QueryExpression;
+	0..1 -> 1..* Expressions/ValueExpression value;
+	0..1 inExpression -- 1..* Expressions/CollectionExpression collection;
+}
+
+class CollectionExpression
+{
+	isA Expressions/Expression;
+	0..1 collection -- 1..* Expressions/InExpression inExpression;
+	0..1 -> 1..* Expressions/ValueExpression collectionValue;
+}
+
+class ValueExpression
+{
+	isA Expressions/Expression;
+}
+
+class DefaultValueExpression
+{
+	isA Expressions/ValueExpression;
+}
+
+class StandardValueExpression
+{
+	isA Expressions/ValueExpression;
+	String value;
+	0..1 -> * Expressions/ValueExpression context;
+}
+
+class Language
+{
+	isA ModuleMember;
+}
+
+class Entity
+{
+	isA ModuleMember;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class Double
+{
+}
+
+class String
+{
+}

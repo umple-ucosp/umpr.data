@@ -1,0 +1,40 @@
+namespace Trace;
+
+class Trace
+{
+	String name;
+	1..* trace -- * Level levels;
+}
+
+class Level
+{
+	1..* level -- * Call calls;
+}
+
+class Call
+{
+	String methodName;
+	Integer DBAccessesNumber;
+	Integer DBRowsNumber;
+	Integer CPUTime;
+	0..1 -> 1..* Index indexes;
+}
+
+class Index
+{
+	Integer value;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

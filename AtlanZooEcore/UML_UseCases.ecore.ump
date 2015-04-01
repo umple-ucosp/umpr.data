@@ -1,0 +1,81 @@
+namespace UseCases;
+
+class Classifier
+{
+	1..* classifier -- * Instance instance;
+}
+
+class Instance
+{
+}
+
+class Actor
+{
+	isA Classifier;
+}
+
+class UseCase
+{
+	isA Classifier;
+	String[] extensionPoint;
+	0..1 addition -- 1..* Include includeAddition;
+	0..1 extension -- 1..* Extend extendExtension;
+	1..* base -- 1..* Include includeBase;
+	1..* base -- 1..* Extend extendBase;
+	* useCase -- * ExtensionPoint extensionPoints;
+}
+
+class UseCaseInstance
+{
+	isA Instance;
+}
+
+class RelationShip
+{
+}
+
+class Include
+{
+	isA RelationShip;
+}
+
+class Extend
+{
+	isA RelationShip;
+	0..1 -> 1..* BooleanExpression condition;
+	* extend -- 1..* ExtensionPoint extensionPoint;
+}
+
+class BooleanExpression
+{
+	String value;
+}
+
+class ModelElement
+{
+}
+
+class ExtensionPoint
+{
+	isA ModelElement;
+	0..1 -> 1..* LocationReference location;
+}
+
+class LocationReference
+{
+	String value;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

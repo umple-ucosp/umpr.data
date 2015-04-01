@@ -1,0 +1,24 @@
+namespace MSProject;
+
+class MSProject
+{
+	0..1 -> 1..* Task tasks;
+}
+
+class NamedElement
+{
+	String name;
+}
+
+class Task
+{
+	isA NamedElement;
+	String UID;
+	0..1 -> * Task predecessors;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

@@ -1,0 +1,98 @@
+namespace Pascal;
+
+class Program
+{
+	String name;
+	1..* program -- * Variable variables;
+	1..* program -- * Type types;
+	1..* program -- * Procedure procedures;
+}
+
+class Variable
+{
+	String name;
+	* variables -- 1..* Type type;
+	* variables -- 1..* Procedure procedure;
+}
+
+class Type
+{
+	String name;
+}
+
+class Parameter
+{
+	isA Variable;
+	* parameters -- 1..* Procedure procedure_parameter;
+}
+
+class Instruction
+{
+	* instructions -- 1..* Block block;
+}
+
+class Calculation
+{
+	isA Instruction;
+}
+
+class Control
+{
+	isA Instruction;
+}
+
+class Assignment
+{
+	isA Instruction;
+}
+
+class Block
+{
+	isA Instruction;
+	1..2 blocks -- 1..* Conditional conditional;
+	1..* block_loop -- 1..* Loop loop;
+	1..* block_procedure -- 1..* Procedure procedure;
+}
+
+class Conditional
+{
+	isA Control;
+}
+
+class Loop
+{
+	isA Control;
+}
+
+class Procedure
+{
+	isA Control;
+	String name;
+}
+
+class Function
+{
+	isA Procedure;
+	0..1 -> 1..* Type returnType;
+}
+
+class For
+{
+	isA Loop;
+}
+
+class While
+{
+	isA Loop;
+}
+
+class Repeat
+{
+	isA Loop;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

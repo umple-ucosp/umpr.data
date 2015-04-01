@@ -1,0 +1,55 @@
+namespace SimpleAirlineDomain;
+
+class Airport
+{
+	String name;
+	0..1 origin -- * Flight departingFlight;
+	1..* destination -- * Flight arrivingFlight;
+}
+
+class Flight
+{
+	Integer maxnrPassengers;
+	0..1 -> 1..* Time departTime;
+	0..1 -> 1..* Time duration;
+	* flight -- 1..* Airline airline;
+	1..* flight -- * Passenger passenger;
+}
+
+class Airline
+{
+	String name;
+	String nationality;
+}
+
+class Passenger
+{
+	String name;
+	Integer age;
+	Genre gender;
+	Boolean needsAssistance;
+}
+
+class Time
+{
+	Integer year;
+	Integer month;
+	Integer day;
+	Integer hour;
+	Integer minute;
+	Integer second;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

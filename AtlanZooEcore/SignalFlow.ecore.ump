@@ -1,0 +1,71 @@
+namespace SignalFlow;
+
+class RootFolder
+{
+	1..* rootFolder -- * CompoundComponent compoundComponent;
+}
+
+class CompoundComponent
+{
+	isA BaseComponent;
+	1..* compoundComponent -- * BaseComponent baseComponent;
+	1..* compoundComponent -- * LocalPort localPort;
+}
+
+class PrimitiveComponent
+{
+	isA BaseComponent;
+}
+
+class BaseComponent
+{
+	String name;
+	String position;
+	1..* baseComponent -- * InputPort inputPort;
+	1..* baseComponent -- * OutputPort outputPort;
+	1..* baseComponent -- * Signal signal;
+}
+
+class InputPort
+{
+	isA PortBase;
+}
+
+class LocalPort
+{
+	isA PortBase;
+}
+
+class OutputPort
+{
+	isA PortBase;
+}
+
+class PortBase
+{
+	String name;
+	String position;
+	0..1 srcPortBase -- 1..* AssociationPortBase_PortBase associationPortBase_PortBasesrc;
+	1..* dstPortBase -- 1..* AssociationPortBase_PortBase associationPortBase_PortBasedst;
+}
+
+class Signal
+{
+	String name;
+	String position;
+	1..* signal -- 1..* AssociationPortBase_PortBase associationPortBase_PortBase;
+}
+
+class AssociationPortBase_PortBase
+{
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

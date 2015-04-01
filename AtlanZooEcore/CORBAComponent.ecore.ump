@@ -1,0 +1,98 @@
+namespace CORBAComponent;
+
+class InterfaceDef
+{
+}
+
+class OperationDef
+{
+}
+
+class ValueDef
+{
+}
+
+class ComponentDef
+{
+	isA InterfaceDef;
+	Boolean isBasic;
+	0..1 -> * InterfaceDef supports;
+	1..* prd_home -- * ProvidesDef facets;
+	1..* ud_home -- * UsesDef receptacles;
+	1..* ed_home -- * EmitsDef emits;
+	1..* pud_home -- * PublishesDef publishes;
+	1..* cd_home -- * ConsumesDef consumes;
+}
+
+class ProvidesDef
+{
+	0..1 -> 1..* InterfaceDef provides;
+}
+
+class UsesDef
+{
+	Boolean multiple;
+	0..1 -> 1..* InterfaceDef uses;
+}
+
+class EventDef
+{
+	0..1 -> 1..* ValueDef type;
+}
+
+class EmitsDef
+{
+	isA EventDef;
+}
+
+class PublishesDef
+{
+	isA EventDef;
+}
+
+class ConsumesDef
+{
+	isA EventDef;
+}
+
+class HomeDef
+{
+	isA InterfaceDef;
+	0..1 -> 1..* ComponentDef manages;
+	1..* fa_home -- * FactoryDef factories;
+	1..* fi_home -- * FinderDef finders;
+	1..* pkd_home -- * PrimaryKeyDef key;
+}
+
+class FactoryDef
+{
+	isA OperationDef;
+}
+
+class FinderDef
+{
+	isA OperationDef;
+}
+
+class PrimaryKeyDef
+{
+	0..1 -> 1..* ValueDef type;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

@@ -1,0 +1,67 @@
+namespace JAVA;
+
+class JavaElement
+{
+	String name;
+}
+
+class ClassFeature
+{
+	isA JavaElement;
+	Boolean isFinal;
+}
+
+class ClassMember
+{
+	isA ClassFeature;
+	Boolean isStatic;
+	Boolean isPublic;
+	0..1 members -- 1..* JavaClass owner;
+	* typedElements -- 1..* JavaClass type;
+}
+
+class Field
+{
+	isA ClassMember;
+}
+
+class JavaClass
+{
+	isA ClassFeature;
+	Boolean isAbstract;
+	Boolean isStatic;
+	Boolean isPublic;
+	* classes -- 1..* Package package;
+	1..* type -- * FeatureParameter parameters;
+}
+
+class Method
+{
+	isA ClassMember;
+	1..* method -- * FeatureParameter parameters;
+}
+
+class Package
+{
+	isA JavaElement;
+}
+
+class PrimitiveType
+{
+	isA JavaClass;
+}
+
+class FeatureParameter
+{
+	isA ClassFeature;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}

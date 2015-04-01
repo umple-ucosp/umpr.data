@@ -1,0 +1,46 @@
+namespace SimpleRDBMS;
+
+class RModelElement
+{
+	String kind;
+	String name;
+}
+
+class Schema
+{
+	isA RModelElement;
+	1..* schema -- * Table tables;
+}
+
+class Table
+{
+	isA RModelElement;
+	1..* owner -- * Column column;
+	1..* owner -- * Key key;
+	1..* owner -- * ForeignKey foreignKey;
+}
+
+class Column
+{
+	isA RModelElement;
+	String type;
+	* column -- * Key key;
+	* column -- * ForeignKey foreignKey;
+}
+
+class Key
+{
+	isA RModelElement;
+	1..* refersTo -- * ForeignKey refersToOpposite;
+}
+
+class ForeignKey
+{
+	isA RModelElement;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

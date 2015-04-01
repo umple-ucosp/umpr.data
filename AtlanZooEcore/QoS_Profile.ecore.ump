@@ -1,0 +1,54 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace QoSProfile;
+
+class QoSComponent
+{
+	0..1 -> 1..* Operation operations;
+	1..* for -- * QoSProfile profile;
+}
+
+class Operation
+{
+}
+
+class QoSProfile
+{
+}
+
+class CompoundProfile
+{
+	isA QoSProfile;
+	1..* compoundProfile -- 1..* SimpleProfile simpleProfile;
+	1..* compoundProfile -- * ProfileTransition profileTransition;
+}
+
+class SimpleProfile
+{
+	isA QoSProfile;
+	0..1 -> 1..* QoSStatement uses;
+	0..1 -> 1..* QoSStatement provides;
+}
+
+class QoSStatement
+{
+}
+
+class ProfileTransition
+{
+	0..1 -> * Operation operations;
+	0..1 -> 1..* SimpleProfile from;
+	0..1 -> 1..* SimpleProfile to;
+}

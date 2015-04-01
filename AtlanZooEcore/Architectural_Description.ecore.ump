@@ -1,0 +1,47 @@
+namespace ArchitecturalDescription;
+
+class Architecture
+{
+	0..1 -> 1..* ArchitectureDescription describedBy;
+}
+
+class ArchitectureDescription
+{
+	0..1 selectedBy -- 1..* ArchitectureView selects;
+	0..1 -> 1..* ArchitectureView organizedBy;
+}
+
+class ArchitectureView
+{
+	0..1 -> 1..* ModelElement constituents;
+	1..* views -- 1..* ArchitectureViewPoint conformsTo;
+}
+
+class ArchitectureViewPoint
+{
+	0..1 -> 1..* MainView defines;
+}
+
+class MainView
+{
+	0..1 -> 1..* ArchitectureView isProjectedOnto;
+	0..1 -> 1..* ModelElement consistsOf;
+}
+
+class ModelElement
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

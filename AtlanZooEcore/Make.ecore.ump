@@ -1,0 +1,63 @@
+namespace Make;
+
+class Makefile
+{
+	String name;
+	0..1 -> * Comment comment;
+	0..1 -> 1..* Element elements;
+}
+
+class Element
+{
+	String name;
+}
+
+class Rule
+{
+	isA Element;
+	0..1 -> * Dependency dependencies;
+	1..* ruleShellLine -- 1..* ShellLine shellLines;
+}
+
+class Macro
+{
+	isA Element;
+	String value;
+}
+
+class ShellLine
+{
+	String command;
+	Boolean display;
+}
+
+class Comment
+{
+	String text;
+}
+
+class Dependency
+{
+}
+
+class RuleDep
+{
+	isA Dependency;
+	0..1 -> 1..* Rule ruledep;
+}
+
+class FileDep
+{
+	isA Dependency;
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}

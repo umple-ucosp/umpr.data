@@ -1,0 +1,392 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+namespace DataTypes;
+
+namespace XPDL;
+
+class Element
+{
+	String id;
+	String name;
+}
+
+class Package
+{
+	isA /2/Element;
+	0..1 -> * /2/Script script;
+	0..1 -> * /2/ExternalPackage externalPackages;
+	0..1 -> * /2/TypeDeclaration typeDeclarations;
+	0..1 -> * /2/Participant participants;
+	0..1 -> * /2/Application applications;
+	0..1 -> * /2/DataField dataFields;
+	0..1 -> * /2/Pool pools;
+	0..1 -> * /2/MessageFlow messageFlows;
+	0..1 -> * /2/Association associations;
+	0..1 -> * /2/Artifact artifacts;
+	0..1 -> * /2/Process workflowProcesses;
+}
+
+class MessageFlow
+{
+	isA /2/Element;
+	0..1 -> * /2/Activity targetActivity;
+	0..1 -> * /2/Activity sourceActivity;
+	0..1 -> * /2/Pool targetPool;
+	0..1 -> * /2/Pool sourcePool;
+	0..1 -> * /2/Object object;
+}
+
+class Association
+{
+	isA /2/Element;
+	AssociationDirectionKind associationDirection;
+	0..1 -> * /2/Artifact targetArtifact;
+	0..1 -> * /2/Artifact sourceArtifact;
+	0..1 -> * /2/Pool targetPool;
+	0..1 -> * /2/Pool sourcePool;
+	0..1 -> * /2/Activity targetActivity;
+	0..1 -> * /2/Activity sourceActivity;
+	0..1 -> * /2/Object object;
+}
+
+class Pool
+{
+	isA /2/Element;
+	OrientationKind orientation;
+	Boolean boundaryVisible;
+	0..1 -> * /2/Lane lanes;
+	0..1 -> * /2/Object object;
+	0..1 -> * /2/Participant participant;
+	0..1 -> * /2/Process process;
+}
+
+class Lane
+{
+	isA /2/Element;
+	0..1 -> * /2/Object object;
+	0..1 -> * /2/Lane parentLane;
+	0..1 -> * /2/Pool parentPool;
+}
+
+class Participant
+{
+	isA /2/Element;
+}
+
+class Artifact
+{
+	isA /2/Element;
+	String textAnnotation;
+	String group;
+	0..1 -> * /2/Object object;
+	0..1 -> * /2/DataObject dataObject;
+}
+
+class DataObject
+{
+	isA /2/Artifact;
+	String state;
+	Boolean requiredForStart;
+	Boolean producedAtCompletion;
+	0..1 -> * /2/DataField dataFields;
+}
+
+class Group
+{
+	isA /2/Artifact;
+}
+
+class Annotation
+{
+	isA /2/Artifact;
+}
+
+class TypeDeclaration
+{
+	isA /2/Element;
+}
+
+class Application
+{
+	isA /2/Element;
+}
+
+class ParametrizedApplication
+{
+	isA /2/Application;
+}
+
+class ReferencedApplication
+{
+	isA /2/Application;
+	0..1 -> * /2/ExternalReference externalReference;
+}
+
+class Activity
+{
+	isA /2/Element;
+	Boolean isStartActivity;
+	StatusKind status;
+	ModeKind startMode;
+	ModeKind finishMode;
+	Integer startQuantity;
+	Boolean isATransaction;
+	0..1 -> * /2/DataField dataFields;
+	0..1 -> * /2/Object object;
+}
+
+class Task
+{
+	isA /2/Activity;
+}
+
+class TaskService
+{
+	isA /2/Task;
+	ImplementationKind implementation;
+}
+
+class TaskReceive
+{
+	isA /2/Task;
+	Boolean instantiate;
+	ImplementationKind implementation;
+}
+
+class TaskManual
+{
+	isA /2/Task;
+}
+
+class TaskReference
+{
+	isA /2/Task;
+	0..1 -> 1..* /2/Task taskRef;
+}
+
+class TaskScript
+{
+	isA /2/Task;
+	0..1 -> 1..* /2/Script script;
+}
+
+class TaskSend
+{
+	isA /2/Task;
+	ImplementationKind implementation;
+}
+
+class TaskUser
+{
+	isA /2/Task;
+	ImplementationKind implementation;
+}
+
+class TaskApplication
+{
+	isA /2/Task;
+	0..1 -> * /2/Package packageRef;
+}
+
+class Route
+{
+	isA /2/Activity;
+	GatewayTypeKind gatewayType;
+	Boolean instantiate;
+	Boolean markerVisiable;
+}
+
+class SubFlow
+{
+	isA /2/Activity;
+	ExecutionKind execution;
+	String instanceDataField;
+	0..1 -> * /2/Package packageRef;
+	0..1 -> * /2/ActivitySet startActivitySet;
+	0..1 -> * /2/Activity startActivity;
+}
+
+class BlockActivity
+{
+	isA /2/Activity;
+	0..1 -> 1..* /2/ActivitySet activitySet;
+	0..1 -> * /2/Activity startActivity;
+}
+
+class Event
+{
+	isA /2/Activity;
+	TriggerKind triggerKind;
+	ImplementationKind implementation;
+	0..1 -> * /2/Trigger trigger;
+}
+
+class Trigger
+{
+}
+
+class ResultCompensation
+{
+	isA /2/Trigger;
+	0..1 -> * /2/Activity activity;
+}
+
+class ResultError
+{
+	isA /2/Trigger;
+	String errorCode;
+}
+
+class ResultMultiple
+{
+	isA /2/Trigger;
+}
+
+class TriggerResultLink
+{
+	isA /2/Trigger;
+	0..1 -> 1..* /2/Process processRef;
+}
+
+class TriggerResultMessage
+{
+	isA /2/Trigger;
+}
+
+class TriggerIntermediateMultiple
+{
+	isA /2/Trigger;
+}
+
+class TriggerMultiple
+{
+	isA /2/Trigger;
+}
+
+class TriggerRule
+{
+	isA /2/Trigger;
+	String ruleName;
+}
+
+class TriggerTimer
+{
+	isA /2/Trigger;
+	String timeDate;
+	String timeCycle;
+}
+
+class StartEvent
+{
+	isA /2/Event;
+}
+
+class IntermediateEvent
+{
+	isA /2/Event;
+	0..1 -> * /2/Activity target;
+}
+
+class EndEvent
+{
+	isA /2/Event;
+}
+
+class Gateway
+{
+	isA /2/Route;
+}
+
+class Process
+{
+	isA /2/Element;
+	AccessLevelKind accessLevel;
+	ProcessTypeKind processType;
+	StatusKind status;
+	Boolean suppressJoinFailure;
+	Boolean enableInstanceCompensation;
+	Boolean adHoc;
+	AdHocOrderingKind adHocOrdering;
+	String adHocCompletionCondition;
+	0..1 -> * /2/Participant participant;
+	0..1 -> * /2/Application applications;
+	0..1 -> 1..* /2/DataField dataField;
+	0..1 -> * /2/ActivitySet activitySets;
+	0..1 -> * /2/Activity activities;
+	0..1 -> * /2/Transition transitions;
+	0..1 -> * /2/Object object;
+	0..1 -> * /2/ActivitySet defaultStartActivitySet;
+	0..1 -> * /2/Activity defaultStartActivity;
+}
+
+class Transition
+{
+	isA /2/Element;
+	Integer quantity;
+	0..1 -> * /2/Object object;
+	0..1 -> 1..* /2/Activity to;
+	0..1 -> 1..* /2/Activity from;
+}
+
+class ActivitySet
+{
+	isA /2/Element;
+	Boolean adHoc;
+	AdHocOrderingKind adHocOrdering;
+	String adHocCompletionCondition;
+	0..1 -> * /2/Activity defaultStartActivity;
+	0..1 -> * /2/Activity activities;
+	0..1 -> * /2/Transition transitions;
+	0..1 -> * /2/Object object;
+}
+
+class ExternalReference
+{
+	String xref;
+	String location;
+	String namespace;
+}
+
+class Object
+{
+	isA /2/Element;
+	0..1 -> * /2/Category categories;
+}
+
+class ExternalPackage
+{
+	isA /2/Element;
+	String href;
+}
+
+class Category
+{
+	isA /2/Element;
+}
+
+class DataField
+{
+	isA /2/Element;
+	Boolean isArray;
+	Boolean correlation;
+	0..1 -> 1..* /2/TypeDeclaration dataType;
+}
+
+class Script
+{
+	String type;
+	String version;
+	String grammar;
+}

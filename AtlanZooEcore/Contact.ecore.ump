@@ -1,0 +1,33 @@
+namespace Contact;
+
+class Contact
+{
+	String nom;
+	String prenom;
+	1..* contact_fixe -- * Num_fixe num_fixes;
+	1..* contact_portable -- * Num_portable num_portables;
+}
+
+class Num_fixe
+{
+	String numero;
+}
+
+class Num_portable
+{
+	String numero;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}

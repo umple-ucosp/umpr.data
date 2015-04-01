@@ -1,0 +1,233 @@
+namespace ODPEV;
+
+class EnterpriseObject
+{
+	0..1 coMembers -- * //Community eoConfigurations;
+	0..1 rolefillers -- * //Role eoRoles;
+	0..1 actArtefactRoleFillers -- 1..* //Action eoArtefactActions;
+	0..1 actResourceRoleFillers -- 1..* //Action eoResourceActions;
+	0..1 actActorRoleFillers -- 1..* //Action eoActorActions;
+	0..1 poEnterpriseObject -- * //Policy eoPolicy;
+	0..1 eoarSubject -- * //EO_A_R eoEOAR;
+	0..1 eopdAgent -- 1..* //EO_P_D eoEOPD;
+}
+
+class ODPSystem
+{
+	isA //EnterpriseObject;
+	0..1 scOdpSystem -- 1..* //Scope odpBehaviour;
+	0..1 objFulfiller -- 1..* //Objective odpObjectives;
+	0..1 esDescribedSystems -- 1..* //EnterpriseSpecification odpSpecifier;
+}
+
+class Party
+{
+	isA //EnterpriseObject;
+	0..1 aaAccountableParty -- * //AccountableAction ptyAccountableAction;
+	0..1 eopdPrincipal -- 1..* //EO_P_D ptyEOPD;
+}
+
+class Objective
+{
+	0..1 odpObjectives -- * //ODPSystem objFulfiller;
+	0..1 ctObjective -- 1..* //Contract objSpecifier;
+	0..1 objRefinement -- * //Objective objRefiners;
+	0..1 objRefiners -- * //Objective objRefinement;
+	0..1 prObjectives -- * //Process objAchievers;
+	0..1 beObjectives -- 1..* //Behaviour objFulfillers;
+}
+
+class Scope
+{
+	0..1 odpBehaviour -- 1..* //ODPSystem scOdpSystem;
+}
+
+class EnterpriseSpecification
+{
+	0..1 odpSpecifier -- 1..* //ODPSystem esDescribedSystems;
+	0..1 faEnterpriseSpecifications -- 1..* //FieldOfApplication esContext;
+}
+
+class FieldOfApplication
+{
+	0..1 esContext -- 1..* //EnterpriseSpecification faEnterpriseSpecifications;
+}
+
+class Policy
+{
+	0..1 ctPolicies -- 1..* //Contract poSpecifier;
+	0..1 coPolicy -- 1..* //Community poOwner;
+	0..1 prConstrainer -- * //Process poProcess;
+	0..1 bePolicyConstrainer -- * //Behaviour poBehaviour;
+	0..1 bePolicy -- * //Behaviour poChanger;
+	0..1 roleConstrainer -- * //Role poRole;
+	0..1 eoPolicy -- * //EnterpriseObject poEnterpriseObject;
+}
+
+class PolicyEnvelope
+{
+	isA //Policy;
+	0..1 bePolicyEnvelope -- 1..* //Behaviour pePolicySetter;
+	0..1 beConstrainer -- * //Behaviour peBehaviour;
+	0..1 -> 1..* //PolicyValue peValues;
+	0..1 pvValue -- 1..* //PolicyValue peCurrentValue;
+}
+
+class PolicyValue
+{
+	isA //Policy;
+	0..1 peCurrentValue -- 1..* //PolicyEnvelope pvValue;
+}
+
+class AssigmentPolicy
+{
+	isA //Policy;
+	0..1 eoarGovernor -- * //EO_A_R apEOAR;
+}
+
+class Contract
+{
+	0..1 poSpecifier -- 1..* //Policy ctPolicies;
+	0..1 objSpecifier -- 1..* //Objective ctObjective;
+	0..1 beSpecifiers -- 1..* //Behaviour ctBehaviours;
+}
+
+class Process
+{
+	0..1 objAchievers -- 1..* //Objective prObjectives;
+	0..1 stGraphs -- 1..* //Step prDetails;
+	0..1 stAbstraction -- * //Step prRefinement;
+	0..1 poProcess -- * //Policy prConstrainer;
+}
+
+class Step
+{
+	0..1 prDetails -- 1..* //Process stGraphs;
+	0..1 prRefinement -- * //Process stAbstraction;
+}
+
+class Action
+{
+	isA //Step;
+	0..1 beActions -- 1..* //Behaviour actBehaviours;
+	0..1 eoArtefactActions -- * //EnterpriseObject actArtefactRoleFillers;
+	0..1 eoResourceActions -- * //EnterpriseObject actResourceRoleFillers;
+	0..1 eoActorActions -- * //EnterpriseObject actActorRoleFillers;
+}
+
+class AccountableAction
+{
+	isA //Action;
+	0..1 ptyAccountableAction -- 1..* //Party aaAccountableParty;
+}
+
+class Prescription
+{
+	isA //AccountableAction;
+}
+
+class Commitment
+{
+	isA //AccountableAction;
+}
+
+class Declaration
+{
+	isA //AccountableAction;
+}
+
+class Evaluation
+{
+	isA //AccountableAction;
+}
+
+class Delegation
+{
+	isA //AccountableAction;
+	0..1 eopdAction -- 1..* //EO_P_D dlgEOPD;
+}
+
+class Behaviour
+{
+	0..1 objFulfillers -- 1..* //Objective beObjectives;
+	0..1 ctBehaviours -- 1..* //Contract beSpecifiers;
+	0..1 actBehaviours -- 1..* //Action beActions;
+	0..1 roleBehaviour -- * //Role beIdentifier;
+	0..1 pePolicySetter -- * //PolicyEnvelope bePolicyEnvelope;
+	0..1 peBehaviour -- * //PolicyEnvelope beConstrainer;
+	0..1 poBehaviour -- * //Policy bePolicyConstrainer;
+	0..1 poChanger -- * //Policy bePolicy;
+}
+
+class Community
+{
+	0..1 cobjRefinement -- * //CommunityObject coAbstraction;
+	0..1 eoConfigurations -- * //EnterpriseObject coMembers;
+	0..1 roleSpecifier -- * //Role coCommunityRoles;
+	0..1 poOwner -- * //Policy coPolicy;
+}
+
+class CommunityObject
+{
+	isA //EnterpriseObject;
+	0..1 coAbstraction -- 1..* //Community cobjRefinement;
+}
+
+class Role
+{
+	0..1 beIdentifier -- 1..* //Behaviour roleBehaviour;
+	0..1 coCommunityRoles -- 1..* //Community roleSpecifier;
+	0..1 eoRoles -- * //EnterpriseObject rolefillers;
+	0..1 poRole -- * //Policy roleConstrainer;
+	0..1 eoarSubjectRole -- * //EO_A_R roleEOAR;
+}
+
+class InterfaceRole
+{
+	isA //Role;
+}
+
+class Violation
+{
+	isA //Behaviour;
+	0..1 ruViolation -- 1..* //Rule vioProhibitor;
+}
+
+class Rule
+{
+	0..1 vioProhibitor -- * //Violation ruViolation;
+}
+
+class Obligation
+{
+	isA //Rule;
+}
+
+class Authorisation
+{
+	isA //Rule;
+}
+
+class Permission
+{
+	isA //Rule;
+}
+
+class Prohibition
+{
+	isA //Rule;
+}
+
+class EO_A_R
+{
+	0..1 eoEOAR -- * //EnterpriseObject eoarSubject;
+	0..1 roleEOAR -- 1..* //Role eoarSubjectRole;
+	0..1 apEOAR -- * //AssigmentPolicy eoarGovernor;
+}
+
+class EO_P_D
+{
+	0..1 eoEOPD -- 1..* //EnterpriseObject eopdAgent;
+	0..1 ptyEOPD -- 1..* //Party eopdPrincipal;
+	0..1 dlgEOPD -- 1..* //Delegation eopdAction;
+}

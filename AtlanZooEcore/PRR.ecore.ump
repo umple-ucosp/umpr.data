@@ -1,0 +1,255 @@
+namespace PRR;
+
+class Element
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class NamedElement
+{
+	isA Element;
+	String name;
+}
+
+class RuleSet
+{
+	isA Element;
+	* ruleOwner -- * Rule rules;
+}
+
+class Rule
+{
+	isA NamedElement;
+	* actionOwner -- * RuleAction actions;
+	* ruleConditionOwner -- * RuleCondition condition;
+	1..* bindingOwner -- * Binding binding;
+}
+
+class RuleAction
+{
+	isA Element;
+}
+
+class RuleCondition
+{
+	isA Element;
+	0..1 conditionOwner -- * PRRExpressions/OclExpression conditionExp;
+}
+
+class Binding
+{
+	isA Element;
+	1..* ruleVariableOwner -- * RuleVariable ruleVariable;
+}
+
+class RuleVariable
+{
+	isA PRRExpressions/VariableDeclaration;
+	0..1 filterRuleVariableOwner -- * PRRExpressions/OclExpression filter;
+}
+
+class DeleteAction
+{
+	isA RuleAction;
+	0..1 -> 1..* PRRExpressions/OclExpression objValue;
+}
+
+class CreateAction
+{
+	isA RuleAction ;
+	0..1 parentInsert -- * PRRExpressions/OclExpression insertArguments;
+}
+
+class AssignAction
+{
+	isA RuleAction;
+	0..1 assignedObj -- 1..* PRRExpressions/OclExpression objValue;
+	0..1 -> 1..* PRRExpressions/OclExpression aValue;
+}
+
+class InvokeAction
+{
+	isA RuleAction;
+	0..1 -> 1..* PRRExpressions/OclExpression invocation;
+}
+
+class PropertyCallExp
+{
+	isA PRRExpressions/OclExpression;
+	0..1 appliedProperty -- * PRRExpressions/OclExpression source;
+}
+
+class OclExpression
+{
+	isA Element;
+	0..1 body -- * PRRExpressions/LoopExp loopExp;
+	0..1 source -- * PRRExpressions/PropertyCallExp appliedProperty;
+	0..1 arguments -- * PRRExpressions/OperationCallExp parentOperation;
+	0..1 insertArguments -- * PRRActions/CreateAction parentInsert;
+	0..1 oclExpression -- 1..* PRRTypes/OclType type;
+	0..1 filter -- * RuleVariable filterRuleVariableOwner;
+	0..1 conditionExp -- * RuleCondition conditionOwner;
+	0..1 objValue -- * PRRActions/AssignAction assignedObj;
+}
+
+class IteratorExp
+{
+	isA PRRExpressions/LoopExp;
+	String name;
+}
+
+class LoopExp
+{
+	isA PRRExpressions/PropertyCallExp;
+	0..1 loopExp -- 1..* PRRExpressions/OclExpression body;
+	0..1 loopExpr -- 1..* PRRExpressions/Iterator iterators;
+}
+
+class OperatorCallExp
+{
+	isA PRRExpressions/OperationCallExp;
+}
+
+class OperationCallExp
+{
+	isA PRRExpressions/PropertyCallExp;
+	String operationName;
+	String signature;
+	0..1 parentOperation -- * PRRExpressions/OclExpression arguments;
+}
+
+class CollectionOperationCallExp
+{
+	isA PRRExpressions/OperationCallExp;
+}
+
+class StringExp
+{
+	isA PRRExpressions/PrimitiveExp;
+	String stringSymbol;
+}
+
+class BooleanExp
+{
+	isA PRRExpressions/PrimitiveExp;
+	Boolean booleanSymbol;
+}
+
+class NumericExp
+{
+	isA PRRExpressions/PrimitiveExp;
+}
+
+class IntegerExp
+{
+	isA PRRExpressions/NumericExp;
+	Integer integerSymbol;
+}
+
+class RealExp
+{
+	isA PRRExpressions/NumericExp;
+	Double realSymbol;
+}
+
+class PrimitiveExp
+{
+	isA PRRExpressions/OclExpression;
+}
+
+class NavigationOrAttributeCallExp
+{
+	isA PRRExpressions/PropertyCallExp;
+	String name;
+}
+
+class Iterator
+{
+	isA PRRExpressions/VariableDeclaration;
+	0..1 iterators -- * PRRExpressions/LoopExp loopExpr;
+}
+
+class VariableDeclaration
+{
+	isA Element;
+	String varName;
+	0..1 variableDeclaration -- 1..* PRRTypes/OclType type;
+	0..1 referredVariable -- * PRRExpressions/VariableExp variableExp;
+}
+
+class VariableExp
+{
+	isA PRRExpressions/OclExpression;
+	0..1 variableExp -- 1..* PRRExpressions/VariableDeclaration referredVariable;
+}
+
+class TypeExp
+{
+	isA PRRExpressions/OclExpression;
+	0..1 typeExp -- * PRRTypes/OclType referredType;
+}
+
+class AllInstanceExp
+{
+	isA PRRExpressions/OclExpression;
+	0..1 appliedAllInstance -- 1..* PRRTypes/OclType sourceType;
+}
+
+class OclType
+{
+	isA NamedElement;
+	0..1 type -- * PRRExpressions/VariableDeclaration variableDeclaration;
+	0..1 type -- * PRRExpressions/OclExpression oclExpression;
+	0..1 sourceType -- * PRRExpressions/AllInstanceExp appliedAllInstance;
+	0..1 referredType -- * PRRExpressions/TypeExp typeExp;
+}
+
+class StringType
+{
+	isA PRRTypes/Primitive;
+}
+
+class Primitive
+{
+	isA PRRTypes/OclType;
+}
+
+class RealType
+{
+	isA PRRTypes/NumericType;
+}
+
+class BooleanType
+{
+	isA PRRTypes/Primitive;
+}
+
+class NumericType
+{
+	isA PRRTypes/Primitive;
+}
+
+class IntegerType
+{
+	isA PRRTypes/NumericType;
+}
+
+namespace PrimitiveTypes;
+
+class Double
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}

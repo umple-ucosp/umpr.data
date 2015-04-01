@@ -1,0 +1,54 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}
+
+namespace Metrics;
+
+class Metric
+{
+	String name;
+	0..1 -> * MetricValue values;
+}
+
+class MetricValue
+{
+	String tag;
+}
+
+class StringMetricValue
+{
+	isA MetricValue;
+	String value;
+}
+
+class BooleanMetricValue
+{
+	isA MetricValue;
+	Boolean value;
+}
+
+class IntegerMetricValue
+{
+	isA MetricValue;
+	Integer value;
+}
+
+class DoubleMetricValue
+{
+	isA MetricValue;
+	Double value;
+}

@@ -1,0 +1,65 @@
+namespace MMASharengo;
+
+class ModelElement
+{
+	String name;
+}
+
+class Classifier
+{
+	isA ModelElement;
+}
+
+class Operation
+{
+	isA ModelElement;
+}
+
+class Service
+{
+	isA Classifier;
+	0..1 -> * ServiceOperation operations;
+}
+
+class BusinessObject
+{
+	isA Classifier;
+	0..1 -> * BusinessObjectOperation operations;
+}
+
+class ServiceOperation
+{
+	isA Operation;
+	0..1 -> * Service2BusinessObjectFlow BOFlows;
+	0..1 -> * BusinessRule rules;
+}
+
+class BusinessObjectOperation
+{
+	isA Operation;
+	0..1 -> * BusinessRule rules;
+}
+
+class BusinessRule
+{
+	isA ModelElement;
+	String expr;
+}
+
+class Flow
+{
+	isA ModelElement;
+	String source;
+	String target;
+}
+
+class Service2BusinessObjectFlow
+{
+	isA Flow;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

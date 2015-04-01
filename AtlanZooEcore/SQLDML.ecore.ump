@@ -1,0 +1,189 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace SQLDML;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class SQLRoot
+{
+	isA LocatedElement;
+	0..1 -> * Statement statements;
+}
+
+class Statement
+{
+	isA LocatedElement;
+}
+
+class ViewStatement
+{
+	isA Statement;
+	String name;
+	0..1 -> 1..* ColumnExp columns;
+	0..1 -> 1..* QueryStmt query;
+}
+
+class InsertStmt
+{
+	isA Statement;
+	String tableName;
+	0..1 -> * Expression values;
+}
+
+class QueryStmt
+{
+	isA Statement;
+	0..1 -> 1..* Table tables;
+	0..1 -> * WhereClause condition;
+}
+
+class QueryStmtCol
+{
+	isA QueryStmt;
+	0..1 -> 1..* Expression columns;
+}
+
+class QueryStmtAllCol
+{
+	isA QueryStmt;
+}
+
+class NamedElement
+{
+	isA LocatedElement;
+	String name;
+}
+
+class Table
+{
+	isA NamedElement;
+	String alias;
+}
+
+class WhereClause
+{
+	isA LocatedElement;
+	0..1 -> 1..* Expression expression;
+}
+
+class Expression
+{
+	isA LocatedElement;
+}
+
+class BinaryExp
+{
+	isA Expression;
+	String opName;
+	0..1 -> 1..* Expression leftExp;
+	0..1 -> 1..* Expression rightExp;
+}
+
+class OrExp
+{
+	isA BinaryExp;
+}
+
+class AndExp
+{
+	isA BinaryExp;
+}
+
+class NotExp
+{
+	isA Expression;
+	String opName;
+	0..1 -> 1..* Expression valueExp;
+	0..1 -> * Expression unused;
+}
+
+class LikeExp
+{
+	isA Expression;
+	String columnName;
+	0..1 -> 1..* StringValueExp expression;
+}
+
+class InExp
+{
+	isA Expression;
+	String columnName;
+	0..1 -> 1..* Predicate elements;
+}
+
+class OperationExp
+{
+	isA BinaryExp;
+	String optName;
+}
+
+class Predicate
+{
+	isA Expression;
+}
+
+class QueryPredicate
+{
+	isA Expression;
+	0..1 -> 1..* QueryStmt query;
+}
+
+class ColumnExp
+{
+	isA Predicate ;
+	String alias;
+	0..1 -> 1..* DataType type;
+}
+
+class ValueExp
+{
+	isA Predicate;
+	0..1 -> * DataType type;
+}
+
+class StringValueExp
+{
+	isA ValueExp;
+	String aValue;
+}
+
+class IntegerValueExp
+{
+	isA ValueExp;
+	Integer aValue;
+}
+
+class ListExp
+{
+	isA Predicate;
+	0..1 -> * Expression elements;
+}
+
+class FunctionExp
+{
+	isA Predicate;
+	String name;
+	0..1 -> * Expression arguments;
+}
+
+class DataType
+{
+	isA NamedElement;
+}

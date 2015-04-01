@@ -1,0 +1,109 @@
+namespace PL/I;
+
+class PLIClassifier
+{
+	String name;
+	* sharedType -- * PLIElement typedElements;
+}
+
+class PLISimpleType
+{
+	isA PLIClassifier;
+	1..* type -- 1..* PLIAlias alias;
+}
+
+class PLINamedType
+{
+	isA PLIClassifier;
+}
+
+class PLIComposedType
+{
+	isA PLIClassifier;
+	* group -- * PLIElement elements;
+}
+
+class PLIAlias
+{
+	0..1 -> 1..* PLIAttribute contains;
+}
+
+class PLIAttribute
+{
+}
+
+class PLIComputationalType
+{
+	isA PLISimpleType;
+}
+
+class PLINonComputationalType
+{
+	isA PLISimpleType;
+}
+
+class PLIElement
+{
+	String level;
+	String name;
+	0..1 -> * PLIElementInitialValue initial;
+	0..1 -> 1..* PLISourceText source;
+	* arrayOf -- * PLIArray array;
+}
+
+class PLIElementInitialValue
+{
+	String initialValue;
+}
+
+class PLISourceText
+{
+	String source;
+	String fileName;
+}
+
+class PLIArray
+{
+}
+
+class PLIFixedBoundArray
+{
+	isA PLIArray;
+	Integer IBound;
+	Integer uBound;
+	0..1 -> 1..* PLIElement referredTo;
+}
+
+class PLIFixedLboundArray
+{
+	isA PLIArray;
+	Integer IBound;
+	String uBoundToAllocate;
+	0..1 -> 1..* PLIElement referredTo;
+}
+
+class PLIHBoundArray
+{
+	isA PLIArray;
+	Integer uBound;
+	String IBoundToAllocate;
+	0..1 -> 1..* PLIElement referredTo;
+}
+
+class PLIVariableBoundArray
+{
+	isA PLIArray;
+	String IBoundToAllocate;
+	String hBoundToAllocate;
+	0..1 -> 1..* PLIElement referredTo;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

@@ -1,0 +1,256 @@
+namespace DeploymentReport;
+
+class DeploymentReport
+{
+	0..1 -> * DeploymentImport import;
+	0..1 -> * Applications applications;
+	0..1 -> * Binding binding;
+	0..1 -> * LogicalServers logicalServers;
+	0..1 -> * ErrorCollection errors;
+}
+
+class DeploymentImport
+{
+	0..1 -> 1..* SimpleName alias;
+	1..* import -- 1..* ImportNamespaceIdentity identity;
+}
+
+class ImportNamespaceIdentity
+{
+	isA NamespaceIdentity;
+}
+
+class NamespaceIdentity
+{
+	Platform platform;
+	0..1 -> 1..* Path name;
+	0..1 -> * FourPartVersionType version;
+	0..1 -> * PublicKeyType publicKey;
+	0..1 -> * PublicKeyTokenType publicKeyToken;
+	0..1 -> * CultureNeutral culture;
+}
+
+class Applications
+{
+	0..1 -> * OuterSystem system;
+	0..1 -> * Application application;
+}
+
+class LogicalServers
+{
+	0..1 -> * Zone zone;
+	0..1 -> * LogicalServer logicalServer;
+}
+
+class OuterSystem
+{
+	String name;
+	0..1 -> * OuterSystem system;
+	0..1 -> * Application application;
+}
+
+class Binding
+{
+	0..1 -> * Zone zone;
+	0..1 -> * BoundLogicalServer boundLogicalServer;
+}
+
+class Zone
+{
+	String name;
+	0..1 -> * Zone zone;
+	0..1 -> * BoundLogicalServer boundLogicalServer;
+	0..1 -> * LogicalServer logicalServer;
+}
+
+class ReportObject
+{
+	String name;
+	String definition;
+	String extends;
+	String hostedOn;
+	0..1 -> 1..* Guid instanceId;
+	1..* report -- * SequenceReport sequence;
+}
+
+class SequenceReport
+{
+	0..1 -> 1..* Setting setting;
+	0..1 -> * ReportSystem system;
+	0..1 -> * ReportResource resource;
+	0..1 -> * ReportEndpoint endpoint;
+}
+
+class BoundLogicalServer
+{
+	String name;
+	String definition;
+	String extends;
+	0..1 -> * Setting setting;
+	0..1 -> * Application application;
+}
+
+class LogicalServer
+{
+	isA ReportObject;
+}
+
+class Application
+{
+	isA ReportObject;
+}
+
+class ReportSystem
+{
+	isA ReportObject;
+}
+
+class ReportResource
+{
+	isA ReportObject;
+}
+
+class ReportEndpoint
+{
+	isA ReportObject;
+}
+
+class Setting
+{
+	0..1 -> * SettingInstanceValue value;
+	0..1 -> * SettingFacet facet;
+	0..1 -> 1..* SettingAttributes settingAttributes;
+}
+
+class SettingFacet
+{
+	0..1 -> * SettingInstanceValue value;
+	0..1 -> 1..* SettingAttributes settingAttributes;
+}
+
+class SettingInstanceValue
+{
+	String[] contents;
+	Boolean null;
+}
+
+class SettingAttributes
+{
+	String name;
+	String definition;
+	SettingState state;
+	Boolean fixed;
+	Boolean list;
+	Boolean null;
+	Boolean secure;
+	Boolean failedToSerialize;
+}
+
+class SettingValue
+{
+	String[] contents;
+	Boolean Null;
+	Boolean Secure;
+}
+
+class ErrorCollection
+{
+	0..1 -> * DocumentError documentError;
+	0..1 -> * DocumentResolutionError documentResolutionError;
+	0..1 -> * DocumentConstraintError documentConstraintError;
+}
+
+class DocumentError
+{
+	Integer Code;
+	Integer Level;
+	String File;
+	0..1 -> * Description description;
+}
+
+class DocumentResolutionError
+{
+	isA DocumentError;
+	String Statement;
+}
+
+class DocumentConstraintError
+{
+	isA DocumentError;
+	String constraintMember;
+	String constraintDefinition;
+	String targetInstancePath;
+	String ownerInstancePath;
+	String constraintErrorCode;
+	String constraintErrorMessage;
+	0..1 -> * FailedInput failedInput;
+}
+
+class FailedInput
+{
+	String[] contents;
+}
+
+class Description
+{
+	String[] contents;
+}
+
+class Guid
+{
+	isA Element;
+}
+
+class SimpleName
+{
+	isA Element;
+}
+
+class Path
+{
+	isA Element;
+}
+
+class FourPartVersionType
+{
+	isA Element;
+}
+
+class PublicKeyType
+{
+	isA Element;
+}
+
+class PublicKeyTokenType
+{
+	isA Element;
+}
+
+class Culture
+{
+	isA Element;
+}
+
+class CultureNeutral
+{
+	isA Element;
+}
+
+class Element
+{
+	String value;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}

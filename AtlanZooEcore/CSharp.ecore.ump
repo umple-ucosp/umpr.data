@@ -1,0 +1,90 @@
+namespace CSharp;
+
+class Member
+{
+	String name;
+	* members -- * Type owner;
+}
+
+class TypedAttribute
+{
+	isA Member;
+	0..1 -> 1..* Type type;
+}
+
+class Field
+{
+	isA TypedAttribute;
+}
+
+class Property
+{
+	isA TypedAttribute;
+	Boolean isReadable;
+	Boolean isWritable;
+}
+
+class MethodBase
+{
+	isA Member;
+	String visibility;
+	Boolean isAbstract;
+	Boolean isFinal;
+	Boolean isStatic;
+	1..* method -- * Parameter parameters;
+}
+
+class Constructor
+{
+	isA MethodBase;
+}
+
+class Method
+{
+	isA MethodBase;
+	0..1 -> 1..* Type returnType;
+}
+
+class Type
+{
+	isA Member;
+	String qualifiedName;
+	Boolean isAbstract;
+	String visibility;
+	Boolean isSealed;
+	String nameSpace;
+	0..1 -> * Type super;
+	* content -- * Assembly t_container;
+}
+
+class Parameter
+{
+	Boolean isIn;
+	Boolean isOut;
+	Boolean name;
+	Integer position;
+	0..1 -> 1..* Type type;
+}
+
+class Assembly
+{
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

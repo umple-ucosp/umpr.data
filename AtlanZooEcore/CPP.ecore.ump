@@ -1,0 +1,115 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace CPP;
+
+class CDerived
+{
+}
+
+class CStructured
+{
+}
+
+class CBehavorialFeature
+{
+}
+
+class CFunction
+{
+	isA CBehavorialFeature;
+	Boolean isVsrArg;
+}
+
+class CStructureContents
+{
+}
+
+class CField
+{
+}
+
+class CDerivableType
+{
+}
+
+class CPPReference
+{
+	isA CDerived;
+}
+
+class CPPExtern
+{
+	isA CDerived;
+	String linkage;
+}
+
+class CPPConst
+{
+	isA CDerived;
+}
+
+class CPPTemplate
+{
+	isA CDerived;
+	* templates -- * CPPClass classes;
+}
+
+class CPPClass
+{
+	isA CStructured;
+	Boolean isAbstract;
+	Boolean isVolatile;
+	VisibilityKind visibility;
+	0..1 -> * CPPGeneralization generalizations;
+}
+
+class CPPGeneralization
+{
+	VisibilityKind visibility;
+	Boolean isVirtual;
+}
+
+class CPPOperation
+{
+	isA CFunction ;
+	Boolean isStatic;
+	Boolean isExtern;
+	Boolean isInline;
+	Boolean isVirtual;
+	Boolean isPure;
+	VisibilityKind visibility;
+	Boolean isCtor;
+	Boolean isDtor;
+	0..1 -> * CPPClass throws;
+}
+
+class CPPOperator
+{
+	isA CStructureContents;
+	Boolean isInline;
+	VisibilityKind visibility;
+}
+
+class CPPMember
+{
+	Boolean isStatic;
+	Boolean isVolatile;
+	Boolean isRegister;
+	VisibilityKind visibility;
+}

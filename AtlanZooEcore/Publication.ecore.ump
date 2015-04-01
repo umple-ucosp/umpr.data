@@ -1,0 +1,22 @@
+namespace Publication;
+
+class Publication
+{
+	String title;
+	String authors;
+	Integer nbPages;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}

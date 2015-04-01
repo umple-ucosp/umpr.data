@@ -1,0 +1,191 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace WordprocessingMLBasicDef;
+
+class StringProperty
+{
+	isA StringType;
+}
+
+class StringType
+{
+	String val;
+}
+
+class WordDocument
+{
+	0..1 -> * StringProperty ignoreSubtree;
+	0..1 -> * StringProperty ignoreElements;
+	1..* be_wordDocument -- 1..* BodyElt body;
+}
+
+class BodyElt
+{
+	1..* ble_bodyElt -- * BlockLevelElt blockLevelElts;
+}
+
+class BlockLevelElt
+{
+	1..* n_blockLevelElts -- 1..* NoteElt ble_note;
+}
+
+class BlockLevelChunkElt
+{
+	isA BlockLevelElt;
+}
+
+class ParaElt
+{
+	isA BlockLevelChunkElt;
+	1..* pce_pElt -- * ParaContentElt pContentElts;
+}
+
+class ParaContentElt
+{
+}
+
+class RunElt
+{
+	isA ParaContentElt;
+	1..* rce_rElt -- * RunContentElt rContentElts;
+}
+
+class RunContentElt
+{
+}
+
+class BreakElt
+{
+	isA RunContentElt;
+	BreakType type;
+}
+
+class Text
+{
+	isA RunContentElt ;
+}
+
+class DelText
+{
+	isA RunContentElt ;
+}
+
+class InstrText
+{
+	isA RunContentElt ;
+}
+
+class DelInstrText
+{
+	isA RunContentElt ;
+}
+
+class NoBreakHyphen
+{
+	isA RunContentElt;
+}
+
+class SoftHyphen
+{
+	isA RunContentElt;
+}
+
+class AnnotationRef
+{
+	isA RunContentElt;
+}
+
+class FootnoteRef
+{
+	isA RunContentElt;
+}
+
+class EndnoteRef
+{
+	isA RunContentElt;
+}
+
+class Separator
+{
+	isA RunContentElt;
+}
+
+class ContinuationSeparator
+{
+	isA RunContentElt;
+}
+
+class PgNum
+{
+	isA RunContentElt;
+}
+
+class Cr
+{
+	isA RunContentElt;
+}
+
+class Footnote
+{
+	isA RunContentElt ;
+}
+
+class Endnote
+{
+	isA RunContentElt ;
+}
+
+class NoteElt
+{
+	NoteValue type;
+	OnOffType suppressRef;
+}
+
+class Picture
+{
+	isA RunContentElt;
+}
+
+class Symbol
+{
+	isA RunContentElt ;
+}
+
+class SymElt
+{
+	0..1 -> 1..* StringType font;
+	0..1 -> 1..* StringType char;
+}
+
+class Tab
+{
+	isA RunContentElt;
+}
+
+class FldChar
+{
+	isA RunContentElt ;
+}
+
+class FldCharElt
+{
+	FldCharTypeProperty fldCharType;
+	OnOffType fldLock;
+	0..1 -> * StringType fldData;
+}

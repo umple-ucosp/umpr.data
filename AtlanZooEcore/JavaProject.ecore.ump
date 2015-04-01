@@ -1,0 +1,71 @@
+namespace JavaProject;
+
+class JavaProject
+{
+	isA NamedElement;
+	0..1 -> * PackageFragment ownedPackageFragment;
+}
+
+class PackageFragment
+{
+	isA NamedElement;
+	0..1 -> * CompilationUnit ownedCompilationUnit;
+}
+
+class CompilationUnit
+{
+	isA NamedElement;
+	0..1 -> * ImportDeclaration importDeclaration;
+	0..1 -> * Type ownedType;
+	0..1 -> * PackageDeclaration declaration;
+}
+
+class ImportDeclaration
+{
+	isA NamedElement;
+}
+
+class Type
+{
+	isA JavaElement;
+	String elementName;
+	MEMBER_KIND member_kind;
+	0..1 -> * Type nestedType;
+	0..1 -> * Type ownedSuperType;
+	0..1 -> * Method methods;
+	0..1 -> * Field fields;
+}
+
+class Field
+{
+	isA JavaElement;
+}
+
+class Method
+{
+	isA JavaElement;
+	String returnType;
+	String[] parametersName;
+	String[] parametersType;
+}
+
+class JavaElement
+{
+	isA NamedElement;
+}
+
+class NamedElement
+{
+	String name;
+}
+
+class PackageDeclaration
+{
+	isA NamedElement;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

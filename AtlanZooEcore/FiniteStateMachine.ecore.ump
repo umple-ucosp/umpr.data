@@ -1,0 +1,48 @@
+namespace FSM;
+
+class MgaObject
+{
+	String name;
+	String position;
+}
+
+class Transition
+{
+	isA MgaObject;
+	* transition -- 1..* StateMachine stateMachine;
+	1..* transition -- 1..* AssociationStateState associationStateState;
+}
+
+class State
+{
+	isA MgaObject;
+	0..1 dstTransition -- 1..* AssociationStateState associationStateStatedst;
+	* state -- 1..* StateMachine stateMachine;
+	1..* srcTransition -- 1..* AssociationStateState associationStateStatesrc;
+}
+
+class StateMachine
+{
+	isA MgaObject;
+	* stateMachine -- 1..* RootFolder rootFolder;
+}
+
+class RootFolder
+{
+	String name;
+	0..1 -> * RootFolder rootFolders;
+}
+
+class AssociationStateState
+{
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

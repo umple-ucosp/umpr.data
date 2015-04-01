@@ -1,0 +1,159 @@
+namespace Program;
+
+class LocatedElement
+{
+	String location;
+}
+
+class NamedElement
+{
+	isA LocatedElement;
+	String name;
+}
+
+class Structure
+{
+	isA NamedElement;
+	1..* structure -- * VariableDeclaration variables;
+}
+
+class ProcContainerElement
+{
+	isA Structure;
+	1..* container -- * Procedure procedures;
+}
+
+class Program
+{
+	isA ProcContainerElement;
+	1..* program -- * Monitor monitors;
+}
+
+class Monitor
+{
+	isA ProcContainerElement;
+}
+
+class Procedure
+{
+	isA Structure;
+	0..1 -> * Statement statements;
+	1..* procedure -- * Parameter parameters;
+}
+
+class VariableDeclaration
+{
+	isA NamedElement;
+	0..1 -> 1..* Type type;
+	0..1 -> * Expression initialValue;
+}
+
+class Parameter
+{
+	isA VariableDeclaration;
+	Direction direction;
+}
+
+class Type
+{
+	isA NamedElement;
+}
+
+class Expression
+{
+	isA LocatedElement;
+}
+
+class VariableExp
+{
+	isA Expression;
+	0..1 -> 1..* VariableDeclaration declaration;
+}
+
+class PropertyCallExp
+{
+	isA Expression;
+	String name;
+	0..1 -> 1..* Expression source;
+}
+
+class OperatorCallExp
+{
+	isA PropertyCallExp;
+	0..1 -> 1..* Expression right;
+}
+
+class AttributeCallExp
+{
+	isA PropertyCallExp;
+}
+
+class ProcedureCallExp
+{
+	isA PropertyCallExp;
+	0..1 -> * Expression arguments;
+}
+
+class LiteralExp
+{
+	isA Expression;
+}
+
+class BooleanExp
+{
+	isA LiteralExp;
+	Boolean symbol;
+}
+
+class IntegerExp
+{
+	isA LiteralExp;
+	Integer symbol;
+}
+
+class Statement
+{
+	isA LocatedElement;
+}
+
+class AssignmentStat
+{
+	isA Statement;
+	0..1 -> 1..* VariableExp target;
+	0..1 -> 1..* Expression value;
+}
+
+class ConditionalStat
+{
+	isA Statement;
+	0..1 -> 1..* Expression condition;
+	0..1 -> 1..* Statement thenStats;
+	0..1 -> * Statement elseStats;
+}
+
+class WhileStat
+{
+	isA Statement;
+	0..1 -> 1..* Expression condition;
+	0..1 -> 1..* Statement doStats;
+}
+
+class ExpressionStat
+{
+	isA Statement;
+	0..1 -> 1..* Expression expression;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

@@ -1,0 +1,48 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace WSLink;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class Network
+{
+	isA LocatedElement;
+	String name;
+	0..1 -> * Services services;
+}
+
+class Services
+{
+	isA LocatedElement;
+	String name;
+	String URL;
+	String descriptions;
+}
+
+class WebService
+{
+	isA Services;
+	0..1 -> * Services linkedServices;
+}
+
+class RSS
+{
+	isA Services;
+}

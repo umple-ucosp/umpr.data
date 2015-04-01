@@ -1,0 +1,142 @@
+namespace RDFS;
+
+class Resource
+{
+	0..1 subject -- * Statement subjectStatement;
+	* referringResource -- * Resource seeAlso;
+	* seeAlso -- * Resource referringResource;
+	* container -- * Resource member;
+	* member -- * Resource container;
+	* resources -- 1..* Graph graph;
+	* first -- * List list;
+	1..* object -- * Statement objectStatement;
+	* typedResource -- 1..* Class type;
+	1..* labeledResource -- * PlainLiteral label;
+	* resource -- * URIReference uriRef;
+}
+
+class Graph
+{
+	isA Resource;
+	* namedGraph -- * URIReference graphName;
+}
+
+class List
+{
+	isA Resource;
+	* originalList -- * List rest;
+	* rest -- * List originalList;
+}
+
+class Container
+{
+	isA Resource;
+}
+
+class Alt
+{
+	isA Container;
+}
+
+class Bag
+{
+	isA Container;
+}
+
+class Seq
+{
+	isA Container;
+}
+
+class Property
+{
+	isA Resource;
+	* superProperty -- * Property subPropertyOf;
+	* subPropertyOf -- * Property superProperty;
+	0..1 propertyForDomain -- * Class domain;
+	* predicate -- * Statement predicateStatement;
+	* propertyForRange -- * Class range;
+}
+
+class ContainerMembershipProperty
+{
+}
+
+class Statement
+{
+	isA Resource;
+	Boolean isReifiedOnly;
+	Boolean isReified;
+	* reifiedStatement -- * URIReference nameForReification;
+}
+
+class URIReferenceNode
+{
+	isA Resource;
+}
+
+class BlankNode
+{
+	isA Resource;
+	String nodeId;
+}
+
+class Class
+{
+	isA Resource;
+	* superClass -- * Class subClassOf;
+	* subClassOf -- * Class superClass;
+}
+
+class Datatype
+{
+	isA Class;
+}
+
+class Literal
+{
+	isA Resource;
+	String lexicalForm;
+}
+
+class PlainLiteral
+{
+	isA Literal;
+	String language;
+}
+
+class TypedLiteral
+{
+	isA Literal;
+	* literal -- 1..* URIReference datatypeURI;
+}
+
+class RDFXMLLiteral
+{
+	isA TypedLiteral;
+}
+
+class URIReference
+{
+	* uriRef -- * UniformResourceIdentifier uri;
+}
+
+class UniformResourceIdentifier
+{
+	isA URIReference;
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

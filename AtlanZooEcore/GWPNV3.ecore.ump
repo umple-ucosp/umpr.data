@@ -1,0 +1,33 @@
+namespace PetriNetV3;
+
+class Place
+{
+	1..* place -- 1..* Net net;
+	1..* src -- * PTArc out;
+	1..* dst -- * TPArc in;
+}
+
+class Transition
+{
+	1..* transition -- 1..* Net net;
+	1..* dst -- 1..* PTArc in;
+	1..* src -- 1..* TPArc out;
+}
+
+class Net
+{
+}
+
+class Arc
+{
+}
+
+class PTArc
+{
+	isA Arc;
+}
+
+class TPArc
+{
+	isA Arc;
+}

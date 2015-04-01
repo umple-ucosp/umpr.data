@@ -1,0 +1,1827 @@
+namespace KDM_MetaModel;
+
+class ActionElement
+{
+	isA //code/AbstractCodeElement;
+	//core/String kind;
+	0..1 -> * //code/AbstractCodeElement codeElement;
+	0..1 -> * //action/AbstractActionRelationship actionRelation;
+}
+
+class AbstractActionRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class ControlFlow
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //action/ActionElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Calls
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/ControlElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Creates
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/Datatype to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Reads
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/DataElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Writes
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/DataElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class CompliesTo
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Flow
+{
+	isA //action/ControlFlow;
+}
+
+class TrueFlow
+{
+	isA //action/ControlFlow;
+}
+
+class FalseFlow
+{
+	isA //action/ControlFlow;
+}
+
+class GuardedFlow
+{
+	isA //action/ControlFlow;
+}
+
+class UsesType
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/Datatype to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Addresses
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/ComputationalObject to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ActionRelationship
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Throws
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/DataElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Dispatches
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/DataElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class EntryFlow
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //action/ActionElement to;
+	0..1 -> 1..* //code/ControlElement from;
+}
+
+class BlockUnit
+{
+	isA //action/ActionElement;
+}
+
+class ExceptionUnit
+{
+	isA //action/BlockUnit;
+}
+
+class TryUnit
+{
+	isA //action/ExceptionUnit;
+}
+
+class FinallyUnit
+{
+	isA //action/ExceptionUnit;
+}
+
+class CatchUnit
+{
+	isA //action/ExceptionUnit;
+}
+
+class ExitFlow
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //action/ActionElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ExceptionFlow
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //action/ActionElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class AbstractBuildElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //build/AbstractBuildRelationship buildRelation;
+}
+
+class BuildResource
+{
+	isA //build/AbstractBuildElement;
+	0..1 -> * //core/KDMEntity implementation;
+	0..1 -> * //build/AbstractBuildElement groupedBuild;
+	0..1 -> * //build/AbstractBuildElement buildElement;
+}
+
+class BuildDescription
+{
+	isA //build/BuildResource;
+	//core/String text;
+	0..1 -> * //source/SourceRef source;
+}
+
+class SymbolicLink
+{
+	isA //build/AbstractBuildElement;
+}
+
+class AbstractBuildRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class LinksTo
+{
+	isA //build/AbstractBuildRelationship;
+	0..1 -> 1..* //build/AbstractBuildElement to;
+	0..1 -> 1..* //build/SymbolicLink from;
+}
+
+class Consumes
+{
+	isA //build/AbstractBuildRelationship;
+	0..1 -> 1..* //build/AbstractBuildElement to;
+	0..1 -> 1..* //build/BuildStep from;
+}
+
+class BuildModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //build/AbstractBuildElement buildElement;
+}
+
+class BuildComponent
+{
+	isA //build/BuildResource;
+}
+
+class Supplier
+{
+	isA //build/AbstractBuildElement;
+}
+
+class Tool
+{
+	isA //build/AbstractBuildElement;
+}
+
+class BuildElement
+{
+	isA //build/AbstractBuildElement;
+}
+
+class BuildRelationship
+{
+	isA //build/AbstractBuildRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //build/AbstractBuildElement from;
+}
+
+class SuppliedBy
+{
+	isA //build/AbstractBuildRelationship;
+	0..1 -> 1..* //build/Supplier to;
+	0..1 -> 1..* //build/AbstractBuildElement from;
+}
+
+class Library
+{
+	isA //build/BuildResource;
+}
+
+class BuildStep
+{
+	isA //build/BuildResource;
+}
+
+class Produces
+{
+	isA //build/AbstractBuildRelationship;
+	0..1 -> 1..* //build/AbstractBuildElement to;
+	0..1 -> 1..* //build/BuildStep from;
+}
+
+class SupportedBy
+{
+	isA //build/AbstractBuildRelationship;
+	0..1 -> 1..* //build/Tool to;
+	0..1 -> 1..* //build/BuildStep from;
+}
+
+class BuildProduct
+{
+	isA //build/BuildResource;
+}
+
+class DescribedBy
+{
+	isA //build/AbstractBuildRelationship;
+	0..1 -> 1..* //build/BuildDescription to;
+	0..1 -> 1..* //build/BuildStep from;
+}
+
+class AbstractCodeElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //source/SourceRef source;
+	0..1 -> * //code/CommentUnit comment;
+	0..1 -> * //code/AbstractCodeRelationship codeRelation;
+}
+
+class CodeItem
+{
+	isA //code/AbstractCodeElement;
+}
+
+class ComputationalObject
+{
+	isA //code/CodeItem;
+}
+
+class ControlElement
+{
+	isA //code/ComputationalObject;
+	0..1 -> * //code/Datatype type;
+	0..1 -> * //action/EntryFlow entryFlow;
+	0..1 -> * //code/AbstractCodeElement codeElement;
+}
+
+class MethodUnit
+{
+	isA //code/ControlElement;
+	//code/MethodKind kind;
+	//code/ExportKind export;
+}
+
+class Module
+{
+	isA //code/CodeItem;
+	0..1 -> * //code/AbstractCodeElement codeElement;
+}
+
+class CodeAssembly
+{
+	isA //code/Module;
+}
+
+class CallableUnit
+{
+	isA //code/ControlElement;
+	//code/CallableKind kind;
+}
+
+class Datatype
+{
+	isA //code/CodeItem;
+}
+
+class TemplateUnit
+{
+	isA //code/Datatype;
+	0..1 -> * //code/CodeItem codeElement;
+}
+
+class TemplateParameter
+{
+	isA //code/Datatype;
+}
+
+class AbstractCodeRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class InstanceOf
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/TemplateUnit to;
+	0..1 -> 1..* //code/AbstractCodeElement from;
+}
+
+class CompilationUnit
+{
+	isA //code/Module;
+}
+
+class CodeModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //code/AbstractCodeElement codeElement;
+}
+
+class DerivedType
+{
+	isA //code/Datatype;
+	0..1 -> 1..* //code/ItemUnit itemUnit;
+}
+
+class ArrayType
+{
+	isA //code/DerivedType;
+	//core/Integer size;
+	0..1 -> 1..* //code/IndexUnit indexUnit;
+}
+
+class PrimitiveType
+{
+	isA //code/Datatype;
+}
+
+class BooleanType
+{
+	isA //code/PrimitiveType;
+}
+
+class CharType
+{
+	isA //code/PrimitiveType;
+}
+
+class ClassUnit
+{
+	isA //code/Datatype;
+	//core/Boolean isAbstract;
+	0..1 -> * //code/CodeItem codeElement;
+}
+
+class CompositeType
+{
+	isA //code/Datatype;
+	0..1 -> * //code/ItemUnit itemUnit;
+}
+
+class RecordType
+{
+	isA //code/CompositeType;
+}
+
+class EnumeratedType
+{
+	isA //code/Datatype;
+	0..1 -> * //code/Value value;
+}
+
+class Extends
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/Datatype to;
+	0..1 -> 1..* //code/Datatype from;
+}
+
+class ScaledType
+{
+	isA //code/PrimitiveType;
+}
+
+class FloatType
+{
+	isA //code/PrimitiveType;
+}
+
+class HasType
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/Datatype to;
+	0..1 -> 1..* //code/CodeItem from;
+}
+
+class ImplementationOf
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //code/CodeItem from;
+}
+
+class Implements
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //code/CodeItem from;
+}
+
+class IntegerType
+{
+	isA //code/PrimitiveType;
+}
+
+class InterfaceUnit
+{
+	isA //code/Datatype;
+	0..1 -> * //code/CodeItem codeElement;
+}
+
+class PointerType
+{
+	isA //code/DerivedType;
+}
+
+class DefinedType
+{
+	isA //code/Datatype;
+	0..1 -> 1..* //code/Datatype type;
+	0..1 -> * //code/Datatype codeElement;
+}
+
+class TypeUnit
+{
+	isA //code/DefinedType;
+}
+
+class RangeType
+{
+	isA //code/DerivedType;
+	//core/Integer lower;
+	//core/Integer upper;
+}
+
+class Signature
+{
+	isA //code/Datatype;
+	0..1 -> * //code/ParameterUnit parameterUnit;
+}
+
+class DataElement
+{
+	isA //code/ComputationalObject;
+	//core/String ext;
+	//core/Integer size;
+	0..1 -> 1..* //code/Datatype type;
+	0..1 -> * //code/Datatype codeElement;
+}
+
+class StringType
+{
+	isA //code/PrimitiveType;
+}
+
+class ChoiceType
+{
+	isA //code/CompositeType;
+}
+
+class NamespaceUnit
+{
+	isA //code/CodeItem;
+	0..1 -> * //code/CodeItem groupedCode;
+}
+
+class VisibleIn
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //code/CodeItem from;
+}
+
+class CommentUnit
+{
+	isA //core/ModelElement;
+	//core/String text;
+}
+
+class SharedUnit
+{
+	isA //code/CompilationUnit;
+}
+
+class DecimalType
+{
+	isA //code/PrimitiveType;
+}
+
+class DateType
+{
+	isA //code/PrimitiveType;
+}
+
+class TimeType
+{
+	isA //code/PrimitiveType;
+}
+
+class VoidType
+{
+	isA //code/PrimitiveType;
+}
+
+class ValueElement
+{
+	isA //code/DataElement;
+}
+
+class Value
+{
+	isA //code/ValueElement;
+}
+
+class ValueList
+{
+	isA //code/ValueElement;
+	0..1 -> * //code/ValueElement valueElement;
+}
+
+class StorableUnit
+{
+	isA //code/DataElement;
+	//code/StorableKind kind;
+}
+
+class MemberUnit
+{
+	isA //code/DataElement;
+	//code/ExportKind export;
+}
+
+class ParameterUnit
+{
+	isA //code/DataElement;
+	//code/ParameterKind kind;
+	//core/Integer pos;
+}
+
+class ItemUnit
+{
+	isA //code/DataElement;
+}
+
+class IndexUnit
+{
+	isA //code/DataElement;
+}
+
+class SynonymType
+{
+	isA //code/DefinedType;
+}
+
+class SequenceType
+{
+	isA //code/DerivedType;
+	//core/Integer size;
+}
+
+class BagType
+{
+	isA //code/DerivedType;
+	//core/Integer size;
+}
+
+class SetType
+{
+	isA //code/DerivedType;
+	//core/Integer size;
+}
+
+class CodeElement
+{
+	isA //code/CodeItem;
+}
+
+class CodeRelationship
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //code/CodeItem from;
+}
+
+class LanguageUnit
+{
+	isA //code/Module;
+}
+
+class OrdinalType
+{
+	isA //code/PrimitiveType;
+}
+
+class BitstringType
+{
+	isA //code/PrimitiveType;
+}
+
+class OctetType
+{
+	isA //code/PrimitiveType;
+}
+
+class OctetstringType
+{
+	isA //code/PrimitiveType;
+}
+
+class BitType
+{
+	isA //code/PrimitiveType;
+}
+
+class Imports
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //code/CodeItem from;
+}
+
+class Package
+{
+	isA //code/Module;
+}
+
+class ParameterTo
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //code/AbstractCodeElement from;
+}
+
+class TemplateType
+{
+	isA //code/Datatype;
+}
+
+class PreprocessorDirective
+{
+	isA //code/AbstractCodeElement;
+	0..1 -> * //code/AbstractCodeElement codeElement;
+}
+
+class MacroDirective
+{
+	isA //code/PreprocessorDirective;
+}
+
+class MacroUnit
+{
+	isA //code/PreprocessorDirective;
+	//code/MacroKind kind;
+}
+
+class ConditionalDirective
+{
+	isA //code/PreprocessorDirective;
+}
+
+class IncludeDirective
+{
+	isA //code/PreprocessorDirective;
+}
+
+class VariantTo
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/PreprocessorDirective to;
+	0..1 -> 1..* //code/PreprocessorDirective from;
+}
+
+class Expands
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/PreprocessorDirective to;
+	0..1 -> 1..* //code/PreprocessorDirective from;
+}
+
+class Redefines
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/PreprocessorDirective to;
+	0..1 -> 1..* //code/PreprocessorDirective from;
+}
+
+class GeneratedFrom
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/PreprocessorDirective to;
+	0..1 -> 1..* //code/AbstractCodeElement from;
+}
+
+class Includes
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/AbstractCodeElement to;
+	0..1 -> 1..* //code/PreprocessorDirective from;
+}
+
+class HasValue
+{
+	isA //code/AbstractCodeRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //code/CodeItem from;
+}
+
+class ConceptualModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //conceptual/AbstractConceptualElement conceptualElement;
+}
+
+class AbstractConceptualElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //source/SourceRef source;
+	0..1 -> * //core/KDMEntity implementation;
+	0..1 -> * //conceptual/AbstractConceptualRelationship conceptualRelation;
+	0..1 -> * //action/ActionElement abstraction;
+}
+
+class TermUnit
+{
+	isA //conceptual/AbstractConceptualElement;
+}
+
+class ConceptualContainer
+{
+	isA //conceptual/AbstractConceptualElement;
+	0..1 -> * //conceptual/AbstractConceptualElement conceptualElement;
+}
+
+class FactUnit
+{
+	isA //conceptual/ConceptualContainer;
+}
+
+class AbstractConceptualRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class ConceptualRelationship
+{
+	isA //conceptual/AbstractConceptualRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //conceptual/AbstractConceptualElement from;
+}
+
+class BehaviorUnit
+{
+	isA //conceptual/ConceptualContainer;
+}
+
+class RuleUnit
+{
+	isA //conceptual/ConceptualContainer;
+}
+
+class ScenarioUnit
+{
+	isA //conceptual/ConceptualContainer;
+}
+
+class ConceptualFlow
+{
+	isA //conceptual/AbstractConceptualRelationship;
+	0..1 -> 1..* //conceptual/ConceptualContainer to;
+	0..1 -> 1..* //conceptual/ConceptualContainer from;
+}
+
+class ConceptualElement
+{
+	isA //conceptual/AbstractConceptualElement;
+}
+
+class ConceptualRole
+{
+	isA //conceptual/AbstractConceptualElement;
+	0..1 -> 1..* //conceptual/AbstractConceptualElement conceptualElement;
+}
+
+class Element
+{
+	0..1 -> * //kdm/Attribute attribute;
+	0..1 -> * //kdm/Annotation annotation;
+}
+
+class ModelElement
+{
+	isA //core/Element;
+	0..1 -> * //kdm/Stereotype stereotype;
+	0..1 -> * //kdm/ExtendedValue taggedValue;
+}
+
+class KDMEntity
+{
+	isA //core/ModelElement;
+	//core/String name;
+}
+
+class KDMRelationship
+{
+	isA //core/ModelElement;
+}
+
+class AggregatedRelationship
+{
+	isA //core/ModelElement;
+	//core/Integer density;
+	0..1 -> 1..* //core/KDMEntity from;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> * //core/KDMRelationship relation;
+}
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+class DataModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //data/AbstractDataElement dataElement;
+}
+
+class AbstractDataElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //source/SourceRef source;
+	0..1 -> * //data/AbstractDataRelationship dataRelation;
+	0..1 -> * //action/ActionElement abstraction;
+}
+
+class DataResource
+{
+	isA //data/AbstractDataElement;
+}
+
+class IndexElement
+{
+	isA //data/DataResource;
+	0..1 -> * //code/ItemUnit implementation;
+}
+
+class UniqueKey
+{
+	isA //data/IndexElement;
+}
+
+class Index
+{
+	isA //data/IndexElement;
+}
+
+class AbstractDataRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class KeyRelation
+{
+	isA //data/AbstractDataRelationship;
+	0..1 -> 1..* //data/UniqueKey to;
+	0..1 -> 1..* //data/ReferenceKey from;
+}
+
+class ReferenceKey
+{
+	isA //data/IndexElement;
+}
+
+class DataContainer
+{
+	isA //data/DataResource;
+	0..1 -> * //data/DataResource dataElement;
+}
+
+class Catalog
+{
+	isA //data/DataContainer;
+}
+
+class RelationalSchema
+{
+	isA //data/DataContainer;
+	0..1 -> * //code/CodeItem codeElement;
+}
+
+class ColumnSet
+{
+	isA //data/DataContainer;
+	0..1 -> * //code/ItemUnit itemUnit;
+}
+
+class RelationalTable
+{
+	isA //data/ColumnSet;
+}
+
+class RelationalView
+{
+	isA //data/ColumnSet;
+}
+
+class RecordFile
+{
+	isA //data/ColumnSet;
+}
+
+class DataEvent
+{
+	isA //data/DataResource;
+	//core/String kind;
+}
+
+class XMLSchema
+{
+	isA //data/AbstractDataElement;
+	0..1 -> * //data/AbstractContentElement contentElement;
+}
+
+class AbstractContentElement
+{
+	isA //data/AbstractDataElement;
+}
+
+class ComplexContentType
+{
+	isA //data/AbstractContentElement;
+	0..1 -> * //data/AbstractContentElement contentElement;
+}
+
+class AllContent
+{
+	isA //data/ComplexContentType;
+}
+
+class SeqContent
+{
+	isA //data/ComplexContentType;
+}
+
+class ChoiceContent
+{
+	isA //data/ComplexContentType;
+}
+
+class ContentItem
+{
+	isA //data/AbstractContentElement;
+	0..1 -> * //data/ComplexContentType type;
+	0..1 -> * //data/AbstractContentElement contentElement;
+}
+
+class GroupContent
+{
+	isA //data/ContentItem;
+}
+
+class ContentRestriction
+{
+	isA //data/AbstractContentElement;
+	//core/String kind;
+	//core/String value;
+}
+
+class SimpleContentType
+{
+	isA //data/ComplexContentType;
+	//core/String kind;
+	0..1 -> * //data/ComplexContentType type;
+}
+
+class ExtendedDataElement
+{
+	isA //data/AbstractDataElement;
+}
+
+class DataRelationship
+{
+	isA //data/AbstractDataRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //data/AbstractDataElement from;
+}
+
+class MixedContent
+{
+	isA //data/ComplexContentType;
+}
+
+class ContentReference
+{
+	isA //data/ContentItem;
+}
+
+class DataAction
+{
+	isA //data/AbstractDataElement;
+	//core/String kind;
+	0..1 -> * //action/ActionElement implementation;
+	0..1 -> * //data/DataEvent dataElement;
+}
+
+class ReadsColumnSet
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //data/ColumnSet to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ContentAttribute
+{
+	isA //data/ContentItem;
+}
+
+class TypedBy
+{
+	isA //data/AbstractDataRelationship;
+	0..1 -> 1..* //data/ComplexContentType to;
+	0..1 -> 1..* //data/ContentItem from;
+}
+
+class ReferenceTo
+{
+	isA //data/AbstractDataRelationship;
+	0..1 -> 1..* //data/ContentItem to;
+	0..1 -> 1..* //data/ContentItem from;
+}
+
+class RestrictionOf
+{
+	isA //data/AbstractDataRelationship;
+	0..1 -> 1..* //data/ComplexContentType to;
+	0..1 -> 1..* //data/ComplexContentType from;
+}
+
+class ExtensionTo
+{
+	isA //data/AbstractDataRelationship;
+	0..1 -> 1..* //data/ComplexContentType to;
+	0..1 -> 1..* //data/ComplexContentType from;
+}
+
+class DatatypeOf
+{
+	isA //data/AbstractDataRelationship;
+	0..1 -> 1..* //code/Datatype to;
+	0..1 -> 1..* //data/ComplexContentType from;
+}
+
+class HasContent
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //data/AbstractDataElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class WritesColumnSet
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //data/ColumnSet to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ProducesDataEvent
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //data/DataEvent to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class DataSegment
+{
+	isA //data/ColumnSet;
+}
+
+class ContentElement
+{
+	isA //data/ContentItem;
+}
+
+class ManagesData
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //data/AbstractDataElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class EventModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //event/AbstractEventElement eventElement;
+}
+
+class AbstractEventElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //source/SourceRef source;
+	0..1 -> * //event/AbstractEventRelationship eventRelation;
+	0..1 -> * //action/ActionElement abstraction;
+	0..1 -> * //code/AbstractCodeElement implementation;
+}
+
+class Event
+{
+	isA //event/AbstractEventElement;
+	//core/String kind;
+}
+
+class AbstractEventRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class EventRelationship
+{
+	isA //event/AbstractEventRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //event/AbstractEventElement from;
+}
+
+class EventResource
+{
+	isA //event/AbstractEventElement;
+	0..1 -> * //event/AbstractEventElement eventElement;
+}
+
+class State
+{
+	isA //event/EventResource;
+}
+
+class Transition
+{
+	isA //event/EventResource;
+}
+
+class OnEntry
+{
+	isA //event/Transition;
+}
+
+class OnExit
+{
+	isA //event/Transition;
+}
+
+class EventAction
+{
+	isA //event/AbstractEventElement;
+	//core/String kind;
+	0..1 -> * //event/Event eventElement;
+}
+
+class ReadsState
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //event/State to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ProducesEvent
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //event/Event to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ConsumesEvent
+{
+	isA //event/AbstractEventRelationship;
+	0..1 -> 1..* //event/Event to;
+	0..1 -> 1..* //event/Transition from;
+}
+
+class NextState
+{
+	isA //event/AbstractEventRelationship;
+	0..1 -> 1..* //event/State to;
+	0..1 -> 1..* //event/Transition from;
+}
+
+class InitialState
+{
+	isA //event/State;
+}
+
+class EventElement
+{
+	isA //event/AbstractEventElement;
+}
+
+class HasState
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //event/AbstractEventElement to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class SourceRef
+{
+	isA //core/Element;
+	//core/String language;
+	//core/String snippet;
+	0..1 -> * //source/SourceRegion region;
+}
+
+class SourceRegion
+{
+	isA //core/Element;
+	//core/Integer startLine;
+	//core/Integer startPosition;
+	//core/Integer endLine;
+	//core/Integer endPosition;
+	//core/String language;
+	//core/String path;
+	0..1 -> * //source/SourceFile file;
+}
+
+class InventoryModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //source/AbstractInventoryElement inventoryElement;
+}
+
+class AbstractInventoryElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //source/AbstractInventoryRelationship inventoryRelation;
+}
+
+class InventoryItem
+{
+	isA //source/AbstractInventoryElement;
+	//core/String version;
+	//core/String path;
+}
+
+class SourceFile
+{
+	isA //source/InventoryItem;
+	//core/String language;
+	//core/String encoding;
+}
+
+class Image
+{
+	isA //source/InventoryItem;
+}
+
+class ResourceDescription
+{
+	isA //source/InventoryItem;
+}
+
+class Configuration
+{
+	isA //source/InventoryItem;
+}
+
+class InventoryContainer
+{
+	isA //source/AbstractInventoryElement;
+	0..1 -> * //source/AbstractInventoryElement inventoryElement;
+}
+
+class Directory
+{
+	isA //source/InventoryContainer;
+	//core/String path;
+}
+
+class Project
+{
+	isA //source/InventoryContainer;
+}
+
+class AbstractInventoryRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class BinaryFile
+{
+	isA //source/InventoryItem;
+}
+
+class ExecutableFile
+{
+	isA //source/InventoryItem;
+}
+
+class DependsOn
+{
+	isA //source/AbstractInventoryRelationship;
+	0..1 -> 1..* //source/AbstractInventoryElement to;
+	0..1 -> 1..* //source/AbstractInventoryElement from;
+}
+
+class InventoryElement
+{
+	isA //source/AbstractInventoryElement;
+}
+
+class InventoryRelationship
+{
+	isA //source/AbstractInventoryRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //source/AbstractInventoryElement from;
+}
+
+class AbstractPlatformElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //source/SourceRef source;
+	0..1 -> * //platform/AbstractPlatformRelationship relation;
+	0..1 -> * //action/ActionElement abstraction;
+	0..1 -> * //code/AbstractCodeElement implementation;
+}
+
+class PlatformModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //platform/AbstractPlatformElement platformElement;
+}
+
+class AbstractPlatformRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class Requires
+{
+	isA //platform/AbstractPlatformRelationship;
+	0..1 -> 1..* //platform/AbstractPlatformElement to;
+	0..1 -> 1..* //platform/DeployedComponent from;
+}
+
+class ResourceType
+{
+	isA //platform/AbstractPlatformElement;
+	0..1 -> * //platform/AbstractPlatformElement platformElement;
+}
+
+class NamingResource
+{
+	isA //platform/ResourceType;
+}
+
+class MarshalledResource
+{
+	isA //platform/ResourceType;
+}
+
+class MessagingResource
+{
+	isA //platform/ResourceType;
+}
+
+class FileResource
+{
+	isA //platform/ResourceType;
+}
+
+class ExecutionResource
+{
+	isA //platform/ResourceType;
+}
+
+class PlatformAction
+{
+	isA //platform/AbstractPlatformElement;
+	//core/String kind;
+	0..1 -> * //platform/PlatformEvent platformElement;
+}
+
+class ExternalActor
+{
+	isA //platform/PlatformAction;
+}
+
+class DataManager
+{
+	isA //platform/ResourceType;
+}
+
+class BindsTo
+{
+	isA //platform/AbstractPlatformRelationship;
+	0..1 -> 1..* //platform/ResourceType to;
+	0..1 -> 1..* //platform/ResourceType from;
+}
+
+class PlatformElement
+{
+	isA //platform/AbstractPlatformElement;
+}
+
+class PlatformRelationship
+{
+	isA //platform/AbstractPlatformRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //platform/AbstractPlatformElement from;
+}
+
+class PlatformEvent
+{
+	isA //platform/AbstractPlatformElement;
+	//core/String kind;
+}
+
+class LockResource
+{
+	isA //platform/ResourceType;
+}
+
+class DeployedSoftwareSystem
+{
+	isA //platform/AbstractPlatformElement;
+	0..1 -> * //platform/DeployedComponent groupedComponent;
+}
+
+class Machine
+{
+	isA //platform/AbstractPlatformElement;
+	0..1 -> * //platform/DeployedComponent deployedComponent;
+	0..1 -> * //platform/DeployedResource deployedResource;
+}
+
+class DeployedComponent
+{
+	isA //platform/AbstractPlatformElement;
+	0..1 -> * //code/Module groupedCode;
+}
+
+class DeployedResource
+{
+	isA //platform/AbstractPlatformElement;
+	0..1 -> * //platform/ResourceType platformElement;
+}
+
+class Loads
+{
+	isA //platform/AbstractPlatformRelationship;
+	0..1 -> 1..* //platform/DeployedComponent to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Spawns
+{
+	isA //platform/AbstractPlatformRelationship;
+	0..1 -> 1..* //platform/RuntimeResource to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class RuntimeResource
+{
+	isA //platform/ResourceType;
+}
+
+class Thread
+{
+	isA //platform/RuntimeResource;
+}
+
+class Process
+{
+	isA //platform/RuntimeResource;
+}
+
+class ReadsResource
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //platform/ResourceType to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class WritesResource
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //platform/ResourceType to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ManagesResource
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //platform/ResourceType to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class DefinedBy
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //code/CodeItem to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class StreamResource
+{
+	isA //platform/ResourceType;
+}
+
+class AbstractStructureElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //core/AggregatedRelationship aggregated;
+	0..1 -> * //core/KDMEntity implementation;
+	0..1 -> * //structure/AbstractStructureElement structureElement;
+	0..1 -> * //structure/AbstractStructureRelationship structureRelationship;
+}
+
+class Subsystem
+{
+	isA //structure/AbstractStructureElement;
+}
+
+class Layer
+{
+	isA //structure/AbstractStructureElement;
+}
+
+class StructureModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //structure/AbstractStructureElement structureElement;
+}
+
+class Component
+{
+	isA //structure/AbstractStructureElement;
+}
+
+class SoftwareSystem
+{
+	isA //structure/AbstractStructureElement;
+}
+
+class AbstractStructureRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class StructureRelationship
+{
+	isA //structure/AbstractStructureRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //structure/AbstractStructureElement from;
+}
+
+class ArchitectureView
+{
+	isA //structure/AbstractStructureElement;
+}
+
+class StructureElement
+{
+	isA //structure/AbstractStructureElement;
+}
+
+class KDMFramework
+{
+	isA //core/ModelElement;
+	//core/String name;
+	0..1 -> * //kdm/Audit audit;
+	0..1 -> * //kdm/ExtensionFamily extensionFamily;
+}
+
+class KDMModel
+{
+	isA //kdm/KDMFramework;
+}
+
+class Audit
+{
+	isA //core/Element;
+	//core/String description;
+	//core/String author;
+	//core/String date;
+}
+
+class Segment
+{
+	isA //kdm/KDMFramework;
+	0..1 -> * //kdm/Segment segment;
+	0..1 -> * //kdm/KDMModel model;
+}
+
+class Attribute
+{
+	isA //core/Element;
+	//core/String tag;
+	//core/String value;
+}
+
+class Annotation
+{
+	isA //core/Element;
+	//core/String text;
+}
+
+class TagDefinition
+{
+	isA //core/Element;
+	//core/String tag;
+	//core/String type;
+}
+
+class ExtendedValue
+{
+	isA //core/Element;
+	0..1 -> 1..* //kdm/TagDefinition tag;
+}
+
+class Stereotype
+{
+	isA //core/Element;
+	//core/String name;
+	//core/String type;
+	0..1 -> * //kdm/TagDefinition tag;
+}
+
+class ExtensionFamily
+{
+	isA //core/Element;
+	//core/String name;
+	0..1 -> * //kdm/Stereotype stereotype;
+}
+
+class TaggedRef
+{
+	isA //kdm/ExtendedValue;
+	0..1 -> 1..* //core/ModelElement reference;
+}
+
+class TaggedValue
+{
+	isA //kdm/ExtendedValue;
+	//core/String value;
+}
+
+class AbstractUIElement
+{
+	isA //core/KDMEntity;
+	0..1 -> * //source/SourceRef source;
+	0..1 -> * //ui/AbstractUIRelationship UIRelation;
+	0..1 -> * //code/AbstractCodeElement implementation;
+	0..1 -> * //action/ActionElement abstraction;
+}
+
+class UIResource
+{
+	isA //ui/AbstractUIElement;
+	0..1 -> * //ui/AbstractUIElement UIElement;
+}
+
+class UIDisplay
+{
+	isA //ui/UIResource;
+}
+
+class Screen
+{
+	isA //ui/UIDisplay;
+}
+
+class Report
+{
+	isA //ui/UIDisplay;
+}
+
+class UIModel
+{
+	isA //kdm/KDMModel;
+	0..1 -> * //ui/AbstractUIElement UIElement;
+}
+
+class AbstractUIRelationship
+{
+	isA //core/KDMRelationship;
+}
+
+class UILayout
+{
+	isA //ui/AbstractUIRelationship;
+	0..1 -> 1..* //ui/UIResource to;
+	0..1 -> 1..* //ui/UIResource from;
+}
+
+class UIField
+{
+	isA //ui/UIResource;
+}
+
+class DisplaysImage
+{
+	isA //ui/AbstractUIRelationship;
+	0..1 -> 1..* //source/Image to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class Displays
+{
+	isA //ui/AbstractUIRelationship;
+	0..1 -> 1..* //ui/UIResource to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class UIFlow
+{
+	isA //ui/AbstractUIRelationship;
+	0..1 -> 1..* //ui/AbstractUIElement to;
+	0..1 -> 1..* //ui/AbstractUIElement from;
+}
+
+class UIElement
+{
+	isA //ui/AbstractUIElement;
+}
+
+class UIRelationship
+{
+	isA //ui/AbstractUIRelationship;
+	0..1 -> 1..* //core/KDMEntity to;
+	0..1 -> 1..* //ui/AbstractUIElement from;
+}
+
+class UIAction
+{
+	isA //ui/AbstractUIElement;
+	//core/String kind;
+	0..1 -> * //ui/UIEvent UIElement;
+}
+
+class UIEvent
+{
+	isA //ui/AbstractUIElement;
+	//core/String kind;
+}
+
+class ReadsUI
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //ui/UIResource to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class WritesUI
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //ui/UIResource to;
+	0..1 -> 1..* //action/ActionElement from;
+}
+
+class ManagesUI
+{
+	isA //action/AbstractActionRelationship;
+	0..1 -> 1..* //ui/UIResource to;
+	0..1 -> 1..* //action/ActionElement from;
+}

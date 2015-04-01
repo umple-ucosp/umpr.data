@@ -1,0 +1,182 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+namespace MAS;
+
+class Agent
+{
+	0..1 -> * Service service;
+	0..1 -> * Non Functionnal Requirement non_Functionnal_Requirement;
+	0..1 -> 1..* Requirement requirement;
+	0..1 -> * Organization belongs;
+	0..1 -> * CooperationRules cooperationRules;
+	1..* agentF -- 1..* FIPA-Platform Agent fipa_Platform_Agent;
+	1..* agentR -- 1..* Role role;
+	1..* agentRep -- * Representation representation;
+	1..* agentC -- * Characteristic characteristic;
+	1..* agentS -- * Skill skill;
+	1..* agentA -- * Aptitude aptitude;
+}
+
+class Service
+{
+	String inputs;
+	String outputs;
+	String pre-conditions;
+	String post-conditions;
+}
+
+class Non Functionnal Requirement
+{
+}
+
+class Requirement
+{
+}
+
+class Organization
+{
+	0..1 -> * Organizational Structure observes;
+	* organization -- 1..* Organizational Structure organizational_Structure;
+}
+
+class Organizational Structure
+{
+}
+
+class SafetyRule
+{
+	isA Organizational Structure;
+}
+
+class LivenessRule
+{
+	isA Organizational Structure;
+}
+
+class CooperationRules
+{
+	1..* cooperationRules -- 1..* NCS ncs;
+}
+
+class NCS
+{
+}
+
+class FIPA-Platform Agent
+{
+	1..* fipa_Platform_AgentF -- * FIPA-Platform Task fipa_Platform_Task;
+}
+
+class FIPA-Platform Task
+{
+	1..* fipa_Platform_TaskT -- 1..* Task task;
+}
+
+class Task
+{
+	String name;
+}
+
+class Role
+{
+	0..1 -> 1..* Task activity;
+	0..1 -> * Resource actsOn;
+	0..1 -> 1..* Scenario scenario;
+	0..1 -> * Communication participant;
+	0..1 -> 1..* Responsibility has;
+}
+
+class Representation
+{
+	0..1 -> * Ontology ontology;
+	0..1 -> 1..* Environnement environnement;
+}
+
+class Characteristic
+{
+}
+
+class Skill
+{
+}
+
+class Aptitude
+{
+}
+
+class Ontology
+{
+	0..1 -> 1..* Environnement environnement;
+}
+
+class Concept
+{
+	isA Ontology;
+}
+
+class Predicat
+{
+	isA Ontology;
+}
+
+class Action
+{
+	isA Ontology;
+}
+
+class Environnement
+{
+	1..* environnement -- 1..* Resource resource;
+}
+
+class Responsibility
+{
+}
+
+class LivenessProperty
+{
+	isA Responsibility;
+}
+
+class SafetyProperty
+{
+	isA Responsibility;
+}
+
+class Resource
+{
+	String name;
+	0..1 -> 1..* Action action;
+}
+
+class Communication
+{
+	String name;
+	0..1 -> 1..* Ontology Exchanged Knoledge;
+	0..1 -> 1..* Scenario scenario;
+	0..1 -> 1..* AIP aip;
+	1..* communication -- * Message message;
+}
+
+class AIP
+{
+	String name;
+	1..* aip -- 1..* Performative performative;
+}
+
+class Performative
+{
+}
+
+class Message
+{
+	0..1 -> 1..* Performative Comm_Act;
+}
+
+class Scenario
+{
+}

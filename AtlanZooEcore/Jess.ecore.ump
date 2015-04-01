@@ -1,0 +1,300 @@
+namespace Jess;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class Root
+{
+	isA LocatedElement;
+	0..1 -> * Expression expressions;
+}
+
+class Expression
+{
+	isA LocatedElement;
+}
+
+class Integ
+{
+	isA Expression;
+	Integer val;
+}
+
+class Floa
+{
+	isA Expression;
+	Double val;
+}
+
+class Str
+{
+	isA Expression;
+	String val;
+}
+
+class Ident
+{
+	isA Expression;
+}
+
+class ValidIdentifier
+{
+	isA Ident;
+	String val;
+}
+
+class SlotName
+{
+	isA Ident;
+	String val;
+}
+
+class JessVariable
+{
+	isA Ident;
+	String val;
+}
+
+class TemplateExpression
+{
+	isA Expression;
+	0..1 -> 1..* ValidIdentifier templateName;
+	0..1 -> 1..* SlotOp firstSlot;
+	0..1 -> * SlotOp slotOp;
+}
+
+class SlotOp
+{
+	isA LocatedElement;
+	0..1 -> 1..* SlotName slotIdent;
+	0..1 -> 1..* ValidIdentifier operator;
+	0..1 -> 1..* Expression exp;
+}
+
+class DefinitionExp
+{
+	isA Expression;
+}
+
+class GlobalDefinition
+{
+	isA DefinitionExp;
+	0..1 -> * VarDefinition varDef;
+}
+
+class VarDefinition
+{
+	isA LocatedElement;
+	0..1 -> 1..* JessVariable jessVar;
+	0..1 -> 1..* ValidIdentifier eq;
+	0..1 -> 1..* Expression expression;
+}
+
+class FunctionDefinition
+{
+	isA DefinitionExp;
+	0..1 -> 1..* ValidIdentifier funcName;
+	0..1 -> * JessVariable parameters;
+	0..1 -> * Expression expressions;
+}
+
+class AdviceDefinition
+{
+	isA DefinitionExp;
+	Advice direction;
+	0..1 -> 1..* Ident op;
+	0..1 -> * Expression advice;
+}
+
+class UnDefAdvice
+{
+	isA DefinitionExp;
+	0..1 -> 1..* Expression op;
+}
+
+class FactDefinition
+{
+	isA DefinitionExp;
+	0..1 -> 1..* ValidIdentifier factName;
+	0..1 -> * Str documentation;
+	0..1 -> * Expression fact;
+}
+
+class RuleDefinition
+{
+	isA DefinitionExp;
+	0..1 -> 1..* ValidIdentifier ruleName;
+	0..1 -> * Str documentation;
+	0..1 -> * DeclareRule declare;
+	0..1 -> * Expression conditions;
+	0..1 -> * UseFuncExp functionCall;
+}
+
+class DeclareRule
+{
+	isA LocatedElement;
+	0..1 -> * Expression salience;
+	0..1 -> * Expression nodeIndexHash;
+	0..1 -> * ValidIdentifier autoFocus;
+	0..1 -> * ValidIdentifier noLoop;
+}
+
+class ModuleDefinition
+{
+	isA DefinitionExp;
+	0..1 -> 1..* ValidIdentifier moduleName;
+	0..1 -> * Str documentation;
+}
+
+class QueryDefinition
+{
+	isA DefinitionExp;
+	0..1 -> 1..* ValidIdentifier queryName;
+	0..1 -> * Str documentation;
+	0..1 -> * DeclareVar declare;
+	0..1 -> * Expression expressions;
+}
+
+class DeclareVar
+{
+	isA LocatedElement;
+	0..1 -> * JessVariable var;
+	0..1 -> 1..* Expression node;
+	0..1 -> 1..* Expression max;
+}
+
+class TemplateDefinition
+{
+	isA DefinitionExp;
+	0..1 -> 1..* ValidIdentifier templateName;
+	0..1 -> * ValidIdentifier inherits;
+	0..1 -> * Str documentation;
+	0..1 -> * DeclareBloc declareBloc;
+	0..1 -> * ASlotDef slotDef;
+}
+
+class DeclareBloc
+{
+	isA LocatedElement;
+	0..1 -> * ValidIdentifier slotSpecific;
+	0..1 -> * ValidIdentifier backchainReaction;
+	0..1 -> * ValidIdentifier fromClass;
+	0..1 -> * ValidIdentifier includeVariable;
+	0..1 -> * ValidIdentifier order;
+}
+
+class ASlotDef
+{
+	isA LocatedElement;
+	0..1 -> 1..* SlotName slotName;
+	0..1 -> * SlotOptions optionals;
+}
+
+class SlotDef
+{
+	isA ASlotDef;
+}
+
+class MultiSlotDef
+{
+	isA ASlotDef;
+}
+
+class SlotOptions
+{
+	isA LocatedElement;
+	0..1 -> 1..* ValidIdentifier type;
+	0..1 -> 1..* Expression def;
+	0..1 -> 1..* Expression defaultDyn;
+	0..1 -> * Expression allowedValues;
+}
+
+class UseFuncExp
+{
+	isA Expression;
+}
+
+class WhileExp
+{
+	isA UseFuncExp;
+	Boolean hasDo;
+	0..1 -> 1..* Expression boolExp;
+	0..1 -> * Expression actions;
+}
+
+class ForExp
+{
+	isA UseFuncExp;
+	0..1 -> 1..* Expression initializer;
+	0..1 -> 1..* Expression condition;
+	0..1 -> 1..* Expression increment;
+	0..1 -> * Expression expressions;
+}
+
+class ForeachExp
+{
+	isA UseFuncExp;
+	0..1 -> 1..* JessVariable var;
+	0..1 -> 1..* Expression list;
+	0..1 -> * Expression expressions;
+}
+
+class FuncCall
+{
+	isA UseFuncExp;
+	0..1 -> 1..* ValidIdentifier funcName;
+	0..1 -> * Expression funcParam;
+}
+
+class EngineExp
+{
+	isA UseFuncExp;
+}
+
+class ExitExp
+{
+	isA UseFuncExp;
+}
+
+class IfExpression
+{
+	isA UseFuncExp;
+	0..1 -> 1..* ConditionAction ifthen;
+	0..1 -> * ElifConditionAction elifthen;
+	0..1 -> * Expression else;
+}
+
+class ConditionAction
+{
+	isA LocatedElement;
+	0..1 -> 1..* Expression condition;
+	0..1 -> * Expression actions;
+}
+
+class ElifConditionAction
+{
+	isA LocatedElement;
+	0..1 -> 1..* ConditionAction condAct;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}

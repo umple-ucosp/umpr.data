@@ -1,0 +1,110 @@
+namespace PASSI;
+
+class FIPA-Platform Agent
+{
+	0..1 fipa_platform_Agent -- * Solution Domain/FIPA-platform Task fipa_platform_Task;
+	0..1 fipa_platform_AgentA -- 1..* Agency Domain/Agent agent;
+}
+
+class FIPA-platform Task
+{
+	0..1 fipa_platform_Task -- 1..* Solution Domain/FIPA-Platform Agent fipa_platform_Agent;
+	0..1 fipa_platform_TaskT -- 1..* Agency Domain/Task task;
+}
+
+class Service
+{
+}
+
+class Agent
+{
+	String Name;
+	0..1 -> 1..* Problem Domain/Ontology Knowledge;
+	0..1 agent -- 1..* Solution Domain/FIPA-Platform Agent fipa_platform_AgentA;
+	0..1 agentR -- 1..* Agency Domain/Role role;
+	0..1 -> * Problem Domain/Ressource resource;
+	0..1 -> * Problem Domain/Non functionnal Requirement non_functionnal_Requirement;
+	0..1 -> 1..* Problem Domain/Requirement requirement;
+}
+
+class Role
+{
+	0..1 role -- 1..* Agency Domain/Agent agentR;
+	0..1 -> * Solution Domain/Service service;
+	0..1 -> 1..* Agency Domain/Task task;
+	0..1 -> 1..* Problem Domain/Scenario scenario;
+	0..1 -> * Agency Domain/Communication communication;
+}
+
+class Task
+{
+	String Name;
+	0..1 task -- 1..* Solution Domain/FIPA-platform Task fipa_platform_TaskT;
+}
+
+class Communication
+{
+	String Name;
+	0..1 -> 1..* Problem Domain/Ontology Exchanged Knowledge;
+	0..1 communication -- 1..* Agency Domain/Message message;
+	0..1 -> 1..* Agency Domain/AIP aip;
+}
+
+class Message
+{
+	0..1 message -- 1..* Agency Domain/Communication communication;
+	0..1 -> 1..* Agency Domain/Performative Comm_Act;
+}
+
+class AIP
+{
+	String Name;
+	0..1 aip -- 1..* Agency Domain/Performative performative;
+}
+
+class Performative
+{
+	0..1 performative -- 1..* Agency Domain/AIP aip;
+}
+
+class Ressource
+{
+	String Name;
+}
+
+class Non functionnal Requirement
+{
+}
+
+class Requirement
+{
+}
+
+class Scenario
+{
+}
+
+class Ontology
+{
+}
+
+class Concept
+{
+	isA Problem Domain/Ontology;
+}
+
+class Action
+{
+	isA Problem Domain/Ontology;
+}
+
+class Predicate
+{
+	isA Problem Domain/Ontology;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

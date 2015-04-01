@@ -1,0 +1,85 @@
+namespace UMLMetamodelFragment;
+
+class Class
+{
+	0..1 -> 1..* Generalization parent;
+	0..1 -> 1..* Generalization child;
+	1..* client -- 1..* Dependency dependency;
+}
+
+class Generalization
+{
+}
+
+class Dependency
+{
+	0..1 -> 1..* StateMachine supplier;
+	1..* extendedElement -- 1..* Stereotype stereotype;
+}
+
+class Stereotype
+{
+	String baseClass;
+}
+
+class StateMachine
+{
+	0..1 -> 1..* Class context;
+	* stateMachine -- 1..* State top;
+}
+
+class State
+{
+	isA StateVertex;
+	0..1 -> 1..* Transition internal;
+}
+
+class CompositeState
+{
+	isA State;
+	* compositeState -- 1..* StateVertex subvertex;
+}
+
+class SimpleState
+{
+	isA State;
+}
+
+class FinalState
+{
+	isA State;
+}
+
+class StateVertex
+{
+}
+
+class PseudoState
+{
+	isA StateVertex;
+}
+
+class Transition
+{
+	0..1 -> * Event trigger;
+	0..1 -> 1..* StateVertex source;
+	0..1 -> 1..* StateVertex target;
+}
+
+class Event
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

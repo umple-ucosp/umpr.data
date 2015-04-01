@@ -1,0 +1,97 @@
+namespace OCLTypes;
+
+class Type
+{
+	* subtype -- * Type supertype;
+	* supertype -- * Type subtype;
+	1..* elementType -- * CollectionType collectionType;
+}
+
+class BasicType
+{
+	isA Type;
+}
+
+class InstanceType
+{
+	isA Type;
+	* instanceType -- 1..* Classifier classifier;
+}
+
+class EnumType
+{
+	isA Type;
+	* enumType -- 1..* EnumLiteral enumLiteral;
+}
+
+class OclAnyType
+{
+	isA Type;
+}
+
+class OclTypeType
+{
+	isA Type;
+}
+
+class CollectionType
+{
+	isA Type;
+}
+
+class IntegerType
+{
+	isA BasicType;
+}
+
+class RealType
+{
+	isA BasicType;
+}
+
+class StringType
+{
+	isA BasicType;
+}
+
+class BooleanType
+{
+	isA BasicType;
+}
+
+class Classifier
+{
+}
+
+class EnumLiteral
+{
+}
+
+class SetType
+{
+	isA CollectionType;
+}
+
+class SequenceType
+{
+	isA CollectionType;
+}
+
+class BagType
+{
+	isA CollectionType;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

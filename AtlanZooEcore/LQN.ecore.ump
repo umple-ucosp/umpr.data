@@ -1,0 +1,116 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace LQN;
+
+class LQN
+{
+	String name;
+	String comment;
+	String author;
+	0..1 -> 1..* Date created_On;
+	0..1 -> 1..* Date modified_On;
+	1..* lqn -- 1..* Task task;
+	1..* lqn -- 1..* Processor processor;
+}
+
+class Task
+{
+	String name;
+	TaskType type;
+	Integer priority;
+	Integer mutliplicity;
+	Integer replicas;
+	1..* task -- 1..* Processor processor;
+	1..* task -- 1..* Entry entry;
+	1..* task -- 1..* Activity activity;
+}
+
+class Processor
+{
+	String name;
+	SchedulingType scheduling;
+	Integer mutliplicity;
+	Integer replicas;
+	Integer spped;
+}
+
+class Entry
+{
+	String name;
+	Integer num_Phase;
+	Integer arrival_Rate;
+	0..1 -> 1..* Entry replay_To;
+	0..1 entryreceives -- 1..* Call callreceives;
+	1..* entry -- 1..* Phase phase;
+	1..* entry -- * Activity activity;
+	* entrysends -- 1..* Call callsends;
+}
+
+class Phase
+{
+	Integer number;
+	PhaseType type;
+	Integer think_Time;
+	Integer execution_Demand;
+	Integer COV;
+	1..* phase -- 1..* Activity activity;
+}
+
+class Activity
+{
+	String name;
+	Integer arrival_Rate;
+	0..1 activityPrecedes -- 1..* Link linkPrecedes;
+	1..* activityfollows -- 1..* Link linkfollows;
+	1..* activity -- * Call call;
+}
+
+class Link
+{
+	LinkType type;
+	Integer mean_Links;
+}
+
+class CallPhase
+{
+	Integer mean_Calls;
+	0..1 -> 1..* Phase refers_To;
+	1..* callPhase -- 1..* Call call;
+}
+
+class Call
+{
+	Integer num_Phases;
+	CallType type;
+}
+
+class EntryCall
+{
+	isA Call;
+	0..1 -> 1..* Entry from_Entry;
+}
+
+class ActivityCall
+{
+	isA Call;
+	0..1 -> 1..* Activity fromActivity;
+}
+
+class Date
+{
+	String day;
+	String month;
+	String year;
+}

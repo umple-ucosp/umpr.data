@@ -1,0 +1,177 @@
+namespace ebXML;
+
+class MultyPartyCollaboration
+{
+	1..* collaboration -- * BusinessPartnerRole partners;
+}
+
+class BusinessPartnerRole
+{
+	0..1 -> * Transaction transition;
+	1..* performedBy -- * Performs performers;
+}
+
+class Performs
+{
+	* performers -- 1..* AuthorizedRole role;
+	* roles -- 1..* BinaryCollaboration collaboration;
+}
+
+class AuthorizedRole
+{
+	Boolean isInitiator;
+}
+
+class Transaction
+{
+	String onInitiation;
+	String conditionGuard;
+	String conditionExpression;
+	0..1 -> 1..* BusinessState from;
+	0..1 -> 1..* BusinessState to;
+}
+
+class BinaryCollaboration
+{
+	String pattern;
+	String timeToPerform;
+	String preCondition;
+	String postCondition;
+	String beginsWhen;
+	String endsWhen;
+	0..1 -> * Transaction transitions;
+	1..* collaboration -- * BusinessState states;
+}
+
+class BusinessState
+{
+	0..1 -> 1..* AuthorizedRole from;
+	0..1 -> 1..* AuthorizedRole to;
+}
+
+class Start
+{
+	isA BusinessState;
+}
+
+class Fork
+{
+	isA BusinessState;
+	String waitForAll;
+}
+
+class Join
+{
+	isA BusinessState;
+}
+
+class CompletionState
+{
+	isA BusinessState;
+	String guardCondition;
+}
+
+class Failure
+{
+	isA CompletionState;
+}
+
+class Success
+{
+	isA CompletionState;
+}
+
+class BusinessActivity
+{
+	isA BusinessState;
+}
+
+class BusinessTransactionActivity
+{
+	isA BusinessActivity;
+	String timeToPerform;
+	Boolean isConcurrent;
+	Boolean isLegallyBinding;
+	0..1 -> 1..* BusinessTransaction use;
+}
+
+class CollaborationActivity
+{
+	isA BusinessActivity;
+	0..1 -> 1..* BinaryCollaboration use;
+}
+
+class BusinessTransaction
+{
+	String pattern;
+	Boolean isGuaranteedDeliveryRequired;
+	String preCondition;
+	String postCondition;
+	String beginsWhen;
+	String endsWhen;
+	1..* transaction -- 1..* RequestingBusinessActivity requester;
+	1..* transaction -- 1..* RespondingBusinessActivity responder;
+}
+
+class BusinessAction
+{
+	Boolean isIntelligiblecheckRequired;
+	Boolean isAuthorizationRequired;
+	String timeToAcknowledgeReceipt;
+	Boolean isNonRepudiationRequired;
+	Boolean isNonRepudiationOfRecipientRequired;
+}
+
+class RequestingBusinessActivity
+{
+	isA BusinessAction;
+	String timeToAcknowledgeAcceptance;
+	* requesting -- 1..* DocumentEnvelope documentEnvelope;
+}
+
+class RespondingBusinessActivity
+{
+	isA BusinessAction;
+	* responding -- 1..* DocumentEnvelope documentEnvelope;
+}
+
+class DocumentSecurity
+{
+	Boolean isConfidential;
+	Boolean isTamperProof;
+	Boolean isAuthenticated;
+}
+
+class DocumentEnvelope
+{
+	isA DocumentSecurity;
+	Boolean isPositiveResponse;
+	1..* envelope -- * Attachment attachements;
+	* envelopes -- 1..* BusinessDocument document;
+}
+
+class Attachment
+{
+	isA DocumentSecurity;
+	String mimeType;
+	String specification;
+	String version;
+	* attachments -- 1..* BusinessDocument document;
+}
+
+class BusinessDocument
+{
+	String specificationLocation;
+	String specificationElement;
+	String conditionExpression;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class String
+{
+}

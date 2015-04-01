@@ -1,0 +1,99 @@
+namespace OCLExpression;
+
+class ModelElement
+{
+	* context -- * SyncChart behavior;
+}
+
+class SyncChart
+{
+	1..* subSyncChart -- * ReferenceState referenceState;
+}
+
+class ReferenceState
+{
+	* referenceState -- * Stg containers;
+}
+
+class Arc
+{
+	isA ModelElement;
+	Boolean isImmediate;
+	Integer priority;
+	0..1 incoming -- 1..* Vertex target;
+	* outcoming -- 1..* Vertex source;
+	* arc -- * Stg stg;
+}
+
+class Vertex
+{
+	isA ModelElement;
+}
+
+class PseudoState
+{
+	isA Vertex;
+	0..1 -> 1..* PseudoStateKind kind;
+}
+
+class PseudoStateKind
+{
+}
+
+class State
+{
+	isA Vertex;
+	Boolean isFinal;
+}
+
+class SimpleState
+{
+	isA State;
+}
+
+class CompositeState
+{
+	isA State ;
+	Boolean canTerminate;
+	Boolean isSuspendable;
+	1..* compositeState -- 1..* Stg stg;
+}
+
+class Stg
+{
+	Boolean withFinal;
+}
+
+class Transition
+{
+	isA Arc;
+	0..1 -> 1..* TransitionKind kind;
+}
+
+class TransitionKind
+{
+}
+
+class PseudoTransition
+{
+	isA Arc;
+	0..1 -> 1..* PseudoTransitionKind kind;
+}
+
+class PseudoTransitionKind
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

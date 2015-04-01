@@ -1,0 +1,23 @@
+namespace IntegratingTroposActorConcept;
+
+class Actor
+{
+}
+
+class Agent
+{
+	isA //Actor;
+	0..1 -> 1..* //Position occupy;
+	0..1 -> * //Role play;
+}
+
+class Position
+{
+	isA //Actor;
+	0..1 -> * //Role cover;
+}
+
+class Role
+{
+	isA //Actor;
+}

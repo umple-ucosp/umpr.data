@@ -1,0 +1,67 @@
+namespace MTRANS;
+
+class MetaClass
+{
+}
+
+class MetaModel
+{
+}
+
+class Module
+{
+	String name;
+	String mode;
+	0..1 -> * MetaModel metaDest;
+	0..1 -> * MetaModel metaSource;
+	1..* module -- 1..* Rule rules;
+}
+
+class Rule
+{
+	Boolean isAbstract;
+	Boolean isEntryPoint;
+	String name;
+	0..1 -> * MetaClass target;
+	0..1 -> * MetaClass source;
+	* rule -- * Inheritance inheritances;
+	1..* rule -- * Expression guard;
+	1..* rule -- 1..* Section sections;
+	1..* rule -- * Variable declaration;
+}
+
+class Inheritance
+{
+	1..* inheritance -- * Expression expressions;
+}
+
+class Expression
+{
+	String operator;
+	1..* body -- 1..* Instruction instruction;
+}
+
+class Section
+{
+	String kind;
+	1..* section -- 1..* Instruction instructions;
+}
+
+class Instruction
+{
+}
+
+class Variable
+{
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class String
+{
+}

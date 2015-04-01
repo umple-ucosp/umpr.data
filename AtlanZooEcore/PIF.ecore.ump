@@ -1,0 +1,70 @@
+namespace PIF;
+
+class Entity
+{
+}
+
+class Activity
+{
+	isA //Entity;
+}
+
+class Object
+{
+	isA //Entity;
+}
+
+class Timepoint
+{
+	isA //Entity;
+}
+
+class Relation
+{
+	isA //Entity;
+}
+
+class Decision
+{
+	isA //Activity;
+}
+
+class Agent
+{
+	isA //Object;
+}
+
+class Creates
+{
+	isA //Relation;
+}
+
+class Modifies
+{
+	isA //Relation;
+}
+
+class Before
+{
+	isA //Relation;
+}
+
+class Uses
+{
+	isA //Relation;
+}
+
+class Performs
+{
+	isA //Relation;
+}
+
+class ActivityStatus
+{
+	isA //Relation;
+}
+
+class Succesor
+{
+	isA //Relation;
+}

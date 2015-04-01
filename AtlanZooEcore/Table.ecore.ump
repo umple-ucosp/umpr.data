@@ -1,0 +1,22 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+namespace Table;
+
+class Table
+{
+	0..1 -> 1..* Row rows;
+}
+
+class Row
+{
+	0..1 -> 1..* Cell cells;
+}
+
+class Cell
+{
+	String content;
+}

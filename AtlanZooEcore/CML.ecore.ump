@@ -1,0 +1,258 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+namespace CML;
+
+class PCDATA
+{
+	String value;
+}
+
+class Any
+{
+}
+
+class TitledElement
+{
+	String title;
+}
+
+class IdedElement
+{
+	String id;
+}
+
+class ConventionnedElement
+{
+	String convention;
+}
+
+class DictRefElement
+{
+	String dictRef;
+}
+
+class SimpleLink_Element
+{
+	String href;
+}
+
+class Counted_Element
+{
+	String count;
+}
+
+class Sized_Element
+{
+	String size;
+}
+
+class Rows_Element
+{
+	String rows;
+}
+
+class Columns_Element
+{
+	String colums;
+}
+
+class Min_Element
+{
+	String min;
+}
+
+class Max_Element
+{
+	String max;
+}
+
+class Units_Element
+{
+	String units;
+}
+
+class AngleUnits_Element
+{
+	AngleUnits angleUnits;
+}
+
+class UnitsRef_Element
+{
+	String unitsRef;
+}
+
+class AtomRefs_Element
+{
+	String atomRefs;
+}
+
+class _StringBuiltin
+{
+	isA AtomRefs_Element;
+	StringBuiltin builtin;
+}
+
+class _String
+{
+	isA Any ;
+}
+
+class _Link
+{
+	isA Any ;
+}
+
+class _FloatBuiltin
+{
+	FloatBuiltin builtin;
+}
+
+class _Float
+{
+	isA Any ;
+}
+
+class _IntegerBuiltin
+{
+	IntegerBuiltin builtin;
+}
+
+class _Integer
+{
+	isA Any ;
+}
+
+class _StringArray
+{
+	isA Any ;
+	String delimiter;
+}
+
+class _FloatArray
+{
+	isA Any ;
+}
+
+class _IntegerArray
+{
+	isA Any ;
+}
+
+class _FloatMatrix
+{
+	isA Any ;
+}
+
+class _Coordinate2Builtin
+{
+	Coordinate2Builtin builtin;
+}
+
+class _Coordinate2
+{
+	isA Any ;
+}
+
+class _Coordinate3Builtin
+{
+	Coordinate3Builtin builtin;
+}
+
+class _Coordinate3
+{
+	isA Any ;
+}
+
+class _Angle
+{
+	isA Any ;
+}
+
+class _Torsion
+{
+	isA Any ;
+}
+
+class _List
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Molecule
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Formula
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Atom
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Atom_Array
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Bond
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Bond_Array
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Electron
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Reaction
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Crystal
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Sequence
+{
+	isA Any ;
+	0..1 -> * Any any;
+}
+
+class Feature
+{
+	isA Any ;
+	0..1 -> * Any any;
+}

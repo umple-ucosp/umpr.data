@@ -1,0 +1,14 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+namespace Diagnostic;
+
+class Problem
+{
+	Severity severity;
+	String location;
+	String description;
+}

@@ -1,0 +1,57 @@
+namespace News;
+
+class Element
+{
+	String title;
+	String description;
+	String link;
+}
+
+class Newspaper
+{
+	isA Element;
+	String language;
+	String copyright;
+	0..1 -> * Date pubDate;
+	0..1 -> * Category category;
+	1..* newspaper -- * News news;
+}
+
+class News
+{
+	isA Element;
+	String author;
+	String comments;
+	0..1 -> * Date pubDate;
+	0..1 -> * Category category;
+}
+
+class Category
+{
+	String value;
+}
+
+class Date
+{
+	DayKind eDay;
+	Integer day;
+	Integer month;
+	Integer year;
+	Integer hours;
+	Integer minutes;
+	Integer seconds;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}

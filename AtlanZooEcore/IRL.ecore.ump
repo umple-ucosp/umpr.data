@@ -1,0 +1,324 @@
+namespace IRL;
+
+class Element
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class NamedElement
+{
+	isA Element;
+	String name;
+}
+
+class ExtendedIdentifier
+{
+	isA NamedElement;
+	0..1 -> * ExtendedIdentifier parentIdentifier;
+	1..* extendedIdentifier -- 1..* Extended extendedIdentifierOwner;
+}
+
+class Extended
+{
+	isA Element;
+}
+
+class Definition
+{
+	isA Extended;
+}
+
+class RuleSet
+{
+	isA NamedElement;
+	0..1 propertyDefinitionOwner -- * IRLDeclarations/PropertyDefinition propertyDefinitions;
+	0..1 rulesetElementDefinitionOwner -- * IRLRules/RulesetElementDefinition rulesetElementDefinitions;
+	1..* importDefinitionOwners -- * ImportDefinition importDefinitions;
+}
+
+class ImportDefinition
+{
+	isA Definition;
+	Boolean dotStar;
+}
+
+class Expression
+{
+	isA IRLTypes/Typed;
+	0..1 source -- * IRLExpressions/PropertyCallExpression appliedProperty;
+	0..1 expression -- 1..* IRLDeclarations/RuleSetDeclaration expressionOwner;
+	0..1 body -- * IRLExpressions/LoopExpression loopExpression;
+	0..1 arguments -- * IRLExpressions/OperationCallExpression parentOperation;
+	0..1 conditionExpression -- 1..* IRLRules/RuleCondition ruleConditionExpression;
+	0..1 insertArguments -- * IRLRules/PRRActions/CreateAction parentInsert;
+	0..1 modifiedArguments -- * IRLRules/PRRActions/ModifyAction parentModifying;
+}
+
+class PropertyCallExpression
+{
+	isA IRLExpressions/Expression;
+	0..1 appliedProperty -- * IRLExpressions/Expression source;
+}
+
+class IteratorExp
+{
+	isA IRLExpressions/LoopExpression;
+	String name;
+}
+
+class LoopExpression
+{
+	isA IRLExpressions/PropertyCallExpression;
+	0..1 loopExpression -- 1..* IRLExpressions/Expression body;
+	0..1 loopExpression -- 1..* IRLExpressions/Iterator iterators;
+}
+
+class OperatorCallExpression
+{
+	isA IRLExpressions/OperationCallExpression;
+}
+
+class OperationCallExpression
+{
+	isA IRLExpressions/PropertyCallExpression;
+	String operationName;
+	String signature;
+	0..1 parentOperation -- * IRLExpressions/Expression arguments;
+}
+
+class PrimitiveExpression
+{
+	isA IRLExpressions/Expression;
+}
+
+class Iterator
+{
+	isA IRLDeclarations/VariableDeclaration;
+	0..1 iterators -- * IRLExpressions/LoopExpression loopExpression;
+}
+
+class NumericExpression
+{
+	isA IRLExpressions/PrimitiveExpression;
+}
+
+class IntegerExpression
+{
+	isA IRLExpressions/NumericExpression;
+	Integer integerSymbol;
+}
+
+class RealExpression
+{
+	isA IRLExpressions/NumericExpression;
+	Double realSymbol;
+}
+
+class BooleanExpression
+{
+	isA IRLExpressions/PrimitiveExpression;
+	Boolean booleanSymbol;
+}
+
+class NavigationOrAttributeCallExpression
+{
+	isA IRLExpressions/PropertyCallExpression;
+	String name;
+}
+
+class VariableExpression
+{
+	isA IRLExpressions/Expression;
+	String name;
+	0..1 variableExp -- 1..* IRLDeclarations/VariableDeclaration referredVariable;
+}
+
+class StringExpression
+{
+	isA IRLExpressions/PrimitiveExpression;
+	String stringSymbol;
+}
+
+class Type
+{
+	isA NamedElement;
+	0..1 type -- 1..* IRLTypes/Typed typeOwner;
+}
+
+class Typed
+{
+	isA Element;
+	0..1 typeOwner -- 1..* IRLTypes/Type type;
+}
+
+class Primitive
+{
+	isA IRLTypes/Type;
+}
+
+class StringType
+{
+	isA IRLTypes/Primitive;
+}
+
+class NumericType
+{
+	isA IRLTypes/Primitive;
+}
+
+class IntegerType
+{
+	isA IRLTypes/NumericType;
+}
+
+class RealType
+{
+	isA IRLTypes/NumericType;
+}
+
+class BooleanType
+{
+	isA IRLTypes/Primitive;
+}
+
+class ClassType
+{
+	isA IRLTypes/Type;
+}
+
+class PropertyDefinition
+{
+	isA Definition;
+	Boolean semicoloneOpt;
+	0..1 propertyDefinitions -- 1..* RuleSet propertyDefinitionOwner;
+	0..1 ruleSetDeclarationOwner -- * IRLDeclarations/RuleSetDeclaration ruleSetDeclarations;
+}
+
+class RuleSetDeclaration
+{
+	isA Element;
+	0..1 ruleSetDeclarations -- 1..* IRLDeclarations/PropertyDefinition ruleSetDeclarationOwner;
+	0..1 expressionOwner -- * IRLExpressions/Expression expression;
+}
+
+class ClassInstancesDeclaration
+{
+	isA IRLDeclarations/RuleSetDeclaration ;
+}
+
+class PropertyDeclaration
+{
+	isA IRLDeclarations/RuleSetDeclaration;
+}
+
+class VariableDeclaration
+{
+	isA IRLTypes/Typed;
+	String varName;
+	0..1 referredVariable -- * IRLExpressions/VariableExpression variableExp;
+}
+
+class RulesetElementDefinition
+{
+	isA NamedElement;
+	0..1 rulesetElementDefinitions -- 1..* RuleSet rulesetElementDefinitionOwner;
+}
+
+class RuleDefinition
+{
+	isA IRLRules/RulesetElementDefinition;
+	0..1 bindingOwner -- * IRLRules/Binding binding;
+	0..1 ruleDefinitionCondition -- * IRLRules/RuleCondition condition;
+	0..1 actionOwner -- * IRLRules/RuleAction actions;
+}
+
+class Binding
+{
+	isA Element;
+	0..1 binding -- 1..* IRLRules/RuleDefinition bindingOwner;
+	0..1 ruleVariableOwner -- * IRLRules/RuleVariable ruleVariable;
+}
+
+class RuleVariable
+{
+	isA IRLDeclarations/VariableDeclaration;
+	0..1 ruleVariable -- 1..* IRLRules/Binding ruleVariableOwner;
+	0..1 -> * IRLExpressions/Expression filter;
+	0..1 -> * IRLExpressions/Expression collectIn;
+}
+
+class CollectionOperationRuleVariable
+{
+	isA IRLRules/RuleVariable;
+	String operationName;
+	0..1 -> * IRLExpressions/Expression collectWhere;
+}
+
+class SimpleRuleVariable
+{
+	isA IRLRules/RuleVariable;
+}
+
+class RuleCondition
+{
+	isA Element;
+	0..1 ruleConditionExpression -- * IRLExpressions/Expression conditionExpression;
+	0..1 condition -- 1..* IRLRules/RuleDefinition ruleDefinitionCondition;
+}
+
+class RuleAction
+{
+	isA Element;
+	0..1 actions -- * IRLRules/RuleDefinition actionOwner;
+}
+
+class DeleteAction
+{
+	isA IRLRules/RuleAction;
+	0..1 -> 1..* IRLExpressions/Expression objValue;
+}
+
+class CreateAction
+{
+	isA IRLRules/RuleAction ;
+	0..1 parentInsert -- * IRLExpressions/Expression insertArguments;
+}
+
+class ModifyAction
+{
+	isA IRLRules/RuleAction;
+	0..1 -> 1..* IRLExpressions/Expression objValue;
+	0..1 parentModifying -- * IRLExpressions/Expression modifiedArguments;
+}
+
+class UpdateAction
+{
+	isA IRLRules/RuleAction;
+	0..1 -> 1..* IRLExpressions/Expression objValue;
+}
+
+class InvokeAction
+{
+	isA IRLRules/RuleAction;
+	0..1 -> 1..* IRLExpressions/Expression invocation;
+}
+
+namespace PrimitiveTypes;
+
+class Double
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}

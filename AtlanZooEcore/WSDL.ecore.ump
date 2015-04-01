@@ -1,0 +1,94 @@
+namespace WSDL;
+
+class Port
+{
+	String name;
+	* ports -- 1..* Service service;
+	* ports -- 1..* Binding binding;
+}
+
+class Service
+{
+	String name;
+}
+
+class Param
+{
+	String name;
+	* params -- 1..* Message message;
+}
+
+class Input
+{
+	isA Param;
+	* input -- 1..* Operation operation;
+}
+
+class Output
+{
+	isA Param;
+	* output -- 1..* Operation operation;
+}
+
+class PortType
+{
+	String name;
+	1..* type -- * Operation operations;
+	1..* type -- * Binding bindings;
+}
+
+class Operation
+{
+	String name;
+	1..* operation -- * Fault faults;
+}
+
+class StartWithExtensions
+{
+}
+
+class Binding
+{
+	isA StartWithExtensions;
+	String name;
+	1..* bind -- * BindingOperation operations;
+}
+
+class BindingFault
+{
+	isA StartWithExtensions;
+	0..1 -> 1..* Fault binding;
+	* faults -- 1..* BindingOperation operation;
+}
+
+class BindingOperation
+{
+	isA StartWithExtensions;
+	String name;
+	0..1 -> 1..* Operation binding;
+	0..1 -> * StartWithExtensions input;
+	0..1 -> * StartWithExtensions output;
+}
+
+class Fault
+{
+	String name;
+	* faults -- 1..* Message message;
+}
+
+class Message
+{
+	String name;
+	1..* message -- * Part parts;
+}
+
+class Part
+{
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

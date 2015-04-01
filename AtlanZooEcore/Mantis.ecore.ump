@@ -1,0 +1,104 @@
+namespace Mantis;
+
+class MantisRoot
+{
+	1..* i_mantisRoot -- * Issue issues;
+}
+
+class IdentifiedElt
+{
+	Integer id;
+}
+
+class PrivateElt
+{
+	Boolean private;
+}
+
+class Issue
+{
+	isA IdentifiedElt ;
+	String category;
+	String summary;
+	String description;
+	String version;
+	String build;
+	String platform;
+	String os;
+	String osVersion;
+	String stepsToReproduce;
+	String additionalInfo;
+	Integer dateSubmitted;
+	String fixedInVersion;
+	Integer lastUpdate;
+	0..1 -> 1..* ValueWithId project;
+	0..1 -> 1..* ValueWithId priority;
+	0..1 -> 1..* ValueWithId severity;
+	0..1 -> 1..* ValueWithId status;
+	0..1 -> 1..* Person reporter;
+	0..1 -> 1..* ValueWithId reproducibility;
+	0..1 -> * Person assignedTo;
+	0..1 -> * ValueWithId projection;
+	0..1 -> * ValueWithId eta;
+	0..1 -> * ValueWithId resolution;
+	0..1 -> * Attachment attachments;
+	0..1 -> * Relationship relationships;
+	0..1 -> * Note notes;
+}
+
+class ValueWithId
+{
+	isA IdentifiedElt;
+	String value;
+}
+
+class Person
+{
+	isA ValueWithId;
+	String login;
+}
+
+class Relationship
+{
+	isA IdentifiedElt;
+	RelationshipType type;
+}
+
+class TimeStampedElt
+{
+	Integer timestamp;
+}
+
+class Note
+{
+	isA TimeStampedElt ;
+	String text;
+	0..1 -> 1..* Person author;
+}
+
+class Attachment
+{
+	isA TimeStampedElt;
+	String filename;
+	Integer size;
+	String contentType;
+	String downloadUrl;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

@@ -1,0 +1,57 @@
+namespace WikiTable;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class Table
+{
+	isA LocatedElement;
+	Integer border;
+	String style;
+	String class;
+	0..1 -> * Caption caption;
+	0..1 -> * Row rows;
+}
+
+class Caption
+{
+	isA LocatedElement;
+	String content;
+}
+
+class Row
+{
+	isA LocatedElement;
+	0..1 -> * Cell cells;
+}
+
+class Cell
+{
+	isA LocatedElement;
+	Boolean isHeading;
+	String align;
+	String style;
+	String content;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

@@ -1,0 +1,53 @@
+namespace SeminarSchedulingSystem;
+
+class SeminarSchedulingSystem
+{
+	1..* seminarSchedulingSystem -- * Presenter presenter;
+	1..* seminarSchedulingSystem -- * Seminar seminar;
+}
+
+class Presenter
+{
+	String name;
+	* qualified -- * Seminar qualifiedFor;
+	* presenter -- * Offering offering;
+}
+
+class Seminar
+{
+	String title;
+	* seminar -- * Offering offering;
+}
+
+class Offering
+{
+	Boolean is_cancelled;
+	0..1 -> 1..* Date date;
+	* offering -- * Attendee attendee;
+}
+
+class Date
+{
+	Integer year;
+	Integer month;
+	Integer day;
+}
+
+class Attendee
+{
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

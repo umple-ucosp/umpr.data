@@ -1,0 +1,997 @@
+namespace XHTML;
+
+class ValuedElement
+{
+	String value;
+}
+
+class CDATA
+{
+	isA ValuedElement;
+}
+
+class PCDATA
+{
+	isA ValuedElement;
+}
+
+class NMTOKEN
+{
+	isA ValuedElement;
+}
+
+class IDREF
+{
+	isA ValuedElement;
+}
+
+class IDREFS
+{
+	0..1 -> * IDREF idrefs;
+}
+
+class ID
+{
+	isA ValuedElement;
+}
+
+class EMPTY
+{
+}
+
+class ContentType
+{
+	isA CDATA;
+}
+
+class ContentTypes
+{
+	0..1 -> 2..* ContentType contentTypes;
+}
+
+class Charset
+{
+	isA CDATA;
+}
+
+class Charsets
+{
+	0..1 -> 2..* Charset charsets;
+}
+
+class LanguageCode
+{
+	isA NMTOKEN;
+}
+
+class Character
+{
+	isA CDATA;
+}
+
+class Number
+{
+	isA CDATA;
+}
+
+class LinkTypes
+{
+	isA CDATA;
+}
+
+class MediaDesc
+{
+	isA CDATA;
+}
+
+class URI
+{
+	isA CDATA;
+}
+
+class UriList
+{
+	0..1 -> 2..* URI uris;
+}
+
+class Datetime
+{
+	isA CDATA;
+}
+
+class ScriptExpression
+{
+	isA CDATA;
+}
+
+class StyleSheet
+{
+	isA CDATA;
+}
+
+class Text
+{
+	isA CDATA;
+}
+
+class Length
+{
+	isA CDATA;
+}
+
+class MultiLength
+{
+	isA CDATA;
+}
+
+class Pixels
+{
+	isA CDATA;
+}
+
+class Coords
+{
+	0..1 -> 2..* Length lengths;
+}
+
+class CoreAttrs
+{
+	0..1 -> * ID id;
+	0..1 -> * CDATA class;
+	0..1 -> * StyleSheet style;
+	0..1 -> * Text title;
+}
+
+class I18n
+{
+	Direction dir;
+	0..1 -> * LanguageCode lang;
+	0..1 -> * LanguageCode xml:lang;
+}
+
+class Events
+{
+	0..1 -> * ScriptExpression onclick;
+	0..1 -> * ScriptExpression ondblclick;
+	0..1 -> * ScriptExpression onmousedown;
+	0..1 -> * ScriptExpression onmouseup;
+	0..1 -> * ScriptExpression onmouseover;
+	0..1 -> * ScriptExpression onmousemove;
+	0..1 -> * ScriptExpression onmouseout;
+	0..1 -> * ScriptExpression onkeypress;
+	0..1 -> * ScriptExpression onkeydown;
+	0..1 -> * ScriptExpression onkeyup;
+}
+
+class Attrs
+{
+	isA CoreAttrs ;
+}
+
+class Focus
+{
+	0..1 -> * Character accesskey;
+	0..1 -> * Number tabindex;
+	0..1 -> * ScriptExpression onfocus;
+	0..1 -> * ScriptExpression onblur;
+}
+
+class Specialpre
+{
+	isA Special ;
+}
+
+class Special
+{
+	isA inline ;
+}
+
+class Fontstyle
+{
+	isA inline ;
+}
+
+class Phrase
+{
+	isA inline ;
+}
+
+class Inlineforms
+{
+	isA inline ;
+}
+
+class Miscinline
+{
+	isA Misc ;
+}
+
+class Misc
+{
+	isA Block ;
+}
+
+class inline
+{
+	isA Inline;
+}
+
+class Inline
+{
+	isA Flow ;
+	0..1 -> * PCDATA pcdataInline;
+}
+
+class Heading
+{
+	isA block ;
+}
+
+class Lists
+{
+	isA block ;
+}
+
+class Blocktext
+{
+	isA block ;
+}
+
+class block
+{
+	isA Block ;
+}
+
+class Block
+{
+}
+
+class Flow
+{
+	0..1 -> * PCDATA pcdataFlow;
+}
+
+class AContent
+{
+	0..1 -> * PCDATA pcdataAContent;
+}
+
+class PreContent
+{
+	0..1 -> * PCDATA pcdataPreContent;
+}
+
+class FormContent
+{
+}
+
+class ButtonContent
+{
+	0..1 -> * PCDATA pcdataButtonContent;
+}
+
+class Html
+{
+	0..1 -> 1..* I18n i18n;
+	0..1 -> * ID id;
+	0..1 -> 1..* URI xmlns;
+	1..* html -- 1..* Head head;
+	1..* html -- 1..* Body body;
+}
+
+class HeadMisc
+{
+}
+
+class Head
+{
+	0..1 -> 1..* I18n i18n;
+	0..1 -> * ID id;
+	0..1 -> * URI profile;
+	0..1 -> * HeadMisc headmisc;
+	0..1 -> 1..* HeadElement headelement;
+}
+
+class HeadElement
+{
+}
+
+class TitleHeadElement
+{
+	isA HeadElement;
+	0..1 -> 1..* Title title;
+	0..1 -> * HeadMisc headmisc;
+	0..1 -> 1..* BaseTitleHeadElement baseTitleHeadElement;
+}
+
+class BaseTitleHeadElement
+{
+	0..1 -> 1..* Base base;
+	0..1 -> * HeadMisc headmisc;
+}
+
+class BaseHeadElement
+{
+	isA HeadElement;
+	0..1 -> 1..* Base base;
+	0..1 -> * HeadMisc headmisc;
+	0..1 -> 1..* TitleBaseHeadElement titleBaseHeadElement;
+}
+
+class TitleBaseHeadElement
+{
+	0..1 -> 1..* Title title;
+	0..1 -> * HeadMisc headmisc;
+}
+
+class Title
+{
+	isA PCDATA;
+	0..1 -> 1..* I18n i18n;
+	0..1 -> * ID id;
+}
+
+class Base
+{
+	isA EMPTY;
+	0..1 -> 1..* URI href;
+	0..1 -> * ID id;
+}
+
+class Meta
+{
+	isA EMPTY ;
+	0..1 -> 1..* I18n i18n;
+	0..1 -> * ID id;
+	0..1 -> * CDATA httpequiv;
+	0..1 -> * CDATA name;
+	0..1 -> * CDATA content;
+	0..1 -> * CDATA scheme;
+}
+
+class Link
+{
+	isA EMPTY ;
+	0..1 -> * Charset charset;
+	0..1 -> * URI href;
+	0..1 -> * LanguageCode hreflang;
+	0..1 -> * ContentType type;
+	0..1 -> * LinkTypes rel;
+	0..1 -> * LinkTypes rev;
+	0..1 -> * MediaDesc media;
+}
+
+class Style
+{
+	isA PCDATA ;
+	String xml:space;
+	0..1 -> 1..* I18n i18n;
+	0..1 -> * ID id;
+	0..1 -> 1..* ContentType type;
+	0..1 -> * MediaDesc media;
+	0..1 -> * Text title;
+}
+
+class Script
+{
+	isA PCDATA ;
+	String defer;
+	String xml:space;
+	0..1 -> * ID id;
+	0..1 -> * Charset charset;
+	0..1 -> 1..* ContentType type;
+	0..1 -> * URI src;
+}
+
+class Noscript
+{
+	isA Attrs ;
+	0..1 -> 1..* Block block;
+}
+
+class Body
+{
+	isA Attrs;
+	0..1 -> * Block bodyElements;
+	0..1 -> * ScriptExpression onload;
+	0..1 -> * ScriptExpression onunload;
+}
+
+class Div
+{
+	isA Attrs ;
+	0..1 -> * Flow divElements;
+}
+
+class P
+{
+	isA Attrs ;
+	0..1 -> * Inline pElements;
+}
+
+class H1
+{
+	isA Attrs ;
+	0..1 -> * Inline h1Elements;
+}
+
+class H2
+{
+	isA Attrs ;
+	0..1 -> * Inline h2Elements;
+}
+
+class H3
+{
+	isA Attrs ;
+	0..1 -> * Inline h3Elements;
+}
+
+class H4
+{
+	isA Attrs ;
+	0..1 -> * Inline h4Elements;
+}
+
+class H5
+{
+	isA Attrs ;
+	0..1 -> * Inline h5Elements;
+}
+
+class H6
+{
+	isA Attrs ;
+	0..1 -> * Inline h6Elements;
+}
+
+class Ul
+{
+	isA Attrs ;
+	0..1 -> 1..* Li li;
+}
+
+class Ol
+{
+	isA Attrs ;
+	0..1 -> 1..* Li li;
+}
+
+class Li
+{
+	isA Attrs;
+	0..1 -> * Flow liElements;
+}
+
+class Dl
+{
+	isA Attrs ;
+	0..1 -> 1..* DlElement dlElements;
+}
+
+class DlElement
+{
+	isA Attrs;
+}
+
+class Dt
+{
+	isA DlElement;
+	0..1 -> * Inline dtElements;
+}
+
+class Dd
+{
+	isA DlElement;
+	0..1 -> * Flow ddElements;
+}
+
+class Address
+{
+	isA Attrs ;
+	0..1 -> * Inline addressElements;
+}
+
+class Hr
+{
+	isA EMPTY ;
+}
+
+class Pre
+{
+	isA Attrs ;
+	String xml:space;
+	0..1 -> * PreContent preElements;
+}
+
+class Blockquote
+{
+	isA Attrs ;
+	0..1 -> * Block blockquoteElements;
+	0..1 -> * URI cite;
+}
+
+class Ins
+{
+	isA Attrs ;
+	0..1 -> * Flow flowelement;
+	0..1 -> * URI cite;
+	0..1 -> * Datetime datetime;
+}
+
+class Del
+{
+	isA Attrs ;
+	0..1 -> * Flow flowelement;
+	0..1 -> * URI cite;
+	0..1 -> * Datetime datetime;
+}
+
+class A
+{
+	isA Attrs ;
+	Shape shape;
+	0..1 -> * AContent acontent;
+	0..1 -> * Charset charset;
+	0..1 -> * ContentType type;
+	0..1 -> * NMTOKEN name;
+	0..1 -> * URI href;
+	0..1 -> * LanguageCode hreflang;
+	0..1 -> * LinkTypes rel;
+	0..1 -> * LinkTypes rev;
+	0..1 -> * Coords coords;
+}
+
+class Span
+{
+	isA Attrs ;
+	0..1 -> * Inline spanElements;
+}
+
+class Bdo
+{
+	isA CoreAttrs ;
+	Direction dir;
+	0..1 -> * Inline bdoElements;
+	0..1 -> * LanguageCode lang;
+	0..1 -> * LanguageCode xml:lang;
+}
+
+class Br
+{
+	isA EMPTY ;
+}
+
+class Em
+{
+	isA Attrs ;
+	0..1 -> * Inline emElements;
+}
+
+class Strong
+{
+	isA Attrs ;
+	0..1 -> * Inline strongElements;
+}
+
+class Dfn
+{
+	isA Attrs ;
+	0..1 -> * Inline dfnElements;
+}
+
+class Code
+{
+	isA Attrs ;
+	0..1 -> * Inline codeElements;
+}
+
+class Samp
+{
+	isA Attrs ;
+	0..1 -> * Inline sampElements;
+}
+
+class Kbd
+{
+	isA Attrs ;
+	0..1 -> * Inline kbdElements;
+}
+
+class Var
+{
+	isA Attrs ;
+	0..1 -> * Inline varElements;
+}
+
+class Cite
+{
+	isA Attrs ;
+	0..1 -> * Inline citeElements;
+}
+
+class Abbr
+{
+	isA Attrs ;
+	0..1 -> * Inline abbrElements;
+}
+
+class Acronym
+{
+	isA Attrs ;
+	0..1 -> * Inline acronymElements;
+}
+
+class Q
+{
+	isA Attrs ;
+	0..1 -> * Inline qElements;
+	0..1 -> * URI cite;
+}
+
+class Sub
+{
+	isA Attrs ;
+	0..1 -> * Inline subElements;
+}
+
+class Sup
+{
+	isA Attrs ;
+	0..1 -> * Inline supElements;
+}
+
+class Tt
+{
+	isA Attrs ;
+	0..1 -> * Inline ttElements;
+}
+
+class I
+{
+	isA Attrs ;
+	0..1 -> * Inline iElements;
+}
+
+class B
+{
+	isA Attrs ;
+	0..1 -> * Inline bElements;
+}
+
+class Big
+{
+	isA Attrs ;
+	0..1 -> * Inline bigElements;
+}
+
+class Small
+{
+	isA Attrs ;
+	0..1 -> * Inline smallElements;
+}
+
+class ObjectElement
+{
+	0..1 -> * PCDATA objectpcdata;
+}
+
+class Object
+{
+	isA Attrs ;
+	Boolean declare;
+	0..1 -> * ObjectElement objectelement;
+	0..1 -> * URI classid;
+	0..1 -> * URI codebase;
+	0..1 -> * URI data;
+	0..1 -> * ContentType type;
+	0..1 -> * ContentType codetype;
+	0..1 -> * UriList archive;
+	0..1 -> * Text standby;
+	0..1 -> * Length height;
+	0..1 -> * Length width;
+	0..1 -> * URI usemap;
+	0..1 -> * NMTOKEN name;
+	0..1 -> * Number tabindex;
+}
+
+class Param
+{
+	isA EMPTY ;
+	ValueType valuetype;
+	0..1 -> * ID id;
+	0..1 -> * CDATA name;
+	0..1 -> * CDATA value;
+	0..1 -> * ContentType type;
+}
+
+class Img
+{
+	isA EMPTY ;
+	Boolean ismap;
+	0..1 -> 1..* URI src;
+	0..1 -> 1..* Text alt;
+	0..1 -> * URI longdesc;
+	0..1 -> * Length height;
+	0..1 -> * Length width;
+	0..1 -> * URI usemap;
+}
+
+class MapContent
+{
+	0..1 -> 1..* MapElement mapElements;
+}
+
+class MapElement
+{
+}
+
+class MapElementContent
+{
+}
+
+class Map
+{
+	isA I18n ;
+	0..1 -> 1..* MapContent mapelement;
+	0..1 -> 1..* ID id;
+	0..1 -> * CDATA class;
+	0..1 -> * StyleSheet style;
+	0..1 -> * Text title;
+	0..1 -> * NMTOKEN name;
+}
+
+class Area
+{
+	isA EMPTY ;
+	Shape shape;
+	Boolean nohref;
+	0..1 -> * Coords coords;
+	0..1 -> * URI href;
+	0..1 -> 1..* Text alt;
+}
+
+class Form
+{
+	isA Attrs ;
+	FomeMethod method;
+	0..1 -> * FormContent formelement;
+	0..1 -> 1..* URI action;
+	0..1 -> 1..* ContentType enctype;
+	0..1 -> * ScriptExpression onsubmit;
+	0..1 -> * ScriptExpression onreset;
+	0..1 -> * ContentTypes accept;
+	0..1 -> * Charsets accept-charset;
+}
+
+class Label
+{
+	isA Attrs ;
+	0..1 -> * Inline labelelements;
+	0..1 -> 1..* IDREF for;
+	0..1 -> * Character accesskey;
+	0..1 -> * ScriptExpression onfocus;
+	0..1 -> * ScriptExpression onblur;
+}
+
+class Input
+{
+	isA EMPTY ;
+	InputType type;
+	Boolean checked;
+	Boolean disabled;
+	Boolean readonly;
+	0..1 -> * CDATA name;
+	0..1 -> * CDATA value;
+	0..1 -> * CDATA size;
+	0..1 -> * Number maxlength;
+	0..1 -> * URI src;
+	0..1 -> * CDATA alt;
+	0..1 -> * URI usemap;
+	0..1 -> * ScriptExpression onselect;
+	0..1 -> * ScriptExpression onchange;
+	0..1 -> * ContentTypes accept;
+}
+
+class Select
+{
+	isA Attrs ;
+	Boolean multiple;
+	Boolean disabled;
+	0..1 -> 1..* SelectElement selectelement;
+	0..1 -> * CDATA name;
+	0..1 -> * Number size;
+	0..1 -> * Number tabindex;
+	0..1 -> * ScriptExpression onfocus;
+	0..1 -> * ScriptExpression onblur;
+	0..1 -> * ScriptExpression onchange;
+}
+
+class SelectElement
+{
+}
+
+class Optgroup
+{
+	isA SelectElement ;
+	Boolean disabled;
+	0..1 -> 1..* Option options;
+	0..1 -> 1..* Text label;
+}
+
+class Option
+{
+	isA SelectElement ;
+	Boolean selected;
+	Boolean disabled;
+	0..1 -> * Text label;
+	0..1 -> * CDATA optionvalue;
+}
+
+class Textarea
+{
+	isA PCDATA ;
+	Boolean disabled;
+	Boolean readonly;
+	0..1 -> * CDATA name;
+	0..1 -> 1..* Number rows;
+	0..1 -> 1..* Number cols;
+	0..1 -> * ScriptExpression onselect;
+	0..1 -> * ScriptExpression onchange;
+}
+
+class FieldsetElement
+{
+	0..1 -> * PCDATA fieldsetpcdata;
+}
+
+class Fieldset
+{
+	isA Attrs ;
+	0..1 -> * FieldsetElement fieldsetelements;
+}
+
+class Legend
+{
+	isA Attrs ;
+	0..1 -> * Inline legendelement;
+	0..1 -> * Character accesskey;
+}
+
+class Button
+{
+	isA Attrs ;
+	ButtonType type;
+	Boolean disabled;
+	0..1 -> * ButtonContent buttoncontent;
+	0..1 -> * CDATA name;
+	0..1 -> * CDATA value;
+}
+
+class Cellhalign
+{
+	CellHAlign align;
+	0..1 -> * Character char;
+	0..1 -> * Length charoff;
+}
+
+class Cellvalign
+{
+	CellVAlign valign;
+}
+
+class Table
+{
+	isA Attrs ;
+	TFrame frame;
+	TRules rules;
+	0..1 -> 1..* Caption caption;
+	0..1 -> 1..* ColElement colelement;
+	0..1 -> 1..* Thead thead;
+	0..1 -> 1..* Tfoot tfoot;
+	0..1 -> 1..* TableElement tableelement;
+	0..1 -> * Text summary;
+	0..1 -> * Length width;
+	0..1 -> * Pixels border;
+	0..1 -> * Length cellspacing;
+	0..1 -> * Length cellpadding;
+}
+
+class ColElement
+{
+	0..1 -> * Col cols;
+	0..1 -> * Colgroup colgroup;
+}
+
+class TableElement
+{
+	0..1 -> 1..* Tbody tbody;
+	0..1 -> 1..* Tr tr;
+}
+
+class Caption
+{
+	isA Attrs;
+	0..1 -> * Inline captionelement;
+}
+
+class Thead
+{
+	isA Attrs ;
+	0..1 -> 1..* Tr tr;
+}
+
+class Tfoot
+{
+	isA Attrs ;
+	0..1 -> 1..* Tr tr;
+}
+
+class Tbody
+{
+	isA Attrs ;
+	0..1 -> 1..* Tr tr;
+}
+
+class Colgroup
+{
+	isA Attrs ;
+	0..1 -> * Col cols;
+	0..1 -> 1..* Number span;
+	0..1 -> * MultiLength width;
+}
+
+class Col
+{
+	isA EMPTY ;
+	0..1 -> 1..* Number span;
+	0..1 -> * MultiLength width;
+}
+
+class Tr
+{
+	isA Attrs ;
+	0..1 -> 1..* TrElement trelements;
+}
+
+class TrElement
+{
+}
+
+class Th
+{
+	isA TrElement ;
+	Scope scope;
+	0..1 -> * Flow thelement;
+	0..1 -> * Text abbr;
+	0..1 -> * CDATA axis;
+	0..1 -> * IDREFS headers;
+	0..1 -> 1..* Number rowspan;
+	0..1 -> 1..* Number colspan;
+}
+
+class Td
+{
+	isA TrElement ;
+	Scope scope;
+	0..1 -> * Flow tdelement;
+	0..1 -> * Text abbr;
+	0..1 -> * CDATA axis;
+	0..1 -> * IDREFS headers;
+	0..1 -> 1..* Number rowspan;
+	0..1 -> 1..* Number colspan;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}

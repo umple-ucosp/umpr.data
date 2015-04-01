@@ -1,0 +1,826 @@
+namespace R2ML;
+
+class ReactionRuleSet
+{
+	isA RuleSet;
+	0..1 -> * Rules/ReactionRule rules;
+}
+
+class ProductionRuleSet
+{
+	isA RuleSet;
+	0..1 -> * Rules/ProductionRule rules;
+}
+
+class EventType
+{
+	String eventTypeID;
+}
+
+class RuleSet
+{
+	String ruleSetID;
+	0..1 -> * Terms/TerBasic/Variables/Variable variables;
+	0..1 -> * Vocabulary/VocBuiltin/ExternalVocabulary externalVocabulary;
+	0..1 -> * Vocabulary/VocBasic/Vocabulary vocabularies;
+}
+
+class RuleBase
+{
+	String ruleBaseID;
+	0..1 -> * Vocabulary/VocBasic/Vocabulary vocabularies;
+	0..1 -> * Vocabulary/VocBuiltin/ExternalVocabulary externalVocabulaires;
+	0..1 -> * RuleSet rules;
+}
+
+class IntegrityRuleSet
+{
+	isA RuleSet;
+	0..1 -> * Rules/IntegrityRule rules;
+}
+
+class DerivationRuleSet
+{
+	isA RuleSet;
+	0..1 -> * Rules/DerivationRule rules;
+}
+
+class AbstractTransformationRule
+{
+	isA Abstract/Rule;
+}
+
+class AbstractProductionRule
+{
+	isA Abstract/Rule;
+}
+
+class AbstractReactionRule
+{
+	isA Abstract/Rule;
+}
+
+class AbstractDerivationRule
+{
+	isA Abstract/Rule;
+}
+
+class AbstractIntegrityRule
+{
+	isA Abstract/Rule;
+}
+
+class Rule
+{
+	String ruleID;
+}
+
+class DerivationRule
+{
+	isA Abstract/AbstractDerivationRule;
+	0..1 -> 1..* Formulas/qf/AndOrNafNegFormula conditions;
+	0..1 -> 1..* Formulas/qf/LiteralConjunction conclusions;
+}
+
+class ReactionRule
+{
+	isA Abstract/AbstractReactionRule;
+	0..1 -> * Formulas/qf/AndOrNafNegFormula conditions;
+	0..1 -> 1..* Actions/ActionExpression producedAction;
+	0..1 -> * Formulas/qf/AndOrNafNegFormula postconditon;
+	0..1 -> 1..* Events/EventExpression triggeringEvent;
+}
+
+class ProductionRule
+{
+	isA Abstract/AbstractProductionRule;
+	0..1 -> 1..* Formulas/qf/AndOrNafNegFormula conditions;
+	0..1 -> * Formulas/qf/AndOrNafNegFormula postcondition;
+	0..1 -> 1..* Actions/ActionExpression producedAction;
+}
+
+class DeonticIntegrityRule
+{
+	isA Rules/IntegrityRule;
+}
+
+class AlethicIntegrityRule
+{
+	isA Rules/IntegrityRule;
+}
+
+class IntegrityRule
+{
+	isA Abstract/AbstractIntegrityRule;
+	0..1 -> 1..* Formulas/QuantifiedFormula constraint;
+}
+
+class DataAtom
+{
+	isA Atoms/Atom;
+}
+
+class ObjectAtom
+{
+	isA Atoms/Atom;
+}
+
+class Atom
+{
+	isA Formulas/LogicalFormula ;
+	Boolean isNegated;
+}
+
+class DataClassificationAtom
+{
+	isA Atoms/DataAtom;
+	0..1 -> 1..* Vocabulary/VocBasic/Datatype type;
+	0..1 -> 1..* Terms/DataTerm term;
+}
+
+class DatatypePredicateAtom
+{
+	isA Atoms/DataAtom;
+	0..1 -> 1..* Vocabulary/VocBasic/DatatypePredicate predicate;
+	0..1 -> 2..* Terms/DataTerm dataArguments;
+}
+
+class InequalityAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> 2..* Terms/ObjectTerm terms;
+}
+
+class EqualityAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> 2..* Terms/ObjectTerm terms;
+}
+
+class ObjectClassificationAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> 1..* Terms/ObjectTerm term;
+	0..1 -> 1..* Vocabulary/VocBasic/Class type;
+}
+
+class GenericAtom
+{
+	isA Atoms/Atom;
+	0..1 -> 1..* Vocabulary/VocRelational/GenericPredicate predicate;
+	0..1 -> * Terms/Term arguments;
+}
+
+class Slot
+{
+}
+
+class PropertyAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> 1..* Vocabulary/VocBasic/Property property;
+	0..1 -> 1..* Terms/Term value;
+	0..1 -> 1..* Terms/ObjectTerm subject;
+}
+
+class DataSlot
+{
+	isA Atoms/AtRelational/Slot;
+	0..1 -> 1..* Terms/DataTerm value;
+	0..1 -> 1..* Vocabulary/VocBasic/Attribute attribute;
+}
+
+class ObjectSlot
+{
+	isA Atoms/AtRelational/Slot;
+	0..1 -> 1..* Terms/ObjectTerm object;
+	0..1 -> 1..* Vocabulary/VocBasic/ReferenceProperty referenceProperty;
+}
+
+class ReferencePropertyAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> 1..* Terms/ObjectTerm object;
+	0..1 -> 1..* Vocabulary/VocBasic/ReferenceProperty referenceProperty;
+	0..1 -> 1..* Terms/ObjectTerm subject;
+}
+
+class AttributionAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> 1..* Vocabulary/VocBasic/Attribute attribute;
+	0..1 -> 1..* Terms/ObjectTerm subject;
+	0..1 -> 1..* Terms/DataTerm dataValue;
+}
+
+class ObjectDescriptionAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> * Vocabulary/VocBasic/Class type;
+	0..1 -> * Atoms/AtRelational/ObjectSlot objects;
+	0..1 -> 1..* Terms/ObjectTerm subject;
+	0..1 -> * Atoms/AtRelational/Slot slots;
+	0..1 -> 1..* Vocabulary/VocBasic/Class baseType;
+}
+
+class AssociationAtom
+{
+	isA Atoms/ObjectAtom;
+	0..1 -> 1..* Vocabulary/VocRelational/AssociationPredicate associationPredicate;
+	0..1 -> * Terms/DataTerm dataArguments;
+	0..1 -> 2..* Terms/ObjectTerm objectArguments;
+}
+
+class DatatypeFunction
+{
+	isA Vocabulary/VocFunctional/Function;
+	String ap;
+}
+
+class GenericFunction
+{
+	isA Vocabulary/VocFunctional/Function;
+}
+
+class Function
+{
+	isA Vocabulary/VocBasic/VocabularyEntry;
+	Integer arity;
+}
+
+class DataOperation
+{
+	isA Vocabulary/VocFunctional/Operation;
+	0..1 -> * Vocabulary/VocBasic/Datatype returnType;
+}
+
+class ObjectOperation
+{
+	isA Vocabulary/VocFunctional/Operation;
+	0..1 -> * Vocabulary/VocBasic/Class returnType;
+}
+
+class Operation
+{
+	isA Vocabulary/VocFunctional/Function;
+	0..1 -> * Vocabulary/VocBasic/Class contextType;
+	0..1 -> * Vocabulary/VocBasic/Type arguments;
+}
+
+class EnumerationDatatype
+{
+	isA Vocabulary/VocBasic/Datatype;
+	0..1 -> * Vocabulary/VocBasic/DataLiteral literals;
+}
+
+class ExternalVocabulary
+{
+	String externalVocabularyID;
+	ExternalVocabularyLanguage externalVocabularyLanguage;
+}
+
+class GenericEntityName
+{
+	isA Terms/GenericTerm;
+	0..1 -> * Vocabulary/VocBasic/Class classRef;
+}
+
+class VocabularyEntry
+{
+	String name;
+}
+
+class Vocabulary
+{
+	0..1 -> 1..* Vocabulary/VocBasic/VocabularyEntry entries;
+}
+
+class Property
+{
+	isA Vocabulary/VocBasic/Predicate;
+	0..1 -> * Vocabulary/VocBasic/Type range;
+	0..1 -> * Vocabulary/VocBasic/Class domain;
+}
+
+class DatatypePredicate
+{
+	isA Vocabulary/VocBasic/Predicate;
+	String vp;
+	Integer arity;
+}
+
+class Predicate
+{
+	isA Vocabulary/VocBasic/VocabularyEntry;
+	PredicateCategory predicateCategory;
+}
+
+class Attribute
+{
+	isA Vocabulary/VocBasic/Property;
+	String np;
+	0..1 -> * Vocabulary/VocBasic/Class type;
+}
+
+class TypedLiteral
+{
+	isA Vocabulary/VocBasic/DataLiteral;
+	0..1 -> 1..* Vocabulary/VocBasic/Datatype type;
+}
+
+class PlainLiteral
+{
+	isA Vocabulary/VocBasic/DataLiteral;
+	String languageTag;
+}
+
+class DataLiteral
+{
+	isA Terms/DataTerm;
+	String lexicalValue;
+}
+
+class ReferenceProperty
+{
+	isA Vocabulary/VocBasic/Property;
+	String vp;
+	String domrm;
+	String rgrn;
+}
+
+class ObjectName
+{
+	isA Vocabulary/VocBasic/VocabularyEntry ;
+	0..1 -> * Vocabulary/VocBasic/Class classRef;
+}
+
+class Datatype
+{
+	isA Vocabulary/VocBasic/Type;
+}
+
+class Class
+{
+	isA Vocabulary/VocBasic/Type;
+	String np;
+}
+
+class Type
+{
+	isA Vocabulary/VocBasic/Predicate;
+}
+
+class AssociationPredicate
+{
+	isA Vocabulary/VocBasic/Predicate;
+	String vp;
+	0..1 -> * Vocabulary/VocBasic/Type arguments;
+}
+
+class GenericPredicate
+{
+	isA Vocabulary/VocBasic/Predicate;
+	String vp;
+}
+
+class SOAPMessageBody
+{
+	0..1 -> * Events/SOAPMessageBodyChild children;
+}
+
+class SOAPConversationalMsgEvtExpression
+{
+	isA Events/SOAPMessageEventExpression;
+}
+
+class SOAPRPCResponseMsgEvtExpression
+{
+	isA Events/SOAPMessageEventExpression;
+}
+
+class SOAPRPCRequestMsgEvtExpression
+{
+	isA Events/SOAPMessageEventExpression;
+}
+
+class SOAPMessageHeaderBlock
+{
+	String nameSpaceName;
+	String localName;
+	String encodingStyle;
+	Boolean mustUnderstand;
+	String role;
+	Boolean relay;
+}
+
+class SOAPMessageHeader
+{
+	0..1 -> * Events/SOAPMessageHeaderBlock headerBlocks;
+}
+
+class SOAPMessageBodyChild
+{
+	String localName;
+	String nameSpaceName;
+	String encodingStyle;
+}
+
+class EveryYearTimeEventExpression
+{
+	isA Events/PeriodicTimeEventExpression;
+	Integer dayOfYear;
+	String time;
+}
+
+class EveryMonthTimeEventExpression
+{
+	isA Events/PeriodicTimeEventExpression;
+	Integer dayOfMonth;
+	String time;
+}
+
+class EveryWeekTimeEventExpression
+{
+	isA Events/PeriodicTimeEventExpression;
+	Integer dayOfWeek;
+	String time;
+}
+
+class EveryDayTimeEventExpression
+{
+	isA Events/PeriodicTimeEventExpression;
+	String time;
+}
+
+class EveryHourTimeEventExpression
+{
+	isA Events/PeriodicTimeEventExpression;
+	Integer minute;
+	Integer second;
+}
+
+class EveryMinuteTimeEventExpression
+{
+	isA Events/PeriodicTimeEventExpression;
+	Integer second;
+}
+
+class MessageEventExpression
+{
+	isA Events/ActionEventExpression;
+	String sender;
+	String receiver;
+}
+
+class SOAPMessageEventExpression
+{
+	isA Events/MessageEventExpression;
+	0..1 -> 1..* Events/SOAPMessageBody body;
+	0..1 -> * Events/SOAPMessageHeader header;
+}
+
+class PeriodicTimeEventExpression
+{
+	isA Events/TimeEventExpression;
+}
+
+class SingularTimeEventExpression
+{
+	isA Events/TimeEventExpression;
+	Integer dateTime;
+}
+
+class ActionEventExpression
+{
+	isA Events/AtomicEventExpression;
+	String actor;
+}
+
+class TimeEventExpression
+{
+	isA Events/AtomicEventExpression;
+}
+
+class ParallelEventExpression
+{
+	isA Events/EventExpression;
+	String timeWindow;
+	0..1 -> * Events/EventExpression expressions;
+}
+
+class SequenceEventExpression
+{
+	isA Events/EventExpression;
+	Integer timeWindow;
+	0..1 -> * Events/EventExpression expressions;
+}
+
+class ChoiceEventExpression
+{
+	isA Events/EventExpression;
+	Integer minOccurs;
+	Integer maxOccurs;
+	String timeWindow;
+	0..1 -> 1..* Events/EventExpression expressions;
+}
+
+class AtomicEventExpression
+{
+	isA Events/EventExpression;
+	0..1 -> * Terms/Term arguments;
+	0..1 -> 1..* EventType type;
+}
+
+class AndNotEventExpression
+{
+	isA Events/EventExpression;
+	String timeWndow;
+	0..1 -> * Events/EventExpression expressions;
+}
+
+class EventExpression
+{
+	String startDateTime;
+	String duration;
+	String occurDateTime;
+}
+
+class InvokeActionExpression
+{
+	isA Actions/ActionExpression;
+	0..1 -> 1..* Vocabulary/VocFunctional/Operation operation;
+	0..1 -> * Terms/Term arguments;
+	0..1 -> * Terms/ObjectTerm contextArgument;
+}
+
+class SOAPRPCAction
+{
+	isA Actions/SOAPAction;
+	0..1 -> * Terms/Term arguments;
+}
+
+class SOAPAction
+{
+	isA Actions/MessageAction;
+	0..1 -> 1..* Vocabulary/VocFunctional/Operation operation;
+}
+
+class DeleteActionExpression
+{
+	isA Actions/ActionExpression;
+	0..1 -> 1..* Terms/ObjectTerm contextArgument;
+	0..1 -> 1..* Vocabulary/VocBasic/Class context;
+}
+
+class CreateActionExpression
+{
+	isA Actions/ActionExpression;
+	0..1 -> * Atoms/AtRelational/Slot slots;
+	0..1 -> 1..* Vocabulary/VocBasic/Class context;
+}
+
+class AssignActionExpression
+{
+	isA Actions/ActionExpression;
+	0..1 -> 1..* Terms/ObjectTerm contextArgument;
+	0..1 -> 1..* Vocabulary/VocBasic/Property property;
+}
+
+class MessageAction
+{
+	isA Actions/ActionExpression;
+}
+
+class ActionExpression
+{
+}
+
+class AtLeastAndAtMostQuantifiedFormula
+{
+	isA Formulas/QuantifiedFormula;
+	Integer maxCardinality;
+	Integer minCardinality;
+}
+
+class AtMostQuantifiedFormula
+{
+	isA Formulas/QuantifiedFormula;
+	Integer maxCardinality;
+}
+
+class AtLeastQuantifiedFormula
+{
+	isA Formulas/QuantifiedFormula;
+	Integer minCardinality;
+}
+
+class Conjuction
+{
+	isA Formulas/LogicalFormula;
+	0..1 -> 2..* Formulas/LogicalFormula formulas;
+}
+
+class UniversallyQuantifiedFormula
+{
+	isA Formulas/QuantifiedFormula;
+}
+
+class StrongNegation
+{
+	isA Formulas/Negation ;
+	0..1 -> 1..* Formulas/LogicalFormula formula;
+}
+
+class QuantifiedFormula
+{
+	isA Formulas/LogicalFormula;
+	0..1 -> 1..* Formulas/LogicalFormula formula;
+	0..1 -> 1..* Terms/TerBasic/Variables/Variable variables;
+}
+
+class NegationAsFailure
+{
+	isA Formulas/Negation ;
+	0..1 -> 1..* Formulas/LogicalFormula formula;
+}
+
+class Negation
+{
+}
+
+class LogicalFormula
+{
+}
+
+class Implication
+{
+	isA Formulas/LogicalFormula;
+	0..1 -> 1..* Formulas/LogicalFormula consequent;
+	0..1 -> 1..* Formulas/LogicalFormula antecedent;
+}
+
+class ExistentiallyQuantifiedFormula
+{
+	isA Formulas/QuantifiedFormula;
+}
+
+class Disjunction
+{
+	isA Formulas/LogicalFormula;
+	0..1 -> 2..* Formulas/LogicalFormula formulas;
+}
+
+class QFStrongNegation
+{
+	isA Formulas/qf/QFNegation;
+}
+
+class QFNegationAsFailure
+{
+	isA Formulas/qf/QFNegation;
+}
+
+class QFNegation
+{
+	isA Formulas/qf/AndOrNafNegFormula;
+	0..1 -> 1..* Formulas/qf/AndOrNafNegFormula formula;
+}
+
+class LiteralConjunction
+{
+	0..1 -> 1..* Atoms/Atom atoms;
+}
+
+class QFDisjunction
+{
+	isA Formulas/qf/AndOrNafNegFormula;
+	0..1 -> 2..* Formulas/qf/AndOrNafNegFormula formulas;
+}
+
+class QFConjunction
+{
+	isA Formulas/qf/AndOrNafNegFormula;
+	0..1 -> 2..* Formulas/qf/AndOrNafNegFormula formulas;
+}
+
+class AndOrNafNegFormula
+{
+}
+
+class GenericTerm
+{
+	isA Terms/Term;
+}
+
+class Term
+{
+	CollectionTypes typeCategory;
+}
+
+class ObjectTerm
+{
+	isA Terms/Term;
+}
+
+class DataTerm
+{
+	isA Terms/Term;
+}
+
+class Variable
+{
+	String name;
+}
+
+class ObjectVariable
+{
+	isA Terms/TerBasic/Variables/Variable ;
+	0..1 -> * Vocabulary/VocBasic/Class classRef;
+}
+
+class DataVariable
+{
+	isA Terms/TerBasic/Variables/Variable ;
+	0..1 -> * Vocabulary/VocBasic/Datatype datatypeRef;
+}
+
+class GenericVariable
+{
+	isA Terms/GenericTerm ;
+	0..1 -> * Vocabulary/VocBasic/Type typeRef;
+}
+
+class DatatypeFunctionTerm
+{
+	isA Terms/TerFunctional/DataFunctionTerm;
+	0..1 -> 1..* Vocabulary/VocFunctional/DatatypeFunction function;
+	0..1 -> 1..* Terms/DataTerm dataArguments;
+}
+
+class DataFunctionTerm
+{
+	isA Terms/DataTerm;
+}
+
+class AttributeFunctionTerm
+{
+	isA Terms/TerFunctional/DataFunctionTerm;
+	0..1 -> 1..* Terms/ObjectTerm contextArgument;
+	0..1 -> 1..* Vocabulary/VocBasic/Attribute attribute;
+}
+
+class DataOperationTerm
+{
+	isA Terms/TerFunctional/DataFunctionTerm;
+	0..1 -> 1..* Vocabulary/VocFunctional/DataOperation dataOperationRef;
+	0..1 -> * Terms/ObjectTerm contextArgument;
+	0..1 -> * Terms/Term arguments;
+}
+
+class ReferencePropertyFunctionTerm
+{
+	isA Terms/ObjectTerm;
+	0..1 -> 1..* Terms/ObjectTerm contextArgument;
+	0..1 -> 1..* Vocabulary/VocBasic/ReferenceProperty referencePropertyRef;
+}
+
+class ObjectOperationTerm
+{
+	isA Terms/ObjectTerm;
+	0..1 -> 1..* Vocabulary/VocFunctional/ObjectOperation operation;
+	0..1 -> * Terms/Term arguments;
+	0..1 -> * Terms/ObjectTerm contextArgument;
+}
+
+class GenericFunctionTerm
+{
+	isA Terms/GenericTerm;
+	0..1 -> * Terms/GenericTerm arguments;
+	0..1 -> 1..* Vocabulary/VocFunctional/GenericFunction functor;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class Long
+{
+}
+
+class Float
+{
+}
+
+class Double
+{
+}
+
+class Boolean
+{
+}
+
+class String
+{
+}

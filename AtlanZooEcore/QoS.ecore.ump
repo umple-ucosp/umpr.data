@@ -1,0 +1,152 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace QoSConceptualModel;
+
+class QoSComponent
+{
+	0..1 -> 1..* Operation operations;
+	1..* for -- * QoSProfile profile;
+}
+
+class QoSProfile
+{
+	0..1 -> 1..* QoSStatement provide;
+	0..1 -> 1..* QoSStatement uses;
+}
+
+class QoSContraints
+{
+	isA QoSCharacteristic;
+}
+
+class Operation
+{
+}
+
+class CompoundProfile
+{
+	isA QoSProfile;
+	1..* compoundProfile -- 1..* SimpleProfile simpleProfile;
+	1..* compoundProfile -- * ProfileTransition profileTransition;
+}
+
+class SimpleProfile
+{
+	isA QoSProfile;
+	0..1 -> 1..* QoSStatement use;
+	0..1 -> 1..* QoSStatement provides;
+}
+
+class ProfileTransition
+{
+	0..1 -> * Operation operations;
+	0..1 -> 1..* SimpleProfile from;
+	0..1 -> 1..* SimpleProfile to;
+}
+
+class QoSStatement
+{
+	0..1 -> 1..* QoSContraints contraints;
+	0..1 -> * Parameter parameter;
+	2..* statement -- 1..* CoumpoundQoSStatement relation;
+}
+
+class SingleQoSStatement
+{
+	isA QoSStatement;
+	0..1 -> 1..* QoSContraint contraint;
+}
+
+class CoumpoundQoSStatement
+{
+	isA QoSStatement;
+}
+
+class QoSContraint
+{
+	0..1 -> 1..* QualificationKind qualification;
+}
+
+class QualificationKind
+{
+	isA QoSCharacteristic;
+	String value;
+}
+
+class QoSCharacteristic
+{
+	0..1 -> 1..* BooleanExpression invariant;
+	0..1 -> 1..* MappingExpression parallel_and_composition;
+	0..1 -> 1..* MappingExpression parallel_or_composition;
+	0..1 -> 1..* MappingExpression sequential_composition;
+	0..1 -> 1..* MappingExpression values;
+	0..1 -> * StatisticalAttributekindKind statisticalAttribute;
+	0..1 -> 1..* Parameter parameter;
+	0..1 -> 1..* Domain domain;
+}
+
+class BooleanExpression
+{
+	String value;
+}
+
+class MappingExpression
+{
+	String value;
+}
+
+class StatisticalAttributekindKind
+{
+}
+
+class Parameter
+{
+}
+
+class DataType
+{
+}
+
+class Domain
+{
+	isA DataType;
+	0..1 -> 1..* DirectionKind direction;
+}
+
+class DirectionKind
+{
+	String value;
+}
+
+class Numeric
+{
+	isA Domain;
+}
+
+class Set
+{
+	isA Domain;
+	0..1 -> 1..* StringSet stringSet;
+}
+
+class Enumeration
+{
+	isA Domain;
+}
+
+class StringSet
+{
+	String[] string;
+}

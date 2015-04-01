@@ -1,0 +1,60 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+namespace HierarchicalSignalFlow;
+
+class Port
+{
+	0..1 src -- 1..* Asso_Port_Signal asso_Port_Signalsrc;
+	1..* dst -- 1..* Asso_Port_Signal asso_Port_Signaldst;
+}
+
+class Signal
+{
+	* signal -- 1..* Base base;
+	1..* signal -- 1..* Asso_Port_Signal asso_Port_Signal;
+}
+
+class Base
+{
+	* base -- 1..* Compound compound;
+	1..* base -- * InputPort inputPort;
+	1..* base -- * OutputPort outputPort;
+}
+
+class Compound
+{
+	isA Base;
+	1..* compound -- * LocalPort localPort;
+}
+
+class InputPort
+{
+	isA Port;
+}
+
+class OutputPort
+{
+	isA Port;
+}
+
+class LocalPort
+{
+	isA Port;
+}
+
+class Primitive
+{
+	isA Base;
+}
+
+class Asso_Port_Signal
+{
+}

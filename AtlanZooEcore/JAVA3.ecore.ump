@@ -1,0 +1,81 @@
+namespace JAVA;
+
+class Modifier
+{
+	String visibility;
+	String state;
+	String name;
+}
+
+class Class
+{
+	isA Modifier;
+	0..1 -> * Class superClass;
+	* implementedBy -- * Interface implement;
+	1..* class -- * Method methods;
+	1..* class -- * Field fields;
+}
+
+class Interface
+{
+	isA Modifier;
+	0..1 -> * Interface superInterface;
+	1..* interface -- * Method abstractMethods;
+	1..* interface -- * Field constants;
+}
+
+class Method
+{
+	isA Modifier;
+	Boolean share;
+	0..1 -> * Type resultOf;
+	1..* owner -- * Parameter parameters;
+}
+
+class Field
+{
+	isA Modifier;
+	Boolean share;
+	0..1 -> 1..* Value value;
+	0..1 -> 1..* Type typeOf;
+}
+
+class Value
+{
+}
+
+class Parameter
+{
+	String name;
+	0..1 -> * Type typeOf;
+}
+
+class Type
+{
+}
+
+class ReferenceType
+{
+	isA Type;
+	0..1 -> 1..* Class reference;
+}
+
+class PrimitiveType
+{
+	isA Type;
+}
+
+class Int
+{
+	isA PrimitiveType;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}

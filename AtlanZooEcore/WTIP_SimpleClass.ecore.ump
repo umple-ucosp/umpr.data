@@ -1,0 +1,43 @@
+namespace SimpleClass;
+
+class Classifier
+{
+	String name;
+}
+
+class Class
+{
+	isA Classifier;
+	Boolean is_persistent;
+	0..1 -> * Class parent;
+	0..1 -> * Attribute attrs;
+}
+
+class PrimitiveDataType
+{
+	isA Classifier;
+}
+
+class Association
+{
+	String name;
+	0..1 -> 1..* Class src;
+	0..1 -> 1..* Class dest;
+}
+
+class Attribute
+{
+	String name;
+	Boolean is_primary;
+	0..1 -> 1..* Classifier type;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}

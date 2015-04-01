@@ -1,0 +1,115 @@
+namespace MetaH;
+
+class METAHFile
+{
+	0..1 -> * METAHEntry entries;
+}
+
+class METAHEntry
+{
+}
+
+class Package
+{
+	isA METAHEntry;
+	String packName;
+	0..1 -> * Data data;
+}
+
+class PackageImplementation
+{
+	isA METAHEntry;
+	String implementationName;
+	String implements;
+	0..1 -> * Attribute attributes;
+}
+
+class Data
+{
+	String dataName;
+}
+
+class Attribute
+{
+	String attName;
+	Integer attValue;
+	String attValueType;
+	String attType;
+}
+
+class ProcessDeclaration
+{
+	isA METAHEntry;
+	String procDecName;
+	0..1 -> * Port ports;
+}
+
+class ProcessImplementation
+{
+	isA METAHEntry;
+	String procImpName;
+	String declaration;
+	0..1 -> * ProcessAttribute processAttributes;
+}
+
+class ProcessAttribute
+{
+	String attName;
+	Integer attValue;
+	String attValueType;
+}
+
+class Process
+{
+	String procName;
+	String periodic;
+	String declaration;
+	String implementation;
+}
+
+class Port
+{
+	String portName;
+	String portCom;
+	String portPackage;
+	String portType;
+}
+
+class Connection
+{
+	isA METAHEntry;
+	String compSrc;
+	String portSrc;
+	String compDest;
+	String portDest;
+}
+
+class MacroDeclaration
+{
+	isA METAHEntry;
+	String name;
+	0..1 -> * Port ports;
+}
+
+class MacroImplementation
+{
+	isA METAHEntry;
+	String macroImpName;
+	String declaration;
+	0..1 -> * Process process;
+	0..1 -> * Connection connections;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

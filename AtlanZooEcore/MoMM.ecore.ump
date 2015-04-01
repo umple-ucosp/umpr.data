@@ -1,0 +1,52 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace MoMM;
+
+class ModelElement
+{
+	Integer level;
+	String name;
+	String potency;
+	1..* classElement -- 1..* ModelElement hasClass;
+	* hasClass -- * ModelElement classElement;
+	0..1 target -- 1..* Relationship elementTarget;
+	0..1 -> * Attribute attributes;
+	1..* type -- 1..* Attribute attType;
+	1..* source -- 1..* Relationship elementSource;
+}
+
+class Attribute
+{
+	isA ModelElement;
+}
+
+class Relationship
+{
+	isA ModelElement;
+}
+
+class Generalization
+{
+	isA Relationship;
+}
+
+class Association
+{
+	isA Relationship;
+	String maxSource;
+	String maxTarget;
+	String minSource;
+	String minTarget;
+}

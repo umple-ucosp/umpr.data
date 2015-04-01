@@ -1,0 +1,84 @@
+namespace IEEE1471;
+
+class Viewpoint
+{
+	0..1 -> 1..* //ViewpointImport source;
+	0..1 -> 1..* //Concern covers;
+	0..1 supplier -- * //ViewpointDependency supplierDependency;
+	0..1 client -- * //ViewpointDependency clientDependency;
+	0..1 -> * //Stakeholder isImportTo;
+	0..1 -> * //ArchitecturalConstruct architecturalConstruct;
+	0..1 -> 1..* //Process process;
+}
+
+class Concern
+{
+}
+
+class Stakeholder
+{
+	0..1 -> * //Concern concerns;
+}
+
+class ViewpointImport
+{
+}
+
+class ViewpointDependency
+{
+	0..1 supplierDependency -- 1..* //Viewpoint supplier;
+	0..1 clientDependency -- 1..* //Viewpoint client;
+}
+
+class Process
+{
+	0..1 -> 1..* //Technique methodology;
+}
+
+class Technique
+{
+	0..1 -> * //AnalysisMethod methods;
+	0..1 techniques -- 1..* //Rule applies;
+}
+
+class AnalysisMethod
+{
+	0..1 -> 1..* //Language analysis;
+}
+
+class ArchitecturalConstruct
+{
+}
+
+class Rule
+{
+	isA //ArchitecturalConstruct;
+	0..1 applies -- 1..* //Technique techniques;
+	0..1 -> 1..* //Language guidance;
+}
+
+class ModelOrganization
+{
+	isA //Rule;
+}
+
+class ModellingRule
+{
+}
+
+class Language
+{
+	isA //ArchitecturalConstruct;
+}
+
+class Mapping
+{
+	isA //ArchitecturalConstruct;
+	0..1 -> 1..* //Language input;
+	0..1 -> 1..* //Language ouput;
+}
+
+class Pattern
+{
+	isA //ArchitecturalConstruct;
+}

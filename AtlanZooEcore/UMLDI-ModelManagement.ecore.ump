@@ -1,0 +1,107 @@
+namespace Core;
+
+class Element
+{
+}
+
+class ModelElement
+{
+	isA Element;
+	/2/String name;
+	/3/VisibilityKind visibility;
+	/2/Boolean isSpecification;
+	* ownedElement -- * Namespace namespace;
+}
+
+class GeneralizableElement
+{
+	isA ModelElement;
+	/2/Boolean isRoot;
+	/2/Boolean isLeaf;
+	/2/Boolean isAbstract;
+	1..* child -- * Generalization generalization;
+}
+
+class Namespace
+{
+	isA ModelElement;
+}
+
+class Classifier
+{
+	isA GeneralizableElement ;
+	* owner -- * Feature feature;
+	* powertype -- * Generalization powertypeRange;
+}
+
+class Feature
+{
+	isA ModelElement;
+	/3/ScopeKind ownerScope;
+}
+
+class Relationship
+{
+	isA ModelElement;
+}
+
+class Generalization
+{
+	isA Relationship;
+	/2/String discriminator;
+}
+
+namespace Model_Management;
+
+class Package
+{
+	isA GeneralizableElement ;
+	1..* package -- * ElementImport elementImport;
+}
+
+class Model
+{
+	isA Package;
+}
+
+class Subsystem
+{
+	isA Classifier;
+	/2/Boolean isInstantiable;
+}
+
+class ElementImport
+{
+	/3/VisibilityKind visibility;
+	/2/String alias;
+	/2/Boolean isSpecification;
+	0..1 -> 1..* ModelElement importedElement;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Float
+{
+}
+
+class Integer
+{
+}
+
+class Long
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}
+
+namespace Data_Types;

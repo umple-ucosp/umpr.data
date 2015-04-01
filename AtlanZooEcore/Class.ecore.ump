@@ -1,0 +1,45 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace Class;
+
+class NamedElt
+{
+	String name;
+}
+
+class Classifier
+{
+	isA NamedElt;
+}
+
+class DataType
+{
+	isA Classifier;
+}
+
+class Class
+{
+	isA Classifier;
+	Boolean isAbstract;
+	0..1 -> * Class super;
+	1..* owner -- * Attribute attr;
+}
+
+class Attribute
+{
+	isA NamedElt;
+	Boolean multiValued;
+	0..1 -> 1..* Classifier type;
+}

@@ -1,0 +1,440 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Real
+{
+}
+
+class Boolean
+{
+}
+
+namespace MiningMart;
+
+class LinkPackage
+{
+	InOut type;
+	0..1 linkPackageCaseRepresentation -- 1..* CaseRepresentation/DataObject dataObject;
+	0..1 linkPackage -- * DataRepresentation/Value value;
+	0..1 linkPackage -- * DataRepresentation/Column column;
+	0..1 linkPackage -- * DataRepresentation/ColumnSet columnSet;
+}
+
+class ModelElement
+{
+}
+
+class Classifier
+{
+	isA SimplfiedMiningMart/ModelElement;
+}
+
+class StructuralFeature
+{
+	isA SimplfiedMiningMart/ModelElement;
+}
+
+class Class
+{
+	isA SimplfiedMiningMart/Classifier;
+	String name;
+	0..1 class -- 1..* SimplfiedMiningMart/Attribute attributes;
+}
+
+class DataType
+{
+	isA SimplfiedMiningMart/Classifier;
+	0..1 has -- 1..* SimplfiedMiningMart/Attribute attribute;
+}
+
+class Attribute
+{
+	isA SimplfiedMiningMart/StructuralFeature;
+	0..1 attributes -- 1..* SimplfiedMiningMart/Class class;
+	0..1 attribute -- 1..* SimplfiedMiningMart/DataType has;
+}
+
+class Column
+{
+	isA SimplfiedMiningMart/Attribute;
+	String name;
+	0..1 -> 1..* SimplfiedMiningMart/DataType dataType;
+	0..1 hasColumn -- * DataRepresentation/Key keys;
+	0..1 hasColumn -- 1..* DataRepresentation/ColumnSet belongsToColumnSet;
+	0..1 -> 1..* DataRepresentation/BaseAttribute corespondsToBaseAttribute;
+	0..1 column -- * LinkPackage linkPackage;
+}
+
+class ColumnSet
+{
+	isA SimplfiedMiningMart/Class;
+	Integer number;
+	String file;
+	String dbConnectString;
+	String user;
+	0..1 belongsToColumnSet -- 1..* DataRepresentation/Column hasColumn;
+	0..1 isAssociatedToColumnSet -- 1..* DataRepresentation/Key hasKey;
+	0..1 correspondsToColumnSet -- * DataRepresentation/Concept correspondsToConcept;
+	0..1 correspondsToColumnSet -- * DataRepresentation/RelationShip correspondsToRelationShip;
+	0..1 columnSet -- * LinkPackage linkPackage;
+}
+
+class ColumnStatistics
+{
+	Integer unique;
+	Integer missing;
+	Integer min;
+	Integer max;
+	Integer average;
+	Integer standarDeviation;
+	String distributionValue;
+	Integer distributionCount;
+	Integer distributionMin;
+	Integer distributionMax;
+	0..1 -> 1..* DataRepresentation/Column forColumn;
+}
+
+class ColumnSetStatistics
+{
+	isA SimplfiedMiningMart/ModelElement;
+	Integer allNumber;
+	Integer ordinalNumber;
+	Integer nominalNumber;
+	Integer timeNumber;
+	0..1 -> 1..* DataRepresentation/ColumnSet forColumnSet;
+}
+
+class Snapshot
+{
+	isA DataRepresentation/ColumnSet;
+}
+
+class Table
+{
+	isA DataRepresentation/ColumnSet;
+}
+
+class View
+{
+	isA DataRepresentation/ColumnSet;
+}
+
+class Key
+{
+	isA SimplfiedMiningMart/ModelElement;
+	Boolean isUsedForIndex;
+	0..1 keys -- 1..* DataRepresentation/Column hasColumn;
+	0..1 hasKey -- 1..* DataRepresentation/ColumnSet isAssociatedToColumnSet;
+}
+
+class ForeignKey
+{
+	isA DataRepresentation/Key;
+	0..1 -> * DataRepresentation/Table isConnectionTo;
+	0..1 correspondsToForeignKey -- * DataRepresentation/RelationShip correspondsToRelationShip;
+}
+
+class PrimaryKey
+{
+	isA DataRepresentation/Key;
+}
+
+class Concept
+{
+	isA SimplfiedMiningMart/Class ;
+	String subConceptRestriction;
+	0..1 -> 1..* DataRepresentation/Concept isA;
+	0..1 FromConcept -- 1..* DataRepresentation/RelationShip FromConcept;
+	0..1 ToConcept -- 1..* DataRepresentation/RelationShip ToConcept;
+	0..1 correspondsToConcept -- * DataRepresentation/ColumnSet correspondsToColumnSet;
+}
+
+class RelationShip
+{
+	isA SimplfiedMiningMart/ModelElement ;
+	String subRelationShipRestriction;
+	String defined;
+	0..1 -> 1..* DataRepresentation/RelationShip isA;
+	0..1 correspondsToRelationShip -- 1..* DataRepresentation/ForeignKey correspondsToForeignKey;
+	0..1 correspondsToRelationShip -- * DataRepresentation/ColumnSet correspondsToColumnSet;
+	0..1 FromConcept -- 1..* DataRepresentation/Concept FromConcept;
+	0..1 ToConcept -- 1..* DataRepresentation/Concept ToConcept;
+}
+
+class FeatureAttribute
+{
+	isA SimplfiedMiningMart/Attribute;
+	String name;
+	Boolean relevanceForMining;
+	0..1 -> 1..* SimplfiedMiningMart/DataType attributeType;
+	0..1 -> 1..* DataRepresentation/Concept belongsToConcept;
+	0..1 -> 1..* DataRepresentation/Column correspondsToColumns;
+}
+
+class BaseAttribute
+{
+	isA DataRepresentation/FeatureAttribute;
+	0..1 consitsOfBaseAttributes -- * DataRepresentation/MultiColumnFeature isPartMultiColumnFeature;
+	0..1 baseAttributeD -- 1..* DataRepresentation/DomainDataType domainDataType;
+}
+
+class MultiColumnFeature
+{
+	isA DataRepresentation/FeatureAttribute;
+	0..1 isPartMultiColumnFeature -- * DataRepresentation/BaseAttribute consitsOfBaseAttributes;
+}
+
+class Value
+{
+	isA SimplfiedMiningMart/Attribute ;
+	0..1 -> 1..* DataRepresentation/DomainDataType domainDataType;
+	0..1 -> 1..* DataRepresentation/UserInput belongsToUserInput;
+	0..1 value -- * LinkPackage linkPackage;
+}
+
+class UserInput
+{
+	isA SimplfiedMiningMart/Class;
+	0..1 -> 1..* DataRepresentation/Value containsValues;
+}
+
+class Ordinal
+{
+	isA DataRepresentation/DomainDataType;
+}
+
+class Scalar
+{
+	isA DataRepresentation/Ordinal;
+}
+
+class Time
+{
+	isA DataRepresentation/Scalar;
+}
+
+class Binary
+{
+	isA DataRepresentation/Scalar ;
+}
+
+class Categorial
+{
+	isA DataRepresentation/Nominal;
+}
+
+class KeyAttribute
+{
+	isA DataRepresentation/Nominal;
+}
+
+class TimeGroup
+{
+	isA DataRepresentation/KeyAttribute;
+}
+
+class Spatial
+{
+	isA DataRepresentation/KeyAttribute;
+}
+
+class Constant
+{
+	isA DataRepresentation/Nominal;
+}
+
+class RoleRestriction
+{
+	isA SimplfiedMiningMart/Attribute;
+	String name;
+	Integer min;
+	Integer max;
+	0..1 -> 1..* DataRepresentation/RelationShip restrictionForRelationShip;
+	0..1 -> 1..* DataRepresentation/Concept restrictionForConcept;
+	0..1 -> 1..* DataRepresentation/Concept restrictionToConcept;
+	0..1 -> 1..* DataRepresentation/Concept belongsToConcept;
+}
+
+class DomainDataType
+{
+	isA SimplfiedMiningMart/DataType;
+	0..1 domainDataType -- 1..* DataRepresentation/BaseAttribute baseAttributeD;
+}
+
+class Nominal
+{
+	isA DataRepresentation/DomainDataType;
+}
+
+class Case
+{
+	isA SimplfiedMiningMart/ModelElement;
+	String name;
+	Boolean caseMode;
+	String documentation;
+	0..1 -> 1..* CaseRepresentation/Parameter caseInput;
+	0..1 -> 1..* DataRepresentation/Concept caseOutput;
+	0..1 belongsToCase -- 1..* CaseRepresentation/Step listOfStep;
+	0..1 -> 1..* DataRepresentation/Concept population;
+	0..1 -> 1..* DataRepresentation/FeatureAttribute targetAttributes;
+}
+
+class Step
+{
+	isA SimplfiedMiningMart/ModelElement;
+	String name;
+	String description;
+	0..1 listOfStep -- 1..* CaseRepresentation/Case belongsToCase;
+	0..1 -> 1..* CaseRepresentation/Operator embedsOperator;
+	0..1 -> * CaseRepresentation/Step predecessors;
+	0..1 -> * CaseRepresentation/Step successors;
+}
+
+class LoopStep
+{
+	isA CaseRepresentation/Step;
+	0..1 -> * DataRepresentation/FeatureAttribute iterationSet;
+	0..1 -> * DataRepresentation/FeatureAttribute outputSet;
+}
+
+class MultiStep
+{
+	isA CaseRepresentation/Step;
+	String iterationCondition;
+}
+
+class Operator
+{
+	isA SimplfiedMiningMart/ModelElement;
+	Boolean loopable;
+	Integer numberOfInputParameters;
+	Integer numberOfOutputParameters;
+	Boolean manual;
+	String tool;
+	0..1 -> 1..* CaseRepresentation/Parameter input;
+	0..1 -> 1..* CaseRepresentation/Parameter output;
+	0..1 -> 1..* CaseRepresentation/ExecutionElement realizes;
+}
+
+class Parameter
+{
+	String name;
+	String place;
+	CaseRepresentation/ParameterType parameterType;
+	0..1 -> 1..* CaseRepresentation/Operator belongsToOperator;
+}
+
+class FeatureConstruction
+{
+	isA CaseRepresentation/Operator;
+	Integer scalingFactor;
+}
+
+class DataMinStep
+{
+	isA CaseRepresentation/Operator;
+}
+
+class TimeOperator
+{
+	isA CaseRepresentation/Operator;
+}
+
+class FeatureSelection
+{
+	isA CaseRepresentation/Operator;
+}
+
+class MultiRelFeatureConstr
+{
+	isA CaseRepresentation/Operator;
+}
+
+class RowSelection
+{
+	isA CaseRepresentation/Operator;
+}
+
+class Agregation
+{
+	isA CaseRepresentation/MultiRelFeatureConstr;
+}
+
+class Scaling
+{
+	isA CaseRepresentation/FeatureConstruction;
+}
+
+class Discretization
+{
+	isA CaseRepresentation/FeatureConstruction;
+}
+
+class Segmentation
+{
+	isA CaseRepresentation/RowSelection;
+}
+
+class Sampling
+{
+	isA CaseRepresentation/RowSelection;
+}
+
+class ExecutionElement
+{
+	0..1 source -- 1..* CaseRepresentation/DataObject source;
+	0..1 target -- 1..* CaseRepresentation/DataObject target;
+}
+
+class DataObject
+{
+	0..1 source -- 1..* CaseRepresentation/ExecutionElement source;
+	0..1 target -- 1..* CaseRepresentation/ExecutionElement target;
+	0..1 dataObject -- 1..* LinkPackage linkPackageCaseRepresentation;
+}
+
+class MSL-Tool
+{
+	isA CaseRepresentation/ExecutionElement;
+}
+
+class TransformationGroup
+{
+	isA CaseRepresentation/ExecutionElement;
+	0..1 transformationGroup -- * CaseRepresentation/Transformation transformation;
+}
+
+class Transformation
+{
+	isA CaseRepresentation/ExecutionElement;
+	0..1 transformation -- 1..* CaseRepresentation/TransformationGroup transformationGroup;
+}
+
+class Function
+{
+	isA CaseRepresentation/Transformation;
+	String nameOf;
+	String signature;
+}
+
+class StoredProcedure
+{
+	isA CaseRepresentation/Transformation;
+	String nameOf;
+	String signature;
+}
+
+class SQLQuery
+{
+	isA CaseRepresentation/Transformation;
+	String[] where;
+	0..1 -> 1..* DataRepresentation/Column select;
+	0..1 -> 1..* DataRepresentation/ColumnSet from;
+}

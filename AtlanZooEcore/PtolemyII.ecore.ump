@@ -1,0 +1,103 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace PtolemyII;
+
+class EDataType
+{
+	String value;
+}
+
+class NamedObject
+{
+	String name;
+}
+
+class Attribute
+{
+	isA NamedObject;
+	String value;
+	* attributes -- 1..* Entity att_container;
+}
+
+class Entity
+{
+	isA NamedObject;
+	1..* po_container -- * Port ports;
+	1..* pa_container -- * Parameter parameters;
+}
+
+class Port
+{
+	isA NamedObject;
+	* ports -- * Relation links;
+}
+
+class Relation
+{
+	isA NamedObject;
+}
+
+class Director
+{
+	isA NamedObject;
+	0..2 directors -- 1..* CompositeActor ca_container;
+}
+
+class Parameter
+{
+	isA Attribute;
+	0..1 -> 1..* EDataType dataType;
+}
+
+class ComponentPort
+{
+	isA Port;
+}
+
+class ComponentRelation
+{
+	isA Relation;
+	* relations -- 1..* CompositeEntity re_container;
+}
+
+class ComponentEntity
+{
+	isA Attribute;
+	* containees -- 1..* CompositeEntity ce_container;
+}
+
+class AtomicActor
+{
+	isA ComponentEntity;
+}
+
+class CompositeEntity
+{
+	isA ComponentEntity;
+}
+
+class WorkSpace
+{
+	isA CompositeEntity;
+}
+
+class CompositeActor
+{
+	isA CompositeEntity;
+}

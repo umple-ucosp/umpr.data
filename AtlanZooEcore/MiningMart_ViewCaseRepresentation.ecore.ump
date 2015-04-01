@@ -1,0 +1,203 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace CaseRepresentation;
+
+class Case
+{
+	isA /2/ModelElement;
+	String name;
+	Boolean caseMode;
+	String documentation;
+	0..1 -> 1..* Parameter caseInput;
+	1..* belongsToCase -- 1..* Step listOfStep;
+}
+
+class Step
+{
+	isA /2/ModelElement;
+	String name;
+	String description;
+	0..1 -> 1..* Operator embedsOperator;
+	0..1 -> * Step predecessors;
+	0..1 -> * Step successors;
+}
+
+class LoopStep
+{
+	isA Step;
+}
+
+class MultiStep
+{
+	isA Step;
+	String iterationCondition;
+}
+
+class Operator
+{
+	isA /2/ModelElement;
+	Boolean loopable;
+	Integer numberOfInputParameters;
+	Integer numberOfOutputParameters;
+	Boolean manual;
+	String tool;
+	0..1 -> 1..* Parameter input;
+	0..1 -> 1..* ExecutionElement realizes;
+	0..1 -> 1..* Parameter output;
+}
+
+class Parameter
+{
+	String name;
+	String place;
+	0..1 -> 1..* ParameterType parameterType;
+}
+
+class FeatureConstruction
+{
+	isA Operator;
+	Integer scalingFactor;
+}
+
+class DataMinStep
+{
+	isA Operator;
+}
+
+class TimeOperator
+{
+	isA Operator;
+}
+
+class FeatureSelection
+{
+	isA Operator;
+}
+
+class MultiRelFeatureConstr
+{
+	isA Operator;
+}
+
+class RowSelection
+{
+	isA Operator;
+}
+
+class Agregation
+{
+	isA MultiRelFeatureConstr;
+}
+
+class Scaling
+{
+	isA FeatureConstruction;
+}
+
+class Discretization
+{
+	isA FeatureConstruction;
+}
+
+class Segmentation
+{
+	isA RowSelection;
+}
+
+class Sampling
+{
+	isA RowSelection;
+}
+
+class ExecutionElement
+{
+	0..1 source -- 1..* DataObject source;
+	1..* target -- 1..* DataObject target;
+}
+
+class DataObject
+{
+}
+
+class MSL-Tool
+{
+	isA ExecutionElement;
+}
+
+class TransformationGroup
+{
+	isA ExecutionElement;
+	1..* transformationGroup -- * Transformation transformation;
+}
+
+class Transformation
+{
+	isA ExecutionElement;
+}
+
+class Function
+{
+	isA Transformation;
+	String nameOf;
+	String signature;
+}
+
+class StoredProcedure
+{
+	isA Transformation;
+	String nameOf;
+	String signature;
+}
+
+class SQLQuery
+{
+	isA Transformation;
+}
+
+namespace SimplfiedMiningMart;
+
+class ModelElement
+{
+}
+
+class Classifier
+{
+	isA /2/ModelElement;
+}
+
+class StructuralFeature
+{
+	isA /2/ModelElement;
+}
+
+class Class
+{
+	isA /2/Classifier;
+	String name;
+	0..1 class -- 1..* /2/Attribute attributes;
+}
+
+class DataType
+{
+	isA /2/Classifier;
+	0..1 has -- 1..* /2/Attribute attribute;
+}
+
+class Attribute
+{
+	isA /2/StructuralFeature;
+	0..1 attributes -- 1..* /2/Class class;
+	0..1 attribute -- 1..* /2/DataType has;
+}

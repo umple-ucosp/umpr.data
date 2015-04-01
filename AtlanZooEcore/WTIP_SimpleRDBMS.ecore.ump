@@ -1,0 +1,26 @@
+namespace SimpleRDBMS;
+
+class Table
+{
+	String name;
+	0..1 -> * Column pkey;
+	0..1 -> * Column cols;
+	0..1 -> * FKey fkeys;
+}
+
+class Column
+{
+	String name;
+	String type;
+}
+
+class FKey
+{
+	0..1 -> * Column cols;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

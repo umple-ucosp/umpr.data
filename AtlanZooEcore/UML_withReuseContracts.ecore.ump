@@ -1,0 +1,64 @@
+namespace UMLWithReuseContrats;
+
+class ReuseContract
+{
+	isA Dependency;
+	0..1 -> 1..* ProviderClause supplier;
+	0..1 -> 1..* ReuserClause client;
+}
+
+class Dependency
+{
+	* subDependency -- * Dependency owningDependency;
+	* owningDependency -- * Dependency subDependency;
+}
+
+class ProviderClause
+{
+	isA Package;
+}
+
+class Package
+{
+}
+
+class ReuserClause
+{
+	isA Package;
+}
+
+class CompositeProvider
+{
+	isA ProviderClause;
+	0..1 -> 1..* ReuseContract subcontract;
+}
+
+class BasicProvider
+{
+	isA ProviderClause;
+}
+
+class CompositeReuser
+{
+	isA ReuserClause;
+	0..1 -> * ReuserClause subreuser;
+}
+
+class BasicReuser
+{
+	isA ReuserClause;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

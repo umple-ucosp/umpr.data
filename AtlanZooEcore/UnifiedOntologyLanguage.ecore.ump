@@ -1,0 +1,53 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace UnifiedOntologyLanguage;
+
+class Node
+{
+}
+
+class Resource
+{
+	isA Node;
+	0..1 -> 1..* Package context;
+}
+
+class Literal
+{
+	isA Node;
+}
+
+class Fact
+{
+	0..1 -> 1..* Node object;
+	0..1 -> 1..* Resource subject;
+	0..1 -> 1..* Resource predicate;
+	0..1 -> 1..* Package context;
+}
+
+class Package
+{
+	isA Resource;
+}
+
+class Ontology
+{
+	isA Package;
+	0..1 -> * Package imports;
+}

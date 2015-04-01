@@ -1,0 +1,107 @@
+namespace OCLValues;
+
+class Value
+{
+	* value -- 1..* Type type;
+	* elements -- * BagValue bagValue;
+	* elements -- * SequenceValue sequenceValue;
+	* elements -- * SetValue setValue;
+}
+
+class Type
+{
+}
+
+class BasicValue
+{
+	isA Value;
+}
+
+class IntegerValue
+{
+	isA BasicValue;
+	Integer val;
+}
+
+class RealValue
+{
+	isA BasicValue;
+	Double val;
+}
+
+class StringValue
+{
+	isA BasicValue;
+	String val;
+}
+
+class BooleanValue
+{
+	isA BasicValue;
+	Boolean val;
+}
+
+class ObjectValue
+{
+	isA Value;
+	* objectValue -- 1..* Object object;
+}
+
+class Object
+{
+}
+
+class EnumValue
+{
+	isA Value;
+	* enumValue -- 1..* EnumLiteral enumLiteral;
+}
+
+class EnumLiteral
+{
+}
+
+class UndefinedValue
+{
+	isA Value;
+}
+
+class CollectionValue
+{
+	isA Value;
+}
+
+class BagValue
+{
+}
+
+class SequenceValue
+{
+}
+
+class SetValue
+{
+}
+
+class Count
+{
+	Integer num;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}

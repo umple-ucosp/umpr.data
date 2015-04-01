@@ -1,0 +1,40 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace GeoTrans;
+
+class GeoTransfos
+{
+	String name;
+	0..1 -> * GeoTransfo transfos;
+}
+
+class GeoTransfo
+{
+	String name;
+	Boolean freeze;
+	* superGeoTransfo -- * GeoTransfo subGeoTransfos;
+	1..* subGeoTransfos -- 1..* GeoTransfo superGeoTransfo;
+	1..* geoTransfo -- * Param params;
+}
+
+class Param
+{
+	String name;
+	Double param;
+}

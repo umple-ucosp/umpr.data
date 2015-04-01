@@ -1,0 +1,119 @@
+namespace DTD;
+
+class TypeDescription
+{
+	String name;
+}
+
+class Notation
+{
+	isA TypeDescription;
+	String content;
+}
+
+class Entity
+{
+	isA TypeDescription;
+	String content;
+	Boolean isInternal;
+}
+
+class Element
+{
+	isA TypeDescription;
+}
+
+class AnyElement
+{
+	isA Element;
+}
+
+class RestrictedElement
+{
+	isA Element;
+	0..1 -> * ElementContent content;
+}
+
+class ElementContent
+{
+}
+
+class Mixed
+{
+	isA ElementContent;
+	String elements;
+}
+
+class Children
+{
+	isA ElementContent;
+	Occurence occ;
+}
+
+class Sequence
+{
+	isA Children;
+	0..1 -> 2..* Children children;
+}
+
+class Leaf
+{
+	isA Children;
+	String elementName;
+}
+
+class Choice
+{
+	isA Children;
+	0..1 -> 2..* Children childrenChoice;
+}
+
+class AttributeList
+{
+	isA TypeDescription;
+	1..* attributeList -- 1..* AttributeDescription containsAttributes;
+}
+
+class AttributeDescription
+{
+	isA TypeDescription;
+	0..1 -> 1..* AttributeType type;
+}
+
+class NoDefaultValue
+{
+	isA AttributeDescription;
+	Boolean isRequired;
+}
+
+class DefaultValue
+{
+	isA AttributeDescription;
+	String value;
+	Boolean isFixed;
+}
+
+class AttributeType
+{
+}
+
+class Enumeration
+{
+	isA AttributeType;
+	String values;
+}
+
+class OtherAttributeType
+{
+	OtherAttributeTypeEnum type;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}

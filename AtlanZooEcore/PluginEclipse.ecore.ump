@@ -1,0 +1,119 @@
+namespace PluginEclipse;
+
+class LocatedElement
+{
+	/2/String location;
+	/2/String[] commentsBefore;
+	/2/String[] commentsAfter;
+}
+
+class Eclipse
+{
+	isA LocatedElement;
+	0..1 -> 1..* Bundle bundles;
+	0..1 -> * Package packages;
+}
+
+class Bundle
+{
+	isA LocatedElement;
+	/2/String symbolicName;
+	/2/Boolean singleton;
+	/2/Integer manifestVersion;
+	0..1 -> 1..* Version version;
+	0..1 -> * ExportedPackage export;
+	0..1 -> * ImportedPackage import;
+	0..1 -> * Package packages;
+	0..1 -> * RequiredBundle require;
+}
+
+class RequireBundleAttribute
+{
+	isA LocatedElement;
+}
+
+class AttResolution
+{
+	isA RequireBundleAttribute;
+	Resolution value;
+}
+
+class AttVisibility
+{
+	isA RequireBundleAttribute;
+	Visibility value;
+}
+
+class Range
+{
+	isA RequireBundleAttribute;
+	/2/Boolean isLeftInclusive;
+	/2/Boolean isRightInclusive;
+	0..1 -> 1..* Version lowerBound;
+	0..1 -> 1..* Version upperBound;
+}
+
+class Version
+{
+	isA LocatedElement;
+	/2/Integer major;
+	/2/Integer minor;
+	/2/Integer micro;
+	/2/String qualification;
+}
+
+class RequiredBundle
+{
+	isA LocatedElement;
+	0..1 -> * RequireBundleAttribute requireBundleAttribute;
+}
+
+class ImportedPackage
+{
+	isA LocatedElement;
+	Resolution resolution;
+	0..1 -> * Range range;
+	* importedBy -- 1..* Package package;
+}
+
+class ExportedPackage
+{
+	isA LocatedElement;
+	0..1 -> 1..* Version version;
+	0..1 -> 1..* Xfriends xFriends;
+	* exportedBy -- 1..* Package package;
+}
+
+class Package
+{
+	isA LocatedElement;
+	/2/String fqn;
+}
+
+namespace PluginsEclipse;
+
+class Xfriends
+{
+	isA LocatedElement;
+	0..1 -> 1..* Bundle bundles;
+}
+
+class Xinternal
+{
+	isA ExportedPackage;
+	/2/Boolean value;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

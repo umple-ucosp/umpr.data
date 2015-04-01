@@ -1,0 +1,67 @@
+namespace BusinessEntityModel;
+
+class DataType
+{
+}
+
+class Action
+{
+}
+
+class Class
+{
+}
+
+class BusinessEntityPropertySet
+{
+	isA DataType;
+}
+
+class BusinessRole
+{
+	isA Action;
+	0..1 -> 1..* BusinessEntityPropertySet characterisedby;
+	0..1 -> 1..* Class typ;
+	1..* associatedWith -- * Task task;
+	1..* placehold -- 1..* BusinessEntity fille;
+}
+
+class Task
+{
+	0..1 -> * ArtifactRole needs;
+}
+
+class ArtifactRole
+{
+	isA BusinessRole;
+}
+
+class PerformerRole
+{
+	isA BusinessRole;
+	0..1 -> 1..* Task perform;
+}
+
+class OrganisationalUnit
+{
+	isA BusinessRole;
+}
+
+class BusinessEntity
+{
+	isA Class;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

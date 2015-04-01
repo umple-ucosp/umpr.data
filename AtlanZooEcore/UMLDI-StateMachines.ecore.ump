@@ -1,0 +1,343 @@
+namespace Common_Behavior;
+
+class Signal
+{
+	isA /4/Classifier;
+}
+
+class Action
+{
+	isA /4/ModelElement;
+	/3/Boolean isAsynchronous;
+	0..1 -> * IterationExpression recurrence;
+	0..1 -> * ObjectSetExpression target;
+	0..1 -> * ActionExpression script;
+	* action -- * ActionSequence actionSequence;
+	* action -- * Argument actualArgument;
+}
+
+class CreateAction
+{
+	isA Action;
+	0..1 -> 1..* /4/Classifier instantiation;
+}
+
+class DestroyAction
+{
+	isA Action;
+}
+
+class UninterpretedAction
+{
+	isA Action;
+}
+
+class CallAction
+{
+	isA Action;
+	0..1 -> 1..* /4/Operation operation;
+}
+
+class SendAction
+{
+	isA Action;
+	0..1 -> 1..* Signal signal;
+}
+
+class ActionSequence
+{
+	isA Action;
+}
+
+class Argument
+{
+	isA /4/ModelElement;
+	0..1 -> 1..* Expression value;
+}
+
+class Reception
+{
+	isA /4/BehavioralFeature;
+	/3/String specification;
+	/3/Boolean isRoot;
+	/3/Boolean isLeaf;
+	/3/Boolean isAbstract;
+	0..1 -> 1..* Signal signal;
+}
+
+class ReturnAction
+{
+	isA Action;
+}
+
+class TerminateAction
+{
+	isA Action;
+}
+
+class Exception
+{
+	isA Signal;
+}
+
+namespace Data_Types;
+
+class Expression
+{
+	/3/String language;
+	/3/String body;
+}
+
+class BooleanExpression
+{
+	isA Expression;
+}
+
+class ObjectSetExpression
+{
+	isA Expression;
+}
+
+class ActionExpression
+{
+	isA Expression;
+}
+
+class IterationExpression
+{
+	isA Expression;
+}
+
+class TimeExpression
+{
+	isA Expression;
+}
+
+namespace State_Machines;
+
+class StateMachine
+{
+	isA /4/ModelElement;
+	0..1 -> * /4/ModelElement context;
+	0..1 submachine -- * /2/SubmachineState submachineState;
+	0..1 stateMachine -- 1..* /2/State top;
+	0..1 stateMachine -- * /2/Transition transitions;
+}
+
+class Event
+{
+	isA /4/ModelElement;
+	0..1 -> * /4/Parameter parameter;
+}
+
+class StateVertex
+{
+	isA /4/ModelElement;
+	0..1 subvertex -- * /2/CompositeState container;
+	0..1 target -- * /2/Transition incoming;
+	0..1 source -- * /2/Transition outgoing;
+}
+
+class State
+{
+	isA /2/StateVertex;
+	0..1 -> * /2/Event deferrableEvent;
+	0..1 -> * /2/Transition internalTransition;
+	0..1 -> * Action exit;
+	0..1 -> * Action doActivity;
+	0..1 -> * Action entry;
+	0..1 top -- * /2/StateMachine stateMachine;
+}
+
+class TimeEvent
+{
+	isA /2/Event;
+	0..1 -> 1..* TimeExpression when;
+}
+
+class CallEvent
+{
+	isA /2/Event;
+	0..1 -> 1..* /4/Operation operation;
+}
+
+class SignalEvent
+{
+	isA /2/Event;
+	0..1 -> 1..* Signal signal;
+}
+
+class Transition
+{
+	isA /4/ModelElement;
+	0..1 incoming -- 1..* /2/StateVertex target;
+	0..1 -> * /2/Event trigger;
+	0..1 transitions -- * /2/StateMachine stateMachine;
+	0..1 outgoing -- 1..* /2/StateVertex source;
+	0..1 -> * Action effect;
+	0..1 transition -- * /2/Guard guard;
+}
+
+class CompositeState
+{
+	isA /2/State;
+	/3/Boolean isConcurrent;
+	0..1 container -- * /2/StateVertex subvertex;
+}
+
+class ChangeEvent
+{
+	isA /2/Event;
+	0..1 -> 1..* BooleanExpression changeExpression;
+}
+
+class Guard
+{
+	isA /4/ModelElement;
+	0..1 guard -- 1..* /2/Transition transition;
+	0..1 -> 1..* BooleanExpression expression;
+}
+
+class Pseudostate
+{
+	isA /2/StateVertex;
+	PseudostateKind kind;
+}
+
+class SimpleState
+{
+	isA /2/State;
+}
+
+class SubmachineState
+{
+	isA /2/CompositeState;
+	0..1 submachineState -- 1..* /2/StateMachine submachine;
+}
+
+class SynchState
+{
+	isA /2/StateVertex;
+	/3/Integer bound;
+}
+
+class StubState
+{
+	isA /2/StateVertex;
+	/3/String referenceState;
+}
+
+class FinalState
+{
+	isA /2/State;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Float
+{
+}
+
+class Integer
+{
+}
+
+class Long
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}
+
+namespace Core;
+
+class Element
+{
+}
+
+class ModelElement
+{
+	isA /4/Element;
+	/3/String name;
+	VisibilityKind visibility;
+	/3/Boolean isSpecification;
+	0..1 ownedElement -- * /4/Namespace namespace;
+}
+
+class GeneralizableElement
+{
+	isA /4/ModelElement;
+	/3/Boolean isRoot;
+	/3/Boolean isLeaf;
+	/3/Boolean isAbstract;
+	0..1 child -- * /4/Generalization generalization;
+}
+
+class Namespace
+{
+	isA /4/ModelElement;
+	0..1 namespace -- * /4/ModelElement ownedElement;
+}
+
+class Classifier
+{
+	isA /4/GeneralizableElement /4/Namespace;
+	0..1 powertype -- * /4/Generalization powertypeRange;
+	0..1 owner -- * /4/Feature feature;
+}
+
+class Feature
+{
+	isA /4/ModelElement;
+	ScopeKind ownerScope;
+	0..1 feature -- * /4/Classifier owner;
+}
+
+class Relationship
+{
+	isA /4/ModelElement;
+}
+
+class BehavioralFeature
+{
+	isA /4/Feature;
+	/3/Boolean isQuery;
+	0..1 behavioralFeature -- * /4/Parameter parameter;
+}
+
+class Operation
+{
+	isA /4/BehavioralFeature;
+	CallConcurrencyKind concurrency;
+	/3/Boolean isRoot;
+	/3/Boolean isLeaf;
+	/3/Boolean isAbstract;
+	/3/String specification;
+}
+
+class Parameter
+{
+	isA /4/ModelElement;
+	ParameterDirectionKind kind;
+	0..1 -> 1..* /4/Classifier type;
+	0..1 parameter -- * /4/BehavioralFeature behavioralFeature;
+	0..1 -> * Expression defaultValue;
+}
+
+class Generalization
+{
+	isA /4/Relationship;
+	/3/String discriminator;
+	0..1 -> 1..* /4/GeneralizableElement parent;
+	0..1 powertypeRange -- * /4/Classifier powertype;
+	0..1 generalization -- 1..* /4/GeneralizableElement child;
+}

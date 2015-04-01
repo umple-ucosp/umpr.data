@@ -1,0 +1,34 @@
+namespace PIF;
+
+class BusinessTemplate
+{
+}
+
+class BusinessContact
+{
+}
+
+class BusinessService
+{
+}
+
+class BusinessEntity
+{
+	0..1 -> * //BusinessContact businessContacts;
+	0..1 -> * //BusinessService businessServices;
+	0..1 -> * //IdentifierBag identifierBag;
+}
+
+class IdentifierBag
+{
+}
+
+class TModel
+{
+	0..1 -> * //OverviewDocument overviewDocuments;
+	0..1 -> * //IdentifierBag identifierBag;
+}
+
+class OverviewDocument
+{
+}

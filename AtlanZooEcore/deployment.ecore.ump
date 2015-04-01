@@ -1,0 +1,36 @@
+namespace Deployment;
+
+class Node
+{
+	String name;
+	0..1 -> * Node nestedNode;
+}
+
+class Device
+{
+	isA Node;
+}
+
+class ExecutionEnvironment
+{
+	isA Node;
+}
+
+class Specification
+{
+	0..1 -> * Node ownedNode;
+	0..1 -> * CommunicationLink ownedCommunicationLink;
+}
+
+class CommunicationLink
+{
+	String name;
+	0..1 -> * Node source;
+	0..1 -> * Node target;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

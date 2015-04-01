@@ -1,0 +1,99 @@
+namespace CWMCore;
+
+class BooleanExpression
+{
+	String expresssion;
+}
+
+class ModelElement
+{
+	String name;
+	VisibilityKind visibility;
+	0..1 clients -- * Dependency clientDependencies;
+	1..* suppliers -- * Dependency supplierDependencies;
+	* constrainedElements -- * Constraint contraints;
+	* ownedElements -- * NameSpace namespace;
+	* importedElements -- * Package importers;
+}
+
+class Dependency
+{
+	isA ModelElement;
+	String kind;
+}
+
+class Constraint
+{
+	isA ModelElement;
+	0..1 -> 1..* BooleanExpression body;
+}
+
+class Feature
+{
+	isA ModelElement;
+	* features -- * Classifier owner;
+}
+
+class StructuralFeature
+{
+	isA Feature;
+	0..1 -> 1..* Classifier type;
+}
+
+class Attribute
+{
+	isA StructuralFeature;
+}
+
+class NameSpace
+{
+	isA ModelElement;
+}
+
+class Classifier
+{
+	isA NameSpace;
+}
+
+class Package
+{
+	isA NameSpace;
+}
+
+class Class
+{
+	isA Classifier;
+}
+
+class Datatype
+{
+	isA Classifier;
+}
+
+class Subsystem
+{
+	isA Classifier ;
+}
+
+class Model
+{
+	isA Package;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

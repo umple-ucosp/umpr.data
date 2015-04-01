@@ -1,0 +1,108 @@
+namespace XAML;
+
+class Transformation
+{
+}
+
+class WinFXElement
+{
+	0..1 -> 1..* NameSpace namespace;
+}
+
+class NameSpace
+{
+	String namespace;
+	String identifier;
+}
+
+class ResourceGroup
+{
+	0..1 -> 1..* Key key;
+}
+
+class Material
+{
+}
+
+class Key
+{
+	isA WinFXElement;
+	String name;
+}
+
+class ResourceDictionary
+{
+	0..1 -> * ResourceGroup resourcegroups;
+	0..1 -> * NameSpace xmlns;
+}
+
+class Transform3DGroup
+{
+	isA ResourceGroup;
+	0..1 -> * Transformation transformations;
+}
+
+class MaterialGroup
+{
+	isA ResourceGroup;
+	0..1 -> * Material materials;
+}
+
+class DiffuseMaterial
+{
+	isA Material;
+	String Brush;
+}
+
+class TranslateTransform3D
+{
+	isA Transformation;
+	Double OffsetX;
+	Double OffsetY;
+	Double OffsetZ;
+}
+
+class ScaleTransform3D
+{
+	isA Transformation;
+	Double ScaleX;
+	Double ScaleY;
+	Double ScaleZ;
+}
+
+class RotateTransform3D
+{
+	isA Transformation;
+	Double CenterX;
+	Double CenterY;
+	0..1 -> 1..* RotateTransformat3DRotation rotation;
+}
+
+class RotateTransformat3DRotation
+{
+	0..1 -> 1..* AxisAngleRotation3D axisAngleRotation3D;
+}
+
+class AxisAngleRotation3D
+{
+	Integer angle;
+	String axis;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class Double
+{
+}

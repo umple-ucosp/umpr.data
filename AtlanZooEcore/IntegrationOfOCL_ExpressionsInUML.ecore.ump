@@ -1,0 +1,63 @@
+namespace OCLExpression;
+
+class PreCondition
+{
+	isA Core/Constraint;
+}
+
+class PortCondition
+{
+	isA Core/Constraint;
+}
+
+class Invariant
+{
+	isA Core/Constraint;
+}
+
+class Guard
+{
+	isA Core/Constraint;
+}
+
+class ModelElement
+{
+	0..1 constrainedElement -- 1..* Core/Constraint constraint;
+}
+
+class Constraint
+{
+	isA Core/ModelElement;
+	0..1 constraint -- 1..* Core/ModelElement constrainedElement;
+	0..1 constraint -- 1..* DataTypes/BooleanExpression body;
+}
+
+class Expression
+{
+	0..1 owner -- * OCl/OCLExpression body;
+}
+
+class BooleanExpression
+{
+	isA DataTypes/Expression;
+	0..1 body -- * Core/Constraint constraint;
+}
+
+class OCLExpression
+{
+	0..1 body -- * DataTypes/Expression owner;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

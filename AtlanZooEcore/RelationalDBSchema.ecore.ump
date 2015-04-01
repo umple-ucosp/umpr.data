@@ -1,0 +1,46 @@
+namespace RelationalDBSchema;
+
+class NamedElement
+{
+	String name;
+}
+
+class DataBase
+{
+	isA NamedElement;
+	String SGBDname;
+	1..* database -- * Table tables;
+}
+
+class Table
+{
+	isA NamedElement;
+	0..1 owner -- * Column columns;
+	* keyOf -- * Column key;
+}
+
+class Column
+{
+	isA NamedElement;
+	String dataType;
+	Boolean null;
+	String defaultValue;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

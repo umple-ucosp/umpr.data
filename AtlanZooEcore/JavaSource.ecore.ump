@@ -1,0 +1,34 @@
+namespace JavaSource;
+
+class JavaSource
+{
+	0..1 -> 1..* ClassDeclaration classes;
+}
+
+class NamedElement
+{
+	String name;
+}
+
+class ClassDeclaration
+{
+	isA NamedElement;
+	0..1 -> * ClassDeclaration superclass;
+	1..* class -- * MethodDefinition methods;
+}
+
+class MethodDefinition
+{
+	isA NamedElement;
+	0..1 -> * MethodInvocation invocations;
+}
+
+class MethodInvocation
+{
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

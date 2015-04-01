@@ -1,0 +1,218 @@
+namespace ODPCV;
+
+class EnvironmentContract
+{
+	0..1 constrainer_ec -- 1..* //Action ec_to_a;
+	0..1 ct_to_ec -- 1..* //ComputationalTemplate specifier_ec;
+}
+
+class ComputationalTemplate
+{
+	0..1 specifier_ec -- 1..* //EnvironmentContract ct_to_ec;
+	0..1 specifier_bh -- * //Behaviour ct_to_bh;
+}
+
+class ComputationalObject
+{
+	0..1 owner_i -- 1..* //Interface co_to_i;
+	0..1 owner_bh -- 1..* //Behaviour co_to_bh;
+	0..1 cot_to_co -- 1..* //ComputationalObjectTemplate specifier_co;
+	0..1 st_to_co -- 1..* //State co_to_st;
+}
+
+class BindingObject
+{
+	isA //ComputationalObject;
+}
+
+class ComputationalObjectTemplate
+{
+	isA //ComputationalTemplate;
+	0..1 specifier_co -- * //ComputationalObject cot_to_co;
+	0..1 aggregate_provide -- * //ComputationalInterfaceTemplate part_provide;
+	0..1 aggregate_request -- * //ComputationalInterfaceTemplate part_request;
+}
+
+class ComputationalInterfaceTemplate
+{
+	isA //ComputationalTemplate;
+	0..1 specifier_i -- * //Interface cit_to_i;
+	0..1 part_provide -- * //ComputationalObjectTemplate aggregate_provide;
+	0..1 part_request -- * //ComputationalObjectTemplate aggregate_request;
+	0..1 intsig_to_cit -- 1..* //InterfaceSignature cit_to_intsig;
+}
+
+class Interface
+{
+	0..1 co_to_i -- 1..* //ComputationalObject owner_i;
+	0..1 bd_to_i -- * //Binding i_to_bd;
+	0..1 cit_to_i -- 1..* //ComputationalInterfaceTemplate specifier_i;
+	0..1 ina_to_i -- 1..* //Interaction i_to_ina;
+}
+
+class Binding
+{
+	0..1 i_to_bd -- 2..* //Interface bd_to_i;
+}
+
+class SignalInterface
+{
+	isA //Interface;
+}
+
+class OperationInterface
+{
+	isA //Interface;
+}
+
+class StreamInterface
+{
+	isA //Interface;
+}
+
+class InterfaceSignature
+{
+	0..1 cit_to_intsig -- 1..* //ComputationalInterfaceTemplate intsig_to_cit;
+}
+
+class SignalInterfaceSignature
+{
+	isA //InterfaceSignature;
+	0..1 ssig_to_sgisig -- * //SignalSignature sgisig_to_ssig;
+}
+
+class OperationInterfaceSignature
+{
+	isA //InterfaceSignature;
+	0..1 ansig_to_optisig -- * //AnnouncementSignature optisig_to_ansig;
+	0..1 intsig_to_optisig -- * //InterrogationSignature optisig_to_intsig;
+}
+
+class StreamInterfaceSignature
+{
+	isA //InterfaceSignature;
+	0..1 fsig_to_strisig -- * //FlowSignature strisig_to_fsig;
+}
+
+class InteractionSignature
+{
+	0..1 at_to_isig -- 1..* //ActionTemplate isig_to_at;
+	0..1 param_to_isig -- * //Parameter isig_to_param;
+}
+
+class Parameter
+{
+	0..1 isig_to_param -- 1..* //InteractionSignature param_to_isig;
+}
+
+class AnnouncementSignature
+{
+	isA //InteractionSignature;
+	0..1 optisig_to_ansig -- 1..* //OperationInterfaceSignature ansig_to_optisig;
+}
+
+class InterrogationSignature
+{
+	isA //InteractionSignature;
+	0..1 optisig_to_intsig -- 1..* //OperationInterfaceSignature intsig_to_optisig;
+	0..1 tersig_to_intsig -- 1..* //TerminationSignature intsig_to_tersig;
+}
+
+class TerminationSignature
+{
+	isA //InteractionSignature;
+	0..1 intsig_to_tersig -- 1..* //InterrogationSignature tersig_to_intsig;
+}
+
+class SignalSignature
+{
+	isA //InteractionSignature;
+	0..1 sgisig_to_ssig -- 1..* //SignalInterfaceSignature ssig_to_sgisig;
+}
+
+class FlowSignature
+{
+	isA //InteractionSignature;
+	0..1 strisig_to_fsig -- 1..* //StreamInterfaceSignature fsig_to_strisig;
+}
+
+class ActionTemplate
+{
+	0..1 specifier_a -- 1..* //Action at_to_a;
+	0..1 isig_to_at -- 1..* //InteractionSignature at_to_isig;
+}
+
+class Behaviour
+{
+	0..1 ct_to_bh -- 1..* //ComputationalTemplate specifier_bh;
+	0..1 co_to_bh -- 1..* //ComputationalObject owner_bh;
+	0..1 a_to_bh -- 1..* //Action bh_to_a;
+}
+
+class Action
+{
+	0..1 ec_to_a -- * //EnvironmentContract constrainer_ec;
+	0..1 changer -- * //State changedState;
+	0..1 at_to_a -- 1..* //ActionTemplate specifier_a;
+	0..1 bh_to_a -- 1..* //Behaviour a_to_bh;
+}
+
+class State
+{
+	0..1 endState -- 1..* //State startState;
+	0..1 startState -- 1..* //State endState;
+	0..1 changedState -- * //Action changer;
+	0..1 co_to_st -- 1..* //ComputationalObject st_to_co;
+}
+
+class InternalAction
+{
+	isA //Action;
+}
+
+class Interaction
+{
+	isA //Action;
+	0..1 i_to_ina -- 1..* //Interface ina_to_i;
+}
+
+class Flow
+{
+	isA //Interaction;
+}
+
+class Signal
+{
+	isA //Interaction;
+}
+
+class Operation
+{
+	isA //Interaction;
+	0..1 inv_to_opt -- 1..* //Invocation opt_to_inv;
+}
+
+class Announcement
+{
+	isA //Operation;
+}
+
+class Interrogation
+{
+	isA //Operation;
+	0..1 owner_ter -- * //Termination int_to_ter;
+}
+
+class Invocation
+{
+	isA //Interaction;
+	0..1 ter_to_inv -- 1..* //Termination inv_to_ter;
+	0..1 opt_to_inv -- 1..* //Operation inv_to_opt;
+}
+
+class Termination
+{
+	isA //Interaction;
+	0..1 int_to_ter -- 1..* //Interrogation owner_ter;
+	0..1 inv_to_ter -- 1..* //Invocation ter_to_inv;
+}

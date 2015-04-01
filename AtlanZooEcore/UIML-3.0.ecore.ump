@@ -1,0 +1,589 @@
+namespace UIML;
+
+class UIML
+{
+	0..1 -> * Header head;
+	0..1 -> * /4/Template templates;
+	0..1 -> * /2/Interface interfaces;
+	0..1 -> * Peer peers;
+}
+
+class Header
+{
+	0..1 -> * MetaData metas;
+}
+
+class MetaData
+{
+	/3/String name;
+	/3/String content;
+}
+
+namespace Peer;
+
+class Peer
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> * Presentation presentations;
+	0..1 -> * Logic logics;
+}
+
+class Presentation
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String base;
+	0..1 -> * /2/Source source;
+	0..1 -> * DClass dClasses;
+}
+
+class Logic
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> * DComponent dComponents;
+}
+
+class DComponent
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String mapsTo;
+	/3/String location;
+	0..1 -> * /2/Source source;
+	0..1 -> * DMethod dMethods;
+}
+
+class DClass
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String mapsTo;
+	/3/String mapsType;
+	0..1 -> * /2/Source source;
+	0..1 -> * DMethod dMethods;
+	0..1 -> * DProperty dProperties;
+	0..1 -> * /2/Event events;
+	0..1 -> * Listener listeners;
+}
+
+class DProperty
+{
+	/3/String id;
+	MapsTypeKind mapsType;
+	/3/String mapsTo;
+	/3/String returnType;
+	0..1 -> * DMethod dMethods;
+	0..1 -> * DParam dParams;
+}
+
+class DMethod
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String mapsTo;
+	/3/String returnType;
+	0..1 -> * /2/Source source;
+	0..1 -> * DParam dParams;
+	0..1 -> * Script script;
+}
+
+class DParam
+{
+	/3/String id;
+	/3/String type;
+	/3/String value;
+}
+
+class Script
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/3/String type;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String value;
+	/3/String source;
+}
+
+class Listener
+{
+	/3/String class;
+	/3/String attacher;
+}
+
+namespace Interface;
+
+class ExtensibleElement
+{
+}
+
+class Source
+{
+}
+
+class LocalSource
+{
+	isA /2/Source;
+	0..1 -> 1..* /2/ExtensibleElement source;
+}
+
+class RemoteSource
+{
+	isA /2/Source;
+	/3/String location;
+}
+
+class Interface
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Structure structure;
+	0..1 -> * /2/Style style;
+	0..1 -> * /2/Content content;
+	0..1 -> * /2/Behavior behavior;
+}
+
+class Structure
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Part parts;
+}
+
+class Part
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String class;
+	/3/String wherePart;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Style style;
+	0..1 -> * /2/Content content;
+	0..1 -> * /2/Behavior behavior;
+	0..1 -> * /2/Part parts;
+	0..1 -> * /2/Repeat repeats;
+}
+
+class Style
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Property properties;
+}
+
+class Property
+{
+	isA /2/ExtensibleElement;
+	/3/String name;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String[] values;
+	0..1 -> * /2/Part parts;
+	0..1 -> * /2/Event events;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Constant constants;
+	0..1 -> * /2/Property properties;
+	0..1 -> * /2/Reference references;
+	0..1 -> * /2/Call calls;
+	0..1 -> * /2/Iterator iterators;
+}
+
+class Content
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Constant constants;
+}
+
+class Behavior
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Rule rules;
+}
+
+class Repeat
+{
+	0..1 -> 1..* /2/Iterator iterator;
+	0..1 -> 1..* /2/Part parts;
+}
+
+class Constant
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	/3/String model;
+	/3/String value;
+	0..1 -> * /2/Source source;
+	0..1 -> * /2/Constant constants;
+}
+
+class Reference
+{
+	0..1 -> * /2/Constant constant;
+}
+
+class Rule
+{
+	isA /2/ExtensibleElement;
+	/3/String id;
+	/2/HowKind how;
+	/2/ExportKind export;
+	0..1 -> * /2/Source source;
+	0..1 -> 1..* /2/Condition condition;
+	0..1 -> 1..* /2/Action action;
+}
+
+class Condition
+{
+}
+
+class EventCondition
+{
+	isA /2/Condition;
+	0..1 -> 1..* /2/Event event;
+}
+
+class EqualCondition
+{
+	isA /2/Condition;
+	0..1 -> 1..* /2/Equal equal;
+}
+
+class OpCondition
+{
+	isA /2/Condition;
+	0..1 -> 1..* /2/Operation op;
+}
+
+class Action
+{
+}
+
+class Action_1
+{
+	isA /2/Action;
+	0..1 -> * /2/Event event;
+	0..1 -> * /2/Property properties;
+	0..1 -> * /2/Call calls;
+	0..1 -> * /2/Restructure restructures;
+}
+
+class Action_2
+{
+	isA /2/Action;
+	0..1 -> * /2/WhenTrue whenTrue;
+	0..1 -> * /2/WhenFalse whenFalse;
+	0..1 -> * /2/ByDefault byDefault;
+}
+
+class Call
+{
+	/3/String name;
+	0..1 -> * /2/Parameter params;
+}
+
+class Parameter
+{
+	/3/String name;
+}
+
+class PropertyParameter
+{
+	isA /2/Parameter;
+	0..1 -> 1..* /2/Property property;
+}
+
+class ReferenceParameter
+{
+	isA /2/Parameter;
+	0..1 -> 1..* /2/Reference reference;
+}
+
+class CallParameter
+{
+	isA /2/Parameter;
+	0..1 -> 1..* /2/Call call;
+}
+
+class OperationParameter
+{
+	isA /2/Parameter;
+	0..1 -> 1..* /2/Operation op;
+}
+
+class EventParameter
+{
+	isA /2/Parameter;
+	0..1 -> 1..* /2/Event event;
+}
+
+class ConstantParameter
+{
+	isA /2/Parameter;
+	0..1 -> 1..* /2/Constant constant;
+}
+
+class IteratorParameter
+{
+	isA /2/Parameter;
+	0..1 -> 1..* /2/Iterator iterator;
+}
+
+class Iterator
+{
+	/3/String id;
+}
+
+class ConstantIterator
+{
+	isA /2/Iterator;
+	0..1 -> 1..* /2/Constant constant;
+}
+
+class PropertyIterator
+{
+	isA /2/Iterator;
+	0..1 -> 1..* /2/Property property;
+}
+
+class CallIterator
+{
+	isA /2/Iterator;
+	0..1 -> 1..* /2/Call call;
+}
+
+class TextIterator
+{
+	isA /2/Iterator;
+	/3/Integer value;
+}
+
+class Event
+{
+	/3/String class;
+	0..1 -> * /2/Part parts;
+}
+
+class Equal
+{
+	0..1 -> 1..* /2/Event event;
+}
+
+class EqualToConstant
+{
+	isA /2/Equal;
+	0..1 -> 1..* /2/Constant constant;
+}
+
+class EqualToProperty
+{
+	isA /2/Equal;
+	0..1 -> 1..* /2/Property property;
+}
+
+class EqualToReference
+{
+	isA /2/Equal;
+	0..1 -> 1..* /2/Reference reference;
+}
+
+class EqualToOperation
+{
+	isA /2/Equal;
+	0..1 -> 1..* /2/Operation op;
+}
+
+class Operation
+{
+	/3/String name;
+	0..1 -> * /2/Constant constants;
+	0..1 -> * /2/Property properties;
+	0..1 -> * /2/Reference references;
+	0..1 -> * /2/Call calls;
+	0..1 -> * /2/Operation ops;
+	0..1 -> * /2/Event events;
+}
+
+class Restructure
+{
+	isA /2/ExtensibleElement;
+	/2/HowKind how;
+	0..1 -> * /2/Part atPart;
+	0..1 -> * /2/Part wherePart;
+	0..1 -> * /2/Source source;
+	0..1 -> * /4/Template template;
+}
+
+class Branch
+{
+	0..1 -> * /2/Property properties;
+	0..1 -> * /2/Call calls;
+	0..1 -> * /2/Restructure restructure;
+	0..1 -> * /2/Operation op;
+	0..1 -> * /2/Equal equal;
+	0..1 -> * /2/Event event;
+}
+
+class WhenTrue
+{
+	isA /2/Branch;
+}
+
+class WhenFalse
+{
+	isA /2/Branch;
+}
+
+class ByDefault
+{
+	isA /2/Branch;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+namespace Template;
+
+class Template
+{
+	/3/String id;
+}
+
+class BehaviorTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Behavior behavior;
+}
+
+class DClassTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* DClass dClass;
+}
+
+class DComponentTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* DComponent dComponent;
+}
+
+class ConstantTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Constant constant;
+}
+
+class ContentTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Content content;
+}
+
+class InterfaceTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Interface interface;
+}
+
+class LogicTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* Logic logic;
+}
+
+class PartTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Part part;
+}
+
+class PeerTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* Peer peer;
+}
+
+class PresentationTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* Presentation presentation;
+}
+
+class PropertyTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Property property;
+}
+
+class RestructureTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Restructure restructure;
+}
+
+class RuleTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Rule rule;
+}
+
+class ScriptTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* Script script;
+}
+
+class StructureTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Structure structure;
+}
+
+class StyleTemplate
+{
+	isA /4/Template;
+	0..1 -> 1..* /2/Style style;
+}

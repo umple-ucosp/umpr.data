@@ -1,0 +1,64 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace MySQL;
+
+class NamedElement
+{
+	String name;
+}
+
+class DataBase
+{
+	isA NamedElement;
+	1..* database -- * Table tables;
+}
+
+class Table
+{
+	isA NamedElement;
+	1..* table -- * Column columns;
+}
+
+class Column
+{
+	isA NamedElement;
+	String type;
+	Boolean isPrimaryKey;
+	Boolean null;
+	String defaultValue;
+	String comment;
+}
+
+class IntegerColumn
+{
+	isA Column;
+	Boolean isAutoIncrement;
+}
+
+class EnumColumn
+{
+	isA Column;
+	0..1 -> 1..* EnumSet enumSet;
+}
+
+class EnumSet
+{
+	1..* enumSet -- * EnumItem enumItems;
+}
+
+class EnumItem
+{
+	isA NamedElement;
+}

@@ -1,0 +1,87 @@
+namespace ExtendedUMLCorePackage;
+
+class Package
+{
+	isA ProviderClause;
+}
+
+class ProviderClause
+{
+	0..1 -> 1..* CollaborationPackage ownedEltColl;
+	1..* providerClause -- * InteractionPackage ownedEltInt;
+}
+
+class CollaborationPackage
+{
+	0..1 -> 1..* Collaboration ownedElt;
+}
+
+class Collaboration
+{
+	0..1 -> 1..* AssociationRole ownedEltAss;
+	0..1 -> 1..* ClassifierRole ownedEltClass;
+	1..* context -- * Interaction interaction;
+}
+
+class InteractionPackage
+{
+	0..1 -> 1..* Interaction ownedElt;
+}
+
+class Interaction
+{
+	* interaction -- 1..* Message message;
+}
+
+class AssociationRole
+{
+	1..* associationRole -- 2 AssociationEndRole connection;
+}
+
+class ClassifierRole
+{
+	0..1 receiver -- 1..* Message receiverMess;
+	1..* type -- * AssociationEndRole associationEndRole;
+	1..* sender -- 1..* Message senderMess;
+	* classifierRole -- * Operation availableFeature;
+	* classifierRole -- 1..* Interface base;
+}
+
+class AssociationEndRole
+{
+}
+
+class Message
+{
+	* activator -- * Message message;
+	* message -- * Message activator;
+	* message -- 1..* Request specification;
+}
+
+class Request
+{
+}
+
+class Operation
+{
+	isA Request;
+	* feature -- 1..* Interface owner;
+}
+
+class Interface
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

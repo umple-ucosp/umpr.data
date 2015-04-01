@@ -1,0 +1,104 @@
+namespace SimulinkStateFlow;
+
+class Simulink
+{
+	1..* simulink -- * System subSystem;
+}
+
+class System
+{
+	String name;
+	0..1 -> * System subSystem;
+	1..* system -- 1..* Line lines;
+	1..* system -- 1..* Block blocks;
+}
+
+class Connector
+{
+}
+
+class Line
+{
+	String name;
+	* lines -- 1..* Block block;
+}
+
+class BranchPoint
+{
+	isA Connector;
+}
+
+class Port
+{
+	isA Connector;
+	Units units;
+}
+
+class Block
+{
+	String description;
+	String name;
+	String priority;
+	String natagme;
+	String blockType;
+	0..1 -> * BlockRef blockRefs;
+	1..* block -- * Annotation annotations;
+	1..* block -- * Parameter parameters;
+}
+
+class BlockRef
+{
+}
+
+class Primitive
+{
+	isA Block;
+	String deadLine;
+	String period;
+	String executionTime;
+}
+
+class OutPut
+{
+	isA Port;
+	Integer number;
+}
+
+class TriggerPort
+{
+	isA Port;
+	TriggerEnum triggerType;
+}
+
+class EnablePort
+{
+	isA Port;
+	EnableEnum statesWhenEnabling;
+}
+
+class Reference
+{
+	isA Block;
+	String sourceBlock;
+	String sourceType;
+}
+
+class Annotation
+{
+	String text;
+}
+
+class Parameter
+{
+	String value;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

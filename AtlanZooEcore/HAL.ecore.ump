@@ -1,0 +1,299 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace HAL;
+
+class HAL
+{
+	0..1 -> 1..* Connexion connexion;
+	0..1 -> * Entry contents;
+}
+
+class Connexion
+{
+	String login;
+	String password;
+}
+
+class Entry
+{
+	0..1 -> 1..* AutLabType autLab;
+	0..1 -> * TamponType tampons;
+}
+
+class Article
+{
+	isA Entry;
+	0..1 -> 1..* MetaArtType metaArt;
+}
+
+class ArticleRecent
+{
+	isA Article;
+	0..1 -> 1..* DepotsType fichiers;
+}
+
+class ArticleRetro
+{
+	isA Article;
+	String dateRedaction;
+	0..1 -> 1..* AbstractDepot fichiers;
+}
+
+class Notice
+{
+	isA Entry;
+	0..1 -> 1..* MetaArtNoticeType metaArtNotice;
+}
+
+class ReferenceBiblioType
+{
+}
+
+class ArtRevueType
+{
+	isA ReferenceBiblioType;
+	String urldoi;
+	String journal;
+	String volume;
+	String page;
+	String annee;
+}
+
+class WorkshopType
+{
+	isA ReferenceBiblioType;
+	String urldoi;
+	String titconf;
+	String ville;
+	String pays;
+	String edcom;
+	String annee;
+	String page;
+	String edsci;
+	String serie;
+}
+
+class ArtOuvrageType
+{
+	isA ReferenceBiblioType;
+	String urldoi;
+	String titouv;
+	String edcom;
+	String annee;
+	String edsci;
+	String serie;
+}
+
+class OuvrageType
+{
+	isA ReferenceBiblioType;
+	String urldoi;
+	String edcom;
+	String annee;
+	String page;
+}
+
+class TheseType
+{
+	isA ReferenceBiblioType;
+	String orgthe;
+	String niveau;
+	String defencedate;
+	String directeur;
+	String codirecteur;
+}
+
+class BrevetType
+{
+	isA ReferenceBiblioType;
+	String datebrevet;
+	String numbrevet;
+	String page;
+	String pays;
+}
+
+class AutreType
+{
+	isA ReferenceBiblioType;
+	String urldoi;
+	String annee;
+	String description;
+}
+
+class ArtRevue
+{
+	isA ArtRevueType;
+}
+
+class ArtJournal
+{
+	isA ArtRevueType;
+}
+
+class Workshop
+{
+	isA WorkshopType;
+}
+
+class Communication
+{
+	isA WorkshopType;
+}
+
+class Conference
+{
+	isA WorkshopType;
+}
+
+class ArtOuvrage
+{
+	isA ArtOuvrageType;
+}
+
+class Ouvrage
+{
+	isA OuvrageType;
+}
+
+class Brevet
+{
+	isA BrevetType;
+}
+
+class Autre
+{
+	isA AutreType;
+}
+
+class These
+{
+	isA TheseType;
+}
+
+class MetaType
+{
+	String langue;
+	String title;
+	String comment;
+	String refInterne;
+	String idext;
+	Integer isEpj;
+	String isEpl;
+	String classification;
+	String collaboration;
+	String keyword;
+	DateVisibleEnum datevisible;
+	String financement;
+	String researchteam;
+}
+
+class MetaArtType
+{
+	isA MetaType;
+	String domain;
+	String abstract;
+	0..1 -> * ReferenceBiblioType referenceBiblio;
+}
+
+class MetaArtNoticeType
+{
+	isA MetaType;
+	String domain;
+	String abstract;
+	0..1 -> 1..* ReferenceBiblioType referenceBiblio;
+}
+
+class AutLabType
+{
+	0..1 -> 1..* Auteur auteurs;
+	0..1 -> 1..* Laboratoire laboratoires;
+}
+
+class Auteur
+{
+	String nom;
+	String prenom;
+	String autrePrenom;
+	String email;
+	String urlPerso;
+	0..1 -> * Laboratoire lab;
+}
+
+class Laboratoire
+{
+	Integer id;
+	0..1 -> 1..* AbstractMetaLab metas;
+}
+
+class AbstractMetaLab
+{
+}
+
+class MetaLab
+{
+	isA AbstractMetaLab;
+	String id;
+}
+
+class AffiliationType
+{
+	String[] institution;
+	String[] prive;
+	String[] ecole;
+	String[] universite;
+}
+
+class TamponType
+{
+	String id;
+}
+
+class AbstractDepot
+{
+	String nom;
+}
+
+class Depot
+{
+	isA AbstractDepot;
+	FormatEnum format;
+}
+
+class DepotWeb
+{
+	isA AbstractDepot;
+	FormatWebEnum format;
+}
+
+class AbstractDepotType
+{
+}
+
+class DepotsType
+{
+	isA AbstractDepotType;
+	0..1 -> 1..* AbstractDepot depots;
+}
+
+class WebLink
+{
+	isA AbstractDepotType;
+	String identifiant;
+	0..1 -> 1..* Server server;
+}
+
+class Server
+{
+}

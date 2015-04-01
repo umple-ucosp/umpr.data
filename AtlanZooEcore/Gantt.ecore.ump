@@ -1,0 +1,95 @@
+namespace Gantt;
+
+class Project
+{
+	String name;
+	String company;
+	Integer ganttDividerLocation;
+	Integer ressourceDividerLocation;
+	String webLink;
+	0..1 -> 1..* Date viewDate;
+	0..1 -> 1..* Date viewIndex;
+	0..1 -> 1..* Tasks tasks;
+	0..1 -> * Ressource ressources;
+	0..1 -> * Allocation allocations;
+}
+
+class Tasks
+{
+	String color;
+	0..1 -> * Task tasks;
+}
+
+class Task
+{
+	String id;
+	String name;
+	Boolean meeting;
+	String color;
+	Boolean expand;
+	Integer complete;
+	Integer duration;
+	Integer priority;
+	0..1 -> 1..* Date start;
+	0..1 -> * Depend depends;
+}
+
+class Depend
+{
+	String id;
+	Integer type;
+	Integer difference;
+	String hardness;
+}
+
+class Ressource
+{
+	String Id;
+	String name;
+	String fonction;
+	String contact;
+	String phone;
+}
+
+class Date
+{
+	Integer year;
+	Integer month;
+	Integer day;
+}
+
+class Allocation
+{
+	String taskId;
+	String ressourceId;
+	String name;
+	String function;
+	Boolean responsible;
+	Integer load;
+}
+
+class Vacation
+{
+}
+
+class Description
+{
+}
+
+class Previous
+{
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}

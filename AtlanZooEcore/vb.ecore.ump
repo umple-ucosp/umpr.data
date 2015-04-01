@@ -1,0 +1,494 @@
+namespace fr;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class VB_LangElement
+{
+	isA obeo/psm/vb/resources/LocatedElement;
+}
+
+class VB_Content
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+	Boolean hasVersion;
+	String version;
+	Boolean hasClass;
+	Boolean hasBeginEnd;
+	0..1 -> * obeo/psm/vb/projects/VB_1/core/VB_GlobalVariable beginEndGlobalVariables;
+	0..1 -> * obeo/psm/vb/projects/VB_1/core/VB_GlobalVariable globalVariables;
+	0..1 -> * obeo/psm/vb/projects/VB_1/core/VB_ContentElement elements;
+}
+
+class VB_GlobalVariable
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+	String name;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression value;
+}
+
+class VB_ContentElement
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+}
+
+class VB_FileAttribute
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	String name;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression initialValue;
+}
+
+class VB_Option
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	String name;
+	Boolean hasEnablement;
+	obeo/psm/vb/projects/VB_1/enumerations/EnablementEnum enablement;
+}
+
+class VB_Imports
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef imports;
+}
+
+class VB_Implements
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef implements;
+}
+
+class VB_Assembly
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/statements/VB_Call call;
+}
+
+class VB_Class
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement ;
+	Boolean isFriend;
+	Boolean hasVisibility;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	String name;
+	Boolean hasInherits;
+	0..1 -> * obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef inherits;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Feature features;
+}
+
+class VB_Module
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	String name;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Feature features;
+}
+
+class VB_Type
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+}
+
+class VB_Data
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+}
+
+class VB_SimpleType
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	String name;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Feature features;
+}
+
+class VB_Enum
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	String name;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Feature features;
+}
+
+class VB_PreprocIf
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression condition;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Feature features;
+}
+
+class VB_Feature
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_Data ;
+}
+
+class VB_Region
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Feature;
+	String name;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Feature features;
+}
+
+class VB_Sub
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Feature;
+	Boolean hasAnnotation;
+	Boolean isFriend;
+	Boolean hasVisibility;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	Boolean isOverloads;
+	Boolean isOverrides;
+	String name;
+	Boolean hasHandles;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_Call annotation;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Parameter parameters;
+	0..1 -> * obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef handles;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_Statement statements;
+}
+
+class VB_Function
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Feature;
+	Boolean isFriend;
+	Boolean hasVisibility;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	String name;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Parameter parameters;
+	0..1 -> * obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef return;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_Statement statements;
+}
+
+class VB_DeclareFunction
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Feature;
+	Boolean hasVisibility;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	Boolean isAuto;
+	String name;
+	String lib;
+	Boolean isAlias;
+	String alias;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Parameter parameters;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef return;
+}
+
+class VB_DeclareSub
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Feature;
+	Boolean hasVisibility;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	Boolean isAuto;
+	String name;
+	String lib;
+	Boolean isAlias;
+	String alias;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Parameter parameters;
+}
+
+class VB_Parameter
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_Data;
+	Boolean isOptional;
+	Boolean hasQualifier;
+	obeo/psm/vb/projects/VB_1/enumerations/QualifierEnum qualifier;
+	String name;
+	Boolean isArray;
+	Boolean hasType;
+	Boolean hasInitialValue;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression arrayExpression;
+	0..1 -> * obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef type;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression value;
+}
+
+class VB_Property
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Feature;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	Boolean isShared;
+	Boolean isGetOnly;
+	Boolean isSet;
+	Boolean isLet;
+	String name;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Parameter parameters;
+	0..1 -> * obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef type;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Modifier modifiers;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_Statement statements;
+}
+
+class VB_Modifier
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+}
+
+class VB_Set
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Modifier;
+	Boolean hasParameters;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Parameter parameters;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_Statement statements;
+}
+
+class VB_Get
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Modifier;
+	Boolean hasParameters;
+	0..1 -> * obeo/psm/vb/projects/VB_1/features/VB_Parameter parameters;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_Statement statements;
+}
+
+class VB_Attribute
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Feature;
+	Boolean hasVisibility;
+	obeo/psm/vb/projects/VB_1/enumerations/VisibilityEnum visibility;
+	Boolean hasQualifier;
+	obeo/psm/vb/projects/VB_1/enumerations/Qualifier_2Enum qualifier;
+	Boolean isFriend;
+	Boolean isWithEvents;
+	Boolean isShared;
+	String name;
+	Boolean isArray;
+	Boolean hasType;
+	Boolean hasInitialValue;
+	Boolean hasNext;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression arrayExpressions;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression type;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression initialValue;
+}
+
+class VB_GraphicalElement
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_ContentElement ;
+	String name;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef type;
+	0..1 -> * obeo/psm/vb/projects/VB_1/graphicals/VB_GraphicalField fields;
+	0..1 -> * obeo/psm/vb/projects/VB_1/graphicals/VB_GraphicalElement children;
+}
+
+class VB_GraphicalField
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+}
+
+class VB_GraphicalPropertySet
+{
+	isA obeo/psm/vb/projects/VB_1/graphicals/VB_GraphicalField;
+	String name;
+	Boolean hasArguments;
+	Boolean hasBrackets;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression arguments;
+	0..1 -> * obeo/psm/vb/projects/VB_1/graphicals/VB_GraphicalField fields;
+}
+
+class VB_GraphicalProperty
+{
+	isA obeo/psm/vb/projects/VB_1/core/VB_Data ;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullDataRef property;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression value;
+}
+
+class VB_Statement
+{
+	isA obeo/psm/vb/projects/VB_1/features/VB_Modifier;
+}
+
+class VB_Call
+{
+	isA obeo/psm/vb/projects/VB_1/statements/VB_Statement;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullDataRef expression;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_CallArgument arguments;
+}
+
+class VB_CallArgument
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+}
+
+class VB_CallEmptyArgument
+{
+	isA obeo/psm/vb/projects/VB_1/statements/VB_CallArgument;
+}
+
+class VB_CallExpressionArgument
+{
+	isA obeo/psm/vb/projects/VB_1/statements/VB_CallArgument;
+	Boolean hasSeparator;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression expression;
+}
+
+class VB_Case
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+	Boolean hasSeparator;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression values;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_Statement statements;
+}
+
+class VB_RawBody
+{
+	isA obeo/psm/vb/projects/VB_1/statements/VB_Statement;
+	String value;
+}
+
+class VB_Expression
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+}
+
+class VB_AssignmentExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullDataRef variable;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression expression;
+}
+
+class VB_TypeOfExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullDataRef variable;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef type;
+}
+
+class VB_OperatorExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	String operatorName;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression leftHand;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression rightHand;
+}
+
+class VB_NewExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	Boolean hasArguments;
+	Boolean hasInitialization;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_FullTypeRef type;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression arguments;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression initializations;
+}
+
+class VB_NotExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression expression;
+}
+
+class VB_NegativeExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression expression;
+}
+
+class VB_ParenthesisExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression expression;
+}
+
+class VB_TabValuesExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	0..1 -> * obeo/psm/vb/projects/VB_1/expressions/VB_Expression arguments;
+}
+
+class VB_ByValExpression
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Expression value;
+}
+
+class VB_Value
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+}
+
+class VB_NegativeValue
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Value;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/expressions/VB_Value value;
+}
+
+class VB_VariableSystem
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Value;
+	obeo/psm/vb/projects/VB_1/enumerations/NameEnum name;
+}
+
+class VB_Literal
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Value;
+	String value;
+}
+
+class VB_Literal_Literal
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Literal;
+}
+
+class VB_Literal_Number
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Literal;
+}
+
+class VB_Literal_Value
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Literal;
+}
+
+class VB_FullTypeRef
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_TypeRef members;
+}
+
+class VB_TypeRef
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+	String typeValue;
+	0..1 -> 1..* obeo/psm/vb/resources/VB_LangElement type;
+}
+
+class VB_FullDataRef
+{
+	isA obeo/psm/vb/projects/VB_1/expressions/VB_Expression;
+	Boolean self;
+	Boolean hasRecSet;
+	0..1 -> 1..* obeo/psm/vb/projects/VB_1/references/VB_DataRef members;
+	0..1 -> * obeo/psm/vb/projects/VB_1/references/VB_DataRef recSetMember;
+}
+
+class VB_DataRef
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+	String dataValue;
+	Boolean hasArguments;
+	Boolean hasRefMarker;
+	Boolean hasSubMarker;
+	0..1 -> 1..* obeo/psm/vb/resources/VB_LangElement data;
+	0..1 -> * obeo/psm/vb/projects/VB_1/statements/VB_CallArgument arguments;
+}
+
+class VB_LabelRef
+{
+	isA obeo/psm/vb/resources/VB_LangElement;
+	String labelValue;
+	0..1 -> 1..* obeo/psm/vb/resources/VB_LangElement label;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}

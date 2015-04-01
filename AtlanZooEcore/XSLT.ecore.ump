@@ -1,0 +1,106 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace XSLT;
+
+class Node
+{
+	String name;
+	* nodes -- * ElementNode parentNode;
+}
+
+class ElementNode
+{
+	isA Node;
+}
+
+class AttributeNode
+{
+	isA Node;
+}
+
+class RootNode
+{
+	isA ElementNode;
+	1..* document -- 1..* Document document;
+}
+
+class TextNode
+{
+	isA ElementNode;
+	String value;
+}
+
+class XSLTNode
+{
+	isA ElementNode;
+}
+
+class XSLTRootNode
+{
+	isA RootNode;
+}
+
+class Document
+{
+	String documentName;
+}
+
+class ApplyTemplates
+{
+	isA XSLTNode;
+	String select;
+}
+
+class If
+{
+	isA XSLTNode;
+	String test;
+}
+
+class Template
+{
+	isA XSLTNode;
+	String match;
+}
+
+class ValueOf
+{
+	isA XSLTNode;
+	String select;
+}
+
+class When
+{
+	isA XSLTNode;
+	String test;
+}
+
+class Choose
+{
+	isA XSLTNode;
+	0..1 -> 1..* When when;
+	0..1 -> 1..* Otherwise otherwise;
+}
+
+class Otherwise
+{
+	isA XSLTNode;
+}
+
+class Sort
+{
+	isA XSLTNode;
+	String select;
+}

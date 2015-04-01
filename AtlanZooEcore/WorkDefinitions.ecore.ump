@@ -1,0 +1,56 @@
+namespace WorkDefinitions;
+
+class WorkDefinition
+{
+	* subWorks -- * WorkDefinition parentWorks;
+	* parentWorks -- * WorkDefinition subWorks;
+	* features -- 1..* ProcessPerformer owner;
+}
+
+class ProcessPerformer
+{
+}
+
+class Role
+{
+	isA ProcessPerformer;
+	1..* responsible -- * WorkProduct products;
+}
+
+class WorkProduct
+{
+}
+
+class Lifecycle
+{
+	isA WorkDefinition;
+	1..* lifeCycle -- 1..* Phase phases;
+}
+
+class Phase
+{
+	isA WorkDefinition;
+	1..* phase -- 1..* Iteration iterations;
+}
+
+class Iteration
+{
+	isA WorkDefinition;
+	1..* iteration -- 1..* Activity activities;
+}
+
+class Activity
+{
+	isA WorkDefinition;
+	0..1 -> * Step steps;
+}
+
+class Step
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}

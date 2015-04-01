@@ -1,0 +1,59 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace CPR;
+
+class Plan
+{
+	* super_plan -- * Plan sub_plans;
+	1..* sub_plans -- 1..* Plan super_plan;
+	1..* objective_plan -- * Objective objectives;
+	1..* action_plan -- * Action actions;
+}
+
+class Objective
+{
+	1..* criteria_objective -- * EvaluationCriteria criterias;
+}
+
+class EvaluationCriteria
+{
+}
+
+class Action
+{
+	* super_action -- * Action sub_actions;
+	1..* sub_actions -- 1..* Action super_action;
+	1..* actor_action -- 1..* Actor actor;
+	1..* resource_action -- * Resource resources;
+	1..* timeSpec_action -- * TimeSpec timeSpecs;
+}
+
+class Actor
+{
+	* super_actor -- * Actor sub_actors;
+	1..* sub_actors -- 1..* Actor super_actor;
+}
+
+class Resource
+{
+}
+
+class TimeSpec
+{
+}

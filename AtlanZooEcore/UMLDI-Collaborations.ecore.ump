@@ -1,0 +1,419 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Float
+{
+}
+
+class Integer
+{
+}
+
+class Long
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}
+
+namespace Core;
+
+class Element
+{
+}
+
+class ModelElement
+{
+	isA Element;
+	String name;
+	/2/VisibilityKind visibility;
+	Boolean isSpecification;
+	* ownedElement -- * Namespace namespace;
+}
+
+class GeneralizableElement
+{
+	isA ModelElement;
+	Boolean isRoot;
+	Boolean isLeaf;
+	Boolean isAbstract;
+	1..* child -- * Generalization generalization;
+}
+
+class Namespace
+{
+	isA ModelElement;
+}
+
+class Classifier
+{
+	isA GeneralizableElement ;
+	* owner -- * Feature feature;
+	* powertype -- * Generalization powertypeRange;
+}
+
+class Feature
+{
+	isA ModelElement;
+	/2/ScopeKind ownerScope;
+}
+
+class StructuralFeature
+{
+	isA Feature;
+	/2/ChangeableKind changeability;
+	/2/ScopeKind targetScope;
+	/2/OrderingKind ordering;
+	0..1 -> 1..* Classifier type;
+	0..1 -> * /2/Multiplicity multiplicity;
+}
+
+class AssociationEnd
+{
+	isA ModelElement;
+	Boolean isNavigable;
+	/2/OrderingKind ordering;
+	/2/AggregationKind aggregation;
+	/2/ScopeKind targetScope;
+	/2/ChangeableKind changeability;
+	0..1 -> * Classifier specification;
+	0..1 -> 1..* Classifier participant;
+	0..1 -> * /2/Multiplicity multiplicity;
+	2..* connection -- 1..* Association association;
+	* associationEnd -- * Attribute qualifier;
+}
+
+class Relationship
+{
+	isA ModelElement;
+}
+
+class Association
+{
+	isA GeneralizableElement ;
+}
+
+class Attribute
+{
+	isA StructuralFeature;
+	0..1 -> * /2/Expression initialValue;
+}
+
+class BehavioralFeature
+{
+	isA Feature;
+	Boolean isQuery;
+	* behavioralFeature -- * Parameter parameter;
+}
+
+class Operation
+{
+	isA BehavioralFeature;
+	/2/CallConcurrencyKind concurrency;
+	Boolean isRoot;
+	Boolean isLeaf;
+	Boolean isAbstract;
+	String specification;
+}
+
+class Parameter
+{
+	isA ModelElement;
+	/2/ParameterDirectionKind kind;
+	0..1 -> 1..* Classifier type;
+	0..1 -> * /2/Expression defaultValue;
+}
+
+class Generalization
+{
+	isA Relationship;
+	String discriminator;
+}
+
+namespace Data_Types;
+
+class Multiplicity
+{
+	0..1 multiplicity -- 1..* /2/MultiplicityRange range;
+}
+
+class MultiplicityRange
+{
+	Integer lower;
+	Integer upper;
+	0..1 range -- 1..* /2/Multiplicity multiplicity;
+}
+
+class Expression
+{
+	String language;
+	String body;
+}
+
+class BooleanExpression
+{
+	isA /2/Expression;
+}
+
+class ObjectSetExpression
+{
+	isA /2/Expression;
+}
+
+class ActionExpression
+{
+	isA /2/Expression;
+}
+
+class IterationExpression
+{
+	isA /2/Expression;
+}
+
+namespace Common_Behavior;
+
+class Instance
+{
+	isA ModelElement;
+	0..1 -> * /3/Instance ownedInstance;
+	0..1 instance -- * /3/LinkEnd linkEnd;
+	0..1 -> 1..* Classifier classifier;
+	0..1 resident -- * /3/ComponentInstance componentInstance;
+	0..1 instance -- * /3/AttributeLink slot;
+	0..1 -> * /3/Link ownedLink;
+}
+
+class Signal
+{
+	isA Classifier;
+}
+
+class Action
+{
+	isA ModelElement;
+	Boolean isAsynchronous;
+	0..1 action -- * /3/Argument actualArgument;
+	0..1 action -- * /3/ActionSequence actionSequence;
+	0..1 -> * /2/IterationExpression recurrence;
+	0..1 -> * /2/ObjectSetExpression target;
+	0..1 -> * /2/ActionExpression script;
+}
+
+class CreateAction
+{
+	isA /3/Action;
+	0..1 -> 1..* Classifier instantiation;
+}
+
+class DestroyAction
+{
+	isA /3/Action;
+}
+
+class UninterpretedAction
+{
+	isA /3/Action;
+}
+
+class AttributeLink
+{
+	isA ModelElement;
+	0..1 slot -- * /3/Instance instance;
+	0..1 -> 1..* /3/Instance value;
+	0..1 qualifiedValue -- * /3/LinkEnd linkEnd;
+	0..1 -> 1..* Attribute attribute;
+}
+
+class Object
+{
+	isA /3/Instance;
+}
+
+class Link
+{
+	isA ModelElement;
+	0..1 -> 1..* Association association;
+	0..1 link -- 2..* /3/LinkEnd connection;
+}
+
+class LinkObject
+{
+	isA /3/Object /3/Link;
+}
+
+class DataValue
+{
+	isA /3/Instance;
+}
+
+class CallAction
+{
+	isA /3/Action;
+	0..1 -> 1..* Operation operation;
+}
+
+class SendAction
+{
+	isA /3/Action;
+	0..1 -> 1..* /3/Signal signal;
+}
+
+class ActionSequence
+{
+	isA /3/Action;
+	0..1 actionSequence -- * /3/Action action;
+}
+
+class Argument
+{
+	isA ModelElement;
+	0..1 actualArgument -- * /3/Action action;
+	0..1 -> 1..* /2/Expression value;
+}
+
+class Reception
+{
+	isA BehavioralFeature;
+	String specification;
+	Boolean isRoot;
+	Boolean isLeaf;
+	Boolean isAbstract;
+	0..1 -> 1..* /3/Signal signal;
+}
+
+class LinkEnd
+{
+	isA ModelElement;
+	0..1 connection -- 1..* /3/Link link;
+	0..1 linkEnd -- * /3/AttributeLink qualifiedValue;
+	0..1 linkEnd -- 1..* /3/Instance instance;
+	0..1 -> 1..* AssociationEnd associationEnd;
+}
+
+class ReturnAction
+{
+	isA /3/Action;
+}
+
+class TerminateAction
+{
+	isA /3/Action;
+}
+
+class Stimulus
+{
+	isA ModelElement;
+	0..1 -> * /3/Instance argument;
+	0..1 -> * /3/Link communicationLink;
+	0..1 -> 1..* /3/Instance receiver;
+	0..1 -> 1..* /3/Action dispatchAction;
+	0..1 -> 1..* /3/Instance sender;
+}
+
+class Exception
+{
+	isA /3/Signal;
+}
+
+class ComponentInstance
+{
+	isA /3/Instance;
+	0..1 componentInstance -- * /3/Instance resident;
+	0..1 resident -- * /3/NodeInstance nodeInstance;
+}
+
+class NodeInstance
+{
+	isA /3/Instance;
+	0..1 nodeInstance -- * /3/ComponentInstance resident;
+}
+
+class SubsystemInstance
+{
+	isA /3/Instance;
+}
+
+namespace Collaborations;
+
+class Collaboration
+{
+	isA GeneralizableElement ;
+	0..1 -> * /4/Collaboration usedCollaboration;
+	0..1 -> * Operation representedOperation;
+	0..1 -> * Classifier representedClassifier;
+	0..1 context -- * /4/Interaction interaction;
+	0..1 -> * ModelElement constrainingElement;
+}
+
+class ClassifierRole
+{
+	isA Classifier;
+	0..1 -> * ModelElement availableContents;
+	0..1 -> 1..* Classifier base;
+	0..1 -> * /3/Instance conformingInstance;
+	0..1 -> * Feature availableFeature;
+	0..1 -> * /2/Multiplicity multiplicity;
+}
+
+class AssociationRole
+{
+	isA Association;
+	0..1 -> * Association base;
+	0..1 -> * /3/Link conformingLink;
+	0..1 communicationConnection -- * /4/Message message;
+	0..1 -> * /2/Multiplicity multiplicity;
+}
+
+class AssociationEndRole
+{
+	isA AssociationEnd;
+	0..1 -> * AssociationEnd base;
+	0..1 -> * Attribute availableQualifier;
+	0..1 -> * /2/Multiplicity collaborationMultiplicity;
+}
+
+class Message
+{
+	isA ModelElement;
+	0..1 message -- 1..* /4/Interaction interaction;
+	0..1 -> * /3/Stimulus conformingStimulus;
+	0..1 -> 1..* /3/Action action;
+	0..1 message -- * /4/AssociationRole communicationConnection;
+	0..1 -> * /4/Message activator;
+	0..1 -> 1..* /4/ClassifierRole receiver;
+	0..1 -> 1..* /4/ClassifierRole sender;
+	0..1 -> * /4/Message predecessor;
+}
+
+class Interaction
+{
+	isA ModelElement;
+	0..1 interaction -- 1..* /4/Message message;
+	0..1 interaction -- 1..* /4/Collaboration context;
+}
+
+class InteractionInstanceSet
+{
+	isA ModelElement;
+	0..1 -> * /4/Interaction interaction;
+	0..1 interactionInstanceSet -- 1..* /4/CollaborationInstanceSet context;
+	0..1 -> 1..* /3/Stimulus participatingStimulus;
+}
+
+class CollaborationInstanceSet
+{
+	isA ModelElement;
+	0..1 -> * /4/Collaboration collaboration;
+	0..1 -> * ModelElement constrainingElement;
+	0..1 -> 1..* /3/Instance participatingInstance;
+	0..1 context -- * /4/InteractionInstanceSet interactionInstanceSet;
+	0..1 -> * /3/Link participatingLink;
+}

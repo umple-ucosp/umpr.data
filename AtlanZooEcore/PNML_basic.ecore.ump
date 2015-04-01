@@ -1,0 +1,203 @@
+namespace PNML;
+
+class IdedElement
+{
+	String id;
+}
+
+class URI
+{
+	String value;
+}
+
+class Color
+{
+}
+
+class AnyElement
+{
+	String name;
+	String text;
+}
+
+class PNMLDocument
+{
+	0..1 -> 1..* URI xmlns;
+	1..* document -- 1..* NetElement nets;
+}
+
+class NetElement
+{
+	isA IdedElement;
+	0..1 -> 1..* URI type;
+	1..* net -- * NetContent contents;
+	* net -- * ToolSpecific tools;
+	* net -- * Name name;
+	1..* net -- * NetGraphics netgraphics;
+}
+
+class NetContent
+{
+	* netcontent -- * Name name;
+}
+
+class ToolSpecific
+{
+	String tool;
+	String version;
+	0..1 -> * AnyElement anyelement;
+	* tools -- * Arc arc;
+	* tools -- * Node node;
+}
+
+class LabeledElement
+{
+	1..* namedelement -- * Label labels;
+	1..* namedelement -- * AnnotationGraphics annotationgraphics;
+}
+
+class Label
+{
+	String text;
+}
+
+class Name
+{
+	isA LabeledElement;
+}
+
+class Inscription
+{
+	isA LabeledElement;
+	* inscription -- 1..* Arc arc;
+}
+
+class InitialMarking
+{
+	isA LabeledElement;
+	* initialmarking -- 1..* Place place;
+}
+
+class NetContentElement
+{
+	isA NetContent;
+	1..* netcontentelement -- 1..* Node node;
+}
+
+class Arc
+{
+	isA NetContent ;
+	0..1 -> 1..* NetContentElement source;
+	0..1 -> 1..* NetContentElement target;
+	1..* arc -- * EdgeGraphics edgegraphics;
+}
+
+class Node
+{
+	isA IdedElement;
+	1..* node -- * NodeGraphics nodegraphics;
+}
+
+class Place
+{
+	isA NetContentElement;
+}
+
+class Transition
+{
+	isA NetContentElement;
+}
+
+class Graphics
+{
+}
+
+class NetGraphics
+{
+	isA Graphics;
+}
+
+class NodeGraphics
+{
+	isA Graphics;
+	* nodegraphics -- 1..* Position position;
+	1..* nodegraphics -- * Dimension dimension;
+	* nodegraphics -- * Fill fill;
+	* nodegraphics -- * Line line;
+}
+
+class EdgeGraphics
+{
+	isA Graphics;
+	* edgegraphics -- * Position position;
+	* edgegraphics -- * Fill fill;
+	* edgegraphics -- * Line line;
+}
+
+class AnnotationGraphics
+{
+	isA Graphics;
+	1..* annotationgraphics -- 1..* Offset offset;
+	* annotationgraphics -- * Fill fill;
+	* annotationgraphics -- * Line line;
+	1..* annotationgraphics -- * Font font;
+}
+
+class Coordinate
+{
+	Integer x;
+	Integer y;
+}
+
+class Position
+{
+	isA Coordinate;
+}
+
+class Offset
+{
+	isA Coordinate;
+}
+
+class Dimension
+{
+	Integer width;
+	Integer height;
+}
+
+class Fill
+{
+	RotationType gradientrotation;
+	0..1 -> * Color interiorcolor;
+	0..1 -> * Color gradientcolor;
+	0..1 -> * URI image;
+}
+
+class Line
+{
+	Integer width;
+	ShapeType shape;
+	StyleType style;
+	0..1 -> * Color color;
+}
+
+class Font
+{
+	String family;
+	String style;
+	String weight;
+	String size;
+	DecorationType decoration;
+	AlignType align;
+	Integer rotation;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}

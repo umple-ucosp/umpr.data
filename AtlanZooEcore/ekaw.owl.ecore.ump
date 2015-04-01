@@ -1,0 +1,2036 @@
+namespace ekaw;
+
+class Thing
+{
+}
+
+class Meta-Reviewer
+{
+	isA Reviewer;
+}
+
+class Decision
+{
+}
+
+class Preference
+{
+}
+
+class ProgramCommittee
+{
+	* memberOfProgramCommittee -- * ProgramCommitteeMember hasProgramCommitteeMember;
+}
+
+class Bid
+{
+	0..1 -> * Reviewer adjustedBy;
+}
+
+class ConferenceChair
+{
+	isA ConferenceMember ;
+}
+
+class ConferenceMember
+{
+	isA Person;
+	0..1 -> * conference memberOfConference;
+}
+
+class AssociatedChair
+{
+	isA ConferenceMember ;
+}
+
+class ProgramCommitteeMember
+{
+	isA Person ;
+	Integer maxPapers;
+	0..1 -> * Administrator addedBy;
+}
+
+class AuthorNotReviewer
+{
+	isA Author;
+}
+
+class SubjectArea
+{
+}
+
+class ExternalReviewer
+{
+	isA Person;
+	0..1 -> 1..* Reviewer assignedByReviewer;
+}
+
+class Chairman
+{
+	isA Person ;
+}
+
+class ProgramCommitteeChair
+{
+	isA ProgramCommitteeMember ;
+	0..1 -> * Review endReview;
+}
+
+class Acceptance
+{
+	isA Decision;
+}
+
+class Rejection
+{
+	isA Decision;
+}
+
+class Co-author
+{
+	isA Author;
+	0..1 -> * Paper co-writePaper;
+}
+
+class PaperAbstract
+{
+	isA Paper;
+}
+
+class PaperFullVersion
+{
+	isA Paper;
+}
+
+class Administrator
+{
+	isA User ;
+	0..1 -> * conference finalizePaperAssignment;
+	0..1 -> * conference runPaperAssignmentTools;
+	0..1 -> * conference enableVirtualMeeting;
+	0..1 -> * conference startReviewerBidding;
+	0..1 -> * Paper rejectPaper;
+	0..1 -> * conference enterConferenceDetails;
+	0..1 -> * conference printHardcopyMailingManifests;
+	* assigned_by -- * Role assign;
+	0..1 -> * Event approve;
+	0..1 -> * conference enterReviewCriteria;
+	0..1 -> * Reviewer assignReviewer;
+	0..1 -> * Paper acceptPaper;
+}
+
+class Meta-Review
+{
+	isA Review;
+}
+
+class unsignedLong
+{
+}
+
+class anyURI
+{
+}
+
+class Account
+{
+	* register -- * Person registred_by;
+}
+
+class Inforamtion
+{
+}
+
+class User
+{
+	isA Person;
+	0..1 recieved_by -- * Document recieve;
+	0..1 -> * Thing create;
+	* submited__by -- * Document submit;
+}
+
+class Role
+{
+	isA Thing;
+}
+
+class Help_Request
+{
+	isA Request;
+}
+
+class Person
+{
+	isA Thing;
+	String hasFirstName;
+	String hasBiography;
+	String hasLastName;
+	String hasHomePage;
+	String hasSurname;
+	String hasFax;
+	String hasFirstName;
+	String hasPhone;
+	String hasEmail;
+	String has_an_email;
+	String has_the_first_name;
+	EEnum has_gender;
+	String has_the_last_name;
+	String email;
+	0..1 -> * Organization employedBy;
+	0..1 writtenBy -- * Document authorOf;
+	0..1 -> * Document hasConflictOfInterest;
+	0..1 -> * Thing inverse_of_add;
+	0..1 -> * Thing execute;
+	0..1 -> * Inforamtion get;
+	0..1 -> * Thing modify;
+	0..1 -> * Event take_part_in;
+	0..1 -> * Thing remove;
+	0..1 -> * Person add;
+	0..1 -> * Person added_by;
+	* used_by -- * Document use;
+	* sent_by -- * Activity send;
+	* has_authors -- * Conference_document contributes;
+	* hasMember -- * conference isMemberOf;
+	* hasAttendee -- * ConferenceEvent attendeeAt;
+}
+
+class Symposium
+{
+	isA Event;
+}
+
+class Document
+{
+	isA Thing;
+	0..1 -> * Thing relatesTo;
+	0..1 -> * Document hasUpdatedVersion;
+	0..1 -> * Document updatedVersionOf;
+}
+
+class Invited_Paper
+{
+	isA Paper;
+}
+
+class Admin_Role
+{
+	isA Role;
+}
+
+class Paper_Typologies
+{
+	isA Event_Setup;
+}
+
+class Event_Setup
+{
+	0..1 -> * Event define;
+}
+
+class Event_URL
+{
+	isA URL;
+	0..1 -> * Event concerned;
+}
+
+class Notification_Email
+{
+	isA Email;
+}
+
+class Email
+{
+	isA Document;
+}
+
+class Short_Paper
+{
+	isA Paper;
+}
+
+class Author_Role
+{
+	isA Role;
+}
+
+class Preview
+{
+	isA Review_Form;
+}
+
+class Review_Form
+{
+	isA Event_Setup;
+}
+
+class Committe_Role
+{
+	isA Role;
+}
+
+class Group_Email
+{
+	isA Email;
+}
+
+class Submission_Template
+{
+	isA Event_Setup;
+}
+
+class Review_Form_Setup
+{
+	isA Review_Form;
+}
+
+class Misc
+{
+	isA Help_Request;
+}
+
+class Event_Creation
+{
+	isA Activity;
+}
+
+class Approval_Email
+{
+	isA Email;
+	0..1 -> * Event confirm;
+}
+
+class Rejection_Email
+{
+	isA Email;
+}
+
+class Submission
+{
+	isA Document;
+}
+
+class Template
+{
+	isA Document;
+}
+
+class Feature_Request
+{
+	isA Help_Request;
+}
+
+class Event_Tracks
+{
+	isA Event_Setup;
+}
+
+class Request
+{
+	isA Activity;
+}
+
+class Activity
+{
+	0..1 -> * article has_result;
+}
+
+class Head_Role
+{
+	isA Role;
+}
+
+class Detail
+{
+	isA Thing;
+}
+
+class Corresponding_Author
+{
+	isA Author;
+}
+
+class Reviewer_Role
+{
+	isA Role;
+}
+
+class Event_Approval
+{
+	isA Activity;
+}
+
+class Registration
+{
+	isA Activity;
+}
+
+class Full_Paper
+{
+	isA Paper;
+}
+
+class Research_Topic
+{
+	isA Event_Setup;
+}
+
+class Description
+{
+}
+
+class Assistance
+{
+	isA Help_Request;
+}
+
+class Email_Template
+{
+	isA Event_Setup;
+}
+
+class Conference_participant
+{
+	isA Person;
+}
+
+class Active_conference_participant
+{
+	isA Conference_contributor ;
+	* is_given_by -- * Presentation gives_presentations;
+}
+
+class Passive_conference_participant
+{
+	isA Conference_participant;
+}
+
+class Review_expertise
+{
+	isA Thing;
+	EEnum has_an_expertise;
+	* has_a_review_expertise -- * Submitted_contribution has_a_submitted_contribution;
+}
+
+class Submitted_contribution
+{
+	isA Written_contribution;
+}
+
+class Regular_author
+{
+	isA Conference_contributor;
+}
+
+class Conference_contributor
+{
+	isA Person;
+}
+
+class Contribution_1th-author
+{
+	isA Regular_author;
+}
+
+class Contribution_co-author
+{
+	isA Regular_author;
+}
+
+class Conference_contribution
+{
+	isA Conference_document;
+	* has_contributions -- * Conference_volume is_submitted_at;
+}
+
+class Co-chair
+{
+	isA Committee_member;
+	* has_a_committee_co-chair -- * Committee was_a_committe_co-chair_of;
+}
+
+class Committee
+{
+	isA User;
+	* was_a_member_of -- * Committee_member has_members;
+	* has_a_commtitee -- * Conference_volume was_a_committee_of;
+	* was_a_committee_chair_of -- * Chair has_a_committee_chair;
+}
+
+class Committee_member
+{
+	isA Person;
+}
+
+class Abstract
+{
+	isA Paper ;
+	0..1 -> * Thing is_the_1th_part_of;
+	* has_abstract -- * article part_of_article;
+}
+
+class Extended_abstract
+{
+	isA Regular_contribution;
+}
+
+class Important_dates
+{
+	0..1 -> * date is_an_abstract_submission_date;
+	0..1 -> * date is_a_full_paper_submission_date;
+	0..1 -> * date is_an_ending_date;
+	0..1 -> * date is_a_date_of_acceptance_announcement;
+	0..1 -> * date is_a_date_of_camera_ready_paper_submission;
+	0..1 -> * date is_a_starting_date;
+	* has_important_dates -- * Conference_volume belong_to_a_conference_volume;
+}
+
+class Invited_speaker
+{
+	isA Conference_contributor;
+}
+
+class Conference_proceedings
+{
+	String has_an_ISBN;
+	String has_a_volume;
+	* issues -- * Publisher has_a_publisher;
+}
+
+class Information_for_participants
+{
+	isA Conference_document;
+}
+
+class Conference_document
+{
+	0..1 -> * date has_a_date_of_issue;
+}
+
+class Regular_contribution
+{
+	isA Written_contribution;
+}
+
+class Poster
+{
+	isA Conference_contribution;
+}
+
+class Written_contribution
+{
+	isA Conference_contribution;
+}
+
+class Conference_applicant
+{
+	isA Person;
+}
+
+class Camera_ready_contribution
+{
+	isA Accepted_contribution;
+}
+
+class Accepted_contribution
+{
+	isA Reviewed_contribution;
+}
+
+class Program_committee
+{
+	isA Committee;
+	* has_a_program_committee -- * Conference_volume was_a_program_committee_of;
+}
+
+class Organizing_committee
+{
+	isA Committee;
+	* has_an_organizing_committee -- * Conference_volume was_an_organizing_committee_of;
+}
+
+class Steering_committee
+{
+	isA Committee;
+	* has_a_steering_committee -- * Conference_volume was_a_steering_committee_of;
+}
+
+class Conference_volume
+{
+	isA conference;
+	String has_a_location;
+	0..1 -> * Workshop has_workshops;
+	0..1 -> * Track has_tracks;
+	0..1 -> * Tutorial has_tutorials;
+	* is_part_of_conference_volumes -- * Conference_part has_parts;
+}
+
+class Call_for_paper
+{
+	isA Conference_document;
+}
+
+class Conference_announcement
+{
+	isA Conference_document;
+}
+
+class Invited_talk
+{
+	isA Presentation;
+}
+
+class Conference_part
+{
+	* was_a_track-workshop_chair_of -- * Track-workshop_chair has_a_track-workshop-tutorial_chair;
+	0..1 -> * Topic has_a_track-workshop-tutorial_topic;
+}
+
+class Presentation
+{
+	isA Conference_contribution;
+}
+
+class Chair
+{
+	isA Committee_member;
+}
+
+class Track
+{
+	isA Conference_part ;
+}
+
+class Rejected_contribution
+{
+	isA Reviewed_contribution;
+}
+
+class Reviewed_contribution
+{
+	isA Submitted_contribution;
+	* reviews -- * Review has_a_review;
+}
+
+class Late_paid_applicant
+{
+	isA Paid_applicant;
+}
+
+class Paid_applicant
+{
+	isA Registeered_applicant;
+}
+
+class Early_paid_applicant
+{
+	isA Paid_applicant;
+}
+
+class Organizer
+{
+	isA Thing;
+}
+
+class Call_for_participation
+{
+	isA Conference_document;
+}
+
+class Publisher
+{
+}
+
+class Registeered_applicant
+{
+	isA Conference_applicant;
+}
+
+class Track-workshop_chair
+{
+	isA Person;
+}
+
+class Conference_www
+{
+	isA Conference_document;
+	String has_a_URL;
+}
+
+class Conference_fees
+{
+}
+
+class Review_preference
+{
+	isA Thing;
+	Integer has_a_degree;
+	0..1 -> * Thing has_a_topic_or_a_submission_contribution;
+}
+
+class Accepted_Paper
+{
+	isA Paper;
+}
+
+class Rejected_Paper
+{
+	isA Paper;
+}
+
+class Undecided_Paper
+{
+	isA Paper;
+}
+
+class Manual_Paper_Assignment
+{
+	isA paper_assignment;
+	0..1 -> * Program_Committee_member manually_assign_paper;
+}
+
+class Program_Committee_member
+{
+	isA human;
+}
+
+class paper_assignment
+{
+	isA activity;
+	0..1 -> * Program_Committee_member assign_paper;
+	0..1 -> 1..* human is_performed_by;
+}
+
+class intensity
+{
+}
+
+class start_date_of_camera-ready_submission
+{
+	isA camera-ready_submission_date;
+}
+
+class camera-ready_submission_date
+{
+	isA date;
+}
+
+class date_of_notification
+{
+	isA date;
+}
+
+class date
+{
+	isA Thing;
+}
+
+class article
+{
+	isA Document;
+	0..1 -> * Reviewer has_reviewer;
+	0..1 -> * activity goes_through;
+	0..1 -> * human is_sent_to;
+	0..1 -> * human structure_created_by;
+	0..1 -> * classification gives_classification;
+	0..1 -> * activity is_created_in;
+	* is_author_of -- * human has_author;
+	* writes_article -- * Author article_written_by;
+}
+
+class Contact_Person
+{
+	isA human;
+}
+
+class bidding_of_reviewer
+{
+	isA activity;
+	0..1 -> 1..* human is_performed_by;
+}
+
+class activity
+{
+	0..1 -> * activity is_followed_by;
+	0..1 -> * human is_monitored_by;
+	0..1 -> * intensity has_intensity;
+	0..1 performs_activity -- * human is_performed_by;
+	* supervises -- * human is_supervised_by;
+}
+
+class URL
+{
+	isA Thing;
+}
+
+class conference_setup
+{
+	isA Thing;
+	0..1 -> * human sets_member;
+	0..1 -> * human is_made_by;
+	0..1 -> * Topic includes_topic;
+	0..1 -> * date sets_date;
+	0..1 -> * URL sets_URL;
+}
+
+class human
+{
+	String e-mail;
+	String last_name;
+	String first_name;
+	0..1 -> * institute is_employed_in;
+	0..1 -> * Topic has_topic_of_interest;
+}
+
+class managing_of_conference_process
+{
+	isA activity;
+}
+
+class Program_Committee_Chair
+{
+	isA human;
+}
+
+class reviewing_proces
+{
+	isA activity;
+}
+
+class end_date_of_camera-ready_submission
+{
+	isA camera-ready_submission_date;
+}
+
+class abstract_submission_date
+{
+	isA date;
+}
+
+class group_email
+{
+	isA article;
+}
+
+class Senior_Reviewer_URL
+{
+	isA URL;
+}
+
+class notification
+{
+	isA activity;
+	0..1 -> 1..* article has_result;
+	0..1 -> 1..* human is_performed_by;
+}
+
+class notification_email
+{
+	isA article;
+}
+
+class Chair_URL
+{
+	isA URL;
+}
+
+class abstract_of_paper
+{
+	isA article;
+}
+
+class submission_process
+{
+	isA activity;
+	0..1 -> 1..* human is_performed_by;
+}
+
+class lower_tier_reviewing_process
+{
+	isA reviewing_proces;
+}
+
+class start_date_of_conference
+{
+	isA date_of_conference;
+}
+
+class date_of_conference
+{
+	isA date;
+}
+
+class Senior_Program_Committee_member
+{
+	isA Program_Committee_member;
+	0..1 -> 0..4 activity supervises;
+}
+
+class end_date_of_abstract_submission
+{
+	isA abstract_submission_date;
+}
+
+class phase_of_conference
+{
+}
+
+class Regular_Program_Committee_member
+{
+	isA Program_Committee_member;
+}
+
+class start_date_of_full_paper_submission
+{
+	isA full_paper_submission_date;
+}
+
+class full_paper_submission_date
+{
+	isA date;
+}
+
+class start_date_of_abstract_submission
+{
+	isA abstract_submission_date;
+}
+
+class end_date_of_conference
+{
+	isA date_of_conference;
+}
+
+class review_form
+{
+	isA article;
+	0..1 -> 1..* activity is_created_in;
+}
+
+class Automatic_Paper_Assignment
+{
+	isA paper_assignment;
+	0..1 -> * Program_Committee_member automatically_assign_paper;
+}
+
+class institute
+{
+}
+
+class classification
+{
+}
+
+class summary_of_reviews
+{
+	isA article;
+	0..1 -> 1..* activity is_created_in;
+}
+
+class upper_tier_reviewing_process
+{
+	isA reviewing_proces;
+	0..1 -> 1..* human is_performed_by;
+}
+
+class end_date_of_full_paper_submission
+{
+	isA full_paper_submission_date;
+}
+
+class acceptance_notification_email
+{
+	isA notification_email;
+}
+
+class rejection_notification_email
+{
+	isA notification_email;
+}
+
+class Contact_Person_URL
+{
+	isA URL;
+}
+
+class Regular_Reviewer_URL
+{
+	isA URL;
+}
+
+class Trip
+{
+	isA Social_event;
+}
+
+class Banquet
+{
+	isA Social_event;
+}
+
+class Reception
+{
+	isA Social_event;
+}
+
+class Social_event
+{
+	isA Event;
+}
+
+class Event
+{
+	isA Thing;
+	String starts_on;
+	String ends_on;
+	dateTime has_startdate;
+	dateTime has_enddate;
+	0..1 -> * Thing eventOnList;
+	0..1 -> * Event partOfEvent;
+	0..1 -> * Event hasEvent;
+	0..1 -> * Thing organisedBy;
+	0..1 -> * Event_Tracks conists_of;
+	* locationOf -- * Location heldIn;
+}
+
+class Contribution
+{
+	isA Thing;
+	String remark;
+	String abstract;
+	String contactEmail;
+	String hasKeyword;
+	String hasTitle;
+	0..1 -> * Topic dealsWith;
+	* writes -- * Author writtenBy;
+}
+
+class City
+{
+}
+
+class Company
+{
+	isA Organization;
+}
+
+class Scholar
+{
+	isA Person;
+	0..1 -> * University studyAt;
+}
+
+class Poster
+{
+	isA Contribution;
+}
+
+class Short_paper
+{
+	isA Contribution;
+}
+
+class Reviewing_results_event
+{
+	isA Administrative_event;
+}
+
+class Administrative_event
+{
+	isA Event;
+	0..1 -> * Administrative_event follows;
+	0..1 -> * Administrative_event parallel_with;
+}
+
+class Reviewing_event
+{
+	isA Administrative_event;
+}
+
+class Registration_of_participants_event
+{
+	isA Administrative_event;
+}
+
+class Submission_event
+{
+	isA Administrative_event;
+}
+
+class Camera_Ready_event
+{
+	isA Administrative_event;
+}
+
+class Workshop
+{
+	isA Working_event ;
+}
+
+class Tutorial
+{
+	isA Working_event ;
+}
+
+class Working_event
+{
+	isA Event;
+	0..1 -> * Administrative_event hasAdministrativeEvent;
+	* isTopicOf -- * Topic hasTopic;
+}
+
+class Member
+{
+	isA Participant;
+}
+
+class Participant
+{
+	isA Person;
+	Boolean earlyRegistration;
+}
+
+class Member_PC
+{
+	isA Person;
+	0..1 -> * Topic expertOn;
+	0..1 -> * Contribution reviewes;
+}
+
+class Chair_PC
+{
+	isA Person;
+}
+
+class Student
+{
+	isA Participant;
+}
+
+class Science_Worker
+{
+	isA Person;
+}
+
+class Assistant
+{
+	isA Person;
+}
+
+class Volunteer
+{
+	isA Person;
+}
+
+class Regular
+{
+	isA Participant;
+}
+
+class Author
+{
+	isA User ;
+	0..1 isWrittenBy -- * Paper hasRelatedPaper;
+	0..1 -> * Paper submitPaper;
+	0..1 -> * Paper writePaper;
+}
+
+class positiveInteger
+{
+}
+
+class pc_meeting
+{
+	isA Event;
+}
+
+class session
+{
+	isA Event;
+}
+
+class conference
+{
+	isA Thing ;
+	String hasName;
+	dateTime endDate;
+	dateTime paperDueOn;
+	dateTime registrationDueOn;
+	dateTime manuscriptDueOn;
+	dateTime startDate;
+	Integer reviewsPerPaper;
+	anyURI logoURL;
+	Boolean acceptsHardcopySubmissions;
+	anyURI siteURL;
+	0..1 -> * phase_of_conference is_in_phase;
+	0..1 -> 1..* Country hasCountry;
+	0..1 -> * date date;
+	0..1 -> * program has_program;
+}
+
+class chair
+{
+	isA Person;
+	0..1 -> * Reviewer assigns_reviewers_to_article;
+	* program_created_by -- * program creates_program;
+}
+
+class Review
+{
+	isA article ;
+	0..1 -> * Possible_Reviewer reviewWrittenBy;
+	0..1 -> * Reviewer writtenBy;
+	0..1 -> 1..* classification gives_classification;
+	0..1 -> 1..* activity is_created_in;
+	* writes_review -- * Reviewer review_written_by;
+	* hasReview -- * Paper reviewOfPaper;
+}
+
+class participant
+{
+	isA Person;
+	0..1 -> * conference submits_to_conference;
+}
+
+class program
+{
+	0..1 -> * session has_session;
+}
+
+class SlideSet
+{
+	isA Document;
+}
+
+class Programme
+{
+	isA Document;
+	* hasProgramme -- * ConferenceEvent belongsToEvent;
+}
+
+class MealMenu
+{
+	isA Document;
+	* hasMenu -- * MealEvent isMenuOf;
+}
+
+class Topic
+{
+	0..1 -> * Review_preference belongs_to_a_review_reference;
+}
+
+class ConferenceEvent
+{
+	dateTime hasEndDateTime;
+	dateTime hasStartDateTime;
+	* isLocationOf -- * Place hasLocation;
+}
+
+class Call
+{
+	String hasSubmissionInstructions;
+	dateTime hasSubmissionDeadline;
+	0..1 -> * Person isInitiatedBy;
+	* hasCall -- * AcademicEvent forEvent;
+}
+
+class ReviewRating
+{
+}
+
+class Organization
+{
+	* providedBy -- * Sponsorship isProviderOf;
+}
+
+class ReviewForm
+{
+}
+
+class PersonalHistory
+{
+}
+
+class Sponsorship
+{
+	String hasCostCurrency;
+	Integer hasCostAmount;
+}
+
+class ReviewQuestion
+{
+}
+
+class Country
+{
+}
+
+class ConferenceSession
+{
+}
+
+class ContactInformation
+{
+	String hasCity;
+	String hasStreet;
+	String hasPostalCode;
+	String hasPhone;
+}
+
+class Place
+{
+}
+
+class WeekRejectRating
+{
+	isA ReviewRating;
+}
+
+class AcceptRating
+{
+	isA ReviewRating;
+}
+
+class AccpetIfRoomRating
+{
+	isA ReviewRating;
+}
+
+class RejectRating
+{
+	isA ReviewRating;
+}
+
+class MealEvent
+{
+	isA NonAcademicEvent;
+}
+
+class NonAcademicEvent
+{
+	isA ConferenceEvent;
+}
+
+class BreakEvent
+{
+	isA NonAcademicEvent;
+}
+
+class ParallelAndDistributedComputingTopic
+{
+	isA Topic;
+}
+
+class WirelessCommunicationsTopic
+{
+	isA Topic;
+}
+
+class OperatingTopicsystems
+{
+	isA Topic;
+}
+
+class ComputerNetworksTopic
+{
+	isA Topic;
+}
+
+class SatelliteAndSpaceCommunicationsTopic
+{
+	isA Topic;
+}
+
+class CADTopic
+{
+	isA Topic;
+}
+
+class MultimediaTopic
+{
+	isA Topic;
+}
+
+class CommunicationsTopic
+{
+	isA Topic;
+}
+
+class PowerlineTransmissionTopic
+{
+	isA Topic;
+}
+
+class AntennasTopic
+{
+	isA Topic;
+}
+
+class PerformanceTopic
+{
+	isA Topic;
+}
+
+class SignalProcessingTopic
+{
+	isA Topic;
+}
+
+class MicroelectronicsTopic
+{
+	isA Topic;
+}
+
+class TestOnlyTopic
+{
+	isA Topic;
+}
+
+class RadioCommunicationsTopic
+{
+	isA Topic;
+}
+
+class ComputerArchitectureTopic
+{
+	isA Topic;
+}
+
+class MedicineTopic
+{
+	isA Topic;
+}
+
+class SecurityTopic
+{
+	isA Topic;
+}
+
+class MobileComputingTopic
+{
+	isA Topic;
+}
+
+class CryptographyTopic
+{
+	isA Topic;
+}
+
+class CommunicationTheoryTopic
+{
+	isA Topic;
+}
+
+class ConferenceChair
+{
+	isA Person;
+}
+
+class DiningPlace
+{
+	isA Place;
+}
+
+class AcademiaOrganization
+{
+	isA Organization;
+}
+
+class IndustryOrganization
+{
+	isA Organization;
+}
+
+class NGO
+{
+	isA Organization;
+}
+
+class GovernmentOrganization
+{
+	isA Organization;
+}
+
+class ComputerNetworksEnterpriseTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ComputerNetworksSwitchingTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ComputerNetworksSensorTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ComputerNetworksSecurityTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ComputerNetworksOpticalTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ComputerNetworksMeasurementsTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ComputerNetworksManagementTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ComputerNetworksAapplicationsTopic
+{
+	isA ComputerNetworksTopic;
+}
+
+class ActivePaper
+{
+	isA Paper;
+	0..1 -> * ReviewRating hasRating;
+}
+
+class PendingPaper
+{
+	isA Paper;
+}
+
+class WithdrawnPaper
+{
+	isA Paper;
+}
+
+class RejectedPaper
+{
+	isA Paper;
+}
+
+class AcceptedPaper
+{
+	isA Paper;
+	* relatedToPaper -- * PaperPresentation relatedToEvent;
+}
+
+class PublishedPaper
+{
+	isA Paper;
+}
+
+class Attendee
+{
+	isA Person;
+}
+
+class CoffeeBreak
+{
+	isA BreakEvent;
+}
+
+class FreeTimeBreak
+{
+	isA BreakEvent;
+}
+
+class MealBreak
+{
+	isA BreakEvent;
+}
+
+class Reviewer
+{
+	isA Person ;
+	0..1 -> * Paper readPaper;
+	0..1 -> * Reviewer invites_co-reviewers;
+	0..1 -> * Reviewer invited_by;
+	0..1 -> * Thing has_a_review_reference_or_expertise;
+	* isReviewHistoryOf -- * PersonalReviewHistory hasReviewHistory;
+	0..1 -> * Paper hasBeenAssigned;
+}
+
+class ClosingTalk
+{
+	isA TalkEvent;
+}
+
+class WelcomeTalk
+{
+	isA TalkEvent;
+}
+
+class TalkEvent
+{
+	isA AcademicEvent;
+}
+
+class SessionChair
+{
+	isA Person;
+}
+
+class TPCMember
+{
+	isA Person;
+}
+
+class TwoLevelConference
+{
+	isA conference;
+}
+
+class CallForPapers
+{
+	isA Call;
+}
+
+class TextualReviewQuestion
+{
+	isA ReviewQuestion;
+}
+
+class NumericalReviewQuestion
+{
+	isA ReviewQuestion;
+}
+
+class OrganizationalMeeting
+{
+	isA AcademicEvent;
+}
+
+class PaperPresentation
+{
+	isA AcademicEvent;
+}
+
+class AcademicEvent
+{
+	isA ConferenceEvent;
+}
+
+class PersonalPublicationHistory
+{
+	isA PersonalHistory;
+}
+
+class Excursion
+{
+	isA SocialEvent;
+}
+
+class SocialEvent
+{
+	isA NonAcademicEvent;
+}
+
+class CallForReviews
+{
+	isA Call;
+}
+
+class PersonalReviewHistory
+{
+	isA PersonalHistory;
+}
+
+class ConferenceVenuePlace
+{
+	isA Place;
+}
+
+class CallForManuscripts
+{
+	isA Call;
+}
+
+class Reception
+{
+	isA SocialEvent;
+}
+
+class SingleLevelConference
+{
+	isA conference;
+}
+
+class MeetingRoomPlace
+{
+	isA Place;
+}
+
+class AccommodationPlace
+{
+	isA Place;
+}
+
+class RatedPapers
+{
+	isA ActivePaper;
+}
+
+class TravelGrant
+{
+	isA Sponsorship;
+}
+
+class ConferenceDinner
+{
+	isA MealEvent;
+}
+
+class dateTime
+{
+}
+
+class Accepted_Paper
+{
+	isA Evaluated_Paper;
+}
+
+class Rejected_Paper
+{
+	isA Evaluated_Paper;
+}
+
+class Evaluated_Paper
+{
+	isA Assigned_Paper;
+	0..1 -> 3..* Review hasReview;
+}
+
+class Camera_Ready_Paper
+{
+	isA Paper;
+}
+
+class Positive_Review
+{
+	isA Review;
+}
+
+class Workshop_Paper
+{
+	isA Paper;
+}
+
+class Industrial_Paper
+{
+	isA Paper;
+}
+
+class Paper
+{
+	isA Document ;
+	Integer full_paper_size;
+	unsignedLong paperID;
+	String title;
+	0..1 -> 1..* human has_author;
+	0..1 -> * Person isReviewedBy;
+	0..1 -> * Bid hasBid;
+	0..1 -> * Decision hasDecision;
+	0..1 -> * SubjectArea hasSubjectArea;
+	0..1 -> * Meta-Reviewer readByMeta-Reviewer;
+	* reviewerOfPaper -- * Possible_Reviewer hasReviewer;
+}
+
+class Conference_Paper
+{
+	isA Paper;
+}
+
+class Industrial_Session
+{
+	isA Conference_Session;
+}
+
+class Conference_Session
+{
+	isA Session;
+}
+
+class Regular_Session
+{
+	isA Session;
+}
+
+class Poster_Session
+{
+	isA Session;
+}
+
+class Demo_Session
+{
+	isA Session;
+}
+
+class Session
+{
+	isA Scientific_Event;
+}
+
+class Paper_Author
+{
+	isA Person;
+}
+
+class Conference_Trip
+{
+	isA Social_Event;
+}
+
+class Social_Event
+{
+	isA Event;
+}
+
+class Tutorial_Abstract
+{
+	isA Abstract;
+}
+
+class Conference_Participant
+{
+	isA Person;
+}
+
+class Submitted_Paper
+{
+	isA Paper;
+}
+
+class Assigned_Paper
+{
+	isA Submitted_Paper;
+	0..1 -> 3..* Possible_Reviewer hasReviewer;
+}
+
+class Negative_Review
+{
+	isA Review;
+}
+
+class Neutral_Review
+{
+	isA Review;
+}
+
+class Research_Topic
+{
+	0..1 -> * Thing topicCoveredBy;
+}
+
+class Organising_Agency
+{
+	isA Organisation;
+}
+
+class Academic_Institution
+{
+	isA Organisation;
+	0..1 -> * Academic_Institution scientificallyOrganises;
+}
+
+class Organisation
+{
+	0..1 -> * Thing publisherOf;
+	0..1 -> * Thing technicallyOrganises;
+}
+
+class Proceedings_Publisher
+{
+	isA Organisation;
+}
+
+class Poster_Paper
+{
+	isA Paper;
+}
+
+class Regular_Paper
+{
+	isA Paper;
+}
+
+class Demo_Paper
+{
+	isA Paper;
+}
+
+class Location
+{
+}
+
+class Research_Institute
+{
+	isA Academic_Institution;
+}
+
+class Scientific_Event
+{
+	isA Event;
+}
+
+class Invited_Talk_Abstract
+{
+	isA Abstract;
+}
+
+class Agency_Staff_Member
+{
+	isA Person;
+}
+
+class Workshop_Session
+{
+	isA Session;
+}
+
+class Invited_Talk
+{
+	isA Individual_Presentation;
+}
+
+class Contributed_Talk
+{
+	isA Individual_Presentation;
+	0..1 -> * Document presentationOfPaper;
+}
+
+class Demo_Chair
+{
+	isA Conference_Participant;
+}
+
+class Tutorial_Chair
+{
+	isA Conference_Participant ;
+}
+
+class PC_Chair
+{
+	isA Conference_Participant ;
+}
+
+class PC_Member
+{
+	isA Possible_Reviewer;
+}
+
+class OC_Member
+{
+	isA Conference_Participant;
+}
+
+class Proceedings
+{
+	isA Multi-author_Volume;
+}
+
+class Programme_Brochure
+{
+	isA Document;
+}
+
+class Flyer
+{
+	isA Document;
+}
+
+class Web_Site
+{
+	isA Document;
+}
+
+class Multi-author_Volume
+{
+	isA Document;
+}
+
+class Individual_Presentation
+{
+	isA Scientific_Event;
+	0..1 -> * Document presentationOfPaper;
+}
+
+class OC_Chair
+{
+	isA OC_Member;
+}
+
+class Conference_Banquet
+{
+	isA Social_Event;
+}
+
+class Workshop_Chair
+{
+	isA Conference_Participant ;
+}
+
+class Conference_Proceedings
+{
+	isA Proceedings;
+}
+
+class Session_Chair
+{
+	isA PC_Member ;
+}
+
+class Early-Registered_Participant
+{
+	isA Conference_Participant;
+}
+
+class Late-Registered_Participant
+{
+	isA Conference_Participant;
+}
+
+class University
+{
+	isA Academic_Institution ;
+}
+
+class Possible_Reviewer
+{
+	isA Person;
+}
+
+class Student
+{
+	isA Person;
+}
+
+class Invited_Speaker
+{
+	isA Presenter;
+}
+
+class Presenter
+{
+	isA Author ;
+}
+
+class SC_Member
+{
+	isA PC_Member;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

@@ -1,0 +1,67 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace SecureUML;
+
+class Group
+{
+	isA Subject;
+	1..* group -- * Subject subjectGroup;
+}
+
+class User
+{
+	isA Subject;
+}
+
+class Subject
+{
+	* subjectAssignment -- * Role role;
+}
+
+class Role
+{
+	0..1 -> * Role roleHierarchy;
+	* role -- * Permission permissionAssignment;
+}
+
+class Permission
+{
+	* permission -- * AuthorizationConstraint constraintAssignment;
+	* permission -- 1..* Action actionAssignment;
+}
+
+class AuthorizationConstraint
+{
+}
+
+class AtomicAction
+{
+	isA Action;
+}
+
+class CompositeAction
+{
+	isA Action;
+	* actionHyerarchy -- * Action subordinatedAction;
+}
+
+class Action
+{
+	* resourceAction -- 1..* Resource resource;
+}
+
+class Resource
+{
+}

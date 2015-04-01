@@ -1,0 +1,112 @@
+namespace RSS;
+
+class RSS
+{
+	String version;
+	1..* rss -- 1..* Channel channel;
+}
+
+class Channel
+{
+	String title;
+	String link;
+	String description;
+	String language;
+	String copyright;
+	String managingEditor;
+	String webmaster;
+	String generator;
+	String docs;
+	Integer ttl;
+	String rating;
+	Integer[] skipHours;
+	DayKind[] skipDays;
+	0..1 -> * Date pubDate;
+	0..1 -> * Date lastBuildDate;
+	0..1 -> * Category category;
+	1..* channel -- * Item items;
+	1..* channel -- * Image image;
+	1..* channel -- * TextInput textInput;
+	1..* channel -- * Cloud cloud;
+}
+
+class Item
+{
+	String title;
+	String link;
+	String description;
+	String author;
+	String comments;
+	String guid;
+	0..1 -> * Source source;
+	0..1 -> * Date pubDate;
+	0..1 -> * Enclosure enclosure;
+	0..1 -> * Category category;
+}
+
+class Image
+{
+	String url;
+	String title;
+	String link;
+	String description;
+	Integer width;
+	Integer height;
+}
+
+class TextInput
+{
+	String title;
+	String description;
+	String name;
+	String link;
+}
+
+class Cloud
+{
+	String domain;
+	Integer port;
+	String path;
+	String registerProcedure;
+	String protocol;
+}
+
+class Category
+{
+	String domain;
+	String value;
+}
+
+class Enclosure
+{
+	String url;
+	Integer lenght;
+	String type;
+}
+
+class Source
+{
+	String url;
+	String value;
+}
+
+class Date
+{
+	DayKind eDay;
+	Integer day;
+	Integer month;
+	Integer year;
+	Integer hours;
+	Integer minutes;
+	Integer seconds;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

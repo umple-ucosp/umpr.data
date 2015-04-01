@@ -1,0 +1,279 @@
+namespace DatadiagramMLSimplified;
+
+class CellType
+{
+	String unit;
+	String formula;
+	String err;
+	String value;
+}
+
+class VisioDocument
+{
+	1..* ms_visioDocument -- * MastersCollection docMasters;
+	1..* ps_visioDocument -- * PagesCollection docPages;
+}
+
+class PageSheet
+{
+	isA Shape ;
+}
+
+class NamedElt
+{
+	String name;
+	String nameU;
+}
+
+class IdentifiedElt
+{
+	Integer ID;
+}
+
+class UniqueIdElt
+{
+	String UniqueID;
+}
+
+class Shape
+{
+	Integer lineStyle;
+	Integer fillStyle;
+	Integer textStyle;
+	1..* sse_shapeSheet -- * ShapeElt shapeElts;
+	* shapes -- 1..* ShapesCollection ss_shapes;
+}
+
+class ShapeElt
+{
+}
+
+class IXElt
+{
+	Integer iX;
+}
+
+class DelElt
+{
+	Boolean del;
+}
+
+class Geom
+{
+	isA ShapeElt ;
+	0..1 -> * CellType noFill;
+	0..1 -> * CellType noLine;
+	0..1 -> * CellType noShow;
+	0..1 -> * CellType noSnap;
+	1..* lt_geom -- * LineTo linesTo;
+	1..* mt_geom -- * MoveTo movesTo;
+	1..* ac_geom -- * ArcTo arcsTo;
+	1..* sk_geom -- * SplineKnot splineKnots;
+	1..* pt_geom -- * PolylineTo polylinesTo;
+	1..* il_geom -- * InfiniteLine infiniteLines;
+	1..* e_geom -- * Ellipse ellipses;
+	1..* eat_geom -- * EllipticalArcTo ellipticalArcsTo;
+	1..* ss_geom -- * SplineStart splineStarts;
+	1..* nt_geom -- * NURBSTo nurbsTo;
+}
+
+class XYElt
+{
+	isA IXElt ;
+	0..1 -> * CellType x;
+	0..1 -> * CellType y;
+}
+
+class LineTo
+{
+	isA XYElt;
+}
+
+class MoveTo
+{
+	isA XYElt;
+}
+
+class XYAElt
+{
+	isA XYElt;
+	0..1 -> * CellType a;
+}
+
+class ArcTo
+{
+	isA XYAElt;
+}
+
+class SplineKnot
+{
+	isA XYAElt;
+}
+
+class PolylineTo
+{
+	isA XYAElt;
+}
+
+class XYABElt
+{
+	isA XYAElt;
+	0..1 -> * CellType b;
+}
+
+class InfiniteLine
+{
+	isA XYABElt;
+}
+
+class XYABCDElt
+{
+	isA XYABElt;
+	0..1 -> * CellType c;
+	0..1 -> * CellType d;
+}
+
+class Ellipse
+{
+	isA XYABCDElt;
+}
+
+class EllipticalArcTo
+{
+	isA XYABCDElt;
+}
+
+class SplineStart
+{
+	isA XYABCDElt;
+}
+
+class XYABCDEElt
+{
+	isA XYABCDElt;
+	0..1 -> * CellType e;
+}
+
+class NURBSTo
+{
+	isA XYABCDEElt;
+}
+
+class Text
+{
+	isA ShapeElt;
+	1..* te_text -- * TextElt textElts;
+}
+
+class TextElt
+{
+}
+
+class StringElt
+{
+	isA TextElt;
+	String value;
+}
+
+class MastersCollection
+{
+	1..* m_masterShortCuts -- * MasterShortCut masterShortCuts;
+	1..* m_masters -- * Master masters;
+}
+
+class MasterShortCut
+{
+	isA IdentifiedElt ;
+	Integer iconSize;
+	Integer patternFlags;
+	String prompt;
+	String shortcutURL;
+	String shortcutHelp;
+	Integer alignName;
+	1..* i_masterShortCut -- * Icon icons;
+}
+
+class Icon
+{
+	isA MasterElt;
+	String value;
+}
+
+class Master
+{
+	isA IdentifiedElt ;
+	String baseID;
+	Boolean matchByName;
+	Integer iconSize;
+	Integer patternFlags;
+	String prompt;
+	Boolean hidden;
+	Boolean iconUpdate;
+	Integer alignName;
+	1..* me_master -- * MasterElt masterElts;
+}
+
+class ShapesCollection
+{
+	isA MasterElt ;
+}
+
+class ConnectsCollection
+{
+	isA MasterElt ;
+	1..* c_connects -- * Connect connections;
+}
+
+class Connect
+{
+	Integer fromSheet;
+	Integer toSheet;
+	String fromCell;
+	String toCell;
+	Integer fromPart;
+	Integer toPart;
+}
+
+class MasterElt
+{
+}
+
+class PagesCollection
+{
+	1..* p_pages -- * Page pages;
+}
+
+class Page
+{
+	isA IdentifiedElt ;
+	Boolean background;
+	Integer backPage;
+	Double viewScale;
+	Double viewCenterX;
+	Double ViewCenterY;
+	Integer reviewerID;
+	Integer associatedPage;
+	1..* pe_page -- * PageElt pageElts;
+}
+
+class PageElt
+{
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

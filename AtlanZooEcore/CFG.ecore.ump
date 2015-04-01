@@ -1,0 +1,39 @@
+namespace CFG;
+
+class AbstractNode
+{
+	0..1 -> 1..* Expression expression;
+}
+
+class Node
+{
+	isA AbstractNode;
+	0..1 -> * Node inNode;
+	0..1 -> * Node outNode;
+}
+
+class ConditionalNode
+{
+	isA AbstractNode;
+	0..1 -> 1..* Node trueConditionNode;
+	0..1 -> 1..* Node falseConditionNode;
+}
+
+class Expression
+{
+	String expressionName;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class String
+{
+}
+
+class Integer
+{
+}

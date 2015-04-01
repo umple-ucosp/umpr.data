@@ -1,0 +1,42 @@
+namespace EAI;
+
+class FCMSource
+{
+}
+
+class EAISource
+{
+	isA FCMSource;
+	0..1 -> * EAIResource resources;
+}
+
+class FCMSink
+{
+}
+
+class EAISink
+{
+	isA FCMSink;
+	0..1 -> * EAIResource resources;
+}
+
+class EAIResource
+{
+}
+
+class EAIQueue
+{
+	isA EAIResource;
+	Integer maxLength;
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}

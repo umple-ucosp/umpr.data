@@ -1,0 +1,57 @@
+namespace Outline;
+
+class LocatedElement
+{
+	String location;
+}
+
+class Outline
+{
+	isA LocatedElement;
+	String extension;
+	* outline -- * Node nodes;
+}
+
+class Node
+{
+	isA LocatedElement;
+	String name;
+	String icon;
+	0..1 -> 1..* Label label;
+	0..1 -> * Map mapping;
+}
+
+class Label
+{
+	isA LocatedElement;
+	String label;
+	String methodCall;
+	0..1 -> * LabelSuite labelSuite;
+}
+
+class LabelSuite
+{
+	isA LocatedElement;
+	String label;
+	String methodCall;
+}
+
+class Map
+{
+	isA LocatedElement;
+	String mapString;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

@@ -1,0 +1,69 @@
+namespace ODPIV;
+
+class InvariantSchema
+{
+	* IOT_constrainer -- * InformationObjectTemplate constrainer_IOT;
+	* IOTy_constrainer -- * InformationObjectType constrainer_IOTy;
+	* S_constrainer -- * State constrainer_S;
+	* SC_constrainer -- * StateChange constrainer_SC;
+	* ATy_constrainer -- * ActionType constrainer_ATy;
+	* AT_constrainer -- * ActionTemplate constrainer_AT;
+}
+
+class InformationObjectTemplate
+{
+	* IO_IOT -- * InformationObject IOT_IO;
+}
+
+class InformationObjectType
+{
+	* IO_IOTy -- * InformationObject IOTy_IO;
+}
+
+class InformationObject
+{
+	1..* S_IO -- 1..* State IO_S;
+	1..* SS_IO -- * StaticSchema describer;
+	* participant -- * Action IO_A;
+}
+
+class State
+{
+	0..1 startState -- 1..* StateChange change;
+	1..* endState -- 1..* StateChange causeSC;
+}
+
+class StateChange
+{
+	* dsStateChange -- 1..* DynamicSchema specifier;
+	* effect -- * Action cause;
+}
+
+class DynamicSchema
+{
+}
+
+class StaticSchema
+{
+	Double locationTime;
+}
+
+class Action
+{
+	* ATy_A -- * ActionType A_ATy;
+	* AT_A -- * ActionTemplate A_AT;
+}
+
+class ActionType
+{
+}
+
+class ActionTemplate
+{
+}
+
+namespace PrimitiveTypes;
+
+class Double
+{
+}

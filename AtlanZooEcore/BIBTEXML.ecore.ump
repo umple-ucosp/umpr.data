@@ -1,0 +1,203 @@
+namespace BIBTEXML;
+
+class BibtexFile
+{
+	0..1 -> * Entry entries;
+}
+
+class Author
+{
+	String name;
+}
+
+class Entry
+{
+	String id;
+	String abstract;
+}
+
+class AuthoredEntry
+{
+	isA Entry;
+	0..1 -> 1..* Author authors;
+}
+
+class BookTitledEntry
+{
+	isA Entry;
+	String booktitle;
+}
+
+class InstitutionEntry
+{
+	isA Entry;
+	String institution;
+}
+
+class EditoredEntry
+{
+	isA Entry;
+	String editor;
+}
+
+class DatedEntry
+{
+	isA Entry;
+	String year;
+	String month;
+}
+
+class JournalEntry
+{
+	isA Entry;
+	String journal;
+}
+
+class TitledEntry
+{
+	isA Entry;
+	String title;
+}
+
+class NotedEntry
+{
+	isA Entry;
+	String note;
+}
+
+class PublisheredEntry
+{
+	isA Entry;
+	String publisher;
+}
+
+class SchoolEntry
+{
+	isA Entry;
+	String school;
+}
+
+class Article
+{
+	isA AuthoredEntry ;
+	String volume;
+	String number;
+	String pages;
+	String note;
+}
+
+class Book
+{
+	isA AuthoredEntry ;
+	String volume;
+	String number;
+	String series;
+	String address;
+	String edition;
+	String note;
+}
+
+class Booklet
+{
+	isA DatedEntry ;
+	String howpublished;
+	String address;
+	String note;
+	0..1 -> * Author authors;
+}
+
+class InBook
+{
+	isA Book;
+	String chapter;
+	String type;
+}
+
+class InCollection
+{
+	isA Book ;
+	String chapter;
+	String type;
+}
+
+class Manual
+{
+	isA TitledEntry ;
+	String organization;
+	String address;
+	String edition;
+	String note;
+}
+
+class TechReport
+{
+	isA AuthoredEntry ;
+	String type;
+	String number;
+	String address;
+	String note;
+}
+
+class ThesisEntry
+{
+	isA AuthoredEntry ;
+	String type;
+	String address;
+	String note;
+}
+
+class PhdThesis
+{
+	isA ThesisEntry;
+}
+
+class MastersThesis
+{
+	isA ThesisEntry;
+}
+
+class Proceedings
+{
+	isA DatedEntry ;
+	String editor;
+	String volume;
+	String number;
+	String series;
+	String address;
+	String organization;
+	String publisher;
+	String note;
+}
+
+class InProceedings
+{
+	isA AuthoredEntry ;
+	String pages;
+}
+
+class Conference
+{
+	isA InProceedings;
+}
+
+class Unpublished
+{
+	isA AuthoredEntry ;
+}
+
+class Misc
+{
+	isA Entry;
+	String title;
+	String howpublished;
+	String month;
+	String year;
+	String note;
+	0..1 -> * Author authors;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

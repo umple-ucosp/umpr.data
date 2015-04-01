@@ -1,0 +1,48 @@
+namespace UseCase;
+
+class Actor
+{
+	isA NamedElement;
+}
+
+class UseCase
+{
+	isA NamedElement;
+	0..1 -> 1..* Extend extend;
+	0..1 -> 1..* Include include;
+}
+
+class Extend
+{
+}
+
+class Include
+{
+}
+
+class UseCaseContainer
+{
+	0..1 -> * NamedElement ownedElement;
+}
+
+class BehavioredClassifier
+{
+}
+
+class NamedElement
+{
+	String name;
+}
+
+class Association
+{
+	isA NamedElement;
+	0..1 -> * Actor actor;
+	0..1 -> * UseCase useCase;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

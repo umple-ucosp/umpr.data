@@ -1,0 +1,71 @@
+namespace MavenProject;
+
+class Project
+{
+	String id;
+	String groupId;
+	String artifactId;
+	String name;
+	String description;
+	0..1 -> * MailingList mailingLists;
+	0..1 -> * Person developersAndContributors;
+	0..1 -> * Build build;
+	0..1 -> * Project dependencies;
+}
+
+class Build
+{
+	String defaultGoal;
+	String sourceDirectory;
+	String unitTestSourceDirectory;
+	0..1 -> * Resource uniTest;
+	0..1 -> * Resource resources;
+}
+
+class Resource
+{
+	String targetPath;
+	String filtering;
+	String directory;
+	String includes;
+	String excludes;
+}
+
+class MailingList
+{
+	String name;
+	String subscribe;
+	String unsubscribe;
+	String post;
+	String archive;
+	String otherArchives;
+}
+
+class Person
+{
+	String name;
+	String email;
+	String url;
+	String organization;
+	String organizationUrl;
+	String roles;
+	String timezone;
+	String properties;
+}
+
+class Developer
+{
+	isA Person;
+	String id;
+}
+
+class Contributor
+{
+	isA Person;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

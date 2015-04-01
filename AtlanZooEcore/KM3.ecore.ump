@@ -1,0 +1,89 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace KM3;
+
+class LocatedElement
+{
+	String location;
+}
+
+class ModelElement
+{
+	isA LocatedElement;
+	String name;
+	* contents -- 1..* Package package;
+}
+
+class Classifier
+{
+	isA ModelElement;
+}
+
+class DataType
+{
+	isA Classifier;
+}
+
+class Enumeration
+{
+	isA Classifier;
+	0..1 -> * EnumLiteral literals;
+}
+
+class EnumLiteral
+{
+	isA ModelElement;
+}
+
+class Class
+{
+	isA Classifier;
+	Boolean isAbstract;
+	0..1 -> * Class supertypes;
+	1..* owner -- * StructuralFeature structuralFeatures;
+}
+
+class StructuralFeature
+{
+	isA ModelElement;
+	Integer lower;
+	Integer upper;
+	Boolean isOrdered;
+	Boolean isUnique;
+	0..1 -> 1..* Classifier type;
+}
+
+class Attribute
+{
+	isA StructuralFeature;
+}
+
+class Reference
+{
+	isA StructuralFeature;
+	Boolean isContainer;
+	0..1 -> * Reference opposite;
+}
+
+class Package
+{
+	isA ModelElement;
+	* contents -- 1..* Metamodel metamodel;
+}
+
+class Metamodel
+{
+	isA LocatedElement;
+}

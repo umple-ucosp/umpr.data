@@ -1,0 +1,37 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace DTMP;
+
+class State
+{
+	String name;
+	Boolean isStart;
+	Boolean isEnd;
+	Boolean isFail;
+	0..1 to -- * Transition incoming;
+	1..* from -- * Transition outGoing;
+	1..* state -- * Parameter formalParam;
+}
+
+class Transition
+{
+	String[] transProb;
+}
+
+class Parameter
+{
+	String[] name;
+	String[] type;
+}

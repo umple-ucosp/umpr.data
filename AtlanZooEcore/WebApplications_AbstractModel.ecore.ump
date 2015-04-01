@@ -1,0 +1,56 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace WebApplication;
+
+class HyperLink
+{
+	0..1 link -- * Server/ServerPage server;
+}
+
+class ClientPage
+{
+	0..1 -> 1..* HyperLink hyperlink;
+}
+
+class ClientPageModule
+{
+	0..1 -> 1..* Client/ClientPage consistsOf;
+}
+
+class LogicInterface
+{
+	isA Client/ClientPageModule;
+}
+
+class DesignElement
+{
+	isA Client/ClientPageModule;
+}
+
+class ServerPage
+{
+	0..1 -> 1..* Server/BusinessLogic useBusinessLogic;
+	0..1 -> 1..* Server/DesignTemplate useDesignTemplate;
+	0..1 -> * Client/ClientPage generates;
+	0..1 server -- * HyperLink link;
+}
+
+class BusinessLogic
+{
+}
+
+class DesignTemplate
+{
+}

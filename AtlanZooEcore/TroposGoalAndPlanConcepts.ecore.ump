@@ -1,0 +1,70 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+namespace GoalAndPlanConcepts;
+
+class Actor
+{
+	1..* PointOfView -- * Decomposition decomposition;
+	1..* PointOfView -- * Contribution contribution;
+	1..* PointOfView -- * MeansEnd meansEnd;
+}
+
+class Decomposition
+{
+}
+
+class Contribution
+{
+	String metric;
+	0..1 contributionR -- 1..* Goal contributer;
+	* contributionD -- 1..* Goal contributed;
+}
+
+class Goal
+{
+	0..1 means -- * MeansEnd meansEndS;
+	1..* end -- * MeansEnd meansEndD;
+	* root -- * BooleanDecomposition booleanDecomposition;
+	* target -- * BooleanDecLink booleanDecLink;
+}
+
+class MeansEnd
+{
+	* meansEndR -- * Resource meansR;
+	* meansEndP -- * Plan meansP;
+}
+
+class Resource
+{
+}
+
+class Plan
+{
+	* rootP -- * BooleanDecomposition booleanDecompositionP;
+	* targetP -- * BooleanDecLink booleanDecLinkP;
+}
+
+class BooleanDecomposition
+{
+	isA Decomposition;
+	String type;
+	1..* booleanDecompositionB -- 1..* BooleanDecLink booleanDecLinkD;
+}
+
+class BooleanDecLink
+{
+}
+
+class AndDecLink
+{
+	isA BooleanDecLink;
+}
+
+class OrDecLink
+{
+	isA BooleanDecLink;
+}

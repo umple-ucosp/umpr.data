@@ -1,0 +1,65 @@
+namespace RequisitePro;
+
+class DescribedElt
+{
+	String description;
+}
+
+class NamedElt
+{
+	String name;
+}
+
+class ContainerElt
+{
+	isA NamedElt ;
+	1..* parentPackage -- * Package packages;
+	1..* package -- * ContainedElt content;
+}
+
+class Project
+{
+	isA ContainerElt;
+}
+
+class Package
+{
+	isA ContainerElt;
+}
+
+class ContainedElt
+{
+}
+
+class TypedElt
+{
+	String type;
+}
+
+class Document
+{
+	isA DescribedElt ;
+}
+
+class Attribute
+{
+	isA TypedElt;
+	String value;
+}
+
+class Requirement
+{
+	isA NamedElt ;
+	String text;
+	0..1 -> * Attribute attributes;
+	0..1 -> 1..* Document location;
+	* children -- * Requirement parent;
+	* parent -- * Requirement children;
+	0..1 -> * Requirement coverLink;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

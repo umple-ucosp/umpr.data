@@ -1,0 +1,113 @@
+namespace KDMSimplified;
+
+class Element
+{
+	0..1 -> * Annotation annotation;
+	0..1 -> * Attribute attribute;
+}
+
+class ModelElement
+{
+	isA Element;
+	0..1 -> * TaggedValue taggedValue;
+	1..* extendedElement -- * Stereotype stereotype;
+}
+
+class KDMEntity
+{
+	isA ModelElement;
+	String name;
+	0..1 to -- * KDMRelationship inbound;
+	* ownedElement -- * KDMContainer owner;
+	* groupedElement -- * KDMGroup group;
+	1..* from -- * KDMRelationship outbound;
+	* ownedElement -- 1..* KDMModel model;
+}
+
+class KDMContainer
+{
+	isA KDMEntity;
+}
+
+class KDMGroup
+{
+	isA KDMEntity;
+}
+
+class KDMRelationship
+{
+	isA ModelElement;
+	* ownedRelation -- 1..* KDMModel model;
+}
+
+class Annotation
+{
+	isA Element;
+	String note;
+}
+
+class Attribute
+{
+	isA Element;
+	String tag;
+	String value;
+}
+
+class KDMExtensionFamily
+{
+	isA Element;
+	String name;
+	1..* family -- * Stereotype stereotype;
+}
+
+class Stereotype
+{
+	isA Element;
+	String baseClass;
+	String name;
+	0..1 -> * TagDefinition tag;
+}
+
+class TagDefinition
+{
+	isA Element;
+	String tag;
+	String type;
+}
+
+class TaggedValue
+{
+	isA Element;
+	String value;
+	0..1 -> 1..* TagDefinition tag;
+}
+
+class KDMFramework
+{
+	isA Element;
+	String name;
+	0..1 -> * KDMExtensionFamily extension;
+}
+
+class KDMModel
+{
+	isA KDMFramework;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

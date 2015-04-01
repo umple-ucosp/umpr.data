@@ -1,0 +1,17 @@
+namespace PetriNetV0;
+
+class Place
+{
+	0..1 dst -- * Transition src;
+	1..* src -- * Transition dst;
+	* place -- 1..* Net net;
+}
+
+class Transition
+{
+	* transition -- 1..* Net net;
+}
+
+class Net
+{
+}

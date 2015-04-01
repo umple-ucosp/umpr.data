@@ -1,0 +1,60 @@
+namespace TaskUsiXML;
+
+class Task
+{
+	String id;
+	String name;
+	String category;
+	Integer frequency;
+	Integer importance;
+	Integer structurationLevel;
+	Integer complexityLevel;
+	Integer criticity;
+	Integer centrality;
+	String terminationValue;
+	String taskType;
+	String taskItem;
+	* decomposedTask -- * Task decompositionTasks;
+	* decompositionTasks -- * Task decomposedTask;
+	0..1 rightTask -- * BinaryOperator leftOperator;
+	1..* leftTask -- * BinaryOperator rightOperator;
+	1..* decoratedTask -- * UnaryOperator decoration;
+}
+
+class Operator
+{
+	String id;
+	String name;
+}
+
+class BinaryOperator
+{
+	isA Operator;
+	BinaryType type;
+}
+
+class UnaryOperator
+{
+	isA Operator;
+	UnaryType UnaryType;
+}
+
+class FiniteInteration
+{
+	isA UnaryOperator;
+	Integer interation;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

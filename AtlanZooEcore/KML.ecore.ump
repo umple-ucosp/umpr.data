@@ -1,0 +1,548 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class Double
+{
+}
+
+namespace KML;
+
+class Node
+{
+	String name;
+	* nodes -- * ElementNode parentNode;
+}
+
+class ElementNode
+{
+	isA Node;
+}
+
+class AttributeNode
+{
+	isA Node;
+	String value;
+}
+
+class RootNode
+{
+	isA ElementNode;
+}
+
+class TextNode
+{
+	isA ElementNode;
+}
+
+class KMLNode
+{
+	isA ElementNode;
+}
+
+class KMLRootNode
+{
+	isA RootNode;
+}
+
+class Address
+{
+	isA KMLNode;
+	String value;
+}
+
+class AltitudeMode
+{
+	isA KMLNode;
+	AltitudeModeValue value;
+}
+
+class BalloonStyle
+{
+	isA KMLNode;
+}
+
+class Color
+{
+	isA KMLNode;
+	String value;
+}
+
+class ColorMode
+{
+	isA KMLNode;
+	ColorModeValue value;
+}
+
+class Cookie
+{
+	isA KMLNode;
+	String value;
+}
+
+class Coordinates
+{
+	isA KMLNode;
+}
+
+class Coordinate
+{
+	isA KMLNode;
+}
+
+class Description
+{
+	isA KMLNode;
+	String value;
+}
+
+class Document
+{
+	isA KMLNode;
+}
+
+class DrawOrder
+{
+	isA KMLNode;
+	Integer value;
+}
+
+class East
+{
+	isA KMLNode;
+	Double value;
+}
+
+class Extrude
+{
+	isA KMLNode;
+	Boolean value;
+}
+
+class Fill
+{
+	isA KMLNode;
+	Boolean value;
+}
+
+class FlyToView
+{
+	isA KMLNode;
+	Boolean value;
+}
+
+class Folder
+{
+	isA KMLNode;
+}
+
+class GroundOverlay
+{
+	isA KMLNode;
+}
+
+class H
+{
+	isA KMLNode;
+	Integer value;
+}
+
+class Heading
+{
+	isA KMLNode;
+	Double value;
+}
+
+class Href
+{
+	isA KMLNode;
+	String value;
+}
+
+class Icon
+{
+	isA KMLNode;
+}
+
+class IconStyle
+{
+	isA KMLNode;
+}
+
+class InnerBoundaryIs
+{
+	isA KMLNode;
+}
+
+class Key
+{
+	isA KMLNode;
+	String value;
+}
+
+class LabelStyle
+{
+	isA KMLNode;
+}
+
+class Latitude
+{
+	isA KMLNode;
+	Double value;
+}
+
+class LatLonBox
+{
+	isA KMLNode;
+}
+
+class LinearRing
+{
+	isA KMLNode;
+}
+
+class LineString
+{
+	isA KMLNode;
+}
+
+class LineStyle
+{
+	isA KMLNode;
+	String id;
+}
+
+class LinkDescription
+{
+	isA KMLNode;
+	String value;
+}
+
+class LinkName
+{
+	isA KMLNode;
+	String value;
+}
+
+class Longitude
+{
+	isA KMLNode;
+	Double value;
+}
+
+class LookAt
+{
+	isA KMLNode;
+}
+
+class Message
+{
+	isA KMLNode;
+}
+
+class MinRefreshPeriod
+{
+	isA KMLNode;
+	String value;
+}
+
+class MultiGeometry
+{
+	isA KMLNode;
+}
+
+class Name
+{
+	isA KMLNode;
+	String value;
+}
+
+class NetworkLink
+{
+	isA KMLNode;
+}
+
+class NetworkLinkControl
+{
+	isA KMLNode;
+}
+
+class North
+{
+	isA KMLNode;
+	Double value;
+}
+
+class ObjArrayField
+{
+	isA KMLNode;
+}
+
+class ObjField
+{
+	isA KMLNode;
+}
+
+class Open
+{
+	isA KMLNode;
+	String value;
+}
+
+class OuterBoundaryIs
+{
+	isA KMLNode;
+}
+
+class Outline
+{
+	isA KMLNode;
+	String value;
+}
+
+class OverlayXY
+{
+	isA KMLNode;
+	String x;
+	String y;
+	String xunits;
+	String yunits;
+}
+
+class Pair
+{
+	isA KMLNode;
+}
+
+class Parent
+{
+	isA KMLNode;
+	String value;
+}
+
+class Placemark
+{
+	isA KMLNode;
+}
+
+class Point
+{
+	isA KMLNode;
+}
+
+class Polygon
+{
+	isA KMLNode;
+}
+
+class PolyStyle
+{
+	isA KMLNode;
+}
+
+class Range
+{
+	isA KMLNode;
+	String value;
+}
+
+class RefreshInterval
+{
+	isA KMLNode;
+	String value;
+}
+
+class RefreshMode
+{
+	isA KMLNode;
+	String value;
+}
+
+class RefreshVisibility
+{
+	isA KMLNode;
+	String value;
+}
+
+class Rotation
+{
+	isA KMLNode;
+	String value;
+}
+
+class Schema
+{
+	isA KMLNode;
+}
+
+class Scale
+{
+	isA KMLNode;
+	String value;
+}
+
+class ScreenOverlay
+{
+	isA KMLNode;
+	String id;
+}
+
+class ScreenXY
+{
+	isA KMLNode;
+	String x;
+	String y;
+	String xunits;
+	String yunits;
+}
+
+class SimpleArrayField
+{
+	isA KMLNode;
+}
+
+class SimpleField
+{
+	isA KMLNode;
+}
+
+class Size
+{
+	isA KMLNode;
+	String x;
+	String y;
+	String xunits;
+	String yunits;
+}
+
+class South
+{
+	isA KMLNode;
+	Double value;
+}
+
+class Snippet
+{
+	isA KMLNode;
+}
+
+class Style
+{
+	isA KMLNode;
+	String id;
+}
+
+class StyleMap
+{
+	isA KMLNode;
+}
+
+class StyleUrl
+{
+	isA KMLNode;
+	String value;
+}
+
+class Tessellate
+{
+	isA KMLNode;
+	String value;
+}
+
+class Text
+{
+	isA KMLNode;
+}
+
+class TextColor
+{
+	isA KMLNode;
+	String value;
+}
+
+class Tilt
+{
+	isA KMLNode;
+	String value;
+}
+
+class Type
+{
+	isA KMLNode;
+	String value;
+}
+
+class Url
+{
+	isA KMLNode;
+}
+
+class ViewBoundScale
+{
+	isA KMLNode;
+	String value;
+}
+
+class ViewRefreshMode
+{
+	isA KMLNode;
+	String value;
+}
+
+class ViewRefreshTime
+{
+	isA KMLNode;
+	Integer value;
+}
+
+class ViewFormat
+{
+	isA KMLNode;
+	String value;
+}
+
+class Visibility
+{
+	isA KMLNode;
+	String value;
+}
+
+class W
+{
+	isA KMLNode;
+	Integer value;
+}
+
+class West
+{
+	isA KMLNode;
+	Double value;
+}
+
+class Width
+{
+	isA KMLNode;
+	Double value;
+}
+
+class X
+{
+	isA KMLNode;
+	Integer value;
+}
+
+class Y
+{
+	isA KMLNode;
+	Integer value;
+}

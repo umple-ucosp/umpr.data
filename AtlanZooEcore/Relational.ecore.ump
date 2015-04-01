@@ -1,0 +1,38 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace Relational;
+
+class Named
+{
+	String name;
+}
+
+class Table
+{
+	isA Named;
+	0..1 owner -- * Column col;
+	* keyOf -- * Column key;
+}
+
+class Column
+{
+	isA Named;
+	0..1 -> 1..* Type type;
+}
+
+class Type
+{
+	isA Named;
+}

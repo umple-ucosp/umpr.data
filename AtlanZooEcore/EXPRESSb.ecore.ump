@@ -1,0 +1,1272 @@
+namespace http://express.ecore;
+
+class Dummy
+{
+}
+
+class ONEOFConstraint
+{
+	isA rules/SubtypeConstraint;
+}
+
+class SupertypeRule
+{
+	isA core/CommonElement;
+	mof/Boolean assertsAbstract;
+	0..1 -> 1..* core/EntityType namedSupertype;
+	0..1 collection -- * rules/SubtypeConstraint constraints;
+}
+
+class SubtypeConstraint
+{
+	0..1 constraints -- 1..* rules/Extent constrainedSubtypes;
+	0..1 -> 1..* core/Expression equivalentRule;
+	0..1 constraints -- 1..* rules/SupertypeRule collection;
+}
+
+class Extent
+{
+	isA instances/SETValue;
+	0..1 constrainedSubtypes -- * rules/SubtypeConstraint constraints;
+	0..1 -> * instances/EntityInstance content;
+	0..1 -> 1..* instances/Population withinPopulation;
+	0..1 constrainedExtents -- * rules/GlobalRule constraintRules;
+	0..1 extension -- 1..* core/EntityType forType;
+	0..1 -> 1..* core/ScopedId id;
+}
+
+class TOTAL_OVERConstraint
+{
+	isA rules/SubtypeConstraint;
+}
+
+class ANDConstraint
+{
+	isA rules/SubtypeConstraint;
+}
+
+class GlobalRule
+{
+	isA core/SchemaElement ;
+	0..1 -> * algorithms/Statement supportingBody;
+	0..1 constraintRules -- 1..* rules/Extent constrainedExtents;
+	0..1 -> 1..* rules/NamedRule containsRules;
+}
+
+class NamedRule
+{
+	isA core/LocalElement;
+	mof/Integer position;
+	0..1 -> 1..* core/Expression assertsExpression;
+}
+
+class ProcedureCall
+{
+	isA algorithms/Statement;
+	0..1 -> 1..* algorithms/Procedure invokes;
+	0..1 inProcedureCall -- * expressions/ActualParameter actualParameters;
+}
+
+class SkipStatement
+{
+	isA statements/ControlStatement;
+}
+
+class AliasStatement
+{
+	isA algorithms/Statement ;
+	0..1 -> 1..* statements/VARExpression bindsToReference;
+	0..1 -> 1..* algorithms/Statement body;
+	0..1 -> 1..* statements/AliasVariable aliasVariable;
+}
+
+class ControlVariable
+{
+	isA algorithms/NamedVariable;
+	0..1 -> 1..* core/Expression boundValue;
+	0..1 -> 1..* core/Expression initialValue;
+	0..1 -> 1..* core/Expression increment;
+}
+
+class AliasVariable
+{
+	isA algorithms/NamedVariable ;
+	0..1 -> * statements/VARExpression referent;
+}
+
+class ControlStatement
+{
+	isA algorithms/Statement;
+}
+
+class VARCell
+{
+	isA statements/VARExpression;
+	core/Identifier id;
+	0..1 -> 1..* algorithms/VARVariable refersTo;
+}
+
+class NullStatement
+{
+	isA statements/ControlStatement;
+}
+
+class VARExpression
+{
+	core/ExpressText text;
+}
+
+class AttributeCell
+{
+	isA statements/VARExpression;
+	core/Identifier id;
+	0..1 -> 1..* core/ExplicitAttribute refersTo;
+	0..1 -> 1..* statements/VARExpression baseEntity;
+}
+
+class StatementBlock
+{
+	isA algorithms/Statement;
+	mof/Boolean delimited;
+	0..1 inBlock -- * algorithms/Statement bodyStatements_Statement;
+}
+
+class CaseAction
+{
+	mof/Boolean isDefault;
+	0..1 -> * core/Expression labelValue;
+	0..1 -> * algorithms/Statement action;
+}
+
+class MemberCell
+{
+	isA statements/VARExpression;
+	0..1 -> 1..* core/Expression indexValue;
+	0..1 -> 1..* statements/VARExpression baseAggregate;
+}
+
+class RepeatStatement
+{
+	isA algorithms/Statement ;
+	0..1 -> * core/Expression whileExpression;
+	0..1 controlledBy -- 1..* algorithms/Statement body;
+	0..1 -> * statements/ControlVariable controlVariable;
+	0..1 -> * core/Expression untilExpression;
+}
+
+class GroupCell
+{
+	isA statements/VARExpression;
+	core/Identifier id;
+	0..1 -> 1..* statements/VARExpression baseEntity;
+	0..1 -> 1..* core/SingleEntityType refersTo;
+}
+
+class VariableCell
+{
+	isA statements/VARExpression;
+	core/Identifier id;
+	0..1 -> 1..* algorithms/Variable refersTo;
+}
+
+class CaseStatement
+{
+	isA algorithms/Statement;
+	0..1 -> 1..* statements/CaseAction cases;
+	0..1 -> 1..* core/Expression selectionExpression;
+}
+
+class IfStatement
+{
+	isA algorithms/Statement;
+	0..1 -> 1..* core/Expression ifCondition;
+	0..1 -> * algorithms/Statement elseActions;
+	0..1 -> 1..* algorithms/Statement thenActions;
+}
+
+class EscapeStatement
+{
+	isA statements/ControlStatement;
+}
+
+class ReturnStatement
+{
+	isA statements/ControlStatement;
+	0..1 -> * core/Expression returnValue;
+}
+
+class Assignment
+{
+	isA algorithms/Statement;
+	0..1 -> 1..* core/Expression assignedValue;
+	0..1 -> 1..* statements/VARExpression variable;
+}
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+class Selector
+{
+	isA core/Expression;
+	0..1 -> 1..* core/Expression entityInstance;
+}
+
+class RepeatCount
+{
+	0..1 -> * core/Expression derivation;
+}
+
+class EnumItemRef
+{
+	isA expressions/Primary;
+	core/Identifier id;
+	0..1 -> 1..* instances/EnumerationItem refersTo;
+}
+
+class Literal
+{
+	isA expressions/Primary;
+	0..1 -> 1..* instances/SimpleValue refersTo;
+}
+
+class BinaryIndex
+{
+	isA expressions/IndexOperation;
+	0..1 -> 1..* core/Expression firstBit;
+	0..1 -> * core/Expression lastBit;
+}
+
+class IndeterminateRef
+{
+	isA expressions/Primary;
+	0..1 -> 1..* instances/Indeterminate refersTo;
+}
+
+class SELFRef
+{
+	isA expressions/Primary;
+}
+
+class IndexOperation
+{
+	isA core/Expression;
+	0..1 -> 1..* core/Expression baseValue;
+}
+
+class BinaryOperation
+{
+	isA expressions/Operation;
+	expressions/BinaryOperator operator;
+	0..1 -> 1..* core/Expression leftOperand;
+	0..1 -> 1..* core/Expression rightOperand;
+}
+
+class AggregateInitializer
+{
+	isA core/Expression;
+	0..1 -> * instances/GenericAggregate resultValue;
+	0..1 -> * expressions/MemberBinding bindings;
+}
+
+class StringIndex
+{
+	isA expressions/IndexOperation;
+	0..1 -> 1..* core/Expression firstCode;
+	0..1 -> * core/Expression lastCode;
+}
+
+class PartialEntityConstructor
+{
+	isA core/Expression;
+	core/Identifier id;
+	0..1 -> * instances/PartialEntityValue resultValue;
+	0..1 -> 1..* core/SingleEntityType attributeGroup;
+	0..1 -> * expressions/AttributeBinding bindings;
+}
+
+class Coercion
+{
+	isA expressions/Operation;
+	0..1 -> 1..* core/Expression operand;
+	0..1 -> 1..* core/VariableType targetType;
+}
+
+class Primary
+{
+	isA core/Expression;
+}
+
+class ActualParameter
+{
+	mof/Integer position;
+	0..1 actualParameters -- * statements/ProcedureCall inProcedureCall;
+	0..1 actualParameters -- * expressions/FunctionCall inFunctionCall;
+	0..1 -> 1..* algorithms/Parameter formalParameter;
+	0..1 -> * statements/VARExpression actualReferent;
+	0..1 -> * core/Expression actualValue;
+}
+
+class ParameterRef
+{
+	isA expressions/Primary;
+	core/Identifier id;
+	0..1 -> 1..* algorithms/Parameter refersTo;
+}
+
+class AttributeRef
+{
+	isA expressions/Selector;
+	core/Identifier id;
+	0..1 -> 1..* core/Attribute refersTo;
+}
+
+class AggregateIndex
+{
+	isA expressions/IndexOperation;
+	0..1 -> 1..* core/Expression indexValue;
+}
+
+class GroupRef
+{
+	isA expressions/Selector;
+	core/Identifier id;
+	0..1 -> 1..* core/SingleEntityType refersTo;
+}
+
+class UnaryOperation
+{
+	isA expressions/Operation;
+	expressions/UnaryOperator operator;
+	0..1 -> 1..* core/Expression unaryOperand;
+}
+
+class UsedInRef
+{
+	isA expressions/Selector;
+	0..1 -> 1..* core/Attribute inverseOf;
+}
+
+class ConstantRef
+{
+	isA expressions/Primary;
+	core/Identifier id;
+	0..1 -> 1..* instances/Constant refersTo;
+}
+
+class QueryExpression
+{
+	isA core/LocalScope ;
+	0..1 -> 1..* core/Expression selectCondition;
+	0..1 -> 1..* expressions/QueryVariable queryVariable;
+	0..1 -> 1..* core/Expression aggregateOperand;
+}
+
+class QueryVariable
+{
+	isA algorithms/NamedVariable;
+}
+
+class Operation
+{
+	isA core/Expression;
+}
+
+class AttributeBinding
+{
+	mof/Integer position;
+	0..1 -> 1..* core/Expression attributeValue;
+	0..1 -> * instances/AttributeValue toValue;
+	0..1 -> 1..* core/ExplicitAttribute attribute;
+}
+
+class FunctionCall
+{
+	isA core/Expression;
+	0..1 inFunctionCall -- * expressions/ActualParameter actualParameters;
+	0..1 -> 1..* algorithms/Function invokesFunction;
+	0..1 -> 1..* algorithms/FunctionResult returnsResult;
+}
+
+class MemberBinding
+{
+	mof/Integer position;
+	0..1 -> * expressions/RepeatCount repetition;
+	0..1 -> * instances/ListMember toSlot;
+	0..1 -> 1..* core/Expression memberValue;
+}
+
+class ExtentRef
+{
+	isA expressions/Primary;
+	core/Identifier id;
+	0..1 -> 1..* core/NamedType refersTo;
+}
+
+class VariableRef
+{
+	isA expressions/Primary;
+	core/Identifier id;
+	0..1 -> 1..* algorithms/NamedVariable refersTo;
+}
+
+class UnaryOperator
+{
+}
+
+class BinaryOperator
+{
+}
+
+class TypeElement
+{
+	isA core/NamedElement;
+}
+
+class SingleEntityType
+{
+	0..1 -> * core/ExplicitAttribute declaresExplicitAttribute;
+	0..1 ofEntity -- * core/Attribute declaresAttribute;
+	0..1 declares -- 1..* core/EntityType declaredIn;
+	0..1 -> 1..* core/PartialEntityType equivalent;
+	0..1 -> 1..* core/ScopedId id;
+}
+
+class AGGREGATEType
+{
+	isA core/GeneralizedType;
+	0..1 -> * core/SizeConstraint upperBound;
+	0..1 -> 1..* core/ParameterType memberType;
+	0..1 matchingStructure -- * algorithms/ActualStructureConstraint constraint;
+	0..1 -> * core/SizeConstraint lowerBound;
+}
+
+class GeneralBAGType
+{
+	isA core/GeneralAggregationType;
+}
+
+class DomainRule
+{
+	isA core/DomainConstraint ;
+	mof/Integer position;
+}
+
+class GeneralAggregationType
+{
+	isA core/GeneralizedType ;
+	0..1 -> 1..* core/GeneralizedType memberType;
+}
+
+class ConcreteType
+{
+	isA core/InstantiableType;
+}
+
+class Expression
+{
+	core/ExpressText text;
+	0..1 -> * core/Instance evaluation;
+	0..1 -> * core/Scope interpretationContext;
+	0..1 -> * core/DataType dataType;
+}
+
+class InverseAttribute
+{
+	isA core/Attribute;
+	mof/Boolean isUnique;
+	0..1 rangeView -- 1..* core/DomainRole modelsRole;
+	0..1 inverse -- 1..* core/InvertibleAttribute explicit;
+}
+
+class EnumerationType
+{
+	isA core/DefinedType;
+	mof/Boolean isExtensible;
+	0..1 -> * instances/EnumerationItem values;
+	0..1 declaredIn -- * instances/EnumerationItem declaredItems;
+	0..1 base -- * core/EnumerationType extension;
+	0..1 extension -- 1..* core/EnumerationType base;
+}
+
+class VariableType
+{
+	isA core/DataType ;
+}
+
+class ArrayBound
+{
+	mof/Integer bound;
+	0..1 -> 1..* core/Expression boundExpression;
+}
+
+class GeneralSETType
+{
+	isA core/GeneralAggregationType;
+}
+
+class LISTType
+{
+	isA core/ConcreteAggregationType;
+}
+
+class Redeclaration
+{
+	mof/Integer position;
+	mof/Boolean isMandatory;
+	0..1 -> * core/Expression derivation;
+	0..1 -> 1..* core/AttributeType restrictedType;
+	0..1 -> * core/Redeclaration refines;
+	0..1 -> * core/SizeConstraint upperBound;
+	0..1 -> * core/SizeConstraint lowerBound;
+	0..1 redeclarations -- 1..* core/EntityType scope;
+	0..1 -> 1..* core/Attribute originalAttribute;
+	0..1 -> * core/Role refinedRole;
+	0..1 -> * core/ScopedId alias;
+}
+
+class EntityType
+{
+	isA core/NamedType ;
+	mof/Boolean isAbstract;
+	0..1 ofEntity -- * core/Role playsRole;
+	0..1 scope -- * core/Redeclaration redeclarations;
+	0..1 owningEntity -- * core/Attribute attributes;
+	0..1 range -- * core/RangeRole playsRangeRole;
+	0..1 declaredIn -- 1..* core/SingleEntityType declares;
+	0..1 forType -- * rules/Extent extension;
+	0..1 referencingType -- * core/InvertibleAttribute invertibleAttributes;
+	0..1 domain -- * core/DomainRole playsDomainRole;
+	0..1 domain -- * core/UniqueRule uniqueRules;
+	0..1 rangeType -- * core/InvertibleAttribute usedIn;
+	0..1 -> * core/EntityType subtypeOf;
+}
+
+class DataType
+{
+	0..1 ofType -- * core/Instance instances;
+}
+
+class PartialEntityType
+{
+	isA core/DataType;
+	0..1 -> 1..* core/SingleEntityType components;
+}
+
+class Schema
+{
+	isA core/Scope;
+	core/Identifier name;
+	core/Identifier version;
+	0..1 describesSchema -- * core/Remark documentation;
+	0..1 interfacingSchema -- * core/InterfacedElement interfaces;
+	0..1 definedIn -- * core/SchemaElement schemaElements;
+	0..1 referencedIn -- * core/SchemaElement interfacedElements;
+}
+
+class InvertibleAttribute
+{
+	isA core/ExplicitAttribute;
+	0..1 explicit -- * core/InverseAttribute inverse;
+	0..1 usedIn -- 1..* core/EntityType rangeType;
+	0..1 basedOn -- 1..* core/Relationship createsRelationship;
+	0..1 invertibleAttributes -- 1..* core/EntityType referencingType;
+	0..1 domainView -- 1..* core/RangeRole modelsRole;
+}
+
+class GeneralizedType
+{
+	isA core/ParameterType ;
+	0..1 contains -- 1..* core/ParameterType occursIn;
+}
+
+class InterfacedElement
+{
+	mof/Boolean isUSE;
+	0..1 interfaces -- 1..* core/Schema interfacingSchema;
+	0..1 referencedAs -- 1..* core/SchemaElement refersTo;
+	0..1 -> * core/ScopedId interfacedId;
+}
+
+class NumericType
+{
+	isA core/SimpleType;
+}
+
+class DefinedType
+{
+	isA core/NamedType ;
+}
+
+class UniqueRule
+{
+	isA core/TypeElement;
+	mof/Integer position;
+	0..1 uniqueRules -- 1..* core/EntityType domain;
+	0..1 -> 1..* core/Attribute keyComponent;
+}
+
+class DomainRole
+{
+	isA core/Role;
+	0..1 modelsRole -- * core/InverseAttribute rangeView;
+	0..1 playsDomainRole -- 1..* core/EntityType domain;
+	0..1 -> * core/ScopedId id;
+}
+
+class DomainConstraint
+{
+	0..1 constraints -- 1..* core/AttributeType domain;
+	0..1 -> * core/Expression asserts;
+}
+
+class InstantiableType
+{
+	isA core/ParameterType ;
+	0..1 -> 1..* core/InstantiableType fundamentalType;
+}
+
+class GeneralLISTType
+{
+	isA core/GeneralAggregationType;
+}
+
+class NamedElement
+{
+	0..1 namedElements -- 1..* core/Scope namespace;
+	0..1 describesElement -- * core/Remark documentation;
+	0..1 -> * core/ScopedId id;
+}
+
+class Attribute
+{
+	isA core/TypeElement;
+	mof/Boolean isAbstract;
+	mof/Integer position;
+	0..1 role -- 1..* core/AttributeType attributeType;
+	0..1 declaresAttribute -- 1..* core/SingleEntityType ofEntity;
+	0..1 attributes -- 1..* core/EntityType owningEntity;
+}
+
+class BAGType
+{
+	isA core/ConcreteAggregationType;
+}
+
+class RealType
+{
+	isA core/NumericType;
+	mof/Integer precision;
+}
+
+class LogicType
+{
+	isA core/SimpleType;
+}
+
+class GenericType
+{
+	isA core/GeneralizedType;
+	mof/Boolean isEntity;
+	0..1 matchingType -- * algorithms/ActualTypeConstraint constraint;
+}
+
+class StringType
+{
+	isA core/SimpleType;
+	0..1 -> * core/LengthConstraint stringLengthConstraint;
+}
+
+class AnonymousType
+{
+	isA core/ConcreteType ;
+	0..1 -> * core/AnonymousType specializes;
+}
+
+class AlgorithmScope
+{
+	isA core/LocalScope;
+	0..1 localScope -- * core/CommonElement commonElements;
+	0..1 -> * algorithms/Variable variables;
+}
+
+class Instance
+{
+	0..1 compositionInstance -- * instances/Population appearsInPopulation;
+	0..1 instances -- 1..* core/DataType ofType;
+}
+
+class AttributeType
+{
+	0..1 attributeType -- * core/Attribute role;
+	0..1 domain -- * core/DomainConstraint constraints;
+}
+
+class DerivedAttribute
+{
+	isA core/Attribute;
+	0..1 -> 1..* core/Expression derivation;
+}
+
+class RangeRole
+{
+	isA core/Role;
+	0..1 modelsRole -- 1..* core/InvertibleAttribute domainView;
+	0..1 playsRangeRole -- 1..* core/EntityType range;
+	0..1 -> 1..* core/ScopedId id;
+}
+
+class LocalElement
+{
+	isA core/NamedElement;
+}
+
+class Remark
+{
+	mof/Boolean isTagged;
+	mof/Boolean isTail;
+	core/ExpressText text;
+	0..1 documentation -- * core/Schema describesSchema;
+	0..1 includesRemarks -- 1..* core/Scope appearsIn;
+	0..1 documentation -- * core/NamedElement describesElement;
+}
+
+class SizeConstraint
+{
+	isA core/DomainConstraint;
+	mof/Integer bound;
+}
+
+class Role
+{
+	0..1 roles -- 1..* core/Relationship inRelationship;
+	0..1 playsRole -- 1..* core/EntityType ofEntity;
+	0..1 -> * core/SizeConstraint upperBound;
+	0..1 -> * core/SizeConstraint lowerBound;
+}
+
+class SETType
+{
+	isA core/ConcreteAggregationType;
+}
+
+class SpecializedType
+{
+	isA core/DefinedType;
+	0..1 -> 1..* core/ConcreteType underlyingType;
+}
+
+class GeneralARRAYType
+{
+	isA core/GeneralAggregationType;
+	mof/Boolean isOptional;
+	0..1 -> * core/ArrayBound hiIndex;
+	0..1 -> * core/ArrayBound loIndex;
+}
+
+class Relationship
+{
+	0..1 -> 1..* core/DomainRole domain;
+	0..1 inRelationship -- 2 core/Role roles;
+	0..1 createsRelationship -- 1..* core/InvertibleAttribute basedOn;
+	0..1 -> 1..* core/RangeRole range;
+}
+
+class LengthConstraint
+{
+	isA core/DomainConstraint;
+	mof/Integer maxLength;
+	mof/Boolean isFixed;
+}
+
+class LocalScope
+{
+	isA core/Scope;
+	0..1 -> * core/LocalElement localElements;
+}
+
+class NamedType
+{
+	isA core/InstantiableType ;
+	0..1 allowedTypes -- * core/SelectType instantiates;
+	0..1 -> * core/DomainRule domainRules;
+}
+
+class BinaryType
+{
+	isA core/SimpleType;
+	0..1 -> * core/LengthConstraint binaryLengthConstraint;
+}
+
+class ScopedId
+{
+	core/Identifier localName;
+	0..1 -> 1..* core/Scope definingScope;
+}
+
+class AggregationType
+{
+	mof/Boolean isUnique;
+	core/OrderingKind ordering;
+	0..1 -> * core/SizeConstraint lowerBound;
+	0..1 -> * core/SizeConstraint upperBound;
+}
+
+class Scope
+{
+	0..1 namespace -- * core/NamedElement namedElements;
+	0..1 appearsIn -- * core/Remark includesRemarks;
+}
+
+class ParameterType
+{
+	0..1 occursIn -- * core/GeneralizedType contains;
+}
+
+class SelectType
+{
+	isA core/DefinedType;
+	mof/Boolean isExtensible;
+	mof/Boolean isEntity;
+	0..1 instantiates -- * core/NamedType allowedTypes;
+	0..1 base -- * core/SelectType extension;
+	0..1 extension -- 1..* core/SelectType base;
+	0..1 -> * core/NamedType selectList;
+}
+
+class ActualType
+{
+	isA core/VariableType;
+	0..1 -> 1..* algorithms/Algorithm scope;
+}
+
+class ExplicitAttribute
+{
+	isA core/Attribute;
+	mof/Boolean isOptional;
+}
+
+class SimpleType
+{
+	isA core/AnonymousType;
+	core/Keyword id;
+}
+
+class CommonElement
+{
+	isA core/SchemaElement;
+	0..1 commonElements -- * core/AlgorithmScope localScope;
+}
+
+class SchemaElement
+{
+	isA core/NamedElement;
+	0..1 refersTo -- * core/InterfacedElement referencedAs;
+	0..1 interfacedElements -- * core/Schema referencedIn;
+	0..1 schemaElements -- * core/Schema definedIn;
+}
+
+class ConcreteAggregationType
+{
+	isA core/AnonymousType ;
+	0..1 -> 1..* core/InstantiableType memberType;
+}
+
+class ARRAYType
+{
+	isA core/ConcreteAggregationType;
+	mof/Boolean isOptional;
+	0..1 -> 1..* core/ArrayBound loIndex;
+	0..1 -> 1..* core/ArrayBound hiIndex;
+}
+
+class Keyword
+{
+}
+
+class ExpressText
+{
+}
+
+class Identifier
+{
+}
+
+class OrderingKind
+{
+}
+
+class int
+{
+}
+
+class void
+{
+}
+
+class ActualTypeConstraint
+{
+	core/Identifier label;
+	0..1 constraint -- 1..* core/GenericType matchingType;
+	0..1 -> 1..* algorithms/ActualDataType requiredType;
+}
+
+class FunctionResult
+{
+	isA algorithms/Variable;
+}
+
+class Function
+{
+	isA algorithms/Algorithm;
+	0..1 -> 1..* algorithms/FunctionResult result;
+}
+
+class InParameter
+{
+	isA algorithms/Parameter;
+	0..1 source -- 1..* algorithms/InVariable variable;
+}
+
+class LocalVariable
+{
+	isA algorithms/Variable;
+	0..1 -> * core/Expression initialValue;
+}
+
+class ActualStructure
+{
+	isA algorithms/GenericElement ;
+}
+
+class ActualGenericType
+{
+	isA core/ActualType;
+	mof/Boolean isEntity;
+	core/Identifier label;
+	0..1 -> 1..* algorithms/ActualDataType refersTo;
+}
+
+class Statement
+{
+	core/ExpressText text;
+	0..1 bodyStatements_Statement -- * statements/StatementBlock inBlock;
+	0..1 -> * statements/SkipStatement bodyStatementsSkipStatement;
+	0..1 -> * statements/EscapeStatement bodyStatementsEscapeStatement;
+	0..1 body -- * statements/RepeatStatement controlledBy;
+	0..1 body -- * algorithms/Algorithm implements;
+}
+
+class NamedVariable
+{
+	isA core/LocalElement;
+	0..1 -> 1..* core/VariableType variableType;
+}
+
+class InVariable
+{
+	isA algorithms/Variable;
+	0..1 variable -- 1..* algorithms/InParameter source;
+}
+
+class Procedure
+{
+	isA algorithms/Algorithm;
+}
+
+class ActualARRAYType
+{
+	isA algorithms/ActualAggregationType;
+	mof/Boolean isOptional;
+	0..1 -> 1..* core/ArrayBound hiIndex;
+	0..1 -> 1..* core/ArrayBound loIndex;
+}
+
+class ActualSETType
+{
+	isA algorithms/ActualAggregationType;
+}
+
+class ActualAGGREGATEType
+{
+	isA core/ActualType;
+	core/Identifier label;
+	0..1 -> * core/SizeConstraint upperBound;
+	0..1 -> 1..* algorithms/ActualStructure refersTo;
+	0..1 -> 1..* core/VariableType memberType;
+	0..1 -> * core/SizeConstraint lowerBound;
+}
+
+class Parameter
+{
+	isA core/LocalElement;
+	mof/Boolean inout;
+	mof/Integer position;
+	0..1 -> * algorithms/ActualStructureConstraint structureConstraints;
+	0..1 -> * algorithms/ActualTypeConstraint typeConstraints;
+	0..1 -> 1..* core/ParameterType formalParameterType;
+}
+
+class ActualStructureConstraint
+{
+	core/Identifier label;
+	0..1 constraint -- 1..* core/AGGREGATEType matchingStructure;
+	0..1 -> 1..* algorithms/ActualStructure requiredStructure;
+}
+
+class Algorithm
+{
+	isA core/AlgorithmScope ;
+	0..1 implements -- * algorithms/Statement body;
+	0..1 -> * algorithms/Parameter formalParameters;
+}
+
+class ActualAggregationType
+{
+	isA core/ActualType ;
+	0..1 -> 1..* core/ActualType memberType;
+}
+
+class VARVariable
+{
+}
+
+class ActualLISTType
+{
+	isA algorithms/ActualAggregationType;
+}
+
+class Variable
+{
+	isA algorithms/NamedVariable;
+}
+
+class GenericElement
+{
+	isA core/LocalElement;
+	0..1 -> 1..* algorithms/Parameter source;
+	0..1 -> 1..* core/ScopedId label;
+}
+
+class VARParameter
+{
+	isA algorithms/Parameter ;
+}
+
+class ActualDataType
+{
+	isA core/GenericType ;
+}
+
+class ActualBAGType
+{
+	isA algorithms/ActualAggregationType;
+}
+
+class AttributeValue
+{
+	0..1 -> * core/Instance actualValue;
+	0..1 -> 1..* core/ExplicitAttribute attribute;
+}
+
+class ARRAYValue
+{
+	isA instances/AggregateValue;
+	0..1 -> 1..* instances/ArrayMember memberSlot;
+}
+
+class RoleName
+{
+	isA instances/StringValue;
+	0..1 -> 1..* core/Attribute refersTo;
+	0..1 -> 1..* core/ScopedId represents;
+}
+
+class EntityInstance
+{
+	isA instances/TypedInstance;
+	instances/EntityName id;
+	0..1 describes -- 1..* instances/EntityValue state;
+	0..1 -> 1..* core/EntityType instanceOf;
+}
+
+class IntegerValue
+{
+	isA instances/RealValue;
+}
+
+class AggregateValue
+{
+	isA instances/ConcreteValue;
+}
+
+class Constant
+{
+	isA core/CommonElement;
+	0..1 -> 1..* core/Expression valueExpression;
+	0..1 -> * core/Instance actualValue;
+	0..1 -> 1..* core/InstantiableType dataType;
+}
+
+class LogicalValue
+{
+	isA instances/SimpleValue;
+}
+
+class TypedInstance
+{
+	isA core/Instance;
+	0..1 -> * core/SelectType satisfiesType;
+}
+
+class ListMember
+{
+	mof/Integer position;
+	0..1 -> 1..* core/Instance memberValue;
+}
+
+class BagMember
+{
+	mof/Integer count;
+	0..1 -> 1..* core/Instance memberValue;
+}
+
+class SingleEntityValue
+{
+	0..1 -> 1..* instances/PartialEntityValue equivalent;
+	0..1 -> 1..* core/SingleEntityType ofType;
+	0..1 -> * instances/AttributeValue properties;
+}
+
+class Indeterminate
+{
+	isA core/Instance;
+}
+
+class SingleLeafInstance
+{
+	isA instances/EntityInstance;
+	0..1 -> 1..* core/EntityType characterizingType;
+}
+
+class GenericAggregate
+{
+	isA instances/LISTValue;
+}
+
+class BinaryValue
+{
+	isA instances/SimpleValue;
+}
+
+class SpecializedValue
+{
+	isA instances/TypedInstance;
+	0..1 -> 1..* instances/ConcreteValue fundamentalValue;
+}
+
+class BAGValue
+{
+	isA instances/AggregateValue;
+	0..1 -> * instances/BagMember memberSlot;
+}
+
+class EnumerationItem
+{
+	isA core/TypeElement ;
+	mof/Integer position;
+	0..1 declaredItems -- 1..* core/EnumerationType declaredIn;
+}
+
+class EntityValue
+{
+	isA instances/PartialEntityValue;
+	0..1 -> 1..* core/EntityType correspondsTo;
+	0..1 state -- * instances/EntityInstance describes;
+}
+
+class SETValue
+{
+	isA instances/AggregateValue;
+	0..1 -> * core/Instance memberValue;
+}
+
+class ArrayMember
+{
+	mof/Integer index;
+	0..1 -> * core/Instance memberValue;
+}
+
+class Population
+{
+	0..1 -> * instances/EntityInstance compositionEntityInstance;
+	0..1 appearsInPopulation -- * core/Instance compositionInstance;
+	0..1 -> * core/Schema governingSchema;
+}
+
+class RealValue
+{
+	isA instances/NumberValue;
+}
+
+class BooleanValue
+{
+	isA instances/LogicalValue;
+}
+
+class LISTValue
+{
+	isA core/Instance ;
+	0..1 -> * instances/ListMember memberSlot;
+}
+
+class StringValue
+{
+	isA instances/SimpleValue;
+}
+
+class TypeName
+{
+	isA instances/StringValue;
+	0..1 -> 1..* core/NamedType refersTo;
+	0..1 -> 1..* core/ScopedId represents;
+}
+
+class PartialEntityValue
+{
+	isA core/Instance;
+	0..1 -> 1..* instances/SingleEntityValue components;
+}
+
+class NumberValue
+{
+	isA instances/SimpleValue;
+}
+
+class MultiLeafInstance
+{
+	isA instances/EntityInstance;
+}
+
+class SimpleValue
+{
+	isA instances/ConcreteValue;
+	mof/String name;
+}
+
+class ConcreteValue
+{
+	isA core/Instance;
+}
+
+class EntityName
+{
+}

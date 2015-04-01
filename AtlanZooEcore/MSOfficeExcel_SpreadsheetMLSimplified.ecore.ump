@@ -1,0 +1,122 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace SpreadsheetMLSimplified;
+
+class DateTimeType
+{
+	Integer year;
+	Integer month;
+	Integer day;
+	Integer hour;
+	Integer minute;
+	Integer second;
+}
+
+class ValueType
+{
+	1..* value -- 1..* Data vt_data;
+}
+
+class StringValue
+{
+	isA ValueType;
+	String value;
+}
+
+class NumberValue
+{
+	isA ValueType;
+	Double value;
+}
+
+class DateTimeTypeValue
+{
+	isA ValueType;
+	0..1 -> 1..* DateTimeType value;
+}
+
+class BooleanValue
+{
+	isA ValueType;
+	Boolean value;
+}
+
+class ErrorValue
+{
+	isA ValueType;
+}
+
+class Workbook
+{
+	1..* ws_workbook -- * Worksheet wb_worksheets;
+}
+
+class Worksheet
+{
+	String name;
+	1..* t_worksheet -- * Table ws_table;
+}
+
+class Table
+{
+	1..* c_table -- * Column t_cols;
+	1..* r_table -- * Row t_rows;
+}
+
+class TableElement
+{
+	Integer index;
+}
+
+class ColOrRowElement
+{
+	isA TableElement;
+	Boolean hidden;
+	Integer span;
+}
+
+class Column
+{
+	isA ColOrRowElement;
+	Boolean autoFitWidth;
+	Double width;
+}
+
+class Row
+{
+	isA ColOrRowElement;
+	Boolean autoFitHeight;
+	Double height;
+	1..* c_row -- * Cell r_cells;
+}
+
+class Cell
+{
+	isA TableElement;
+	String arrayRange;
+	String formula;
+	String hRef;
+	Double mergeAcross;
+	Double mergeDown;
+	1..* d_cell -- * Data c_data;
+}
+
+class Data
+{
+}

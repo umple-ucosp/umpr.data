@@ -1,0 +1,125 @@
+namespace yUML;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class Model
+{
+	isA LocatedElement;
+	0..1 -> * Class classes;
+	1..* model -- * ModelElement elements;
+}
+
+class Class
+{
+	isA LocatedElement;
+	String name;
+}
+
+class ModelElement
+{
+	isA LocatedElement;
+}
+
+class ColorableElement
+{
+	isA ModelElement;
+	String color;
+}
+
+class ClassReference
+{
+	isA ColorableElement;
+	String stereotype;
+	0..1 -> 1..* Class class;
+	0..1 -> * ClassDefinition definition;
+}
+
+class Relationship
+{
+	isA ModelElement;
+	0..1 -> 1..* ClassReference source;
+	0..1 -> 1..* ClassReference target;
+}
+
+class ClassDefinition
+{
+	isA LocatedElement;
+	0..1 -> * Attribute attributes;
+	0..1 -> * Method methods;
+}
+
+class Association
+{
+	isA Relationship;
+	AssociationType type;
+	String sourceLabel;
+	Boolean navigableSource;
+	Visibility sourceVisibility;
+	String targetLabel;
+	Boolean navigableTarget;
+	Visibility targetVisibility;
+	0..1 -> * Cardinality sourceCardinality;
+	0..1 -> * Cardinality targetCardinality;
+}
+
+class Inheritance
+{
+	isA Relationship;
+}
+
+class Cardinality
+{
+	isA LocatedElement;
+	Integer lowerBound;
+	Integer upperBound;
+}
+
+class ClassMember
+{
+	isA LocatedElement;
+	Visibility visibility;
+	String name;
+}
+
+class Attribute
+{
+	isA ClassMember;
+	String type;
+}
+
+class Method
+{
+	isA ClassMember;
+	String[] arguments;
+}
+
+class Note
+{
+	isA ColorableElement;
+	String[] text;
+}
+
+class NoteAssociation
+{
+	isA Relationship;
+	0..1 -> 1..* Note note;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

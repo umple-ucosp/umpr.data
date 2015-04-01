@@ -1,0 +1,44 @@
+namespace WfMC;
+
+class WorkflowProcessDefinition
+{
+	1..* processDefinition -- * WorkflowApplicationDeclaration applicationDeclarations;
+	1..* processDefinition -- * WorkflowRelevantData revelantDatas;
+	1..* processDefinition -- * WorkflowParticipantSpecification participantSpecificatons;
+	1..* processDefinition -- * WorkflowProcessActivity processActivities;
+	1..* processDefinition -- * TransitionInformation transitionInformations;
+}
+
+class WorkflowApplicationDeclaration
+{
+	* applicationDeclarations -- * WorkflowRelevantData revelantDatas;
+	* applicationDeclarations -- * WorkflowProcessActivity processActivities;
+}
+
+class WorkflowRelevantData
+{
+	* revelantDatas -- * WorkflowParticipantSpecification participantSpecifications;
+	* revelantDatas -- * WorkflowProcessActivity processActivities;
+	* revelantDatas -- * TransitionInformation transitionInformations;
+}
+
+class WorkflowParticipantSpecification
+{
+	* participantSpecifications -- * WorkflowProcessActivity processActivities;
+}
+
+class WorkflowProcessActivity
+{
+	0..1 to_processActivity -- 1..* TransitionInformation to_transitionInformation;
+	1..* from_processActivity -- 1..* TransitionInformation from_transitionInformation;
+}
+
+class TransitionInformation
+{
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

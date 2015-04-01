@@ -1,0 +1,56 @@
+namespace EclipseLaunchConfigurations;
+
+class LaunchConfiguration
+{
+	String type;
+	0..1 -> * Attribute attributes;
+}
+
+class Attribute
+{
+	String key;
+}
+
+class StringAttribute
+{
+	isA Attribute;
+	String value;
+}
+
+class BooleanAttribute
+{
+	isA Attribute;
+	Boolean value;
+}
+
+class MapAttribute
+{
+	isA Attribute;
+	1..* mapAttribute -- * MapEntry entries;
+}
+
+class MapEntry
+{
+	isA StringAttribute;
+}
+
+class ListAttribute
+{
+	isA Attribute;
+	1..* listAttribute -- * ListEntry entries;
+}
+
+class ListEntry
+{
+	String value;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}

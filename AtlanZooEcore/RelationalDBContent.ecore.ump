@@ -1,0 +1,47 @@
+namespace RelationalDBContent;
+
+class NamedElement
+{
+	String name;
+}
+
+class DataBase
+{
+	isA NamedElement;
+	String SGBDname;
+	1..* database -- * Table tables;
+}
+
+class Table
+{
+	isA NamedElement;
+	1..* owner -- * Tuple tuples;
+}
+
+class Tuple
+{
+	1..* tuple -- * TupleElement elements;
+}
+
+class TupleElement
+{
+	String value;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

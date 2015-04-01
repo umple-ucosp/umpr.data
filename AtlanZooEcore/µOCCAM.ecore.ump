@@ -1,0 +1,348 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace Perceptory;
+
+class Process
+{
+}
+
+class StopProcess
+{
+	isA Process;
+}
+
+class SkipProcess
+{
+	isA Process;
+}
+
+class Action
+{
+	isA Process;
+}
+
+class Construction
+{
+	isA Process;
+}
+
+class Instance
+{
+	isA Process;
+	String name;
+}
+
+class Assignment
+{
+	isA Action;
+	0..1 -> 1..* Variable variable;
+	0..1 -> 1..* Expression expression;
+}
+
+class Input
+{
+	isA Action;
+	0..1 -> 1..* Channel channel;
+	0..1 -> 1..* Variable variable;
+}
+
+class Output
+{
+	isA Action;
+	0..1 -> 1..* Channel channel;
+	0..1 -> 1..* Expression expression;
+}
+
+class Sequence
+{
+	isA Construction;
+	0..1 -> 1..* Process process;
+}
+
+class NormalSequence
+{
+	isA Sequence;
+}
+
+class ReplicatorSequence
+{
+	isA Sequence;
+	0..1 -> 1..* Replicator replicator;
+}
+
+class Conditional
+{
+	isA Construction;
+	0..1 -> 1..* Choice choice;
+}
+
+class NormalConditional
+{
+	isA Conditional;
+}
+
+class ReplicatorConditional
+{
+	isA Conditional;
+	0..1 -> 1..* Replicator replicator;
+}
+
+class Loop
+{
+	isA Construction;
+	0..1 -> 1..* BooleanRef boolean;
+	0..1 -> 1..* Process process;
+}
+
+class Parallel
+{
+	isA Construction;
+	0..1 -> 1..* Process process;
+}
+
+class NormalParallel
+{
+	isA Parallel;
+}
+
+class ReplicatorParallel
+{
+	isA Parallel;
+	0..1 -> 1..* Replicator replicator;
+}
+
+class Alternation
+{
+	isA Construction;
+	0..1 -> 1..* Alternative alternative;
+}
+
+class NormalAlternation
+{
+	isA Parallel;
+}
+
+class ReplicatorAlternation
+{
+	isA Parallel;
+	0..1 -> 1..* Replicator replicator;
+}
+
+class Choice
+{
+	0..1 -> 1..* BooleanRef boolean;
+	0..1 -> 1..* Process process;
+}
+
+class BooleanRef
+{
+	0..1 -> 1..* Expression expression;
+}
+
+class Alternative
+{
+	0..1 -> 1..* Guard guard;
+	0..1 -> 1..* Process process;
+}
+
+class Guard
+{
+	0..1 -> 1..* Input input;
+}
+
+class InputGuard
+{
+	isA Guard;
+}
+
+class BooleanGuard
+{
+	isA Guard;
+	0..1 -> 1..* BooleanRef boolean;
+}
+
+class Replicator
+{
+	String name;
+	0..1 -> 1..* Base base;
+	0..1 -> 1..* Count count;
+}
+
+class Base
+{
+	0..1 -> 1..* Expression expression;
+}
+
+class Count
+{
+	0..1 -> 1..* Expression expression;
+}
+
+class Type
+{
+	0..1 -> 1..* PrimitiveType primitiveType;
+	0..1 -> * Expression expression;
+}
+
+class PrimitiveType
+{
+	Boolean isInt;
+	Boolean isChan;
+}
+
+class Literal
+{
+	Integer integer;
+}
+
+class Element
+{
+	String name;
+	0..1 -> * Subscript subscript;
+}
+
+class Subscript
+{
+	0..1 -> 1..* Expression expression;
+}
+
+class Variable
+{
+	0..1 -> 1..* Element element;
+}
+
+class Channel
+{
+	0..1 -> 1..* Element element;
+}
+
+class Operand
+{
+}
+
+class VariableOPerand
+{
+	isA Variable;
+}
+
+class LiteralOperand
+{
+	isA Literal;
+}
+
+class ExpressionOperand
+{
+	isA Expression;
+}
+
+class Expression
+{
+	0..1 -> 1..* Operand operand;
+}
+
+class MonadicExpression
+{
+	isA Expression;
+	0..1 -> 1..* MonadicOperator monadicOperator;
+}
+
+class DyadicExpression
+{
+	isA Expression;
+	0..1 -> 1..* Operand operandRight;
+	0..1 -> 1..* DyadicOperator dyadicOperator;
+}
+
+class SimpleExpression
+{
+	isA Expression;
+}
+
+class Specification
+{
+	isA Process;
+}
+
+class Declaration
+{
+	isA Specification;
+}
+
+class TypeDeclaration
+{
+	isA Declaration;
+	0..1 -> 1..* Type type;
+}
+
+class IntDeclaration
+{
+	isA Declaration;
+	String name;
+	0..1 -> 1..* Expression expression;
+}
+
+class ValDeclaration
+{
+	isA Declaration;
+	String name;
+	0..1 -> 1..* Expression expression;
+}
+
+class Definition
+{
+	isA Specification;
+	String name;
+	0..1 -> 1..* ProcedureBody procedureBody;
+}
+
+class Formal
+{
+	String name;
+	0..1 -> 1..* PrimitiveType primitiveType;
+}
+
+class ProcedureBody
+{
+	String name;
+	0..1 -> 1..* Process process;
+}
+
+class Actual
+{
+	0..1 -> 1..* Element element;
+}
+
+class MonadicOperator
+{
+	Boolean minus;
+	Boolean not;
+}
+
+class DyadicOperator
+{
+	Boolean plus;
+	Boolean minus;
+	Boolean star;
+	Boolean slash;
+	Boolean or;
+	Boolean inverseSlash;
+	Boolean and;
+	Boolean eq;
+	Boolean ne;
+	Boolean lt;
+	Boolean gt;
+	Boolean le;
+	Boolean ge;
+}

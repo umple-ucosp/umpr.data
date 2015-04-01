@@ -1,0 +1,496 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+namespace SPL;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class Program
+{
+	isA LocatedElement;
+	0..1 -> 1..* Service service;
+}
+
+class Service
+{
+	isA LocatedElement;
+	String name;
+	0..1 -> * Declaration declarations;
+	0..1 -> * Session sessions;
+}
+
+class Session
+{
+	isA LocatedElement;
+}
+
+class Registration
+{
+	isA Session;
+	0..1 -> * Declaration declarations;
+	0..1 -> * Session sessions;
+}
+
+class Dialog
+{
+	isA Session;
+	0..1 -> * Declaration declarations;
+	0..1 -> 1..* Method methods;
+}
+
+class Event
+{
+	isA Session;
+	String eventId;
+	0..1 -> * Declaration declarations;
+	0..1 -> 1..* Method methods;
+}
+
+class Method
+{
+	isA Session;
+	/2/Direction direction;
+	0..1 -> 1..* TypeExpression type;
+	0..1 -> 1..* MethodName methodName;
+	0..1 -> * Argument arguments;
+	0..1 -> 1..* Statement statements;
+	0..1 -> 1..* Branch branches;
+}
+
+class Argument
+{
+	isA VariableDeclaration;
+}
+
+class MethodName
+{
+	isA LocatedElement;
+}
+
+class SIPMethodName
+{
+	isA MethodName;
+	/2/SIPMethod name;
+}
+
+class ControlMethodName
+{
+	isA MethodName;
+	/2/ControlMethod name;
+}
+
+class Branch
+{
+	isA LocatedElement;
+	0..1 -> 1..* Statement statements;
+}
+
+class DefaultBranch
+{
+	isA Branch;
+}
+
+class NamedBranch
+{
+	isA Branch;
+	String[] name;
+}
+
+class TypeExpression
+{
+	isA LocatedElement;
+}
+
+class SimpleType
+{
+	isA TypeExpression;
+	/2/PrimitiveType type;
+}
+
+class SequenceType
+{
+	isA TypeExpression;
+	/2/Modifier modifier;
+	/2/PrimitiveType type;
+	Integer size;
+}
+
+class DefinedType
+{
+	isA TypeExpression;
+	String typeName;
+}
+
+class Declaration
+{
+	isA LocatedElement;
+	String name;
+}
+
+class VariableDeclaration
+{
+	isA Declaration;
+	0..1 -> 1..* TypeExpression type;
+	0..1 -> * Expression initExp;
+}
+
+class FunctionDeclaration
+{
+	isA Declaration;
+	0..1 -> 1..* TypeExpression returnType;
+	0..1 -> * Argument arguments;
+}
+
+class RemoteFunctionDeclaration
+{
+	isA FunctionDeclaration;
+	/2/FunctionLocation functionLocation;
+}
+
+class LocalFunctionDeclaration
+{
+	isA FunctionDeclaration;
+	0..1 -> 1..* Statement statements;
+}
+
+class StructureDeclaration
+{
+	isA Declaration;
+	0..1 -> 1..* Argument properties;
+}
+
+class StructureProperty
+{
+	isA LocatedElement;
+	String name;
+	0..1 -> 1..* TypeExpression type;
+}
+
+class FunctionCall
+{
+	isA LocatedElement;
+	0..1 -> 1..* FunctionDeclaration function;
+	0..1 -> * Expression parameters;
+}
+
+class Statement
+{
+	isA LocatedElement;
+}
+
+class CompoundStat
+{
+	isA Statement;
+	0..1 -> 1..* Statement statements;
+}
+
+class SetStat
+{
+	isA Statement;
+	0..1 -> 1..* Place target;
+	0..1 -> 1..* Expression setValue;
+}
+
+class DeclarationStat
+{
+	isA Statement;
+	0..1 -> 1..* Declaration declaration;
+}
+
+class ReturnStat
+{
+	isA Statement;
+	0..1 -> * Expression returnedValue;
+	0..1 -> * NamedBranch branch;
+}
+
+class IfStat
+{
+	isA Statement;
+	0..1 -> 1..* Expression condition;
+	0..1 -> 1..* Statement thenStatements;
+	0..1 -> * Statement elseStatements;
+}
+
+class WhenStat
+{
+	isA Statement;
+	0..1 -> 1..* Variable idExp;
+	0..1 -> 1..* WhenHeader whenHeaders;
+	0..1 -> 1..* Statement statements;
+	0..1 -> * Statement elseStatements;
+}
+
+class ForeachStat
+{
+	isA Statement;
+	String iteratorName;
+	0..1 -> 1..* Expression sequenceExp;
+	0..1 -> 1..* Statement statements;
+}
+
+class SelectStat
+{
+	isA Statement;
+	0..1 -> 1..* Expression matchedExp;
+	0..1 -> * SelectCase selectCases;
+	0..1 -> * SelectDefault selectDefault;
+}
+
+class FunctionCallStat
+{
+	isA Statement;
+	0..1 -> 1..* FunctionCall functionCall;
+}
+
+class ContinueStat
+{
+	isA Statement;
+}
+
+class BreakStat
+{
+	isA Statement;
+}
+
+class PushStat
+{
+	isA Statement;
+	0..1 -> 1..* Place target;
+	0..1 -> 1..* Expression pushedValue;
+}
+
+class WhenHeader
+{
+	isA VariableDeclaration;
+	String headerId;
+	0..1 -> * Constant value;
+}
+
+class SelectMember
+{
+	isA LocatedElement;
+	0..1 -> * Statement statements;
+}
+
+class SelectDefault
+{
+	isA SelectMember;
+}
+
+class SelectCase
+{
+	isA SelectMember;
+	0..1 -> 1..* Constant values;
+}
+
+class Expression
+{
+	isA LocatedElement;
+}
+
+class ConstantExp
+{
+	isA Expression;
+	0..1 -> 1..* Constant value;
+}
+
+class OperatorExp
+{
+	isA Expression;
+	String opName;
+	0..1 -> 1..* Expression leftExp;
+	0..1 -> * Expression rightExp;
+}
+
+class ForwardExp
+{
+	isA Expression;
+	Boolean isParallel;
+	0..1 -> * Expression exp;
+}
+
+class WithExp
+{
+	isA Expression;
+	0..1 -> 1..* Expression exp;
+	0..1 -> 1..* MessageField msgFields;
+}
+
+class BlockExp
+{
+	isA Expression;
+	0..1 -> 1..* Expression exp;
+}
+
+class ReasonExp
+{
+	isA Expression;
+}
+
+class BODYExp
+{
+	isA Expression;
+}
+
+class RequestURIExp
+{
+	isA Expression;
+}
+
+class PopExp
+{
+	isA Expression;
+	0..1 -> 1..* Place source;
+}
+
+class FunctionCallExp
+{
+	isA Expression;
+	0..1 -> 1..* FunctionCall functionCall;
+}
+
+class Place
+{
+	isA Expression;
+}
+
+class SIPHeaderPlace
+{
+	isA Place;
+	/2/SIPHeader header;
+}
+
+class VariablePlace
+{
+	isA Place;
+}
+
+class PropertyCallPlace
+{
+	isA VariablePlace;
+	String propName;
+	0..1 -> 1..* VariablePlace source;
+}
+
+class Variable
+{
+	isA VariablePlace;
+	0..1 -> 1..* Declaration source;
+}
+
+class MessageField
+{
+	isA LocatedElement;
+	0..1 -> 1..* Expression exp;
+}
+
+class ReasonMessageField
+{
+	isA MessageField;
+}
+
+class HeadedMessageField
+{
+	isA MessageField;
+	String headerId;
+}
+
+class Constant
+{
+	isA LocatedElement;
+}
+
+class BooleanConstant
+{
+	isA Constant;
+	Boolean value;
+}
+
+class IntegerConstant
+{
+	isA Constant;
+	Integer value;
+}
+
+class StringConstant
+{
+	isA Constant;
+	String value;
+}
+
+class URIConstant
+{
+	isA Constant;
+	String uri;
+}
+
+class SequenceConstant
+{
+	isA Constant;
+	0..1 -> * Constant values;
+}
+
+class ResponseConstant
+{
+	isA Constant;
+	0..1 -> 1..* Response response;
+}
+
+class Response
+{
+	isA LocatedElement;
+}
+
+class SuccessResponse
+{
+	isA Response;
+	/2/SuccessKind successKind;
+}
+
+class ErrorResponse
+{
+	isA Response;
+}
+
+class ClientErrorResponse
+{
+	isA ErrorResponse;
+	/2/ClientErrorKind errorKind;
+}
+
+class GlobalErrorResponse
+{
+	isA ErrorResponse;
+	/2/GlobalErrorKind errorKind;
+}
+
+class RedirectionErrorResponse
+{
+	isA ErrorResponse;
+	/2/RedirectionErrorKind errorKind;
+}
+
+class ServerErrorResponse
+{
+	isA ErrorResponse;
+	/2/ServerErrorKind errorKind;
+}
+
+namespace Enum;

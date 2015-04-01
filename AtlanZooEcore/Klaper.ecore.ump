@@ -1,0 +1,128 @@
+namespace Klaper;
+
+class Resource
+{
+	String name;
+	String type;
+	Integer capacity;
+	String schedulingPolicy;
+	String description;
+	1..* resource -- 1..* Acquire acquire;
+	1..* resource -- 1..* Release release;
+}
+
+class Service
+{
+	String name;
+	String formalParams;
+	String speedAttr;
+	String failAttr;
+	String description;
+	0..1 service -- 1..* Behavior behavior;
+	* usedService -- * Behavior behaviorUsed;
+	* calledService -- * ServiceCall serviceCall;
+}
+
+class Behavior
+{
+	0..1 nestedBehavior -- 1..* Step stepn;
+	1..* behavior -- * WorkLoad workLoad;
+	* behavior -- 1..* Step stepb;
+}
+
+class WorkLoad
+{
+	String workLoadType;
+	String arrivalProcess;
+	String population;
+	String initialResource;
+}
+
+class Step
+{
+	isA Behavior;
+	String name;
+	String repetition;
+	String internalExecTime;
+	String internalFailProb;
+	String completionModel;
+	* successor -- * Step predecessor;
+	* predecessor -- * Step successor;
+	1..* step -- * ServiceCall serviceCall;
+}
+
+class Start
+{
+	isA Step;
+}
+
+class End
+{
+	isA Step;
+}
+
+class Control
+{
+	isA Step;
+}
+
+class InternalActivity
+{
+	isA Step;
+}
+
+class ServiceCall
+{
+	isA Step;
+	String resourceType;
+	String serviceName;
+	Boolean isSynch;
+	1..* serviceCall -- * ActualParam actualParam;
+}
+
+class ActualParam
+{
+	String value;
+}
+
+class Branch
+{
+	isA Control;
+	String branchProbs;
+}
+
+class Fork
+{
+	isA Control;
+}
+
+class Join
+{
+	isA Control;
+}
+
+class Acquire
+{
+	isA Control;
+	String resourceUnits;
+}
+
+class Release
+{
+	isA Control;
+	String resourceUnits;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}

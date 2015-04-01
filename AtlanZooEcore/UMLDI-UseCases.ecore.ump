@@ -1,0 +1,228 @@
+namespace Common_Behavior;
+
+class Instance
+{
+	isA /2/ModelElement;
+	0..1 -> * Instance ownedInstance;
+	0..1 -> 1..* /2/Classifier classifier;
+	0..1 -> * Link ownedLink;
+	1..* instance -- * AttributeLink slot;
+	1..* instance -- * LinkEnd linkEnd;
+	* resident -- * ComponentInstance componentInstance;
+}
+
+class AttributeLink
+{
+	isA /2/ModelElement;
+	0..1 -> 1..* /2/Attribute attribute;
+	* qualifiedValue -- * LinkEnd linkEnd;
+}
+
+class Link
+{
+	isA /2/ModelElement;
+	0..1 -> 1..* /2/Association association;
+	1..* link -- 2..* LinkEnd connection;
+}
+
+class LinkEnd
+{
+	isA /2/ModelElement;
+	0..1 -> 1..* /2/AssociationEnd associationEnd;
+}
+
+class ComponentInstance
+{
+	isA Instance;
+	* resident -- * NodeInstance nodeInstance;
+}
+
+class NodeInstance
+{
+	isA Instance;
+}
+
+namespace Use_Cases;
+
+class UseCase
+{
+	isA /2/Classifier;
+	1..* extension -- * Extend extend;
+	1..* base -- * Include include;
+	1..* useCase -- * ExtensionPoint extensionPoint;
+}
+
+class Actor
+{
+	isA /2/Classifier;
+}
+
+class UseCaseInstance
+{
+	isA Instance;
+}
+
+class Extend
+{
+	isA /2/Relationship;
+	0..1 -> 1..* ExtensionPoint extensionPoint;
+	0..1 -> 1..* /3/BooleanExpression condition;
+}
+
+class Include
+{
+	isA /2/Relationship;
+}
+
+class ExtensionPoint
+{
+	isA /2/ModelElement;
+	/4/String location;
+}
+
+namespace Core;
+
+class Element
+{
+}
+
+class ModelElement
+{
+	isA /2/Element;
+	/4/String name;
+	/3/VisibilityKind visibility;
+	/4/Boolean isSpecification;
+	0..1 ownedElement -- * /2/Namespace namespace;
+}
+
+class GeneralizableElement
+{
+	isA /2/ModelElement;
+	/4/Boolean isRoot;
+	/4/Boolean isLeaf;
+	/4/Boolean isAbstract;
+	0..1 child -- * /2/Generalization generalization;
+}
+
+class Namespace
+{
+	isA /2/ModelElement;
+	0..1 namespace -- * /2/ModelElement ownedElement;
+}
+
+class Classifier
+{
+	isA /2/GeneralizableElement /2/Namespace;
+	0..1 powertype -- * /2/Generalization powertypeRange;
+	0..1 owner -- * /2/Feature feature;
+}
+
+class Feature
+{
+	isA /2/ModelElement;
+	/3/ScopeKind ownerScope;
+	0..1 feature -- * /2/Classifier owner;
+}
+
+class StructuralFeature
+{
+	isA /2/Feature;
+	/3/ChangeableKind changeability;
+	/3/ScopeKind targetScope;
+	/3/OrderingKind ordering;
+	0..1 -> 1..* /2/Classifier type;
+	0..1 -> * /3/Multiplicity multiplicity;
+}
+
+class AssociationEnd
+{
+	isA /2/ModelElement;
+	/4/Boolean isNavigable;
+	/3/OrderingKind ordering;
+	/3/AggregationKind aggregation;
+	/3/ScopeKind targetScope;
+	/3/ChangeableKind changeability;
+	0..1 connection -- 1..* /2/Association association;
+	0..1 -> * /2/Classifier specification;
+	0..1 -> 1..* /2/Classifier participant;
+	0..1 associationEnd -- * /2/Attribute qualifier;
+	0..1 -> * /3/Multiplicity multiplicity;
+}
+
+class Relationship
+{
+	isA /2/ModelElement;
+}
+
+class Association
+{
+	isA /2/GeneralizableElement /2/Relationship;
+	0..1 association -- 2..* /2/AssociationEnd connection;
+}
+
+class Attribute
+{
+	isA /2/StructuralFeature;
+	0..1 qualifier -- * /2/AssociationEnd associationEnd;
+	0..1 -> * /3/Expression initialValue;
+}
+
+class Generalization
+{
+	isA /2/Relationship;
+	/4/String discriminator;
+	0..1 -> 1..* /2/GeneralizableElement parent;
+	0..1 powertypeRange -- * /2/Classifier powertype;
+	0..1 generalization -- 1..* /2/GeneralizableElement child;
+}
+
+namespace Data_Types;
+
+class Multiplicity
+{
+	0..1 multiplicity -- 1..* /3/MultiplicityRange range;
+}
+
+class MultiplicityRange
+{
+	/4/Integer lower;
+	/4/Integer upper;
+	0..1 range -- 1..* /3/Multiplicity multiplicity;
+}
+
+class Expression
+{
+	/4/String language;
+	/4/String body;
+}
+
+class BooleanExpression
+{
+	isA /3/Expression;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Float
+{
+}
+
+class Integer
+{
+}
+
+class Long
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}

@@ -1,0 +1,117 @@
+namespace OpenQVT;
+
+class Variable
+{
+	String name;
+	String type;
+	String value;
+	String visibility;
+	* variables -- 1..* Context context;
+}
+
+class Context
+{
+	1..* context -- 1..* Rule rule;
+}
+
+class Rule
+{
+	1..* superRule -- 1..* Rule subRule;
+	1..* subRule -- 1..* Rule superRule;
+	1..* rule -- * Service services;
+}
+
+class RootRule
+{
+	isA Rule;
+	1..* rootRule -- 1..* RuleSet ruleSet;
+}
+
+class RuleSetCall
+{
+	isA Rule;
+	0..1 -> 1..* RuleSet ruleSet;
+}
+
+class QARule
+{
+	isA Rule;
+	1..* qARule -- 1..* Action action;
+	1..* qARule -- 1..* Query query;
+}
+
+class RuleSet
+{
+}
+
+class Service
+{
+	String visibility;
+	String signature;
+}
+
+class OCLService
+{
+	isA Service;
+}
+
+class RTransService
+{
+	isA Service;
+}
+
+class JavaService
+{
+	isA Service;
+}
+
+class RulePart
+{
+	0..1 -> 1..* Service service;
+}
+
+class Action
+{
+	isA RulePart;
+}
+
+class RTransAction
+{
+	isA Action;
+}
+
+class JavaAction
+{
+	isA Action;
+}
+
+class Query
+{
+	isA RulePart;
+}
+
+class OCLFilter
+{
+	isA Query;
+}
+
+class RTransQuery
+{
+	isA Query;
+}
+
+class JavaQuery
+{
+	isA Query;
+}
+
+class JavaFilter
+{
+	isA Query;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

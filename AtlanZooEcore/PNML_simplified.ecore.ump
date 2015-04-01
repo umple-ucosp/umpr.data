@@ -1,0 +1,88 @@
+namespace PNML;
+
+class LocatedElement
+{
+	String location;
+}
+
+class IdedElement
+{
+	isA LocatedElement;
+	String id;
+}
+
+class URI
+{
+	isA LocatedElement;
+	String value;
+}
+
+class PNMLDocument
+{
+	isA LocatedElement;
+	0..1 -> 1..* URI xmlns;
+	1..* document -- 1..* NetElement nets;
+}
+
+class NetElement
+{
+	isA IdedElement;
+	0..1 -> 1..* URI type;
+	1..* net -- * NetContent contents;
+	* net -- * Name name;
+}
+
+class NetContent
+{
+	isA LocatedElement;
+	* netContent -- * Name name;
+}
+
+class LabeledElement
+{
+	isA LocatedElement;
+	1..* labeledElement -- * Label labels;
+}
+
+class Label
+{
+	isA LocatedElement;
+	String text;
+}
+
+class Name
+{
+	isA LabeledElement;
+}
+
+class NetContentElement
+{
+	isA NetContent ;
+}
+
+class Arc
+{
+	isA NetContent ;
+	0..1 -> 1..* NetContentElement source;
+	0..1 -> 1..* NetContentElement target;
+}
+
+class Place
+{
+	isA NetContentElement;
+}
+
+class Transition
+{
+	isA NetContentElement;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}

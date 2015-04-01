@@ -1,0 +1,93 @@
+namespace UMLForOOClassModeling;
+
+class MultiplicityType
+{
+	Integer lower;
+	Integer upper;
+	Boolean isOrdered;
+	Boolean isUnique;
+}
+
+class ModelElement
+{
+	String name;
+}
+
+class Feature
+{
+	isA ModelElement;
+	ScopeKind ownerScope;
+	VisibilityKind visibility;
+	* feature -- * Classifier owner;
+}
+
+class NameSpace
+{
+	isA ModelElement;
+}
+
+class GeneralizableElement
+{
+	isA ModelElement;
+	Boolean isRoot;
+	Boolean isLeaf;
+	Boolean isAbstract;
+}
+
+class Classifier
+{
+	isA NameSpace ;
+}
+
+class Class
+{
+	isA Classifier;
+	Boolean isActive;
+}
+
+class StructuralFeature
+{
+	isA Feature;
+	Boolean isChangeable;
+	ScopeKind targetScope;
+	0..1 -> 1..* MultiplicityType multiplicity;
+}
+
+class Attribute
+{
+	isA StructuralFeature;
+	String initialValue;
+}
+
+class BehavioralFeature
+{
+	isA Feature;
+	Boolean isQuery;
+}
+
+class Operation
+{
+	isA BehavioralFeature;
+	Boolean isRoot;
+	Boolean isLeaf;
+	Boolean isAbstract;
+	String specification;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

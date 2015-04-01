@@ -1,0 +1,38 @@
+namespace TextualPathExp;
+
+class TextualPathExp
+{
+	0..1 -> 1..* Path path;
+}
+
+class Path
+{
+	0..1 -> 1..* Transition transitions;
+}
+
+class Transition
+{
+	Boolean isMultiple;
+}
+
+class AlternativeTrans
+{
+	isA Transition;
+	0..1 -> 1..* Path altPaths;
+}
+
+class PrimitiveTrans
+{
+	isA Transition;
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}

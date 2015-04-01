@@ -1,0 +1,22 @@
+namespace Person;
+
+class Person
+{
+	String name;
+	String firstName;
+	String phone;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}

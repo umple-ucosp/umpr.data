@@ -1,0 +1,90 @@
+namespace EQN;
+
+class RoutingChain
+{
+	1..* workLoad -- * QueuingNetwork queuingNetwork;
+}
+
+class QueuingNetwork
+{
+	1..* queuingNetwork -- 1..* Center center;
+}
+
+class ExecutionGraph
+{
+	0..1 nested -- 1..* Node nodeNested;
+	1..* executionGraph -- 1..* Node node;
+}
+
+class Center
+{
+	1..* demand -- 1..* Node node;
+}
+
+class Node
+{
+}
+
+class Special
+{
+	isA Center;
+}
+
+class ActiveCenter
+{
+	isA Center;
+}
+
+class PassiveCenter
+{
+	isA Center;
+}
+
+class Source
+{
+	isA Special;
+}
+
+class Sink
+{
+	isA Special;
+}
+
+class Fork
+{
+	isA Special;
+}
+
+class Join
+{
+	isA Special;
+}
+
+class Split
+{
+	isA Special;
+}
+
+class Allocate
+{
+	isA Special;
+}
+
+class Release
+{
+	isA Special;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}

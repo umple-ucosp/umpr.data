@@ -1,0 +1,1025 @@
+namespace UML;
+
+namespace Collaborations;
+
+class Collaboration
+{
+	isA /9/GeneralizableElement /9/Namespace;
+	0..1 -> * Collaboration usedCollaboration;
+	0..1 -> * /9/Operation representedOperation;
+	0..1 -> * /9/Classifier representedClassifier;
+	0..1 -> * /9/ModelElement constrainingElement;
+	1..* context -- * Interaction interaction;
+}
+
+class ClassifierRole
+{
+	isA /9/Classifier;
+	0..1 -> * /9/ModelElement availableContents;
+	0..1 -> 1..* /9/Classifier base;
+	0..1 -> * /5/Instance conformingInstance;
+	0..1 -> * /9/Feature availableFeature;
+	0..1 -> * /4/Multiplicity multiplicity;
+}
+
+class AssociationRole
+{
+	isA /9/Association;
+	0..1 -> * /9/Association base;
+	0..1 -> * /5/Link conformingLink;
+	0..1 -> * /4/Multiplicity multiplicity;
+	* communicationConnection -- * Message message;
+}
+
+class AssociationEndRole
+{
+	isA /9/AssociationEnd;
+	0..1 -> * /9/AssociationEnd base;
+	0..1 -> * /9/Attribute availableQualifier;
+	0..1 -> * /4/Multiplicity collaborationMultiplicity;
+}
+
+class Message
+{
+	isA /9/ModelElement;
+	0..1 -> * /5/Stimulus conformingStimulus;
+	0..1 -> 1..* /5/Action action;
+	0..1 -> * Message activator;
+	0..1 -> 1..* ClassifierRole receiver;
+	0..1 -> 1..* ClassifierRole sender;
+	0..1 -> * Message predecessor;
+	1..* message -- 1..* Interaction interaction;
+}
+
+class Interaction
+{
+	isA /9/ModelElement;
+}
+
+class InteractionInstanceSet
+{
+	isA /9/ModelElement;
+	0..1 -> * Interaction interaction;
+	0..1 -> 1..* /5/Stimulus participatingStimulus;
+	* interactionInstanceSet -- 1..* CollaborationInstanceSet context;
+}
+
+class CollaborationInstanceSet
+{
+	isA /9/ModelElement;
+	0..1 -> * Collaboration collaboration;
+	0..1 -> * /9/ModelElement constrainingElement;
+	0..1 -> 1..* /5/Instance participatingInstance;
+	0..1 -> * /5/Link participatingLink;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Float
+{
+}
+
+class Integer
+{
+}
+
+class Long
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}
+
+namespace Use_Cases;
+
+class UseCase
+{
+	isA /9/Classifier;
+	0..1 base -- * /3/Include include;
+	0..1 extension -- * /3/Extend extend;
+	0..1 useCase -- * /3/ExtensionPoint extensionPoint;
+}
+
+class Actor
+{
+	isA /9/Classifier;
+}
+
+class UseCaseInstance
+{
+	isA /5/Instance;
+}
+
+class Extend
+{
+	isA /9/Relationship;
+	0..1 -> 1..* /3/ExtensionPoint extensionPoint;
+	0..1 extend -- 1..* /3/UseCase extension;
+	0..1 -> 1..* /3/UseCase base;
+	0..1 -> 1..* /4/BooleanExpression condition;
+}
+
+class Include
+{
+	isA /9/Relationship;
+	0..1 -> 1..* /3/UseCase addition;
+	0..1 include -- 1..* /3/UseCase base;
+}
+
+class ExtensionPoint
+{
+	isA /9/ModelElement;
+	/2/String location;
+	0..1 extensionPoint -- 1..* /3/UseCase useCase;
+}
+
+namespace Data_Types;
+
+class Multiplicity
+{
+	0..1 multiplicity -- 1..* /4/MultiplicityRange range;
+}
+
+class MultiplicityRange
+{
+	/2/Integer lower;
+	/2/Integer upper;
+	0..1 range -- 1..* /4/Multiplicity multiplicity;
+}
+
+class Expression
+{
+	/2/String language;
+	/2/String body;
+}
+
+class BooleanExpression
+{
+	isA /4/Expression;
+}
+
+class TypeExpression
+{
+	isA /4/Expression;
+}
+
+class MappingExpression
+{
+	isA /4/Expression;
+}
+
+class ProcedureExpression
+{
+	isA /4/Expression;
+}
+
+class ObjectSetExpression
+{
+	isA /4/Expression;
+}
+
+class ActionExpression
+{
+	isA /4/Expression;
+}
+
+class IterationExpression
+{
+	isA /4/Expression;
+}
+
+class TimeExpression
+{
+	isA /4/Expression;
+}
+
+class ArgListsExpression
+{
+	isA /4/Expression;
+}
+
+namespace Common_Behavior;
+
+class Instance
+{
+	isA /9/ModelElement;
+	0..1 -> * /5/Instance ownedInstance;
+	0..1 instance -- * /5/LinkEnd linkEnd;
+	0..1 -> 1..* /9/Classifier classifier;
+	0..1 resident -- * /5/ComponentInstance componentInstance;
+	0..1 instance -- * /5/AttributeLink slot;
+	0..1 -> * /5/Link ownedLink;
+}
+
+class Signal
+{
+	isA /9/Classifier;
+}
+
+class Action
+{
+	isA /9/ModelElement;
+	/2/Boolean isAsynchronous;
+	0..1 action -- * /5/Argument actualArgument;
+	0..1 action -- * /5/ActionSequence actionSequence;
+	0..1 -> * /4/IterationExpression recurrence;
+	0..1 -> * /4/ObjectSetExpression target;
+	0..1 -> * /4/ActionExpression script;
+}
+
+class CreateAction
+{
+	isA /5/Action;
+	0..1 -> 1..* /9/Classifier instantiation;
+}
+
+class DestroyAction
+{
+	isA /5/Action;
+}
+
+class UninterpretedAction
+{
+	isA /5/Action;
+}
+
+class AttributeLink
+{
+	isA /9/ModelElement;
+	0..1 slot -- * /5/Instance instance;
+	0..1 -> 1..* /5/Instance value;
+	0..1 qualifiedValue -- * /5/LinkEnd linkEnd;
+	0..1 -> 1..* /9/Attribute attribute;
+}
+
+class Object
+{
+	isA /5/Instance;
+}
+
+class Link
+{
+	isA /9/ModelElement;
+	0..1 -> 1..* /9/Association association;
+	0..1 link -- 2..* /5/LinkEnd connection;
+}
+
+class LinkObject
+{
+	isA /5/Object /5/Link;
+}
+
+class DataValue
+{
+	isA /5/Instance;
+}
+
+class CallAction
+{
+	isA /5/Action;
+	0..1 -> 1..* /9/Operation operation;
+}
+
+class SendAction
+{
+	isA /5/Action;
+	0..1 -> 1..* /5/Signal signal;
+}
+
+class ActionSequence
+{
+	isA /5/Action;
+	0..1 actionSequence -- * /5/Action action;
+}
+
+class Argument
+{
+	isA /9/ModelElement;
+	0..1 actualArgument -- * /5/Action action;
+	0..1 -> 1..* /4/Expression value;
+}
+
+class Reception
+{
+	isA /9/BehavioralFeature;
+	/2/String specification;
+	/2/Boolean isRoot;
+	/2/Boolean isLeaf;
+	/2/Boolean isAbstract;
+	0..1 -> 1..* /5/Signal signal;
+}
+
+class LinkEnd
+{
+	isA /9/ModelElement;
+	0..1 connection -- 1..* /5/Link link;
+	0..1 linkEnd -- * /5/AttributeLink qualifiedValue;
+	0..1 linkEnd -- 1..* /5/Instance instance;
+	0..1 -> 1..* /9/AssociationEnd associationEnd;
+}
+
+class ReturnAction
+{
+	isA /5/Action;
+}
+
+class TerminateAction
+{
+	isA /5/Action;
+}
+
+class Stimulus
+{
+	isA /9/ModelElement;
+	0..1 -> * /5/Instance argument;
+	0..1 -> * /5/Link communicationLink;
+	0..1 -> 1..* /5/Instance receiver;
+	0..1 -> 1..* /5/Action dispatchAction;
+	0..1 -> 1..* /5/Instance sender;
+}
+
+class Exception
+{
+	isA /5/Signal;
+}
+
+class ComponentInstance
+{
+	isA /5/Instance;
+	0..1 componentInstance -- * /5/Instance resident;
+	0..1 resident -- * /5/NodeInstance nodeInstance;
+}
+
+class NodeInstance
+{
+	isA /5/Instance;
+	0..1 nodeInstance -- * /5/ComponentInstance resident;
+}
+
+class SubsystemInstance
+{
+	isA /5/Instance;
+}
+
+namespace Activity_Graphs;
+
+class ActivityGraph
+{
+	isA /7/StateMachine;
+	0..1 activityGraph -- * /6/Partition partition;
+}
+
+class Partition
+{
+	isA /9/ModelElement;
+	0..1 -> * /9/ModelElement contents;
+	0..1 partition -- 1..* /6/ActivityGraph activityGraph;
+}
+
+class SubactivityState
+{
+	isA /7/SubmachineState;
+	/2/Boolean isDynamic;
+	0..1 -> * /4/ArgListsExpression dynamicArguments;
+	0..1 -> * /4/Multiplicity dynamicMultiplicity;
+}
+
+class ActionState
+{
+	isA /7/SimpleState;
+	/2/Boolean isDynamic;
+	0..1 -> * /4/ArgListsExpression dynamicArguments;
+	0..1 -> * /4/Multiplicity dynamicMultiplicity;
+}
+
+class CallState
+{
+	isA /6/ActionState;
+}
+
+class ObjectFlowState
+{
+	isA /7/SimpleState;
+	/2/Boolean isSynch;
+	0..1 -> 1..* /9/Classifier type;
+	0..1 -> * /9/Parameter parameter;
+}
+
+class ClassifierInState
+{
+	isA /9/Classifier;
+	0..1 -> 1..* /7/State inState;
+	0..1 -> 1..* /9/Classifier type;
+}
+
+namespace State_Machines;
+
+class StateMachine
+{
+	isA /9/ModelElement;
+	0..1 -> * /9/ModelElement context;
+	0..1 submachine -- * /7/SubmachineState submachineState;
+	0..1 stateMachine -- 1..* /7/State top;
+	0..1 stateMachine -- * /7/Transition transitions;
+}
+
+class Event
+{
+	isA /9/ModelElement;
+	0..1 -> * /9/Parameter parameter;
+}
+
+class StateVertex
+{
+	isA /9/ModelElement;
+	0..1 subvertex -- * /7/CompositeState container;
+	0..1 target -- * /7/Transition incoming;
+	0..1 source -- * /7/Transition outgoing;
+}
+
+class State
+{
+	isA /7/StateVertex;
+	0..1 -> * /7/Event deferrableEvent;
+	0..1 -> * /7/Transition internalTransition;
+	0..1 -> * /5/Action exit;
+	0..1 -> * /5/Action doActivity;
+	0..1 -> * /5/Action entry;
+	0..1 top -- * /7/StateMachine stateMachine;
+}
+
+class TimeEvent
+{
+	isA /7/Event;
+	0..1 -> 1..* /4/TimeExpression when;
+}
+
+class CallEvent
+{
+	isA /7/Event;
+	0..1 -> 1..* /9/Operation operation;
+}
+
+class SignalEvent
+{
+	isA /7/Event;
+	0..1 -> 1..* /5/Signal signal;
+}
+
+class Transition
+{
+	isA /9/ModelElement;
+	0..1 incoming -- 1..* /7/StateVertex target;
+	0..1 -> * /7/Event trigger;
+	0..1 transitions -- * /7/StateMachine stateMachine;
+	0..1 outgoing -- 1..* /7/StateVertex source;
+	0..1 -> * /5/Action effect;
+	0..1 transition -- * /7/Guard guard;
+}
+
+class CompositeState
+{
+	isA /7/State;
+	/2/Boolean isConcurrent;
+	0..1 container -- * /7/StateVertex subvertex;
+}
+
+class ChangeEvent
+{
+	isA /7/Event;
+	0..1 -> 1..* /4/BooleanExpression changeExpression;
+}
+
+class Guard
+{
+	isA /9/ModelElement;
+	0..1 guard -- 1..* /7/Transition transition;
+	0..1 -> 1..* /4/BooleanExpression expression;
+}
+
+class Pseudostate
+{
+	isA /7/StateVertex;
+	/4/PseudostateKind kind;
+}
+
+class SimpleState
+{
+	isA /7/State;
+}
+
+class SubmachineState
+{
+	isA /7/CompositeState;
+	0..1 submachineState -- 1..* /7/StateMachine submachine;
+}
+
+class SynchState
+{
+	isA /7/StateVertex;
+	/2/Integer bound;
+}
+
+class StubState
+{
+	isA /7/StateVertex;
+	/2/String referenceState;
+}
+
+class FinalState
+{
+	isA /7/State;
+}
+
+namespace Diagram_Interchange;
+
+class Point
+{
+	/2/Double x;
+	/2/Double y;
+}
+
+class Dimension
+{
+	/2/Double width;
+	/2/Double height;
+}
+
+class BezierPoint
+{
+	0..1 -> 1..* /8/Point base;
+	0..1 -> 1..* /8/Point control1;
+	0..1 -> 1..* /8/Point control2;
+}
+
+class DiagramElement
+{
+	/2/Boolean isVisible;
+	0..1 contained -- * /8/GraphElement container;
+	0..1 -> * /8/Property property;
+	0..1 referenced -- * /8/Reference reference;
+}
+
+class GraphElement
+{
+	isA /8/DiagramElement;
+	0..1 graphElement -- 1..* /8/SemanticModelBridge semanticModel;
+	0..1 container -- * /8/DiagramElement contained;
+	0..1 graphElement -- * /8/GraphConnector anchorage;
+	0..1 graphElement -- * /8/DiagramLink link;
+	0..1 -> 1..* /8/Point position;
+}
+
+class SemanticModelBridge
+{
+	/2/String presentation;
+	0..1 owner -- * /8/Diagram diagram;
+	0..1 semanticModel -- 1..* /8/GraphElement graphElement;
+}
+
+class GraphEdge
+{
+	isA /8/GraphElement;
+	0..1 graphEdge -- 2 /8/GraphConnector anchor;
+	0..1 -> 2..* /8/BezierPoint waypoints;
+}
+
+class GraphNode
+{
+	isA /8/GraphElement;
+	0..1 -> * /8/Dimension size;
+}
+
+class GraphConnector
+{
+	0..1 anchorage -- 1..* /8/GraphElement graphElement;
+	0..1 anchor -- * /8/GraphEdge graphEdge;
+	0..1 -> 1..* /8/Point position;
+}
+
+class LeafElement
+{
+	isA /8/DiagramElement;
+}
+
+class Reference
+{
+	isA /8/DiagramElement;
+	0..1 reference -- 1..* /8/DiagramElement referenced;
+}
+
+class TextElement
+{
+	isA /8/LeafElement;
+	/2/String text;
+}
+
+class GraphicPrimitive
+{
+	isA /8/LeafElement;
+}
+
+class Polyline
+{
+	isA /8/GraphicPrimitive;
+	/2/Boolean closed;
+	0..1 -> 2..* /8/BezierPoint waypoints;
+}
+
+class Ellipse
+{
+	isA /8/GraphicPrimitive;
+	/2/Double radiusX;
+	/2/Double radiusY;
+	/2/Double rotation;
+	/2/Double startAngle;
+	/2/Double endAngle;
+	0..1 -> 1..* /8/Point center;
+}
+
+class Image
+{
+	isA /8/LeafElement;
+	/2/String uri;
+	/2/String mimeType;
+}
+
+class Property
+{
+	/2/String key;
+	/2/String value;
+}
+
+class SimpleSemanticModelElement
+{
+	isA /8/SemanticModelBridge;
+	/2/String typeInfo;
+}
+
+class Uml1SemanticModelBridge
+{
+	isA /8/SemanticModelBridge;
+	0..1 -> 1..* /9/Element element;
+}
+
+class CoreSemanticModelBridge
+{
+	isA /8/SemanticModelBridge;
+}
+
+class DiagramLink
+{
+	/2/Double zoom;
+	0..1 link -- 1..* /8/GraphElement graphElement;
+	0..1 diagramLink -- 1..* /8/Diagram diagram;
+	0..1 -> 1..* /8/Point viewport;
+}
+
+class Diagram
+{
+	isA /8/GraphNode;
+	/2/String name;
+	/2/Double zoom;
+	0..1 diagram -- 1..* /8/SemanticModelBridge owner;
+	0..1 diagram -- * /8/DiagramLink diagramLink;
+	0..1 -> 1..* /8/Point viewport;
+}
+
+namespace Core;
+
+class Element
+{
+}
+
+class ModelElement
+{
+	isA /9/Element;
+	/2/String name;
+	/4/VisibilityKind visibility;
+	/2/Boolean isSpecification;
+	0..1 modelElement -- * /9/TaggedValue taggedValue;
+	0..1 client -- * /9/Dependency clientDependency;
+	0..1 constrainedElement -- * /9/Constraint constraint;
+	0..1 -> * /9/Stereotype stereotype;
+	0..1 annotatedElement -- * /9/Comment comment;
+	0..1 source -- * /9/Flow sourceFlow;
+	0..1 target -- * /9/Flow targetFlow;
+	0..1 template -- * /9/TemplateParameter templateParameter;
+	0..1 ownedElement -- * /9/Namespace namespace;
+}
+
+class GeneralizableElement
+{
+	isA /9/ModelElement;
+	/2/Boolean isRoot;
+	/2/Boolean isLeaf;
+	/2/Boolean isAbstract;
+	0..1 child -- * /9/Generalization generalization;
+}
+
+class Namespace
+{
+	isA /9/ModelElement;
+	0..1 namespace -- * /9/ModelElement ownedElement;
+}
+
+class Classifier
+{
+	isA /9/GeneralizableElement /9/Namespace;
+	0..1 powertype -- * /9/Generalization powertypeRange;
+	0..1 owner -- * /9/Feature feature;
+}
+
+class Class
+{
+	isA /9/Classifier;
+	/2/Boolean isActive;
+}
+
+class DataType
+{
+	isA /9/Classifier;
+}
+
+class Feature
+{
+	isA /9/ModelElement;
+	/4/ScopeKind ownerScope;
+	0..1 feature -- * /9/Classifier owner;
+}
+
+class StructuralFeature
+{
+	isA /9/Feature;
+	/4/ChangeableKind changeability;
+	/4/ScopeKind targetScope;
+	/4/OrderingKind ordering;
+	0..1 -> 1..* /9/Classifier type;
+	0..1 -> * /4/Multiplicity multiplicity;
+}
+
+class AssociationEnd
+{
+	isA /9/ModelElement;
+	/2/Boolean isNavigable;
+	/4/OrderingKind ordering;
+	/4/AggregationKind aggregation;
+	/4/ScopeKind targetScope;
+	/4/ChangeableKind changeability;
+	0..1 connection -- 1..* /9/Association association;
+	0..1 -> * /9/Classifier specification;
+	0..1 -> 1..* /9/Classifier participant;
+	0..1 associationEnd -- * /9/Attribute qualifier;
+	0..1 -> * /4/Multiplicity multiplicity;
+}
+
+class Interface
+{
+	isA /9/Classifier;
+}
+
+class Constraint
+{
+	isA /9/ModelElement;
+	0..1 constraint -- * /9/ModelElement constrainedElement;
+	0..1 -> * /4/BooleanExpression body;
+}
+
+class Relationship
+{
+	isA /9/ModelElement;
+}
+
+class Association
+{
+	isA /9/GeneralizableElement /9/Relationship;
+	0..1 association -- 2..* /9/AssociationEnd connection;
+}
+
+class Attribute
+{
+	isA /9/StructuralFeature;
+	0..1 qualifier -- * /9/AssociationEnd associationEnd;
+	0..1 -> * /4/Expression initialValue;
+}
+
+class BehavioralFeature
+{
+	isA /9/Feature;
+	/2/Boolean isQuery;
+	0..1 behavioralFeature -- * /9/Parameter parameter;
+}
+
+class Operation
+{
+	isA /9/BehavioralFeature;
+	/4/CallConcurrencyKind concurrency;
+	/2/Boolean isRoot;
+	/2/Boolean isLeaf;
+	/2/Boolean isAbstract;
+	/2/String specification;
+}
+
+class Parameter
+{
+	isA /9/ModelElement;
+	/4/ParameterDirectionKind kind;
+	0..1 -> 1..* /9/Classifier type;
+	0..1 parameter -- * /9/BehavioralFeature behavioralFeature;
+	0..1 -> * /4/Expression defaultValue;
+}
+
+class Method
+{
+	isA /9/BehavioralFeature;
+	0..1 -> 1..* /9/Operation specification;
+	0..1 -> 1..* /4/ProcedureExpression body;
+}
+
+class Generalization
+{
+	isA /9/Relationship;
+	/2/String discriminator;
+	0..1 -> 1..* /9/GeneralizableElement parent;
+	0..1 powertypeRange -- * /9/Classifier powertype;
+	0..1 generalization -- 1..* /9/GeneralizableElement child;
+}
+
+class AssociationClass
+{
+	isA /9/Association /9/Class;
+}
+
+class Dependency
+{
+	isA /9/Relationship;
+	0..1 clientDependency -- 1..* /9/ModelElement client;
+	0..1 -> 1..* /9/ModelElement supplier;
+}
+
+class Abstraction
+{
+	isA /9/Dependency;
+	0..1 -> * /4/MappingExpression mapping;
+}
+
+class PresentationElement
+{
+	isA /9/Element;
+	0..1 -> * /9/ModelElement subject;
+}
+
+class Usage
+{
+	isA /9/Dependency;
+}
+
+class Binding
+{
+	isA /9/Dependency;
+	0..1 binding -- 1..* /9/TemplateArgument argument;
+}
+
+class Component
+{
+	isA /9/Classifier;
+	0..1 deployedComponent -- * /9/Node deploymentLocation;
+	0..1 container -- * /9/ElementResidence residentElement;
+	0..1 -> * /9/Artifact implementation;
+}
+
+class Node
+{
+	isA /9/Classifier;
+	0..1 deploymentLocation -- * /9/Component deployedComponent;
+}
+
+class Permission
+{
+	isA /9/Dependency;
+}
+
+class Comment
+{
+	isA /9/ModelElement;
+	/2/String body;
+	0..1 comment -- * /9/ModelElement annotatedElement;
+}
+
+class Flow
+{
+	isA /9/Relationship;
+	0..1 sourceFlow -- * /9/ModelElement source;
+	0..1 targetFlow -- * /9/ModelElement target;
+}
+
+class ElementResidence
+{
+	/4/VisibilityKind visibility;
+	0..1 residentElement -- 1..* /9/Component container;
+	0..1 -> 1..* /9/ModelElement resident;
+}
+
+class TemplateParameter
+{
+	0..1 templateParameter -- 1..* /9/ModelElement template;
+	0..1 -> 1..* /9/ModelElement parameter;
+	0..1 -> * /9/ModelElement defaultElement;
+}
+
+class Primitive
+{
+	isA /9/DataType;
+}
+
+class Enumeration
+{
+	isA /9/DataType;
+	0..1 enumeration -- 1..* /9/EnumerationLiteral literal;
+}
+
+class EnumerationLiteral
+{
+	isA /9/ModelElement;
+	0..1 literal -- 1..* /9/Enumeration enumeration;
+}
+
+class Stereotype
+{
+	isA /9/GeneralizableElement;
+	/2/String icon;
+	/2/String[] baseClass;
+	0..1 -> * /9/Constraint stereotypeConstraint;
+	0..1 owner -- * /9/TagDefinition definedTag;
+}
+
+class TagDefinition
+{
+	isA /9/ModelElement;
+	/2/String tagType;
+	0..1 definedTag -- * /9/Stereotype owner;
+	0..1 -> * /4/Multiplicity multiplicity;
+}
+
+class TaggedValue
+{
+	isA /9/ModelElement;
+	/2/String[] dataValue;
+	0..1 -> 1..* /9/TagDefinition type;
+	0..1 -> * /9/ModelElement referenceValue;
+	0..1 taggedValue -- 1..* /9/ModelElement modelElement;
+}
+
+class ProgrammingLanguageDataType
+{
+	isA /9/DataType;
+	0..1 -> 1..* /4/TypeExpression expression;
+}
+
+class Artifact
+{
+	isA /9/Classifier;
+}
+
+class TemplateArgument
+{
+	0..1 argument -- 1..* /9/Binding binding;
+	0..1 -> 1..* /9/ModelElement modelElement;
+}
+
+namespace Model_Management;
+
+class Package
+{
+	isA /9/GeneralizableElement /9/Namespace;
+	0..1 package -- * /10/ElementImport elementImport;
+}
+
+class Model
+{
+	isA /10/Package;
+}
+
+class Subsystem
+{
+	isA /10/Package /9/Classifier;
+	/2/Boolean isInstantiable;
+}
+
+class ElementImport
+{
+	/4/VisibilityKind visibility;
+	/2/String alias;
+	/2/Boolean isSpecification;
+	0..1 elementImport -- 1..* /10/Package package;
+	0..1 -> 1..* /9/ModelElement importedElement;
+}

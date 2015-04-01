@@ -1,0 +1,53 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+namespace PetriNet;
+
+class Element
+{
+	String name;
+}
+
+class PetriNet
+{
+	isA Element;
+	0..1 -> 1..* Place places;
+	0..1 -> * Transition transitions;
+	0..1 -> * Arc arcs;
+}
+
+class Place
+{
+	isA Element;
+	1..* source -- * PlaceToTransArc outgoing;
+	1..* target -- * TransToPlaceArc incoming;
+}
+
+class Transition
+{
+	isA Element;
+	1..* target -- 1..* PlaceToTransArc incoming;
+	1..* source -- 1..* TransToPlaceArc outgoing;
+}
+
+class Arc
+{
+	Integer weight;
+}
+
+class PlaceToTransArc
+{
+	isA Arc;
+}
+
+class TransToPlaceArc
+{
+	isA Arc;
+}

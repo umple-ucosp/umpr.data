@@ -1,0 +1,126 @@
+namespace CSM;
+
+class CSM
+{
+	0..1 -> 1..* Step step;
+	0..1 -> 1..* GeneralResource generalResource;
+	0..1 -> 1..* Scenarion scenarion;
+}
+
+class GeneralResource
+{
+	1..* generalResource -- * ResourceAcquire resourceAcquire;
+	1..* generalResource -- * ResourceRelease resourceRelease;
+}
+
+class Step
+{
+	isA Scenarion;
+	0..1 post -- * PathConnection postPath;
+	* step -- 1..* ActiveResource activeResource;
+	* pre -- * PathConnection prePath;
+}
+
+class Scenarion
+{
+	0..1 -> 1..* Step step;
+	0..1 -> 1..* Start root;
+}
+
+class Start
+{
+	isA Step;
+	1..* start -- * Workload workload;
+}
+
+class End
+{
+	isA Step;
+}
+
+class ResourceAcquire
+{
+	isA Step;
+}
+
+class ResourceRelease
+{
+	isA Step;
+}
+
+class Workload
+{
+}
+
+class Component
+{
+	isA PassiveResource;
+}
+
+class ProcessingResource
+{
+	isA ActiveResource;
+}
+
+class ExternalService
+{
+	isA ActiveResource;
+}
+
+class ActiveResource
+{
+	isA GeneralResource;
+}
+
+class PassiveResource
+{
+	isA GeneralResource;
+}
+
+class Message
+{
+}
+
+class PathConnection
+{
+	0..1 -> * Message message;
+}
+
+class Join
+{
+	isA PathConnection;
+}
+
+class Fork
+{
+	isA PathConnection;
+}
+
+class Merge
+{
+	isA PathConnection;
+}
+
+class Branch
+{
+	isA PathConnection;
+}
+
+class Seqence
+{
+	isA PathConnection;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}

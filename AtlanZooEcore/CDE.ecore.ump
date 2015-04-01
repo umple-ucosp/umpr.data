@@ -1,0 +1,66 @@
+namespace CDE;
+
+class IUmlType
+{
+	0..1 -> * IUmlMember members;
+}
+
+class ICdeComponentSpec
+{
+	isA IUmlType;
+}
+
+class IUmlClass
+{
+	isA IUmlType;
+}
+
+class IUmlComponent
+{
+	isA IUmlClass;
+}
+
+class ICdeServer
+{
+	isA IUmlComponent;
+	0..1 -> * ICdeComponent implements;
+}
+
+class ICdeComponent
+{
+	isA IUmlComponent;
+}
+
+class IUmlMember
+{
+}
+
+class ICdeMember
+{
+	isA IUmlMember;
+}
+
+class ICdeMemberExe
+{
+	String executionPerformance;
+	String resourceNeeded;
+	String executionDetails;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

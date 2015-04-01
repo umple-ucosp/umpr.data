@@ -1,0 +1,91 @@
+namespace OCLExpressions;
+
+class OclExpression
+{
+	0..1 argument -- * QueryExp queryArg;
+	1..* source -- * QueryExp querySrc;
+	* oclExpression -- 1..* Type resultType;
+	* oclExpression -- 1..* VariableDeclaration varDec;
+	1..* initExpression -- * VariableInitialisation varInit;
+}
+
+class SelfExp
+{
+	isA OclExpression;
+}
+
+class ResultExp
+{
+	isA OclExpression;
+}
+
+class VariableExp
+{
+	isA OclExpression;
+	String var;
+}
+
+class OperationExp
+{
+	isA OclExpression;
+}
+
+class QueryExp
+{
+	isA OclExpression;
+	* queryExp -- * VariableDeclaration varDeclaration;
+}
+
+class Type
+{
+	1..* varType -- * VariableDeclaration varDec;
+}
+
+class VariableDeclaration
+{
+	String var;
+	1..* varDec -- * VariableInitialisation varInit;
+}
+
+class VariableInitialisation
+{
+	1..* varInit -- 1..* IterateExp iterateExp;
+}
+
+class ForAllExp
+{
+}
+
+class ExistsExp
+{
+}
+
+class SelectExp
+{
+}
+
+class RejectExp
+{
+}
+
+class CollectExp
+{
+}
+
+class IterateExp
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

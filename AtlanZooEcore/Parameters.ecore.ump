@@ -1,0 +1,18 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+namespace Parameters;
+
+class ParametersList
+{
+	0..1 -> * Parameter parameters;
+}
+
+class Parameter
+{
+	String name;
+	String value;
+}

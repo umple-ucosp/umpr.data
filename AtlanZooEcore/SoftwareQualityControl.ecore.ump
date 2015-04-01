@@ -1,0 +1,68 @@
+namespace SoftwareQualityControl;
+
+class DateType
+{
+	Integer day;
+	Integer month;
+	Integer year;
+}
+
+class ControlsSequence
+{
+	1..* c_controlsSequence -- * Control controls;
+}
+
+class Control
+{
+	String responsible;
+	String component;
+	String developmentPhase;
+	String scope;
+	String controlledElt;
+	String eltRef;
+	String eltAuthor;
+	String formRef;
+	0..1 -> 1..* DateType date;
+	1..* ct_control -- 1..* ControlType type;
+}
+
+class ControlType
+{
+}
+
+class BugTracking
+{
+	isA ControlType;
+	1..* b_bugTracking -- * Bug bugs;
+}
+
+class Bug
+{
+	Integer number;
+	String componentVersion;
+	String description;
+	BugStatusType status;
+	String originator;
+	String responsible;
+	String commentsAnswers;
+	String openDate;
+	String closeDate;
+}
+
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}

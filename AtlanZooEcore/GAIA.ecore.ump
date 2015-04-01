@@ -1,0 +1,119 @@
+namespace GAIA;
+
+class OrganizationalStructure
+{
+	0..1 -> * Organization organization;
+}
+
+class Organization
+{
+	1..* interacts -- 1..* Organization collaborates;
+	1..* collaborates -- 1..* Organization interacts;
+	0..1 -> * AgentType member;
+	0..1 -> * OrganizationalRule observes;
+}
+
+class OrganizationalRule
+{
+}
+
+class SafetyRule
+{
+	isA OrganizationalRule;
+}
+
+class LivenessRule
+{
+	isA OrganizationalRule;
+}
+
+class AgentType
+{
+	0..1 -> 1..* Service provides;
+	1..* agentType -- 1..* AgentType collaborates;
+	1..* collaborates -- 1..* AgentType agentType;
+	0..1 -> * Role plays;
+}
+
+class Service
+{
+	String inputs;
+	String outputs;
+	String pre-conditions;
+	String post-conditions;
+}
+
+class Role
+{
+	0..1 -> 1..* Activity activity;
+	0..1 -> * Communication communication;
+	0..1 -> 1..* Responsibility responsibility;
+	1..* role -- * AssociationConnector actsOn;
+}
+
+class Activity
+{
+}
+
+class Responsibility
+{
+}
+
+class LivenessProperty
+{
+	isA Responsibility;
+}
+
+class SafetyProperty
+{
+	isA Responsibility;
+}
+
+class AssociationConnector
+{
+	0..1 -> * Resource actsOn;
+	1..* association -- * Permission permission;
+}
+
+class Permission
+{
+}
+
+class Resource
+{
+	String name;
+	String description;
+	0..1 -> * Action permitted_action;
+	* resource -- 1..* Environnement environnement;
+}
+
+class Environnement
+{
+}
+
+class Action
+{
+	String type;
+}
+
+class Communication
+{
+	0..1 -> * OrganizationalRule observes;
+	0..1 -> 1..* Protocol protocol;
+}
+
+class Protocol
+{
+	String name;
+	String initiator;
+	String partner;
+	String inputs;
+	String outputs;
+	String description;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

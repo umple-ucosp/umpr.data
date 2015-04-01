@@ -1,0 +1,35 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+namespace UnixFS;
+
+class NamedElement
+{
+	String name;
+}
+
+class File
+{
+	isA NamedElement;
+	String owner;
+	String group;
+}
+
+class Directory
+{
+	isA File;
+	0..1 -> * File contents;
+}
+
+class FileSystemRoot
+{
+	isA Directory;
+}
+
+class TextFile
+{
+	isA File;
+}

@@ -1,0 +1,244 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace BIBTEX;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class Bibtex
+{
+	0..1 -> * Entry entries;
+}
+
+class Entry
+{
+	isA LocatedElement;
+	String key;
+	0..1 -> * Field fields;
+}
+
+class Article
+{
+	isA Entry;
+}
+
+class Book
+{
+	isA Entry;
+}
+
+class Inbook
+{
+	isA Entry;
+}
+
+class Booklet
+{
+	isA Entry;
+}
+
+class Inproceedings
+{
+	isA Entry;
+}
+
+class Proceedings
+{
+	isA Entry;
+}
+
+class Incollection
+{
+	isA Entry;
+}
+
+class Techreport
+{
+	isA Entry;
+}
+
+class PhdThesis
+{
+	isA Entry;
+}
+
+class MastersThesis
+{
+	isA Entry;
+}
+
+class Manual
+{
+	isA Entry;
+}
+
+class Misc
+{
+	isA Entry;
+}
+
+class Field
+{
+	String value;
+}
+
+class Authors
+{
+	isA Field;
+}
+
+class AuthorUrls
+{
+	isA Field;
+}
+
+class Title
+{
+	isA Field;
+}
+
+class Journal
+{
+	isA Field;
+}
+
+class BookTitle
+{
+	isA Field;
+}
+
+class Institution
+{
+	isA Field;
+}
+
+class Organization
+{
+	isA Field;
+}
+
+class Type
+{
+	isA Field;
+}
+
+class Day
+{
+	isA Field;
+}
+
+class Number
+{
+	isA Field;
+}
+
+class Chapter
+{
+	isA Field;
+}
+
+class Volume
+{
+	isA Field;
+}
+
+class Series
+{
+	isA Field;
+}
+
+class Pages
+{
+	isA Field;
+}
+
+class Publisher
+{
+	isA Field;
+}
+
+class Howpublished
+{
+	isA Field;
+}
+
+class School
+{
+	isA Field;
+}
+
+class Editor
+{
+	isA Field;
+}
+
+class Edition
+{
+	isA Field;
+}
+
+class Address
+{
+	isA Field;
+}
+
+class Year
+{
+	isA Field;
+}
+
+class Month
+{
+	isA Field;
+}
+
+class Note
+{
+	isA Field;
+}
+
+class Text
+{
+	isA Field;
+}
+
+class AbstractField
+{
+	isA Field;
+}
+
+class Isbn
+{
+	isA Field;
+}
+
+class Issn
+{
+	isA Field;
+}
+
+class Url
+{
+	isA Field;
+}
+
+class Doi
+{
+	isA Field;
+}

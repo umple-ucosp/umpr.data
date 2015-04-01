@@ -1,0 +1,90 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace USECASEUML;
+
+class Requirement
+{
+}
+
+class NonFunctionnelRequirement
+{
+	isA Requirement;
+	* scoped_by -- * UseCase scopes;
+}
+
+class FunctionnelRequirement
+{
+	isA Requirement;
+	* specified_by -- * UseCase specifies;
+}
+
+class UseCase
+{
+	1..* to_meet -- 1..* Goal meet_by;
+	* interacted_with -- * Role interacter;
+	1..* useCase -- * ScenarioDescription scenario;
+	* constrained_with -- * Condition condition;
+}
+
+class Goal
+{
+}
+
+class Role
+{
+}
+
+class HumanRole
+{
+	isA Role;
+}
+
+class SystemRole
+{
+	isA Role;
+}
+
+class EventRole
+{
+	isA Role;
+}
+
+class Manage
+{
+	isA UseCase;
+	0..1 -> * Resource managed_Resource;
+}
+
+class Resource
+{
+}
+
+class ScenarioDescription
+{
+}
+
+class Condition
+{
+}
+
+class Pre
+{
+	isA Condition;
+}
+
+class Post
+{
+	isA Condition;
+}

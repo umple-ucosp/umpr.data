@@ -1,0 +1,83 @@
+namespace SEEDesign;
+
+class LogFile
+{
+	String file;
+	0..1 -> 1..* LogFile instance;
+	1..* logFile -- 1..* Logger logger;
+}
+
+class Logger
+{
+	0..1 -> 1..* Logger instance;
+	1..* logger -- 1..* Expression expression;
+}
+
+class Expression
+{
+	Boolean loggingOn;
+}
+
+class Literal
+{
+	isA Expression;
+	Integer value;
+}
+
+class VariableExpression
+{
+	isA Literal;
+	String name;
+}
+
+class NumberExpression
+{
+	isA Literal;
+}
+
+class UnaryOperator
+{
+	isA Expression;
+	0..1 -> 1..* Expression operand;
+}
+
+class UnaryPlusOp
+{
+	isA UnaryOperator;
+}
+
+class UnaryMinusOp
+{
+	isA UnaryOperator;
+}
+
+class BinaryOperator
+{
+	isA Expression;
+	0..1 -> 1..* Expression operand1;
+	0..1 -> 1..* Expression operand2;
+}
+
+class PlusOperator
+{
+	isA BinaryOperator;
+}
+
+class MinusOperator
+{
+	isA BinaryOperator;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

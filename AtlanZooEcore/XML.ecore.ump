@@ -1,0 +1,46 @@
+namespace XML;
+
+class Node
+{
+	Integer startLine;
+	Integer startColumn;
+	Integer endLine;
+	Integer endColumn;
+	String name;
+	String value;
+	* children -- * Element parent;
+}
+
+class Attribute
+{
+	isA Node;
+}
+
+class Text
+{
+	isA Node;
+}
+
+class Element
+{
+	isA Node;
+}
+
+class Root
+{
+	isA Element;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

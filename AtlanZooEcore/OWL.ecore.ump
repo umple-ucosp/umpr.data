@@ -1,0 +1,375 @@
+namespace RDFS;
+
+class Document
+{
+	isA RDFSResource;
+	1..* document -- * LocalName localName;
+	1..* document -- * Namespace xmlBase;
+	1..* document -- * NamespaceDefinition namespaceDefinition;
+	1..* document -- 1..* RDFStatement statement;
+}
+
+class LocalName
+{
+	String name;
+	* fragmentIdentifier -- * URIReference uriRef;
+}
+
+class Namespace
+{
+	1..* namespace -- * NamespaceDefinition namespaceDefinition;
+	* namespace -- 1..* URIReference namespaceURIRef;
+}
+
+class NamespaceDefinition
+{
+	String namespacePrefix;
+}
+
+class RDFSResource
+{
+	0..1 RDFsubject -- * RDFStatement subjectStatement;
+	0..1 labeledResource -- * PlainLiteral label;
+	* referringResource -- * RDFSResource seeAlso;
+	* seeAlso -- * RDFSResource referringResource;
+	* definedResource -- * RDFSResource isDefinedBy;
+	* isDefinedBy -- * RDFSResource definedResource;
+	* container -- * RDFSResource member;
+	* member -- * RDFSResource container;
+	* first -- * List list;
+	1..* RDFobject -- * RDFStatement objectStatement;
+	* typedResource -- 1..* RDFSClass type;
+	1..* commentedResource -- * PlainLiteral comment;
+	* resource -- * URIReference uriRef;
+}
+
+class RDFGraph
+{
+	isA RDFSResource;
+	1..* graph -- 1..* RDFStatement statement;
+	* namedGraph -- * URIReference graphName;
+}
+
+class List
+{
+	isA RDFSResource;
+	* originalList -- * List rest;
+	* rest -- * List originalList;
+}
+
+class Container
+{
+	isA RDFSResource;
+}
+
+class Alt
+{
+	isA Container;
+}
+
+class Bag
+{
+	isA Container;
+}
+
+class Seq
+{
+	isA Container;
+}
+
+class RDFProperty
+{
+	isA RDFSResource;
+	* superProperty -- * RDFProperty subPropertyOf;
+	* subPropertyOf -- * RDFProperty superProperty;
+	0..1 propertyForDomain -- * RDFSClass domain;
+	0..1 OWLOnProperty -- * /2/OWLRestriction propertyRestriction;
+	* RDFpredicate -- * RDFStatement predicateStatement;
+	* propertyForRange -- * RDFSClass range;
+}
+
+class ContainerMembershipProperty
+{
+}
+
+class RDFStatement
+{
+	isA RDFSResource;
+	ReificationKind reificationKind;
+	* reifiedStatement -- * URIReference nameForReification;
+}
+
+class URIReferenceNode
+{
+	isA RDFSResource;
+}
+
+class BlankNode
+{
+	isA RDFSResource;
+	String nodeId;
+}
+
+class RDFSClass
+{
+	isA RDFSResource;
+	* superClass -- * RDFSClass subClassOf;
+	* subClassOf -- * RDFSClass superClass;
+}
+
+class RDFSDataType
+{
+	isA RDFSClass;
+	0..1 datatype -- * /2/OWLDataRange dataRange;
+}
+
+class RDFSLiteral
+{
+	isA RDFSResource;
+	String lexicalForm;
+	0..1 OWLHasLiteralValue -- * /2/HasValueRestriction restrictionClass;
+	0..1 OWLOneOf -- * /2/OWLDataRange dataRange;
+}
+
+class PlainLiteral
+{
+	isA RDFSLiteral;
+	String language;
+}
+
+class TypedLiteral
+{
+	isA RDFSLiteral;
+	0..1 OWLCardinality -- * /2/CardinalityRestriction cardinalityRestriction;
+	0..1 OWLMinCardinality -- * /2/MinCardinalityRestriction minCardinalityRestriction;
+	0..1 OWLMaxCardinality -- * /2/MaxCardinalityRestriction maxCardinalityRestriction;
+	* literal -- 1..* URIReference datatypeURI;
+}
+
+class XMLLiteral
+{
+	isA TypedLiteral;
+}
+
+class URIReference
+{
+	* uriRef -- * UniformResourceIdentifier uri;
+}
+
+class UniformResourceIdentifier
+{
+	isA URIReference;
+	String name;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace OWL;
+
+class OWLOntology
+{
+	isA RDFSResource;
+	0..1 ontology -- * /2/OWLUniverse owlUniverse;
+	0..1 newerOntology -- * /2/OWLOntology OWLPriorVersion;
+	0..1 OWLPriorVersion -- * /2/OWLOntology newerOntology;
+	0..1 incompatibleOntology -- * /2/OWLOntology OWLIncompatibleWith;
+	0..1 OWLIncompatibleWith -- * /2/OWLOntology incompatibleOntology;
+	0..1 importingOntology -- * /2/OWLOntology OWLImports;
+	0..1 OWLImports -- * /2/OWLOntology importingOntology;
+	0..1 ontology -- 1..* /2/OWLGraph owlGraph;
+	0..1 ontology -- 1..* /2/OWLStatement owlStatement;
+	0..1 -> * RDFSLiteral versionInfo;
+}
+
+class OWLGraph
+{
+	isA RDFGraph;
+	0..1 owlGraph -- * /2/OWLOntology ontology;
+	0..1 owlGraph -- 1..* /2/OWLStatement owlStatement;
+}
+
+class OWLStatement
+{
+	isA RDFStatement;
+	0..1 owlStatement -- * /2/OWLOntology ontology;
+	0..1 owlStatement -- 1..* /2/OWLGraph owlGraph;
+}
+
+class OWLUniverse
+{
+	isA RDFSResource;
+	0..1 owlUniverse -- 1..* /2/OWLOntology ontology;
+}
+
+class OWLClass
+{
+	isA RDFSClass /2/OWLUniverse;
+	Boolean isDeprecated;
+	0..1 equivalentClass -- * /2/OWLClass OWLequivalentClass;
+	0..1 OWLequivalentClass -- * /2/OWLClass equivalentClass;
+	0..1 disjointClass -- * /2/OWLClass OWLdisjointWith;
+	0..1 OWLdisjointWith -- * /2/OWLClass disjointClass;
+	0..1 OWLIntersectionOf -- * /2/IntersectionClass intersectionClass;
+	0..1 OWLUnionOf -- * /2/UnionClass unionClass;
+	0..1 OWLComplementOf -- * /2/ComplementClass complementClass;
+	0..1 OWLAllValuesFromClass -- * /2/AllValuesFromRestriction allValuesFromRestrictionClass;
+	0..1 OWLSomeValuesFromClass -- * /2/SomeValuesFromRestriction someValuesFromRestrictionClass;
+}
+
+class IntersectionClass
+{
+	isA /2/OWLClass;
+	0..1 intersectionClass -- * /2/OWLClass OWLIntersectionOf;
+}
+
+class UnionClass
+{
+	isA /2/OWLClass;
+	0..1 unionClass -- * /2/OWLClass OWLUnionOf;
+}
+
+class ComplementClass
+{
+	isA /2/OWLClass;
+	0..1 complementClass -- * /2/OWLClass OWLComplementOf;
+}
+
+class EnumeratedClass
+{
+	isA /2/OWLClass;
+	0..1 enumeratedClass -- * /2/Individual OWLOneOf;
+}
+
+class OWLRestriction
+{
+	isA /2/OWLClass;
+	0..1 propertyRestriction -- 1..* RDFProperty OWLOnProperty;
+}
+
+class HasValueRestriction
+{
+	isA /2/OWLRestriction;
+	0..1 restrictionClass -- * RDFSLiteral OWLHasLiteralValue;
+	0..1 restrictionClass -- * /2/Individual OWLHasIndividualValue;
+}
+
+class AllValuesFromRestriction
+{
+	isA /2/OWLRestriction;
+	0..1 allValuesFromRestrictionClass -- * /2/OWLDataRange OWLAllValuesFromDataRange;
+	0..1 allValuesFromRestrictionClass -- * /2/OWLClass OWLAllValuesFromClass;
+}
+
+class SomeValuesFromRestriction
+{
+	isA /2/OWLRestriction;
+	0..1 someValuesFromRestrictionClass -- * /2/OWLClass OWLSomeValuesFromClass;
+	0..1 someValuesFromRestrictionClass -- * /2/OWLDataRange OWLSomeValuesFromDataRange;
+}
+
+class CardinalityRestriction
+{
+	isA /2/OWLRestriction;
+	0..1 cardinalityRestriction -- 1..* TypedLiteral OWLCardinality;
+}
+
+class MaxCardinalityRestriction
+{
+	isA /2/OWLRestriction;
+	0..1 maxCardinalityRestriction -- 1..* TypedLiteral OWLMaxCardinality;
+}
+
+class MinCardinalityRestriction
+{
+	isA /2/OWLRestriction;
+	0..1 minCardinalityRestriction -- 1..* TypedLiteral OWLMinCardinality;
+}
+
+class OWLAnnotationProperty
+{
+	isA RDFProperty /2/OWLUniverse;
+}
+
+class OWLOntologyProperty
+{
+	isA RDFProperty /2/OWLUniverse;
+}
+
+class Property
+{
+	isA RDFProperty /2/OWLUniverse;
+	Boolean isDeprecated;
+	0..1 equivalentProperty -- * /2/Property OWLEquivalentProperty;
+	0..1 OWLEquivalentProperty -- * /2/Property equivalentProperty;
+}
+
+class FunctionalProperty
+{
+	isA /2/Property;
+}
+
+class OWLDatatypeProperty
+{
+	isA /2/Property;
+}
+
+class OWLObjectProperty
+{
+	isA /2/Property;
+	0..1 inverseProperty -- * /2/OWLObjectProperty OWLInverseOf;
+	0..1 OWLInverseOf -- * /2/OWLObjectProperty inverseProperty;
+}
+
+class InverseFunctionalProperty
+{
+	isA /2/OWLObjectProperty;
+}
+
+class SymmetricProperty
+{
+	isA /2/OWLObjectProperty;
+}
+
+class TransitiveProperty
+{
+	isA /2/OWLObjectProperty;
+}
+
+class Individual
+{
+	isA RDFSResource /2/OWLUniverse;
+	0..1 differentIndividual -- * /2/Individual OWLDifferentFrom;
+	0..1 OWLDifferentFrom -- * /2/Individual differentIndividual;
+	0..1 sameIndividual -- * /2/Individual OWLSameAs;
+	0..1 OWLSameAs -- * /2/Individual sameIndividual;
+	0..1 OWLDistinctMembers -- * /2/OWLAllDifferent allDifferent;
+	0..1 OWLOneOf -- * /2/EnumeratedClass enumeratedClass;
+	0..1 OWLHasIndividualValue -- * /2/HasValueRestriction restrictionClass;
+}
+
+class OWLAllDifferent
+{
+	isA /2/OWLClass;
+	0..1 allDifferent -- 2..* /2/Individual OWLDistinctMembers;
+}
+
+class OWLDataRange
+{
+	isA RDFSClass /2/OWLUniverse;
+	0..1 dataRange -- * RDFSDataType datatype;
+	0..1 dataRange -- * RDFSLiteral OWLOneOf;
+	0..1 OWLSomeValuesFromDataRange -- * /2/SomeValuesFromRestriction someValuesFromRestrictionClass;
+	0..1 OWLAllValuesFromDataRange -- * /2/AllValuesFromRestriction allValuesFromRestrictionClass;
+}

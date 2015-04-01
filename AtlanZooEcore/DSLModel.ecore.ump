@@ -1,0 +1,106 @@
+namespace DSLModel;
+
+class Model
+{
+	//PrimitiveTypes/String domainModel;
+	0..1 -> * //ModelElement contents;
+}
+
+class Element
+{
+	//PrimitiveTypes/String type;
+	//PrimitiveTypes/String id;
+}
+
+class ModelElement
+{
+	isA //Element;
+	0..1 elements -- 1..* //EmbeddingLink parentLink;
+	0..1 owner -- * //Property properties;
+	0..1 owner -- * //EmbeddingLink embeddinglinks;
+	0..1 owner -- * //ReferenceLink referencelinks;
+}
+
+class ModelElementLink
+{
+	isA //ModelElement;
+	0..1 modelElement -- * //ReferenceLink links;
+}
+
+class EmbeddingLink
+{
+	isA //NamedElement;
+	0..1 embeddinglinks -- * //ModelElement owner;
+	0..1 parentLink -- * //ModelElement elements;
+}
+
+class ReferenceLink
+{
+	isA //Element;
+	0..1 referencelinks -- * //ModelElement owner;
+	0..1 links -- 1..* //ModelElementLink modelElement;
+	0..1 owner -- 2 //Role roles;
+}
+
+class NamedElement
+{
+	//PrimitiveTypes/String name;
+}
+
+class Property
+{
+	isA //NamedElement;
+	0..1 properties -- 1..* //ModelElement owner;
+	0..1 -> 1..* //Value value;
+}
+
+class Role
+{
+	isA //NamedElement;
+	0..1 -> 1..* //ModelElement element;
+	0..1 roles -- 1..* //ReferenceLink owner;
+}
+
+class Value
+{
+}
+
+class IntegerValue
+{
+	isA //Value;
+	//PrimitiveTypes/Integer value;
+}
+
+class DoubleValue
+{
+	isA //Value;
+	//PrimitiveTypes/Double value;
+}
+
+class BooleanValue
+{
+	isA //Value;
+	//PrimitiveTypes/Boolean value;
+}
+
+class StringValue
+{
+	isA //Value;
+	//PrimitiveTypes/String value;
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}

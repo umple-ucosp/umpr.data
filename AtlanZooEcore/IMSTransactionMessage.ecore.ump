@@ -1,0 +1,81 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace IMSTransactionMessage;
+
+class TwoByteField
+{
+}
+
+class VariableLengthField
+{
+}
+
+class IMSTransactionMessage
+{
+	OIMAPrefixFormats OIMAPrefixFormat;
+	Boolean standardFieldsFlag;
+	0..1 -> * OIMAPrefix OIMAPrefixComponent;
+	0..1 -> * StandardFields standardFieldComponent;
+	0..1 -> 1..* ApplicationData messageComponent;
+}
+
+class OIMAPrefix
+{
+	0..1 -> 1..* ControlData controlDataComponent;
+	0..1 -> 1..* StateData stateDataComponent;
+	0..1 -> * SecurityData securityDataComponent;
+	0..1 -> * UserData userDataComponent;
+}
+
+class ControlData
+{
+}
+
+class StateData
+{
+}
+
+class SecurityData
+{
+}
+
+class UserData
+{
+}
+
+class StandardFields
+{
+	0..1 -> 1..* TwoByteField length;
+	0..1 -> 1..* TwoByteField reservedField;
+	0..1 -> 1..* VariableLengthField transactionCode;
+}
+
+class ApplicationData
+{
+	0..1 -> * TDLangElement languageElements;
+	1..* fieldContainer -- 1..* Field fieldComponents;
+}
+
+class Field
+{
+}
+
+class TDLangElement
+{
+}

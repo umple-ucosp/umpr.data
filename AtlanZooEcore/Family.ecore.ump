@@ -1,0 +1,22 @@
+namespace Family;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Family
+{
+	//String name;
+	0..1 -> * //Person members;
+}
+
+class Person
+{
+	//String firstName;
+	//String[] emailAddresses;
+	0..1 -> 1..* //Person closestFriend;
+}

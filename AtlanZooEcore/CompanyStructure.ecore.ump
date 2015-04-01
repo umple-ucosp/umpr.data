@@ -1,0 +1,50 @@
+namespace CompanyStructure;
+
+class Company
+{
+	0..1 -> 1..* CorporateHQ corporateHQ;
+	0..1 -> * Store Store;
+}
+
+class CorporateHQ
+{
+	0..1 -> * Store manages;
+	0..1 -> 1..* CorporateHQBackOffice corporateHQBackOffice;
+}
+
+class Store
+{
+	0..1 -> 1..* StoreBackOffice storeBackOffice;
+	0..1 -> * Employee employee;
+	0..1 -> * CashRegister cashRegister;
+}
+
+class CorporateHQBackOffice
+{
+}
+
+class StoreBackOffice
+{
+}
+
+class Employee
+{
+}
+
+class CashRegister
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

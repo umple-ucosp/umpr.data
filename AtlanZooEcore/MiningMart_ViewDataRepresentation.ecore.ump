@@ -1,0 +1,264 @@
+namespace SimplfiedMiningMart;
+
+class ModelElement
+{
+}
+
+class Classifier
+{
+	isA ModelElement;
+}
+
+class StructuralFeature
+{
+	isA ModelElement;
+}
+
+class Class
+{
+	isA Classifier;
+	String name;
+	1..* class -- 1..* Attribute attributes;
+}
+
+class DataType
+{
+	isA Classifier;
+	1..* has -- 1..* Attribute attribute;
+}
+
+class Attribute
+{
+	isA StructuralFeature;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+namespace DataRepresentation;
+
+class Column
+{
+	isA Attribute;
+	String name;
+	0..1 -> 1..* DataType dataType;
+	0..1 hasColumn -- * /2/Key keys;
+	0..1 hasColumn -- 1..* /2/ColumnSet belongsToColumnSet;
+	0..1 -> 1..* /2/BaseAttribute corespondsToBaseAttribute;
+}
+
+class ColumnSet
+{
+	isA Class;
+	Integer number;
+	String file;
+	String dbConnectString;
+	String user;
+	0..1 belongsToColumnSet -- 1..* /2/Column hasColumn;
+	0..1 isAssociatedToColumnSet -- 1..* /2/Key hasKey;
+	0..1 correspondsToColumnSet -- * /2/Concept correspondsToConcept;
+	0..1 correspondsToColumnSet -- * /2/RelationShip correspondsToRelationShip;
+}
+
+class ColumnStatistics
+{
+	Integer unique;
+	Integer missing;
+	Integer min;
+	Integer max;
+	Integer average;
+	Integer standarDeviation;
+	String distributionValue;
+	Integer distributionCount;
+	Integer distributionMin;
+	Integer distributionMax;
+	0..1 -> 1..* /2/Column forColumn;
+}
+
+class ColumnSetStatistics
+{
+	isA ModelElement;
+	Integer allNumber;
+	Integer ordinalNumber;
+	Integer nominalNumber;
+	Integer timeNumber;
+	0..1 -> 1..* /2/ColumnSet forColumnSet;
+}
+
+class Snapshot
+{
+	isA /2/ColumnSet;
+}
+
+class Table
+{
+	isA /2/ColumnSet;
+}
+
+class View
+{
+	isA /2/ColumnSet;
+}
+
+class Key
+{
+	isA ModelElement;
+	Boolean isUsedForIndex;
+	0..1 keys -- 1..* /2/Column hasColumn;
+	0..1 hasKey -- 1..* /2/ColumnSet isAssociatedToColumnSet;
+}
+
+class ForeignKey
+{
+	isA /2/Key;
+	0..1 -> * /2/Table isConnectionTo;
+	0..1 correspondsToForeignKey -- * /2/RelationShip correspondsToRelationShip;
+}
+
+class PrimaryKey
+{
+	isA /2/Key;
+}
+
+class Concept
+{
+	isA Class /2/Parameter;
+	String subConceptRestriction;
+	0..1 -> 1..* /2/Concept isA;
+	0..1 FromConcept -- 1..* /2/RelationShip FromConcept;
+	0..1 ToConcept -- 1..* /2/RelationShip ToConcept;
+	0..1 correspondsToConcept -- * /2/ColumnSet correspondsToColumnSet;
+}
+
+class RelationShip
+{
+	isA ModelElement /2/Parameter;
+	String name;
+	String subRelationShipRestriction;
+	String defined;
+	0..1 -> 1..* /2/RelationShip isA;
+	0..1 correspondsToRelationShip -- 1..* /2/ForeignKey correspondsToForeignKey;
+	0..1 correspondsToRelationShip -- * /2/ColumnSet correspondsToColumnSet;
+	0..1 FromConcept -- 1..* /2/Concept FromConcept;
+	0..1 ToConcept -- 1..* /2/Concept ToConcept;
+}
+
+class FeatureAttribute
+{
+	isA Attribute;
+	String name;
+	Boolean relevanceForMining;
+	0..1 -> 1..* DataType attributeType;
+	0..1 -> 1..* /2/Concept belongsToConcept;
+	0..1 -> 1..* /2/Column correspondsToColumns;
+}
+
+class BaseAttribute
+{
+	isA /2/FeatureAttribute;
+	0..1 consitsOfBaseAttributes -- * /2/MultiColumnFeature isPartMultiColumnFeature;
+	0..1 baseAttributeD -- 1..* /2/DomainDataType domainDataType;
+}
+
+class MultiColumnFeature
+{
+	isA /2/FeatureAttribute;
+	0..1 isPartMultiColumnFeature -- * /2/BaseAttribute consitsOfBaseAttributes;
+}
+
+class Value
+{
+	isA Attribute /2/Parameter;
+	String name;
+	0..1 -> 1..* /2/DomainDataType domainDataType;
+	0..1 -> 1..* /2/UserInput belongsToUserInput;
+}
+
+class UserInput
+{
+	isA Class;
+	0..1 -> 1..* /2/Value containsValues;
+}
+
+class Ordinal
+{
+	isA /2/DomainDataType;
+}
+
+class Scalar
+{
+	isA /2/Ordinal;
+}
+
+class Time
+{
+	isA /2/Scalar;
+}
+
+class Binary
+{
+	isA /2/Scalar /2/Nominal;
+}
+
+class Categorial
+{
+	isA /2/Nominal;
+}
+
+class KeyAttribute
+{
+	isA /2/Nominal;
+}
+
+class TimeGroup
+{
+	isA /2/KeyAttribute;
+}
+
+class Spatial
+{
+	isA /2/KeyAttribute;
+}
+
+class Constant
+{
+	isA /2/Nominal;
+}
+
+class RoleRestriction
+{
+	isA Attribute;
+	String name;
+	Integer min;
+	Integer max;
+	0..1 -> 1..* /2/RelationShip restrictionForRelationShip;
+	0..1 -> 1..* /2/Concept restrictionForConcept;
+	0..1 -> 1..* /2/Concept restrictionToConcept;
+	0..1 -> 1..* /2/Concept belongsToConcept;
+}
+
+class DomainDataType
+{
+	isA DataType;
+	0..1 domainDataType -- 1..* /2/BaseAttribute baseAttributeD;
+}
+
+class Nominal
+{
+	isA /2/DomainDataType;
+}
+
+class Parameter
+{
+}

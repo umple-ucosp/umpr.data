@@ -1,0 +1,39 @@
+namespace DocBook;
+
+class DocBook
+{
+	0..1 -> 1..* Book books;
+}
+
+class Book
+{
+	0..1 -> 1..* Article articles;
+}
+
+class TitledElement
+{
+	String title;
+}
+
+class Article
+{
+	isA TitledElement;
+	0..1 -> 1..* Sect1 sections_1;
+}
+
+class Sect1
+{
+	isA TitledElement;
+	0..1 -> 1..* Para paras;
+}
+
+class Para
+{
+	String content;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

@@ -1,0 +1,23 @@
+namespace ODPTV;
+
+class TechnologyObject
+{
+	0..1 techObject -- 1..* //ImplementableStandard implStandard;
+	0..1 implProduct -- * //Implementation toImplementation;
+}
+
+class Implementation
+{
+	0..1 ixitImplementation -- * //IXIT implIXIT;
+	0..1 toImplementation -- 1..* //TechnologyObject implProduct;
+}
+
+class IXIT
+{
+	0..1 implIXIT -- * //Implementation ixitImplementation;
+}
+
+class ImplementableStandard
+{
+	0..1 implStandard -- 1..* //TechnologyObject techObject;
+}

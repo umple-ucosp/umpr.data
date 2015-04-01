@@ -1,0 +1,185 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+namespace XSchema;
+
+class AnnotedElement
+{
+	1..* annotedElement -- * Annotation annotations;
+}
+
+class Annotation
+{
+	0..1 -> * Documentation documentations;
+	0..1 -> * ApplicationInfo applicationInfos;
+}
+
+class Documentation
+{
+	String text;
+}
+
+class ApplicationInfo
+{
+	String text;
+}
+
+class NamedElement
+{
+	isA AnnotedElement;
+	String name;
+}
+
+class XSchema
+{
+	isA AnnotedElement;
+	String namespace;
+	* schema -- * XSchemaContentElement contents;
+}
+
+class XSchemaContentElement
+{
+	isA NamedElement;
+}
+
+class Parameters
+{
+	isA XSchemaContentElement;
+	String fixed;
+	String default;
+	0..1 -> * AbstractType typeRef;
+	1..* container -- * AbstractType typeContain;
+}
+
+class Element
+{
+	isA Parameters ;
+	1..* referencedElement -- * ElementRef references;
+}
+
+class Occurable
+{
+	String minOccurs;
+	String maxOccurs;
+}
+
+class AbstractContent
+{
+	isA Occurable;
+	* contents -- 1..* Container container;
+	* content -- 1..* ComplexType complexType;
+}
+
+class Container
+{
+	isA AbstractContent;
+}
+
+class AtomicContent
+{
+	isA AbstractContent;
+}
+
+class ElementRef
+{
+	isA AtomicContent;
+}
+
+class GroupRef
+{
+	isA AtomicContent;
+	* references -- 1..* Group referencedGroup;
+}
+
+class All
+{
+	isA Container;
+}
+
+class Group
+{
+	isA XSchemaContentElement ;
+}
+
+class Choice
+{
+	isA Container;
+}
+
+class Sequence
+{
+	isA Container;
+}
+
+class AbstractAttributeGroupContent
+{
+	isA Occurable;
+	* contents -- 1..* AttributeGroup container;
+	* attributes -- 1..* ComplexType complexType;
+}
+
+class AttributeGroup
+{
+	isA AbstractAttributeGroupContent ;
+	1..* referencedAttributeGroup -- * AttributeGroupRef references;
+}
+
+class AttributeGroupRef
+{
+	isA AtomicAttributeGroupContent;
+}
+
+class AtomicAttributeGroupContent
+{
+	isA AbstractAttributeGroupContent;
+}
+
+class Attribute
+{
+	isA Parameters ;
+	AttributeUseType use;
+	1..* referencedAttribute -- * AttributeRef references;
+}
+
+class AttributeRef
+{
+	isA AtomicAttributeGroupContent;
+}
+
+class AbstractType
+{
+	isA XSchemaContentElement;
+}
+
+class SimpleType
+{
+	isA AbstractType;
+	1..* base -- * ComplexTypeSimpleContent extensions;
+}
+
+class ComplexType
+{
+	isA AbstractType;
+	1..* base -- * ComplexTypeComplexContent extensions;
+}
+
+class ComplexTypeSimpleContent
+{
+	isA ComplexType;
+}
+
+class ComplexTypeComplexContent
+{
+	isA ComplexType;
+}

@@ -1,0 +1,118 @@
+namespace XQuery;
+
+class XQueryProgram
+{
+	1..* xQueryProgram -- * ExecutableExpression expressions;
+}
+
+class Expression
+{
+	* nodes -- * ElementNode parentNode;
+	* expressions -- 1..* Return returnEx;
+}
+
+class ExecutableExpression
+{
+	isA Expression;
+	1..* expression -- 1..* FunctionDeclaration functionDeclaration;
+}
+
+class Node
+{
+	isA Expression;
+	String name;
+}
+
+class FLWOR
+{
+	isA ExecutableExpression;
+	1..* flwor -- 1..* For for;
+	1..* flwor -- 1..* Let let;
+	1..* flwor -- 1..* Where where;
+	1..* flwor -- 1..* OrderBy orderBy;
+	1..* flwor -- 1..* Return return;
+}
+
+class FunctionCall
+{
+	isA ExecutableExpression;
+	String name;
+	1..* functionCall -- * XPath parameters;
+}
+
+class FunctionDeclaration
+{
+	isA ExecutableExpression;
+	String name;
+}
+
+class ElementNode
+{
+	isA Node;
+}
+
+class AttributeNode
+{
+	isA Node;
+	String value;
+}
+
+class TextNode
+{
+	isA ElementNode;
+}
+
+class ReturnXPath
+{
+	isA Expression;
+	String value;
+}
+
+class XPath
+{
+	isA ReturnXPath;
+	1..* expression -- 1..* For for;
+	1..* expression -- 1..* Let let;
+}
+
+class BooleanExp
+{
+	isA XPath;
+	1..* expression -- 1..* Where where;
+}
+
+class For
+{
+	String var;
+}
+
+class Let
+{
+	String var;
+}
+
+class Where
+{
+}
+
+class OrderBy
+{
+}
+
+class Return
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

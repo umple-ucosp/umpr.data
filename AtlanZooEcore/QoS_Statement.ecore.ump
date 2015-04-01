@@ -1,0 +1,51 @@
+namespace QoSStatement;
+
+class QoSStatement
+{
+	0..1 -> * Parameter parameter;
+	2..* statement -- 1..* CoumpoundQoSStatement relation;
+}
+
+class SingleQoSStatement
+{
+	isA QoSStatement;
+	0..1 -> 1..* QoSContraint contraint;
+}
+
+class CoumpoundQoSStatement
+{
+	isA QoSStatement;
+}
+
+class Parameter
+{
+}
+
+class QoSContraint
+{
+	0..1 -> 1..* QualificationKind qualification;
+}
+
+class QualificationKind
+{
+	isA QoSCharacteristic;
+	String value;
+}
+
+class QoSCharacteristic
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

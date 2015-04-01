@@ -1,0 +1,2584 @@
+namespace MARTE;
+
+class NFP
+{
+	0..1 -> 1..* /2/Property base_Property;
+}
+
+class Unit
+{
+	MARTE_PrimitivesTypes/Real convFactor;
+	MARTE_PrimitivesTypes/Real convOffset;
+	0..1 -> * MARTE_Foundations/NFPs/Unit baseUnit;
+	0..1 -> 1..* /2/EnumerationLiteral base_EnumerationLiteral;
+}
+
+class NfpConstraint
+{
+	MARTE_Foundations/NFPs/ConstraintKind kind;
+	0..1 -> 1..* /2/Constraint base_Constraint;
+}
+
+class NfpType
+{
+	isA MARTE_Annexes/VSL/DataTypes/TupleType;
+	0..1 -> * /2/Property valueAttrib;
+	0..1 -> * /2/Property unitAttrib;
+	0..1 -> * /2/Property exprAttrib;
+}
+
+class Allocated
+{
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+}
+
+class ApplicationAllocationEnd
+{
+	isA MARTE_Foundations/Alloc/Allocated;
+	0..1 -> * MARTE_Foundations/Alloc/ExecutionPlatformAllocationEnd allocatedTo;
+}
+
+class ExecutionPlatformAllocationEnd
+{
+	isA MARTE_Foundations/Alloc/Allocated;
+	0..1 -> * MARTE_Foundations/Alloc/ApplicationAllocationEnd allocatedFrom;
+}
+
+class AllocateActivityGroup
+{
+	MARTE_PrimitivesTypes/Boolean isUnique;
+	0..1 -> 1..* /2/ActivityPartition base_ActivityPartition;
+}
+
+class ClockRefine
+{
+	0..1 -> 1..* /2/Dependency base_Dependency;
+	0..1 -> * MARTE_Foundations/Time/ClockConstraint constraint;
+}
+
+class Allocate
+{
+	MARTE_Foundations/Alloc/AllocationKind kind;
+	MARTE_Foundations/Alloc/AllocationNature nature;
+	0..1 -> 1..* /2/Abstraction base_Abstraction;
+	0..1 -> * MARTE_Foundations/NFPs/NfpConstraint impliedConstraint;
+}
+
+class TimedDomain
+{
+	0..1 -> 1..* /2/Package base_Package;
+}
+
+class Clock
+{
+	TimeLibrary/TimeStandardKind standard;
+	0..1 -> 1..* /2/InstanceSpecification base_InstanceSpecification;
+	0..1 -> * MARTE_Foundations/Time/ClockType type;
+	0..1 -> * MARTE_Foundations/NFPs/Unit unit;
+}
+
+class ClockType
+{
+	TimeTypesLibrary/TimeNatureKind nature;
+	MARTE_PrimitivesTypes/Boolean isLogical;
+	0..1 -> * /2/Enumeration unitType;
+	0..1 -> * /2/Property resolAttrib;
+	0..1 -> * /2/Property maxValAttrib;
+	0..1 -> * /2/Property offsetAttrib;
+	0..1 -> * /2/Operation getTime;
+	0..1 -> * /2/Operation setTime;
+	0..1 -> * /2/Operation indexToValue;
+	0..1 -> 1..* /2/Class base_Class;
+}
+
+class TimedElement
+{
+	0..1 -> 1..* MARTE_Foundations/Time/Clock on;
+}
+
+class TimedValueSpecification
+{
+	isA MARTE_Foundations/Time/TimedElement;
+	TimeTypesLibrary/TimeInterpretationKind interpretation;
+	0..1 -> 1..* /2/ValueSpecification base_ValueSpecification;
+}
+
+class TimedConstraint
+{
+	isA MARTE_Foundations/NFPs/NfpConstraint ;
+	TimeTypesLibrary/TimeInterpretationKind interpretation;
+}
+
+class TimedObservation
+{
+	isA MARTE_Foundations/Time/TimedElement;
+}
+
+class TimedInstantObservation
+{
+	isA MARTE_Foundations/Time/TimedObservation;
+	TimeLibrary/EventKind obsKind;
+	0..1 -> 1..* /2/TimeObservation base_TimeObservation;
+}
+
+class TimedDurationObservation
+{
+	isA MARTE_Foundations/Time/TimedObservation;
+	TimeLibrary/EventKind[] obsKind;
+	0..1 -> 1..* /2/DurationObservation base_DurationObservation;
+}
+
+class TimedEvent
+{
+	isA MARTE_Foundations/Time/TimedElement;
+	MARTE_PrimitivesTypes/Integer repetition;
+	0..1 -> 1..* /2/TimeEvent base_TimeEvent;
+	0..1 -> * /2/ValueSpecification every;
+}
+
+class TimedProcessing
+{
+	isA MARTE_Foundations/Time/TimedElement;
+	0..1 -> 1..* /2/Action base_Action;
+	0..1 -> 1..* /2/Behavior base_Behavior;
+	0..1 -> 1..* /2/Message base_Message;
+	0..1 -> * /2/ValueSpecification duration;
+	0..1 -> * /2/Event start;
+	0..1 -> * /2/Event stop;
+}
+
+class ClockConstraint
+{
+	isA MARTE_Foundations/NFPs/NfpConstraint ;
+}
+
+class Resource
+{
+	MARTE_PrimitivesTypes/Integer resMult;
+	MARTE_PrimitivesTypes/Boolean isProtected;
+	MARTE_PrimitivesTypes/Boolean isActive;
+	0..1 -> 1..* /2/Property base_Property;
+	0..1 -> 1..* /2/InstanceSpecification base_InstanceSpecification;
+	0..1 -> 1..* /2/Classifier base_Classifier;
+	0..1 -> 1..* /2/Lifeline base_Lifeline;
+	0..1 -> 1..* /2/ConnectableElement base_ConnectableElement;
+}
+
+class StorageResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+	MARTE_PrimitivesTypes/Integer elementSize;
+}
+
+class CommunicationEndPoint
+{
+	isA MARTE_Foundations/GRM/Resource;
+	MARTE_PrimitivesTypes/Integer packetSize;
+}
+
+class SynchronizationResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+}
+
+class ConcurrencyResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+}
+
+class Scheduler
+{
+	isA MARTE_Foundations/GRM/Resource;
+	MARTE_PrimitivesTypes/Boolean isPreemptible;
+	GRM_BasicTypes/SchedPolicyKind schedPolicy;
+	MARTE_PrimitivesTypes/String otherSchedPolicy;
+	0..1 -> * /2/OpaqueExpression schedule;
+	0..1 -> * MARTE_Foundations/GRM/ProcessingResource processingUnit;
+	0..1 -> * MARTE_Foundations/GRM/ComputingResource host;
+}
+
+class ProcessingResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+	MARTE_PrimitivesTypes/Real speedFactor;
+	0..1 -> * MARTE_Foundations/GRM/Scheduler scheduler;
+}
+
+class ComputingResource
+{
+	isA MARTE_Foundations/GRM/ProcessingResource;
+}
+
+class MutualExclusionResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+	GRM_BasicTypes/ProtectProtocolKind protectKind;
+	MARTE_PrimitivesTypes/Integer ceiling;
+	MARTE_PrimitivesTypes/String otherProtectProtocol;
+}
+
+class SecondaryScheduler
+{
+	isA MARTE_Foundations/GRM/Scheduler;
+}
+
+class SchedulableResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+	0..1 -> * GRM_BasicTypes/SchedParameters schedParams;
+}
+
+class CommunicationMedia
+{
+	isA MARTE_Foundations/GRM/ProcessingResource;
+	MARTE_PrimitivesTypes/Integer elementSize;
+	0..1 -> 1..* /2/Connector base_Connector;
+}
+
+class DeviceResource
+{
+	isA MARTE_Foundations/GRM/ProcessingResource;
+}
+
+class TimingResource
+{
+	isA MARTE_Foundations/Time/ClockType ;
+}
+
+class ClockResource
+{
+	isA MARTE_Foundations/GRM/TimingResource;
+}
+
+class TimerResource
+{
+	isA MARTE_Foundations/GRM/TimingResource;
+	MARTE_PrimitivesTypes/Boolean isPeriodic;
+	0..1 -> * BasicNFP_Types/NFP_Duration duration;
+}
+
+class GRService
+{
+	0..1 -> * MARTE_Foundations/GRM/Resource owner;
+	0..1 -> 1..* /2/ExecutionSpecification base_ExecutionSpecification;
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+	0..1 -> 1..* /2/Behavior base_Behavior;
+	0..1 -> 1..* /2/Collaboration base_Collaboration;
+	0..1 -> 1..* /2/CollaborationUse base_CollaborationUse;
+}
+
+class Release
+{
+	isA MARTE_Foundations/GRM/GRService;
+}
+
+class Acquire
+{
+	isA MARTE_Foundations/GRM/GRService;
+	MARTE_PrimitivesTypes/Boolean isBlocking;
+}
+
+class ResourceUsage
+{
+	0..1 -> * BasicNFP_Types/NFP_Duration execTime;
+	0..1 -> * BasicNFP_Types/NFP_DataSize msgSize;
+	0..1 -> * BasicNFP_Types/NFP_DataSize allocatedMemory;
+	0..1 -> * BasicNFP_Types/NFP_DataSize usedMemory;
+	0..1 -> * BasicNFP_Types/NFP_Power powerPeak;
+	0..1 -> * BasicNFP_Types/NFP_Energy energy;
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+	0..1 -> * MARTE_Foundations/GRM/Resource usedResources;
+	0..1 -> * MARTE_Foundations/GRM/ResourceUsage subUsage;
+}
+
+class FlowProperty
+{
+	MARTE_Foundations/GCM/DirectionKind direction;
+	0..1 -> 1..* /2/Property base_Property;
+}
+
+class FlowPort
+{
+	MARTE_PrimitivesTypes/Boolean isAtomic;
+	MARTE_PrimitivesTypes/Boolean isConjugated;
+	MARTE_Foundations/GCM/DirectionKind direction;
+	0..1 -> 1..* /2/Port base_Port;
+}
+
+class MessagePort
+{
+	MARTE_PrimitivesTypes/Boolean isAtomic;
+	MARTE_PrimitivesTypes/Boolean isConjugated;
+	MARTE_Foundations/GCM/DirectionKind direction;
+	0..1 -> 1..* /2/Port base_Port;
+}
+
+class SendFlowAction
+{
+	0..1 -> 1..* /2/InvocationAction base_InvocationAction;
+}
+
+class FlowSpecification
+{
+	MARTE_Foundations/GCM/DirectionKind direction;
+	0..1 -> 1..* /2/Interface base_Interface;
+}
+
+class SignalSpecification
+{
+	MARTE_Foundations/GCM/BFeatureKind kind;
+	0..1 -> 1..* /2/Interface base_Interface;
+}
+
+class FlowBFeature
+{
+	MARTE_Foundations/GCM/BFeatureKind kind;
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+}
+
+class LinkTopology
+{
+	0..1 -> 1..* /2/Connector base_Connector;
+}
+
+class DefaultLink
+{
+	isA MARTE_Annexes/RSM/LinkTopology;
+}
+
+class InterRepetition
+{
+	isA MARTE_Annexes/RSM/LinkTopology;
+	MARTE_PrimitivesTypes/Boolean isModulo;
+	0..1 -> 1..* MARTE_DataTypes/IntegerVector repetitionShapeDependence;
+}
+
+class Distribute
+{
+	isA MARTE_Foundations/Alloc/Allocate;
+	0..1 -> 1..* RS_Library/ShapeSpecification patternShape;
+	0..1 -> 1..* RS_Library/ShapeSpecification repetitionSpace;
+	0..1 -> 1..* RS_Library/TilerSpecification fromTiler;
+	0..1 -> 1..* RS_Library/TilerSpecification toTiler;
+}
+
+class Reshape
+{
+	isA MARTE_Annexes/RSM/LinkTopology;
+	0..1 -> 1..* RS_Library/ShapeSpecification patternShape;
+	0..1 -> 1..* RS_Library/ShapeSpecification repetitonShape;
+	0..1 -> 1..* MARTE_Annexes/RSM/Tiler srcTiler;
+	0..1 -> 1..* MARTE_Annexes/RSM/Tiler targetTiler;
+}
+
+class Tiler
+{
+	isA MARTE_Annexes/RSM/LinkTopology;
+	0..1 -> * MARTE_DataTypes/IntegerVector origin;
+	0..1 -> * MARTE_DataTypes/IntegerMatrix paving;
+	0..1 -> * MARTE_DataTypes/IntegerMatrix fitting;
+	0..1 -> * RS_Library/TilerSpecification tiler;
+}
+
+class Var
+{
+	MARTE_Annexes/VSL/Variables/VariableDirectionKind dir;
+	0..1 -> 1..* /2/Property base_Property;
+}
+
+class ExpressionContext
+{
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+}
+
+class BoundedSubtype
+{
+	MARTE_PrimitivesTypes/String minValue;
+	MARTE_PrimitivesTypes/String maxValue;
+	MARTE_PrimitivesTypes/Boolean isMinOpen;
+	MARTE_PrimitivesTypes/Boolean isMaxOpen;
+	0..1 -> 1..* /2/DataType baseType;
+	0..1 -> 1..* /2/DataType base_DataType;
+}
+
+class IntervalType
+{
+	0..1 -> 1..* /2/Property intervalAttrib;
+	0..1 -> 1..* /2/DataType base_DataType;
+}
+
+class CollectionType
+{
+	0..1 -> 1..* /2/Property collectionAttrib;
+	0..1 -> 1..* /2/DataType base_DataType;
+}
+
+class ChoiceType
+{
+	0..1 -> * /2/Property choiceAttrib;
+	0..1 -> * /2/Property defaultAttrib;
+	0..1 -> 1..* /2/DataType base_DataType;
+}
+
+class TupleType
+{
+	0..1 -> * /2/Property tupleAttrib;
+	0..1 -> 1..* /2/DataType base_DataType;
+}
+
+class RtUnit
+{
+	MARTE_PrimitivesTypes/Boolean isDynamic;
+	MARTE_PrimitivesTypes/Boolean isMain;
+	MARTE_PrimitivesTypes/Integer poolSize;
+	MARTE_DesignModel/RTEMoCC/PoolMgtPolicyKind poolPolicy;
+	0..1 -> * BasicNFP_Types/NFP_Duration poolWaitingTime;
+	0..1 -> * /2/Behavior operationalMode;
+	0..1 -> * /2/Operation main;
+	0..1 -> * BasicNFP_Types/NFP_DataSize memorySize;
+	0..1 -> 1..* /2/BehavioredClassifier base_BehavioredClassifier;
+}
+
+class PpUnit
+{
+	MARTE_DesignModel/RTEMoCC/CallConcurrencyKind concPolicy;
+	0..1 -> * BasicNFP_Types/NFP_DataSize memorySize;
+	0..1 -> 1..* /2/BehavioredClassifier base_BehavioredClassifier;
+}
+
+class RtBehavior
+{
+	GRM_BasicTypes/SchedPolicyKind queueSchedPolicy;
+	MARTE_PrimitivesTypes/Integer queueSize;
+	0..1 -> * BasicNFP_Types/NFP_DataSize msgMaxSize;
+	0..1 -> 1..* /2/Behavior base_Behavior;
+}
+
+class rtf
+{
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+	0..1 -> 1..* /2/Action base_Action;
+	0..1 -> 1..* /2/Message base_Message;
+	0..1 -> 1..* /2/Signal base_Signal;
+	0..1 -> * MARTE_DataTypes/UtilityType utility;
+	0..1 -> * BasicNFP_Types/ArrivalPattern occKind;
+	0..1 -> * MARTE_Foundations/Time/TimedInstantObservation tRef;
+	0..1 -> * BasicNFP_Types/NFP_Duration relDl;
+	0..1 -> * BasicNFP_Types/NFP_DateTime absDl;
+	0..1 -> * BasicNFP_Types/NFP_BoundedDuration boundDl;
+	0..1 -> * BasicNFP_Types/NFP_Duration rdTime;
+	0..1 -> * BasicNFP_Types/NFP_Percentage miss;
+	0..1 -> * BasicNFP_Types/NFP_Integer priority;
+}
+
+class RtAction
+{
+	MARTE_PrimitivesTypes/Boolean isAtomic;
+	MARTE_DesignModel/RTEMoCC/SynchronizationKind synchKind;
+	0..1 -> * BasicNFP_Types/NFP_DataSize msgSize;
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+	0..1 -> 1..* /2/InvocationAction base_InvocationAction;
+}
+
+class RtService
+{
+	MARTE_DesignModel/RTEMoCC/ConcurrencyKind concPolicy;
+	MARTE_DesignModel/RTEMoCC/ExecutionKind exeKind;
+	MARTE_PrimitivesTypes/Boolean isAtomic;
+	MARTE_DesignModel/RTEMoCC/SynchronizationKind synchKind;
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+}
+
+class RteConnector
+{
+	MARTE_DataTypes/TransmModeKind transmMode;
+	0..1 -> * BasicNFP_Types/NFP_DataTxRate bandwidth;
+	0..1 -> * BasicNFP_Types/NFP_Duration packetT;
+	0..1 -> * BasicNFP_Types/NFP_Duration blockT;
+	0..1 -> 1..* /2/Connector base_Connector;
+}
+
+class HwResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+	0..1 -> * BasicNFP_Types/NFP_String description;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResourceService p_HW_Services;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResourceService r_HW_Services;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource ownedHW;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwEndPoint endPoints;
+}
+
+class HwResourceService
+{
+	isA MARTE_Foundations/GRM/GRService;
+}
+
+class HwCommunicationResource
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource;
+}
+
+class HwArbiter
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwCommunicationResource;
+	0..1 arbiters -- * MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwMedia controlledMedias;
+}
+
+class HwMedia
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwCommunicationResource ;
+	0..1 -> * BasicNFP_Types/NFP_DataTxRate bandWidth;
+	0..1 -> 1..* /2/Association base_Association;
+	0..1 controlledMedias -- * MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwArbiter arbiters;
+}
+
+class HwBus
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwMedia;
+	MARTE_PrimitivesTypes/Boolean isSynchronous;
+	MARTE_PrimitivesTypes/Boolean isSerial;
+	0..1 -> * BasicNFP_Types/NFP_DataSize adressWidth;
+	0..1 -> * BasicNFP_Types/NFP_DataSize wordWidth;
+}
+
+class HwBridge
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwMedia;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwMedia sides;
+}
+
+class HwEndPoint
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwCommunicationResource ;
+	0..1 -> 1..* /2/Port base_Port;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwCommunication/HwMedia connectedTo;
+}
+
+class PLD_Organization
+{
+	MARTE_DesignModel/HRM/HwLogical/HwComputing/PLD_Class class;
+	0..1 -> * BasicNFP_Types/NFP_Integer nbRows;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbColumns;
+}
+
+class HwProcessor
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwComputing/HwComputingResource;
+	0..1 -> * BasicNFP_Types/NFP_DataSize architecture;
+	0..1 -> * BasicNFP_Types/NFP_Natural mips;
+	0..1 -> * BasicNFP_Types/NFP_Real ipc;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbCores;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbPipelines;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbStages;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbALUs;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbFBUs;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwComputing/HwISA ownedISAs;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwComputing/HwBranchPredictor predictors;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/HWCache caches;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwStorageManager/HwMMU ownedMMUs;
+}
+
+class HwComputingResource
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource ;
+	0..1 -> * MARTE_DataTypes/NFP_FrequencyInterval op_Frequencies;
+}
+
+class HwISA
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource;
+	MARTE_DesignModel/HRM/HwLogical/HwComputing/ISA_Type type;
+	0..1 -> * BasicNFP_Types/NFP_String family;
+	0..1 -> * BasicNFP_Types/NFP_DataSize inst_Width;
+}
+
+class HwBranchPredictor
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource;
+}
+
+class HwASIC
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwComputing/HwComputingResource;
+}
+
+class HwPLD
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwComputing/HwComputingResource;
+	MARTE_DesignModel/HRM/HwLogical/HwComputing/PLD_Technology technology;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwComputing/PLD_Organization organization;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbLUTs;
+	0..1 -> * BasicNFP_Types/NFP_Natural ndLUT_Inputs;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbFlipFlops;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/HwRAM blocksRAM;
+}
+
+class HwMemory
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwComputing/HwProcessor ;
+	0..1 -> * BasicNFP_Types/NFP_DataSize memorySize;
+	0..1 -> * BasicNFP_Types/NFP_DataSize adressSize;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/Timing timings;
+}
+
+class Timing
+{
+	0..1 -> * BasicNFP_Types/NFP_String notation;
+	0..1 -> * BasicNFP_Types/NFP_String description;
+	0..1 -> * BasicNFP_Types/NFP_Duration value;
+}
+
+class CacheStructure
+{
+	0..1 -> * BasicNFP_Types/NFP_Natural nsSets;
+	0..1 -> * BasicNFP_Types/NFP_Natural blockSize;
+	0..1 -> * BasicNFP_Types/NFP_Natural associativity;
+}
+
+class MemoryOrganization
+{
+	0..1 -> * BasicNFP_Types/NFP_Natural nbRows;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbColumns;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbBanks;
+	0..1 -> * BasicNFP_Types/NFP_DataSize wordSize;
+}
+
+class HwRAM
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwMemory/HwMemory;
+	MARTE_DesignModel/HRM/HwLogical/HwMemory/Repl_Policy repl_Policy;
+	MARTE_DesignModel/HRM/HwLogical/HwMemory/WritePolicy writePolicy;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/MemoryOrganization organization;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isSynchronous;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isStatic;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isNonVolatile;
+}
+
+class HwROM
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwMemory/HwMemory;
+	MARTE_DesignModel/HRM/HwLogical/HwMemory/ROM_Type type;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/MemoryOrganization organization;
+}
+
+class HwDrive
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwMemory/HwMemory;
+	0..1 -> * BasicNFP_Types/NFP_DataSize sectorSize;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/HwRAM buffer;
+}
+
+class HWCache
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwMemory/HwMemory;
+	MARTE_DesignModel/HRM/HwLogical/HwMemory/CacheType type;
+	MARTE_DesignModel/HRM/HwLogical/HwMemory/Repl_Policy repl_Policy;
+	MARTE_DesignModel/HRM/HwLogical/HwMemory/WritePolicy writePolicy;
+	0..1 -> * BasicNFP_Types/NFP_Natural level;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/CacheStructure structure;
+}
+
+class HwStorageManager
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource ;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/HwMemory managedMemories;
+}
+
+class HwDMA
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwStorageManager/HwStorageManager ;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbChannels;
+	0..1 -> * BasicNFP_Types/NFP_DataSize transferWidth;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwComputing/HwProcessor drivenBy;
+}
+
+class HwMMU
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwStorageManager/HwStorageManager;
+	0..1 -> * BasicNFP_Types/NFP_DataSize virtualAddrSpace;
+	0..1 -> * BasicNFP_Types/NFP_DataSize physicalAddrSpace;
+	0..1 -> * BasicNFP_Types/NFP_Natural memoryProtection;
+	0..1 -> * BasicNFP_Types/NFP_Boolean nbEntries;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwMemory/HWCache ownedTLBs;
+}
+
+class HwTimingResource
+{
+	isA MARTE_Foundations/GRM/TimingResource ;
+}
+
+class HwClock
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwTiming/HwTimingResource;
+	0..1 -> * BasicNFP_Types/NFP_Frequency frequency;
+}
+
+class HwTimer
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwTiming/HwTimingResource;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbCounter;
+	0..1 -> * BasicNFP_Types/NFP_DataSize counterWidth;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwTiming/HwClock inputClock;
+}
+
+class HwDevice
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource ;
+}
+
+class HwI_O
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwDevice/HwDevice;
+}
+
+class HwSupport
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwDevice/HwDevice;
+}
+
+class HwComponent
+{
+	isA MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResource;
+	MARTE_DesignModel/HRM/HwPhysical/HwLayout/ComponentKind kind;
+	0..1 -> 0..3 BasicNFP_Types/NFP_Length dimenssions;
+	0..1 -> * BasicNFP_Types/NFP_Area area;
+	0..1 -> 0..2 MARTE_DataTypes/NFP_NaturalInterval position;
+	0..1 -> 0..2 BasicNFP_Types/NFP_Natural grid;
+	0..1 -> * BasicNFP_Types/NFP_Natural nbPins;
+	0..1 -> * BasicNFP_Types/NFP_Real weight;
+	0..1 -> * BasicNFP_Types/NFP_String price;
+	0..1 -> * MARTE_DesignModel/HRM/HwPhysical/HwLayout/Env_Condition r_Conditions;
+	0..1 -> * MARTE_DesignModel/HRM/HwLogical/HwGeneral/HwResourceService poweredServices;
+	0..1 -> * BasicNFP_Types/NFP_Power staticConsumption;
+	0..1 -> * BasicNFP_Types/NFP_Power staticDissipation;
+}
+
+class Env_Condition
+{
+	MARTE_DesignModel/HRM/HwPhysical/HwLayout/ConditionType type;
+	MARTE_DesignModel/HRM/HwPhysical/HwLayout/CompnentState status;
+	0..1 -> * BasicNFP_Types/NFP_String description;
+	0..1 -> * MARTE_DataTypes/Realnterval range;
+}
+
+class HwPowerSupply
+{
+	isA MARTE_DesignModel/HRM/HwPhysical/HwLayout/HwComponent;
+	0..1 -> * BasicNFP_Types/NFP_Power suppliedPower;
+	0..1 -> * BasicNFP_Types/NFP_Energy capacity;
+}
+
+class HwCoolingSupply
+{
+	isA MARTE_DesignModel/HRM/HwPhysical/HwLayout/HwComponent;
+	0..1 -> * BasicNFP_Types/NFP_Power coolingPower;
+}
+
+class SwResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+	0..1 -> * /2/TypedElement identifierElements;
+	0..1 -> * /2/TypedElement stateElements;
+	0..1 -> * /2/TypedElement memorySizeFootprint;
+	0..1 -> * /2/BehavioralFeature createServices;
+	0..1 -> * /2/BehavioralFeature deleteServices;
+	0..1 -> * /2/BehavioralFeature initializeServices;
+}
+
+class SwAccessService
+{
+	isA MARTE_Foundations/GRM/GRService;
+	MARTE_PrimitivesTypes/Boolean isModifier;
+	0..1 -> 1..* /2/Property accessedElement;
+}
+
+class EntryPoint
+{
+	MARTE_PrimitivesTypes/Boolean isReentrant;
+	0..1 -> 1..* /2/BehavioralFeature routine;
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+	0..1 -> 1..* /2/Dependency base_Dependency;
+}
+
+class SwConcurrentResource
+{
+	isA MARTE_DesignModel/SRM/SW_ResourceCore/SwResource;
+	MARTE_PrimitivesTypes/Integer activationCapacity;
+	0..1 -> * BasicNFP_Types/ArrivalPattern type;
+	0..1 -> * /2/Element entryPoints;
+	0..1 -> * /2/TypedElement adressSpace;
+	0..1 -> * /2/TypedElement periodElements;
+	0..1 -> * /2/TypedElement priorityElements;
+	0..1 -> * /2/TypedElement stackSizeElements;
+	0..1 -> * /2/BehavioralFeature activateServices;
+	0..1 -> * /2/BehavioralFeature enableConcurrencyServices;
+	0..1 -> * /2/BehavioralFeature resumeServices;
+	0..1 -> * /2/BehavioralFeature suspendServices;
+	0..1 -> * /2/BehavioralFeature terminateServices;
+	0..1 -> * /2/BehavioralFeature disableConcurrencyServices;
+	0..1 -> * /2/TypedElement shareDataResources;
+	0..1 -> * /2/TypedElement messageResources;
+	0..1 -> * /2/TypedElement mutualExclusionResources;
+	0..1 -> * /2/TypedElement notificationResources;
+}
+
+class InterruptResource
+{
+	isA MARTE_DesignModel/SRM/SW_Concurrency/SwConcurrentResource;
+	MARTE_DesignModel/SRM/SW_Concurrency/InterruptKind kind;
+	MARTE_PrimitivesTypes/Boolean isMaskable;
+	0..1 -> * /2/TypedElement vectorElements;
+	0..1 -> * /2/TypedElement maskElements;
+	0..1 -> * /2/BehavioralFeature routineConnectServices;
+	0..1 -> * /2/BehavioralFeature routineDisconnectServices;
+}
+
+class SwSchedulableResource
+{
+	isA MARTE_DesignModel/SRM/SW_Concurrency/SwConcurrentResource;
+	MARTE_PrimitivesTypes/Boolean isStaticSchedulingFeature;
+	MARTE_PrimitivesTypes/Boolean isPreemptable;
+	0..1 -> 1..* /2/NamedElement schedulers;
+	0..1 -> * /2/TypedElement deadlineElements;
+	0..1 -> * /2/TypedElement deadlineTypeElements;
+	0..1 -> * /2/TypedElement timeScliceElements;
+	0..1 -> * /2/BehavioralFeature delayServices;
+	0..1 -> * /2/BehavioralFeature joinServices;
+	0..1 -> * /2/BehavioralFeature yieldServices;
+}
+
+class SwTimerResource
+{
+	isA MARTE_Foundations/GRM/TimerResource;
+	0..1 -> * /2/TypedElement durationElements;
+}
+
+class MemoryPartition
+{
+	isA MARTE_DesignModel/SRM/SW_ResourceCore/SwResource;
+	0..1 -> * /2/TypedElement concurrentResources;
+	0..1 -> * /2/TypedElement memorySpaces;
+	0..1 -> * /2/BehavioralFeature fork;
+	0..1 -> * /2/BehavioralFeature exit;
+	0..1 -> 1..* /2/Namespace base_Namespace;
+}
+
+class Alarm
+{
+	isA MARTE_DesignModel/SRM/SW_Concurrency/InterruptResource;
+	MARTE_PrimitivesTypes/Boolean isWatchdog;
+	0..1 -> * /2/TypedElement timers;
+}
+
+class DeviceBroker
+{
+	isA MARTE_DesignModel/SRM/SW_ResourceCore/SwResource;
+	MARTE_DesignModel/SRM/SW_Brokering/AccessPolicyKind accessPolicy;
+	MARTE_PrimitivesTypes/Boolean isBuffered;
+	0..1 -> * /2/TypedElement devices;
+	0..1 -> * /2/BehavioralFeature closeServices;
+	0..1 -> * /2/BehavioralFeature controlServices;
+	0..1 -> * /2/BehavioralFeature openServices;
+	0..1 -> * /2/BehavioralFeature readServices;
+	0..1 -> * /2/BehavioralFeature writeServices;
+}
+
+class MemoryBroker
+{
+	isA MARTE_DesignModel/SRM/SW_ResourceCore/SwResource;
+	MARTE_DesignModel/SRM/SW_Brokering/AccessPolicyKind accessPolicy;
+	0..1 -> * /2/TypedElement memories;
+	0..1 -> * /2/TypedElement memoryBlockAdressSelements;
+	0..1 -> * /2/TypedElement memoryBlockSizeElements;
+	0..1 -> * /2/BehavioralFeature lockServices;
+	0..1 -> * /2/BehavioralFeature unlockServices;
+	0..1 -> * /2/BehavioralFeature mapServices;
+	0..1 -> * /2/BehavioralFeature unMapServices;
+}
+
+class SwInteractionResource
+{
+	isA MARTE_DesignModel/SRM/SW_ResourceCore/SwResource;
+	MARTE_PrimitivesTypes/Boolean isIntraPartitionInteraction;
+	MARTE_DesignModel/SRM/SW_Interaction/QueuePolicyKind waitingQueuePolicy;
+	MARTE_PrimitivesTypes/Integer waitingQueueCapacity;
+	0..1 -> * /2/TypedElement waitingPolicyElements;
+}
+
+class SwCommunicationResource
+{
+	isA MARTE_DesignModel/SRM/SW_Interaction/SwInteractionResource ;
+}
+
+class SwSynchronizationResource
+{
+	isA MARTE_DesignModel/SRM/SW_Interaction/SwInteractionResource ;
+}
+
+class SharedDataComResource
+{
+	isA MARTE_DesignModel/SRM/SW_Interaction/SwCommunicationResource;
+	0..1 -> * /2/BehavioralFeature readServices;
+	0..1 -> * /2/BehavioralFeature writeServices;
+}
+
+class MessageComResource
+{
+	isA MARTE_DesignModel/SRM/SW_Interaction/SwCommunicationResource;
+	MARTE_PrimitivesTypes/Boolean isFixedMessageSize;
+	MARTE_DesignModel/SRM/SW_Interaction/MessageResourceKind meachnism;
+	MARTE_DesignModel/SRM/SW_Interaction/QueuePolicyKind messageQueuePolicy;
+	0..1 -> * /2/TypedElement messageSizeElements;
+	0..1 -> * /2/TypedElement messageQueueCapacityElements;
+	0..1 -> * /2/BehavioralFeature sendServices;
+	0..1 -> * /2/BehavioralFeature receiveServices;
+}
+
+class NotificationResource
+{
+	isA MARTE_DesignModel/SRM/SW_Interaction/SwSynchronizationResource;
+	MARTE_DesignModel/SRM/SW_Interaction/NotificationKind occurence;
+	MARTE_DesignModel/SRM/SW_Interaction/NotificationResourceKind mechanism;
+	0..1 -> * /2/TypedElement occurenceCountElements;
+	0..1 -> * /2/TypedElement maskElements;
+	0..1 -> * /2/BehavioralFeature flushServices;
+	0..1 -> * /2/BehavioralFeature signalServices;
+	0..1 -> * /2/BehavioralFeature waitServices;
+	0..1 -> * /2/BehavioralFeature clearServices;
+}
+
+class SwMutualExclusionResource
+{
+	isA MARTE_DesignModel/SRM/SW_Interaction/SwSynchronizationResource;
+	MARTE_DesignModel/SRM/SW_Interaction/MutualExclusionResourceKind mechanism;
+	MARTE_DesignModel/SRM/SW_Interaction/ConcurrentAccessProtocolKind concurrentAccessProtocol;
+	0..1 -> * /2/TypedElement accessTokenElements;
+	0..1 -> * /2/BehavioralFeature releaseServices;
+	0..1 -> * /2/BehavioralFeature acquireServices;
+}
+
+class GaWorkloadGenerator
+{
+	0..1 -> * BasicNFP_Types/NFP_Integer pop;
+	0..1 -> 1..* /2/Behavior base_Behavior;
+}
+
+class GaEventTrace
+{
+	MARTE_PrimitivesTypes/String content;
+	MARTE_PrimitivesTypes/String format;
+	MARTE_PrimitivesTypes/String location;
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+}
+
+class GaWorkloadEvent
+{
+	0..1 -> * BasicNFP_Types/ArrivalPattern pattern;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaWorkloadGenerator generator;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaEventTrace trace;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaScenario effect;
+	0..1 -> * /2/TimeEvent timedEvent;
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+}
+
+class GaScenario
+{
+	isA MARTE_Foundations/GRM/ResourceUsage ;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaWorkloadEvent cause;
+	0..1 -> * BasicNFP_Types/NFP_Duration hostDemand;
+	0..1 -> * BasicNFP_Types/NFP_Real hostDemandOps;
+	0..1 -> * BasicNFP_Types/NFP_Duration interOccT;
+	0..1 -> * BasicNFP_Types/NFP_Frequency throughput;
+	0..1 -> * BasicNFP_Types/NFP_Duration respT;
+	0..1 -> * BasicNFP_Types/NFP_Real utilization;
+	0..1 -> * BasicNFP_Types/NFP_Real utilizationHost;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaStep root;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaTimingObs timing;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaScenario behavior;
+}
+
+class GaStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaScenario;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isAtomic;
+	0..1 -> * BasicNFP_Types/NFP_Duration blockT;
+	0..1 -> 1..* BasicNFP_Types/NFP_Real rep;
+	0..1 -> * BasicNFP_Types/NFP_Real prob;
+	0..1 -> * BasicNFP_Types/NFP_Integer priority;
+	0..1 -> * MARTE_Foundations/GRM/SchedulableResource concurRes;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaExecHost host;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaRequestedService serDemand;
+	0..1 -> * BasicNFP_Types/NFP_Real servCount;
+}
+
+class GaExecHost
+{
+	isA MARTE_Foundations/GRM/ProcessingResource;
+	0..1 -> * BasicNFP_Types/NFP_Duration commTxOch;
+	0..1 -> * BasicNFP_Types/NFP_Duration commRcvOvh;
+	0..1 -> * BasicNFP_Types/NFP_Duration cntxtSwt;
+	0..1 -> * BasicNFP_Types/NFP_Duration clockOvh;
+	0..1 -> * MARTE_DataTypes/IntegerInterval schedPriRange;
+	0..1 -> * BasicNFP_Types/NFP_DataSize memSize;
+	0..1 -> * BasicNFP_Types/NFP_Real utilization;
+	0..1 -> * BasicNFP_Types/NFP_Frequency throughput;
+}
+
+class GaRequestedService
+{
+	isA MARTE_AnalysisModel/GQAM/GaStep;
+	0..1 -> 1..* /2/Operation base_Operation;
+}
+
+class GaTimingObs
+{
+	isA MARTE_Foundations/NFPs/NfpConstraint;
+	MARTE_AnalysisModel/GQAM/LaxityKind laxity;
+	0..1 -> * /2/TimeObservation startObs;
+	0..1 -> * /2/TimeObservation stopObs;
+}
+
+class GaCommStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaStep;
+}
+
+class GaAcqStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaStep;
+	0..1 -> * MARTE_Foundations/GRM/Resource acqRes;
+	0..1 -> * BasicNFP_Types/NFP_Integer resUnits;
+}
+
+class GaRelStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaStep;
+	0..1 -> * MARTE_Foundations/GRM/Resource relRes;
+	0..1 -> * BasicNFP_Types/NFP_Integer resUnits;
+}
+
+class GaLatencyObs
+{
+	isA MARTE_AnalysisModel/GQAM/GaTimingObs;
+	0..1 -> * BasicNFP_Types/NFP_Duration latency;
+	0..1 -> * BasicNFP_Types/NFP_Real miss;
+	0..1 -> * MARTE_DataTypes/UtilityType utility;
+	0..1 -> * BasicNFP_Types/NFP_Duration maxJitter;
+}
+
+class GaCommHost
+{
+	isA MARTE_Foundations/GRM/ProcessingResource;
+	MARTE_DataTypes/TransmModeKind transmMode;
+	0..1 -> * BasicNFP_Types/NFP_DataTxRate capacity;
+	0..1 -> * BasicNFP_Types/NFP_Duration packetT;
+	0..1 -> * BasicNFP_Types/NFP_Duration blockT;
+	0..1 -> * BasicNFP_Types/NFP_Real utilization;
+	0..1 -> * BasicNFP_Types/NFP_Frequency throughput;
+}
+
+class GaCommChannel
+{
+	isA MARTE_Foundations/GRM/SchedulableResource;
+	0..1 -> * BasicNFP_Types/NFP_DataSize packetSize;
+	0..1 -> * BasicNFP_Types/NFP_Real utlization;
+}
+
+class GaWorkloadBehavior
+{
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaScenario behavior;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaWorkloadEvent demand;
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+}
+
+class GaAnalysisContext
+{
+	isA MARTE_Annexes/VSL/Variables/ExpressionContext;
+	0..1 -> * BasicNFP_Types/NFP_String context;
+	0..1 -> 1..* MARTE_AnalysisModel/GQAM/GaWorkloadBehavior workload;
+	0..1 -> 1..* MARTE_AnalysisModel/GQAM/GaResourcesPlatform platform;
+}
+
+class GaResourcesPlatform
+{
+	0..1 -> * MARTE_Foundations/GRM/Resource resources;
+	0..1 -> 1..* /2/Classifier base_Classifier;
+}
+
+class SaAnalysisContext
+{
+	isA MARTE_AnalysisModel/GQAM/GaAnalysisContext;
+	MARTE_AnalysisModel/SAM/OptimallityCriterionKind optCriterion;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isSched;
+}
+
+class SaEnd2EndFlow
+{
+	0..1 -> * BasicNFP_Types/NFP_Boolean isSched;
+	0..1 -> * BasicNFP_Types/NFP_Real schSlack;
+	0..1 -> * BasicNFP_Types/NFP_Duration end2EndT;
+	0..1 -> * BasicNFP_Types/NFP_Duration end2EndD;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaTimingObs timing;
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+}
+
+class SaCommStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaCommStep;
+	0..1 -> * BasicNFP_Types/NFP_Duration deadline;
+	0..1 -> * BasicNFP_Types/NFP_Duration spareCap;
+	0..1 -> * BasicNFP_Types/NFP_Real schSlack;
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+}
+
+class SaExecStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaStep;
+	0..1 -> 1..* /2/BehavioralFeature base_BehavioralFeature;
+	0..1 -> * BasicNFP_Types/NFP_Duration deadline;
+	0..1 -> * BasicNFP_Types/NFP_Duration spareCap;
+	0..1 -> * BasicNFP_Types/NFP_Real schSlack;
+	0..1 -> * BasicNFP_Types/NFP_Duration preemptT;
+	0..1 -> * BasicNFP_Types/NFP_Duration readyT;
+	0..1 -> * BasicNFP_Types/NFP_Duration delayT;
+}
+
+class SaSchedObs
+{
+	isA MARTE_AnalysisModel/GQAM/GaTimingObs;
+	0..1 -> * BasicNFP_Types/NFP_Integer suspentions;
+	0..1 -> * BasicNFP_Types/NFP_Duration blockT;
+	0..1 -> * BasicNFP_Types/NFP_Integer overlaps;
+}
+
+class SaSharedResource
+{
+	isA MARTE_Foundations/GRM/MutualExclusionResource;
+	0..1 -> * BasicNFP_Types/NFP_Integer capacity;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isPreemp;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isConsum;
+	0..1 -> * BasicNFP_Types/NFP_Duration acquisT;
+	0..1 -> * BasicNFP_Types/NFP_Duration releaseT;
+}
+
+class SaCommHost
+{
+	isA MARTE_AnalysisModel/GQAM/GaCommHost;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isSched;
+	0..1 -> * BasicNFP_Types/NFP_Real schSlack;
+}
+
+class SaExecHost
+{
+	isA MARTE_AnalysisModel/GQAM/GaExecHost;
+	GRM_BasicTypes/SchedPolicyKind schedPolicy;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isSched;
+	0..1 -> * BasicNFP_Types/NFP_Real schSlack;
+	0..1 -> * BasicNFP_Types/NFP_Real schedUtiliz;
+	0..1 -> * BasicNFP_Types/NFP_Duration ISRswitchT;
+	0..1 -> * MARTE_DataTypes/IntegerInterval ISRprioRange;
+	0..1 -> * BasicNFP_Types/NFP_Boolean isPreempible;
+}
+
+class PaStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaStep;
+	MARTE_PrimitivesTypes/String[] extOpDemand;
+	0..1 -> * BasicNFP_Types/NFP_Boolean noSynch;
+	0..1 -> * BasicNFP_Types/NFP_Real extOpCount;
+	0..1 -> * MARTE_AnalysisModel/GQAM/GaScenario behavDemand;
+	0..1 -> * BasicNFP_Types/NFP_Real behavCount;
+}
+
+class PaRequestedStep
+{
+	isA MARTE_AnalysisModel/PAM/PaStep ;
+}
+
+class PaCommStep
+{
+	isA MARTE_AnalysisModel/PAM/PaStep ;
+}
+
+class PaResPassStep
+{
+	isA MARTE_AnalysisModel/GQAM/GaStep;
+	0..1 -> * MARTE_Foundations/GRM/Resource resource;
+	0..1 -> * BasicNFP_Types/NFP_Integer resUnits;
+}
+
+class PaLogicalResource
+{
+	isA MARTE_Foundations/GRM/Resource;
+	0..1 -> * BasicNFP_Types/NFP_Real utilization;
+	0..1 -> * BasicNFP_Types/NFP_Frequency throughput;
+	0..1 -> 1..* BasicNFP_Types/NFP_Integer poolSize;
+}
+
+class PaRunTInstance
+{
+	MARTE_PrimitivesTypes/Boolean unbddPool;
+	0..1 -> * BasicNFP_Types/NFP_Integer poolSize;
+	0..1 -> * MARTE_Foundations/GRM/Resource instance;
+	0..1 -> * MARTE_Foundations/GRM/SchedulableResource host;
+	0..1 -> * BasicNFP_Types/NFP_Real utilization;
+	0..1 -> * BasicNFP_Types/NFP_Frequency throughput;
+	0..1 -> 1..* /2/NamedElement base_NamedElement;
+}
+
+namespace MARTE_Library;
+
+class EDFParameters
+{
+	0..1 -> * BasicNFP_Types/NFP_Duration deadline;
+}
+
+class SchedParameters
+{
+	0..1 -> * GRM_BasicTypes/EDFParameters edf;
+	0..1 -> * GRM_BasicTypes/FixedPriorityParameters fp;
+	0..1 -> * GRM_BasicTypes/PoolingParameters pooling;
+	0..1 -> * GRM_BasicTypes/PeriodicServerParameters server;
+}
+
+class FixedPriorityParameters
+{
+	MARTE_PrimitivesTypes/Integer priority;
+}
+
+class PoolingParameters
+{
+	isA GRM_BasicTypes/FixedPriorityParameters;
+	0..1 -> * BasicNFP_Types/NFP_Duration period;
+	0..1 -> * BasicNFP_Types/NFP_Duration overhead;
+}
+
+class PeriodicServerParameters
+{
+	isA GRM_BasicTypes/FixedPriorityParameters;
+	GRM_BasicTypes/PeriodicServerKind kind;
+	MARTE_PrimitivesTypes/Integer backgroundPriority;
+	MARTE_PrimitivesTypes/Integer maxPendingReplenish;
+	0..1 -> * BasicNFP_Types/NFP_Duration initialBudget;
+	0..1 -> * BasicNFP_Types/NFP_Duration replenishPeriod;
+}
+
+class NFP_CommonType
+{
+	MARTE_DataTypes/VSL_Expression expr;
+	BasicNFP_Types/SourceKind source;
+	BasicNFP_Types/StatisticalQualifierKind statQ;
+	BasicNFP_Types/BasicNFP_Types_DirectionKind dir;
+}
+
+class NFP_Frequency
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/FrequencyUnitKind unit;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class NFP_Real
+{
+	isA BasicNFP_Types/NFP_CommonType;
+	MARTE_PrimitivesTypes/Real value;
+}
+
+class NFP_Natural
+{
+	isA BasicNFP_Types/NFP_CommonType;
+	MARTE_PrimitivesTypes/UnlimitedNatural value;
+}
+
+class NFP_Boolean
+{
+	isA BasicNFP_Types/NFP_CommonType;
+	MARTE_PrimitivesTypes/Boolean value;
+}
+
+class NFP_String
+{
+	isA BasicNFP_Types/NFP_CommonType;
+	MARTE_PrimitivesTypes/String value;
+}
+
+class NFP_Integer
+{
+	isA BasicNFP_Types/NFP_CommonType;
+	MARTE_PrimitivesTypes/Integer value;
+}
+
+class NFP_DateTime
+{
+	isA BasicNFP_Types/NFP_CommonType;
+	MARTE_PrimitivesTypes/DateTime value;
+}
+
+class NFP_DataTxRate
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/DataTxRateUnitKind unit;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class NFP_Power
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/PowerUnitKind unit;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class NFP_DataSize
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/DataSizeUnitKind unit;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class NFP_Energy
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/EnergyUnitKind unit;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class NFP_Length
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/LengthUnitKind unit;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class NFP_Area
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/AreaUnitKind unit;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class ArrivalPattern
+{
+	0..1 -> * BasicNFP_Types/PeriodicPattern periodic;
+	0..1 -> * BasicNFP_Types/AperiodicPattern aperiodic;
+	0..1 -> * BasicNFP_Types/BurstPattern burst;
+	0..1 -> * BasicNFP_Types/IrregularPattern irregular;
+	0..1 -> * BasicNFP_Types/ClosedPattern closed;
+	0..1 -> * BasicNFP_Types/SporadicPattern sporadic;
+}
+
+class PeriodicPattern
+{
+	0..1 -> * BasicNFP_Types/NFP_Duration period;
+	0..1 -> * BasicNFP_Types/NFP_Duration jitter;
+	0..1 -> * BasicNFP_Types/NFP_Duration phase;
+}
+
+class AperiodicPattern
+{
+	0..1 -> * BasicNFP_Types/NFP_CommonType distribution;
+}
+
+class BurstPattern
+{
+	isA BasicNFP_Types/AperiodicPattern;
+	0..1 -> * BasicNFP_Types/NFP_Duration minInterarrival;
+	0..1 -> * BasicNFP_Types/NFP_Duration maxInterarrival;
+	0..1 -> * BasicNFP_Types/NFP_Duration minEventInterval;
+	0..1 -> * BasicNFP_Types/NFP_Duration maxEventInterval;
+	0..1 -> * BasicNFP_Types/NFP_Integer burstSize;
+}
+
+class IrregularPattern
+{
+	isA BasicNFP_Types/AperiodicPattern;
+	0..1 -> * BasicNFP_Types/NFP_Duration phase;
+	0..1 -> * BasicNFP_Types/NFP_Duration interarrivals;
+}
+
+class ClosedPattern
+{
+	0..1 -> * BasicNFP_Types/NFP_Integer population;
+	0..1 -> * BasicNFP_Types/NFP_Duration extDelay;
+}
+
+class SporadicPattern
+{
+	isA BasicNFP_Types/AperiodicPattern;
+	0..1 -> * BasicNFP_Types/NFP_Duration minInterarrival;
+	0..1 -> * BasicNFP_Types/NFP_Duration maxInterarrival;
+	0..1 -> * BasicNFP_Types/NFP_Duration jitter;
+}
+
+class NFP_BoundedDuration
+{
+	isA BasicNFP_Types/NFP_CommonType;
+	MARTE_PrimitivesTypes/Real[] values;
+	MeasurementUnits/TimeUnitKind unit;
+	MARTE_PrimitivesTypes/String clock;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class NFP_Percentage
+{
+	isA BasicNFP_Types/NFP_Real;
+	MARTE_PrimitivesTypes/String unit;
+}
+
+class NFP_Duration
+{
+	isA BasicNFP_Types/NFP_Real;
+	MeasurementUnits/TimeUnitKind unit;
+	MARTE_PrimitivesTypes/String clock;
+	MARTE_PrimitivesTypes/Real precision;
+}
+
+class IntegerVector
+{
+	MARTE_PrimitivesTypes/Integer[] vectorElem;
+}
+
+class IntegerMatrix
+{
+	0..1 -> * MARTE_DataTypes/IntegerVector matrixElem;
+}
+
+class IntegerInterval
+{
+	MARTE_PrimitivesTypes/Integer[] bound;
+}
+
+class UtilityType
+{
+}
+
+class Array
+{
+}
+
+class Realnterval
+{
+	MARTE_PrimitivesTypes/Real[] bound;
+}
+
+class NFP_FrequencyInterval
+{
+	0..1 -> 2 BasicNFP_Types/NFP_Frequency bound;
+}
+
+class MARTE_DataTypes_Interval
+{
+}
+
+class NFP_NaturalInterval
+{
+	0..1 -> 2 BasicNFP_Types/NFP_Natural bound;
+}
+
+class VSL_Expression
+{
+}
+
+class TimedValueType
+{
+	TimeLibrary/TUK unit;
+	MARTE_PrimitivesTypes/Real value;
+	TimeLibrary/ClockedValueSpecification expr;
+	MARTE_PrimitivesTypes/String onClock;
+}
+
+class ClockedValueSpecification
+{
+}
+
+class IdealClock
+{
+}
+
+class TilerSpecification
+{
+	0..1 -> * MARTE_DataTypes/IntegerVector origin;
+	0..1 -> 1..* MARTE_DataTypes/IntegerMatrix paving;
+	0..1 -> * MARTE_DataTypes/IntegerVector fitting;
+}
+
+class ShapeSpecification
+{
+	MARTE_PrimitivesTypes/UnlimitedNatural[] size;
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}
+
+class UnlimitedNatural
+{
+}
+
+class String
+{
+}
+
+class DateTime
+{
+}
+
+class Real
+{
+}
+
+namespace uml;
+
+class Element
+{
+	0..1 owner -- * /2/Element ownedElement;
+	0..1 ownedElement -- * /2/Element owner;
+	0..1 -> * /2/Comment ownedComment;
+}
+
+class Comment
+{
+	isA /2/Element;
+	MARTE_PrimitivesTypes/String body;
+	0..1 -> * /2/Element annotatedElement;
+}
+
+class Package
+{
+	isA /2/Namespace /2/PackageableElement /2/TemplateableElement;
+	0..1 package -- * /2/Type ownedType;
+	0..1 receivingPackage -- * /2/PackageMerge packageMerge;
+	0..1 -> * /2/PackageableElement packagedElement;
+	0..1 nestingPackage -- * /2/Package nestedPackage;
+	0..1 nestedPackage -- * /2/Package nestingPackage;
+	0..1 applyingPackage -- * /2/ProfileApplication profileApplication;
+}
+
+class NamedElement
+{
+	isA /2/Element;
+	MARTE_PrimitivesTypes/String name;
+	/2/VisibilityKind visibility;
+	MARTE_PrimitivesTypes/String qualifiedName;
+	0..1 client -- * /2/Dependency clientDependency;
+	0..1 ownedMember -- * /2/Namespace namespace;
+	0..1 -> * /2/StringExpression nameExpression;
+}
+
+class StructuralFeature
+{
+	isA /2/Feature /2/TypedElement /2/MultiplicityElement;
+	MARTE_PrimitivesTypes/Boolean isReadOnly;
+}
+
+class ConnectableElement
+{
+	isA /2/TypedElement /2/ParameterableElement;
+	0..1 -> * /2/ConnectorEnd end;
+}
+
+class TemplateableElement
+{
+	isA /2/Element;
+	0..1 boundElement -- * /2/TemplateBinding templateBinding;
+	0..1 template -- * /2/TemplateSignature ownedTemplateSignature;
+}
+
+class Property
+{
+	isA /2/StructuralFeature /2/ConnectableElement /2/DeploymentTarget /2/TemplateableElement;
+	MARTE_PrimitivesTypes/Boolean isDerived;
+	MARTE_PrimitivesTypes/Boolean isDerivedUnion;
+	MARTE_PrimitivesTypes/String default;
+	/2/AggregationKind aggregation;
+	MARTE_PrimitivesTypes/Boolean isComposite;
+	0..1 -> * /2/Class class;
+	0..1 ownedAttribute -- * /2/DataType datatype;
+	0..1 ownedEnd -- * /2/Association owningAssociation;
+	0..1 memberEnd -- * /2/Association association;
+	0..1 -> * /2/Property redefinedProperty;
+	0..1 -> * /2/ValueSpecification defaultValue;
+	0..1 -> * /2/Property opposite;
+	0..1 -> * /2/Property subsettedProperty;
+	0..1 associationEnd -- * /2/Property qualifier;
+	0..1 qualifier -- * /2/Property associationEnd;
+}
+
+class Dependency
+{
+	isA /2/PackageableElement /2/DirectedRelationship;
+	0..1 -> 1..* /2/NamedElement supplier;
+	0..1 clientDependency -- 1..* /2/NamedElement client;
+}
+
+class DirectedRelationship
+{
+	isA /2/Relationship;
+	0..1 -> 1..* /2/Element source;
+	0..1 -> 1..* /2/Element target;
+}
+
+class Relationship
+{
+	isA /2/Element;
+	0..1 -> 1..* /2/Element relatedElement;
+}
+
+class Namespace
+{
+	isA /2/NamedElement;
+	0..1 importingNamespace -- * /2/ElementImport elementImport;
+	0..1 importingNamespace -- * /2/PackageImport packageImport;
+	0..1 context -- * /2/Constraint ownedRule;
+	0..1 -> * /2/NamedElement member;
+	0..1 -> * /2/PackageableElement importedMember;
+	0..1 namespace -- * /2/NamedElement ownedMember;
+}
+
+class ElementImport
+{
+	isA /2/DirectedRelationship;
+	/2/VisibilityKind visibility;
+	MARTE_PrimitivesTypes/String alias;
+	0..1 -> 1..* /2/PackageableElement importedElement;
+	0..1 elementImport -- 1..* /2/Namespace importingNamespace;
+}
+
+class PackageImport
+{
+	isA /2/DirectedRelationship;
+	/2/VisibilityKind visibility;
+	0..1 -> 1..* /2/Package importedPackage;
+	0..1 packageImport -- 1..* /2/Namespace importingNamespace;
+}
+
+class Constraint
+{
+	isA /2/PackageableElement;
+	0..1 -> * /2/Element constrainedElement;
+	0..1 -> 1..* /2/ValueSpecification specification;
+	0..1 ownedRule -- * /2/Namespace context;
+}
+
+class TypedElement
+{
+	isA /2/NamedElement;
+	0..1 -> * /2/Type type;
+}
+
+class Type
+{
+	isA /2/PackageableElement;
+	0..1 ownedType -- * /2/Package package;
+}
+
+class Association
+{
+	isA /2/Classifier /2/Relationship;
+	MARTE_PrimitivesTypes/Boolean isDerived;
+	0..1 owningAssociation -- * /2/Property ownedEnd;
+	0..1 -> 1..* /2/Type endType;
+	0..1 association -- 2..* /2/Property memberEnd;
+	0..1 -> * /2/Property navigableOwnedEnd;
+}
+
+class Classifier
+{
+	isA /2/Namespace /2/RedefinableElement /2/Type /2/TemplateableElement;
+	MARTE_PrimitivesTypes/Boolean isAbstract;
+	0..1 specific -- * /2/Generalization generalization;
+	0..1 powertype -- * /2/GeneralizationSet powertypeExtent;
+	0..1 featuringClassifier -- * /2/Feature feature;
+	0..1 -> * /2/NamedElement inheritedMember;
+	0..1 -> * /2/Classifier redefinedClassifier;
+	0..1 -> * /2/Classifier general;
+	0..1 substitutingClassifier -- * /2/Substitution substitution;
+	0..1 -> * /2/Property attribute;
+	0..1 -> * /2/CollaborationUse representation;
+	0..1 -> * /2/CollaborationUse collaborationUse;
+	0..1 -> * /2/UseCase ownedUseCase;
+	0..1 subject -- * /2/UseCase useCase;
+}
+
+class RedefinableElement
+{
+	isA /2/NamedElement;
+	MARTE_PrimitivesTypes/Boolean isLeaf;
+	0..1 -> * /2/RedefinableElement redefinedElement;
+	0..1 -> * /2/Classifier redefinitionContext;
+}
+
+class TemplateBinding
+{
+	isA /2/DirectedRelationship;
+	0..1 -> 1..* /2/TemplateSignature signature;
+	0..1 templateBinding -- * /2/TemplateParameterSubstitution parameterSubstitution;
+	0..1 templateBinding -- 1..* /2/TemplateableElement boundElement;
+}
+
+class TemplateSignature
+{
+	isA /2/Element;
+	0..1 -> 1..* /2/TemplateParameter parameter;
+	0..1 signature -- * /2/TemplateParameter ownedParameter;
+	0..1 ownedTemplateSignature -- 1..* /2/TemplateableElement template;
+}
+
+class TemplateParameter
+{
+	isA /2/Element;
+	0..1 ownedParameter -- 1..* /2/TemplateSignature signature;
+	0..1 templateParameter -- 1..* /2/ParameterableElement parameteredElement;
+	0..1 owningTemplateParameter -- * /2/ParameterableElement ownedParameteredElement;
+	0..1 -> * /2/ParameterableElement default;
+	0..1 -> * /2/ParameterableElement ownedDefault;
+}
+
+class ParameterableElement
+{
+	isA /2/Element;
+	0..1 ownedParameteredElement -- * /2/TemplateParameter owningTemplateParameter;
+	0..1 parameteredElement -- * /2/TemplateParameter templateParameter;
+}
+
+class TemplateParameterSubstitution
+{
+	isA /2/Element;
+	0..1 -> 1..* /2/TemplateParameter formal;
+	0..1 -> 1..* /2/ParameterableElement actual;
+	0..1 -> * /2/ParameterableElement ownedActual;
+	0..1 parameterSubstitution -- 1..* /2/TemplateBinding templateBinding;
+}
+
+class Generalization
+{
+	isA /2/DirectedRelationship;
+	MARTE_PrimitivesTypes/Boolean isSubstitutable;
+	0..1 -> 1..* /2/Classifier general;
+	0..1 generalization -- * /2/GeneralizationSet generalizationSet;
+	0..1 generalization -- 1..* /2/Classifier specific;
+}
+
+class GeneralizationSet
+{
+	isA /2/PackageableElement;
+	MARTE_PrimitivesTypes/Boolean isCovering;
+	MARTE_PrimitivesTypes/Boolean isDisjoint;
+	0..1 powertypeExtent -- * /2/Classifier powertype;
+	0..1 generalizationSet -- * /2/Generalization generalization;
+}
+
+class Feature
+{
+	isA /2/RedefinableElement;
+	MARTE_PrimitivesTypes/Boolean isStatic;
+	0..1 feature -- * /2/Classifier featuringClassifier;
+}
+
+class Substitution
+{
+	isA /2/Realization;
+	0..1 -> 1..* /2/Classifier contract;
+	0..1 substitution -- 1..* /2/Classifier substitutingClassifier;
+}
+
+class PackageableElement
+{
+	isA /2/NamedElement /2/ParameterableElement;
+}
+
+class PackageMerge
+{
+	isA /2/DirectedRelationship;
+	0..1 -> 1..* /2/Package mergedPackage;
+	0..1 packageMerge -- 1..* /2/Package receivingPackage;
+}
+
+class ProfileApplication
+{
+	isA /2/DirectedRelationship;
+	MARTE_PrimitivesTypes/Boolean isStrict;
+	0..1 -> 1..* /2/Profile appliedProfile;
+	0..1 profileApplication -- 1..* /2/Package applyingPackage;
+}
+
+class Profile
+{
+	isA /2/Package;
+	0..1 -> * /2/Stereotype ownedStereotype;
+	0..1 -> * /2/ElementImport metaclassReference;
+	0..1 -> * /2/PackageImport metamodelReference;
+}
+
+class Stereotype
+{
+	isA /2/Class;
+	0..1 -> * /2/Image icon;
+}
+
+class Class
+{
+	isA /2/EncapsulatedClassifier /2/BehavioredClassifier;
+	MARTE_PrimitivesTypes/Boolean isActive;
+	0..1 -> * /2/Classifier nestedClassifier;
+	0..1 class -- * /2/Operation ownedOperation;
+	0..1 -> * /2/Class superClass;
+	0..1 -> * /2/Reception ownedReception;
+	0..1 metaclass -- * /2/Extension extension;
+}
+
+class StringExpression
+{
+	isA /2/Expression /2/TemplateableElement;
+	0..1 owningExpression -- * /2/StringExpression subExpression;
+	0..1 subExpression -- * /2/StringExpression owningExpression;
+}
+
+class Expression
+{
+	isA /2/ValueSpecification;
+	MARTE_PrimitivesTypes/String symbol;
+	0..1 -> * /2/ValueSpecification operand;
+}
+
+class ValueSpecification
+{
+	isA /2/PackageableElement /2/TypedElement;
+}
+
+class BehavioredClassifier
+{
+	isA /2/Classifier;
+	0..1 -> * /2/Behavior ownedBehavior;
+	0..1 -> * /2/Behavior classifierBehavior;
+	0..1 implementingClassifier -- * /2/InterfaceRealization interfaceRealization;
+	0..1 -> * /2/Trigger ownedTrigger;
+}
+
+class Behavior
+{
+	isA /2/Class;
+	MARTE_PrimitivesTypes/Boolean isReentrant;
+	0..1 -> * /2/Behavior redefinedBehavior;
+	0..1 -> * /2/Parameter ownedParameter;
+	0..1 -> * /2/BehavioredClassifier context;
+	0..1 -> * /2/Constraint precondition;
+	0..1 -> * /2/Constraint postcondition;
+	0..1 -> * /2/ParameterSet ownedParameterSet;
+	0..1 method -- * /2/BehavioralFeature specification;
+}
+
+class MultiplicityElement
+{
+	isA /2/Element;
+	MARTE_PrimitivesTypes/Boolean isOrdered;
+	MARTE_PrimitivesTypes/Boolean isUnique;
+	MARTE_PrimitivesTypes/UnlimitedNatural upper;
+	MARTE_PrimitivesTypes/Integer lower;
+	0..1 -> * /2/ValueSpecification upperValue;
+	0..1 -> * /2/ValueSpecification lowerValue;
+}
+
+class DeploymentTarget
+{
+	isA /2/NamedElement;
+	0..1 location -- * /2/Deployment deployment;
+	0..1 -> * /2/PackageableElement deployedElement;
+}
+
+class DataType
+{
+	isA /2/Classifier;
+	0..1 datatype -- * /2/Property ownedAttribute;
+	0..1 datatype -- * /2/Operation ownedOperation;
+}
+
+class CollaborationUse
+{
+	isA /2/NamedElement;
+	0..1 -> 1..* /2/Collaboration type;
+	0..1 -> * /2/Dependency roleBinding;
+}
+
+class UseCase
+{
+	isA /2/BehavioredClassifier;
+	0..1 includingCase -- * /2/Include include;
+	0..1 extension -- * /2/Extend extend;
+	0..1 useCase -- * /2/ExtensionPoint extensionPoint;
+	0..1 useCase -- * /2/Classifier subject;
+}
+
+class Realization
+{
+	isA /2/Abstraction;
+}
+
+class Abstraction
+{
+	isA /2/Dependency;
+	0..1 -> * /2/OpaqueExpression mapping;
+}
+
+class Image
+{
+	isA /2/Element;
+	MARTE_PrimitivesTypes/String content;
+	MARTE_PrimitivesTypes/String location;
+	MARTE_PrimitivesTypes/String format;
+}
+
+class OpaqueExpression
+{
+	isA /2/ValueSpecification;
+	MARTE_PrimitivesTypes/String[] body;
+	MARTE_PrimitivesTypes/String[] language;
+	0..1 -> * /2/Parameter result;
+	0..1 -> * /2/Behavior behavior;
+}
+
+class Parameter
+{
+	isA /2/ConnectableElement /2/MultiplicityElement;
+	/2/ParameterDirectionKind direction;
+	MARTE_PrimitivesTypes/String default;
+	MARTE_PrimitivesTypes/Boolean isException;
+	MARTE_PrimitivesTypes/Boolean isStream;
+	/2/ParameterEffectKind effect;
+	0..1 -> * /2/ValueSpecification defaultValue;
+	0..1 -> * /2/Operation operation;
+	0..1 parameter -- * /2/ParameterSet parameterSet;
+}
+
+class EncapsulatedClassifier
+{
+	isA /2/StructuredClassifier;
+	0..1 -> * /2/Port ownedPort;
+}
+
+class Operation
+{
+	isA /2/BehavioralFeature /2/ParameterableElement /2/TemplateableElement;
+	MARTE_PrimitivesTypes/Boolean isQuery;
+	MARTE_PrimitivesTypes/Boolean isOrdered;
+	MARTE_PrimitivesTypes/Boolean isUnique;
+	MARTE_PrimitivesTypes/Integer lower;
+	MARTE_PrimitivesTypes/UnlimitedNatural upper;
+	0..1 ownedOperation -- * /2/Interface interface;
+	0..1 ownedOperation -- * /2/Class class;
+	0..1 -> * /2/Constraint precondition;
+	0..1 -> * /2/Constraint postcondition;
+	0..1 -> * /2/Operation redefinedOperation;
+	0..1 ownedOperation -- * /2/DataType datatype;
+	0..1 -> * /2/Constraint bodyCondition;
+	0..1 -> * /2/Type type;
+}
+
+class Reception
+{
+	isA /2/BehavioralFeature;
+	0..1 -> * /2/Signal signal;
+}
+
+class Extension
+{
+	isA /2/Association;
+	MARTE_PrimitivesTypes/Boolean isRequired;
+	0..1 extension -- 1..* /2/Class metaclass;
+}
+
+class EnumerationLiteral
+{
+	isA /2/InstanceSpecification;
+	0..1 ownedLiteral -- * /2/Enumeration enumeration;
+}
+
+class ActivityPartition
+{
+	isA /2/NamedElement /2/ActivityGroup;
+	MARTE_PrimitivesTypes/Boolean isDimension;
+	MARTE_PrimitivesTypes/Boolean isExternal;
+	0..1 inPartition -- * /2/ActivityNode node;
+	0..1 superPartition -- * /2/ActivityPartition subpartition;
+	0..1 subpartition -- * /2/ActivityPartition superPartition;
+	0..1 -> * /2/Element represents;
+	0..1 inPartition -- * /2/ActivityEdge edge;
+}
+
+class Enumeration
+{
+	isA /2/DataType;
+	0..1 enumeration -- * /2/EnumerationLiteral ownedLiteral;
+}
+
+class InstanceSpecification
+{
+	isA /2/DeploymentTarget /2/PackageableElement /2/DeployedArtifact;
+	0..1 -> * /2/Classifier classifier;
+	0..1 owningInstance -- * /2/Slot slot;
+	0..1 -> * /2/ValueSpecification specification;
+}
+
+class BehavioralFeature
+{
+	isA /2/Namespace /2/Feature;
+	MARTE_PrimitivesTypes/Boolean isAbstract;
+	MARTE_DesignModel/RTEMoCC/CallConcurrencyKind concurrency;
+	0..1 -> * /2/Parameter ownedParameter;
+	0..1 specification -- * /2/Behavior method;
+	0..1 -> * /2/Type raisedException;
+	0..1 -> * /2/ParameterSet ownedParameterSet;
+}
+
+class Signal
+{
+	isA /2/Classifier;
+	0..1 -> * /2/Property ownedAttribute;
+}
+
+class TimeExpression
+{
+	isA /2/ValueSpecification;
+	0..1 -> * /2/ValueSpecification expr;
+	0..1 -> * /2/Observation observation;
+}
+
+class Observation
+{
+	isA /2/PackageableElement;
+}
+
+class Duration
+{
+	isA /2/ValueSpecification;
+	0..1 -> * /2/ValueSpecification expr;
+	0..1 -> * /2/Observation observation;
+}
+
+class DurationInterval
+{
+	isA /2/Interval;
+}
+
+class Interval
+{
+	isA /2/ValueSpecification;
+	0..1 -> 1..* /2/ValueSpecification min;
+	0..1 -> 1..* /2/ValueSpecification max;
+}
+
+class TimeConstraint
+{
+	isA /2/IntervalConstraint;
+	MARTE_PrimitivesTypes/Boolean firstEvent;
+}
+
+class IntervalConstraint
+{
+	isA /2/Constraint;
+}
+
+class TimeInterval
+{
+	isA /2/Interval;
+}
+
+class DurationConstraint
+{
+	isA /2/IntervalConstraint;
+	MARTE_PrimitivesTypes/Boolean[] firstEvent;
+}
+
+class TimeObservation
+{
+	isA /2/Observation;
+	MARTE_PrimitivesTypes/Boolean firstEvent;
+	0..1 -> 1..* /2/NamedElement event;
+}
+
+class DurationObservation
+{
+	isA /2/Observation;
+	MARTE_PrimitivesTypes/Boolean[] firstEvent;
+	0..1 -> 1..2 /2/NamedElement event;
+}
+
+class ConnectorEnd
+{
+	isA /2/MultiplicityElement;
+	0..1 -> * /2/Property definingEnd;
+	0..1 -> * /2/Property partWithPort;
+	0..1 -> 1..* /2/ConnectableElement role;
+}
+
+class TimeEvent
+{
+	isA /2/Event;
+	MARTE_PrimitivesTypes/Boolean isRelative;
+	0..1 -> 1..* /2/ValueSpecification when;
+}
+
+class Event
+{
+	isA /2/PackageableElement;
+}
+
+class Port
+{
+	isA /2/Property;
+	MARTE_PrimitivesTypes/Boolean isBehavior;
+	MARTE_PrimitivesTypes/Boolean isService;
+	0..1 -> * /2/Interface required;
+	0..1 -> * /2/Port redefinedPort;
+	0..1 -> * /2/Interface provided;
+	0..1 -> * /2/ProtocolStateMachine protocol;
+}
+
+class Action
+{
+	isA /2/ExecutableNode;
+	0..1 -> * /2/OutputPin output;
+	0..1 -> * /2/InputPin input;
+	0..1 -> * /2/Classifier context;
+	0..1 -> * /2/Constraint localPrecondition;
+	0..1 -> * /2/Constraint localPostcondition;
+}
+
+class Message
+{
+	isA /2/NamedElement;
+	/2/MessageKind messageKind;
+	/2/MessageSort messageSort;
+	0..1 -> * /2/MessageEnd receiveEvent;
+	0..1 -> * /2/MessageEnd sendEvent;
+	0..1 -> * /2/Connector connector;
+	0..1 message -- 1..* /2/Interaction interaction;
+	0..1 -> * /2/ValueSpecification argument;
+	0..1 -> * /2/NamedElement signature;
+}
+
+class Lifeline
+{
+	isA /2/NamedElement;
+	0..1 -> * /2/ConnectableElement represents;
+	0..1 lifeline -- 1..* /2/Interaction interaction;
+	0..1 -> * /2/ValueSpecification selector;
+	0..1 -> * /2/PartDecomposition decomposedAs;
+	0..1 covered -- * /2/InteractionFragment coveredBy;
+}
+
+class ExecutionSpecification
+{
+	isA /2/InteractionFragment;
+	0..1 -> 1..* /2/OccurrenceSpecification start;
+	0..1 -> 1..* /2/OccurrenceSpecification finish;
+}
+
+class InvocationAction
+{
+	isA /2/Action;
+	0..1 -> * /2/InputPin argument;
+	0..1 -> * /2/Port onPort;
+}
+
+class Connector
+{
+	isA /2/Feature;
+	/2/ConnectorKind kind;
+	0..1 -> * /2/Association type;
+	0..1 -> * /2/Connector redefinedConnector;
+	0..1 -> 2..* /2/ConnectorEnd end;
+	0..1 -> * /2/Behavior contract;
+}
+
+class Collaboration
+{
+	isA /2/BehavioredClassifier /2/StructuredClassifier;
+	0..1 -> * /2/ConnectableElement collaborationRole;
+}
+
+class Interface
+{
+	isA /2/Classifier;
+	0..1 -> * /2/Property ownedAttribute;
+	0..1 interface -- * /2/Operation ownedOperation;
+	0..1 -> * /2/Classifier nestedClassifier;
+	0..1 -> * /2/Interface redefinedInterface;
+	0..1 -> * /2/Reception ownedReception;
+	0..1 -> * /2/ProtocolStateMachine protocol;
+}
+
+class InterfaceRealization
+{
+	isA /2/Realization;
+	0..1 -> 1..* /2/Interface contract;
+	0..1 interfaceRealization -- 1..* /2/BehavioredClassifier implementingClassifier;
+}
+
+class Trigger
+{
+	isA /2/NamedElement;
+	0..1 -> 1..* /2/Event event;
+	0..1 -> * /2/Port port;
+}
+
+class ProtocolStateMachine
+{
+	isA /2/StateMachine;
+	0..1 specificMachine -- * /2/ProtocolConformance conformance;
+}
+
+class StateMachine
+{
+	isA /2/Behavior;
+	0..1 stateMachine -- 1..* /2/Region region;
+	0..1 submachine -- * /2/State submachineState;
+	0..1 stateMachine -- * /2/Pseudostate connectionPoint;
+	0..1 -> * /2/StateMachine extendedStateMachine;
+}
+
+class ProtocolConformance
+{
+	isA /2/DirectedRelationship;
+	0..1 -> 1..* /2/ProtocolStateMachine generalMachine;
+	0..1 conformance -- 1..* /2/ProtocolStateMachine specificMachine;
+}
+
+class Deployment
+{
+	isA /2/Dependency;
+	0..1 -> * /2/DeployedArtifact deployedArtifact;
+	0..1 deployment -- * /2/DeploymentSpecification configuration;
+	0..1 deployment -- 1..* /2/DeploymentTarget location;
+}
+
+class Include
+{
+	isA /2/NamedElement /2/DirectedRelationship;
+	0..1 -> 1..* /2/UseCase addition;
+	0..1 include -- 1..* /2/UseCase includingCase;
+}
+
+class Extend
+{
+	isA /2/NamedElement /2/DirectedRelationship;
+	0..1 -> 1..* /2/UseCase extendedCase;
+	0..1 -> * /2/Constraint condition;
+	0..1 -> 1..* /2/ExtensionPoint extensionLocation;
+	0..1 extend -- 1..* /2/UseCase extension;
+}
+
+class ExtensionPoint
+{
+	isA /2/RedefinableElement;
+	0..1 extensionPoint -- 1..* /2/UseCase useCase;
+}
+
+class Region
+{
+	isA /2/Namespace /2/RedefinableElement;
+	0..1 container -- * /2/Vertex subvertex;
+	0..1 container -- * /2/Transition transition;
+	0..1 region -- * /2/State state;
+	0..1 -> * /2/Region extendedRegion;
+	0..1 region -- * /2/StateMachine stateMachine;
+}
+
+class StructuredClassifier
+{
+	isA /2/Classifier;
+	0..1 -> * /2/Property ownedAttribute;
+	0..1 -> * /2/Property part;
+	0..1 -> * /2/ConnectableElement role;
+	0..1 -> * /2/Connector ownedConnector;
+}
+
+class Vertex
+{
+	isA /2/NamedElement;
+	0..1 -> * /2/Transition incoming;
+	0..1 -> * /2/Transition outgoing;
+	0..1 subvertex -- * /2/Region container;
+}
+
+class Transition
+{
+	isA /2/Namespace /2/RedefinableElement;
+	/2/TransitionKind kind;
+	0..1 transition -- 1..* /2/Region container;
+	0..1 -> * /2/Transition redefinedTransition;
+	0..1 -> * /2/Constraint guard;
+	0..1 -> * /2/Behavior effect;
+	0..1 -> * /2/Trigger trigger;
+	0..1 -> 1..* /2/Vertex target;
+	0..1 -> 1..* /2/Vertex source;
+}
+
+class State
+{
+	isA /2/Namespace /2/RedefinableElement /2/Vertex;
+	MARTE_PrimitivesTypes/Boolean isComposite;
+	MARTE_PrimitivesTypes/Boolean isOrthogonal;
+	MARTE_PrimitivesTypes/Boolean isSimple;
+	MARTE_PrimitivesTypes/Boolean isSubmachineState;
+	0..1 submachineState -- * /2/StateMachine submachine;
+	0..1 state -- * /2/ConnectionPointReference connection;
+	0..1 state -- * /2/Pseudostate connectionPoint;
+	0..1 -> * /2/State redefinedState;
+	0..1 -> * /2/Constraint stateInvariant;
+	0..1 -> * /2/Behavior entry;
+	0..1 -> * /2/Behavior exit;
+	0..1 -> * /2/Behavior doActivity;
+	0..1 -> * /2/Trigger deferrableTrigger;
+	0..1 state -- * /2/Region region;
+}
+
+class ParameterSet
+{
+	isA /2/NamedElement;
+	0..1 parameterSet -- 1..* /2/Parameter parameter;
+	0..1 -> * /2/Constraint condition;
+}
+
+class ActivityNode
+{
+	isA /2/RedefinableElement;
+	0..1 node -- * /2/StructuredActivityNode inStructuredNode;
+	0..1 node -- * /2/Activity activity;
+	0..1 source -- * /2/ActivityEdge outgoing;
+	0..1 target -- * /2/ActivityEdge incoming;
+	0..1 node -- * /2/ActivityPartition inPartition;
+	0..1 node -- * /2/InterruptibleActivityRegion inInterruptibleRegion;
+	0..1 containedNode -- * /2/ActivityGroup inGroup;
+	0..1 -> * /2/ActivityNode redefinedNode;
+}
+
+class ActivityGroup
+{
+	isA /2/Element;
+	0..1 superGroup -- * /2/ActivityGroup subgroup;
+	0..1 subgroup -- * /2/ActivityGroup superGroup;
+	0..1 group -- * /2/Activity inActivity;
+	0..1 inGroup -- * /2/ActivityEdge containedEdge;
+	0..1 inGroup -- * /2/ActivityNode containedNode;
+}
+
+class ActivityEdge
+{
+	isA /2/RedefinableElement;
+	0..1 outgoing -- 1..* /2/ActivityNode source;
+	0..1 incoming -- 1..* /2/ActivityNode target;
+	0..1 -> * /2/ActivityEdge redefinedEdge;
+	0..1 edge -- * /2/ActivityPartition inPartition;
+	0..1 -> 1..* /2/ValueSpecification guard;
+	0..1 -> 1..* /2/ValueSpecification weight;
+	0..1 interruptingEdge -- * /2/InterruptibleActivityRegion interrupts;
+	0..1 edge -- * /2/StructuredActivityNode inStructuredNode;
+	0..1 containedEdge -- * /2/ActivityGroup inGroup;
+	0..1 edge -- * /2/Activity activity;
+}
+
+class InterruptibleActivityRegion
+{
+	isA /2/ActivityGroup;
+	0..1 inInterruptibleRegion -- * /2/ActivityNode node;
+	0..1 interrupts -- * /2/ActivityEdge interruptingEdge;
+}
+
+class DeployedArtifact
+{
+	isA /2/NamedElement;
+}
+
+class Slot
+{
+	isA /2/Element;
+	0..1 -> 1..* /2/StructuralFeature definingFeature;
+	0..1 -> * /2/ValueSpecification value;
+	0..1 slot -- 1..* /2/InstanceSpecification owningInstance;
+}
+
+class ExecutableNode
+{
+	isA /2/ActivityNode;
+	0..1 protectedNode -- * /2/ExceptionHandler handler;
+}
+
+class OutputPin
+{
+	isA /2/Pin;
+}
+
+class Pin
+{
+	isA /2/ObjectNode /2/MultiplicityElement;
+	MARTE_PrimitivesTypes/Boolean isControl;
+}
+
+class InputPin
+{
+	isA /2/Pin;
+}
+
+class ExceptionHandler
+{
+	isA /2/Element;
+	0..1 -> 1..* /2/ExecutableNode handlerBody;
+	0..1 -> 1..* /2/ObjectNode exceptionInput;
+	0..1 -> 1..* /2/Classifier exceptionType;
+	0..1 handler -- 1..* /2/ExecutableNode protectedNode;
+}
+
+class ObjectNode
+{
+	isA /2/ActivityNode /2/TypedElement;
+	/2/ObjectNodeOrderingKind ordering;
+	MARTE_PrimitivesTypes/Boolean isControlType;
+	0..1 -> 1..* /2/ValueSpecification upperBound;
+	0..1 -> * /2/State inState;
+	0..1 -> * /2/Behavior selection;
+}
+
+class MessageEnd
+{
+	isA /2/NamedElement;
+	0..1 -> * /2/Message message;
+}
+
+class Interaction
+{
+	isA /2/Behavior /2/InteractionFragment;
+	0..1 interaction -- * /2/Lifeline lifeline;
+	0..1 enclosingInteraction -- * /2/InteractionFragment fragment;
+	0..1 -> * /2/Action action;
+	0..1 -> * /2/Gate formalGate;
+	0..1 interaction -- * /2/Message message;
+}
+
+class PartDecomposition
+{
+	isA /2/InteractionUse;
+}
+
+class InteractionUse
+{
+	isA /2/InteractionFragment;
+	0..1 -> 1..* /2/Interaction refersTo;
+	0..1 -> * /2/Gate actualGate;
+	0..1 -> * /2/Action argument;
+}
+
+class InteractionFragment
+{
+	isA /2/NamedElement;
+	0..1 coveredBy -- * /2/Lifeline covered;
+	0..1 -> * /2/GeneralOrdering generalOrdering;
+	0..1 fragment -- * /2/Interaction enclosingInteraction;
+	0..1 fragment -- * /2/InteractionOperand enclosingOperand;
+}
+
+class Pseudostate
+{
+	isA /2/Vertex;
+	/2/PseudostateKind kind;
+	0..1 connectionPoint -- * /2/StateMachine stateMachine;
+	0..1 connectionPoint -- * /2/State state;
+}
+
+class ConnectionPointReference
+{
+	isA /2/Vertex;
+	0..1 -> * /2/Pseudostate entry;
+	0..1 -> * /2/Pseudostate exit;
+	0..1 connection -- * /2/State state;
+}
+
+class StructuredActivityNode
+{
+	isA /2/Action /2/Namespace /2/ActivityGroup;
+	MARTE_PrimitivesTypes/Boolean mustIsolate;
+	0..1 scope -- * /2/Variable variable;
+	0..1 inStructuredNode -- * /2/ActivityEdge edge;
+	0..1 inStructuredNode -- * /2/ActivityNode node;
+}
+
+class Variable
+{
+	isA /2/ConnectableElement /2/MultiplicityElement;
+	0..1 variable -- * /2/StructuredActivityNode scope;
+	0..1 variable -- * /2/Activity activityScope;
+}
+
+class Activity
+{
+	isA /2/Behavior;
+	MARTE_PrimitivesTypes/Boolean isReadOnly;
+	MARTE_PrimitivesTypes/Boolean isSingleExecution;
+	0..1 -> * /2/StructuredActivityNode structuredNode;
+	0..1 activityScope -- * /2/Variable variable;
+	0..1 activity -- * /2/ActivityNode node;
+	0..1 activity -- * /2/ActivityEdge edge;
+	0..1 -> * /2/ActivityPartition partition;
+	0..1 inActivity -- * /2/ActivityGroup group;
+}
+
+class OccurrenceSpecification
+{
+	isA /2/InteractionFragment;
+	0..1 after -- * /2/GeneralOrdering toBefore;
+	0..1 -> 1..* /2/Event event;
+	0..1 before -- * /2/GeneralOrdering toAfter;
+}
+
+class DeploymentSpecification
+{
+	isA /2/Artifact;
+	MARTE_PrimitivesTypes/String deploymentLocation;
+	MARTE_PrimitivesTypes/String executionLocation;
+	0..1 configuration -- * /2/Deployment deployment;
+}
+
+class Gate
+{
+	isA /2/MessageEnd;
+}
+
+class Artifact
+{
+	isA /2/Classifier /2/DeployedArtifact;
+	MARTE_PrimitivesTypes/String fileName;
+	0..1 -> * /2/Artifact nestedArtifact;
+	0..1 -> * /2/Manifestation manifestation;
+	0..1 -> * /2/Operation ownedOperation;
+	0..1 -> * /2/Property ownedAttribute;
+}
+
+class GeneralOrdering
+{
+	isA /2/NamedElement;
+	0..1 toAfter -- 1..* /2/OccurrenceSpecification before;
+	0..1 toBefore -- 1..* /2/OccurrenceSpecification after;
+}
+
+class Manifestation
+{
+	isA /2/Abstraction;
+	0..1 -> 1..* /2/PackageableElement utilizedElement;
+}
+
+class InteractionOperand
+{
+	isA /2/Namespace /2/InteractionFragment;
+	0..1 -> * /2/InteractionConstraint guard;
+	0..1 enclosingOperand -- * /2/InteractionFragment fragment;
+}
+
+class InteractionConstraint
+{
+	isA /2/Constraint;
+	0..1 -> * /2/ValueSpecification minint;
+	0..1 -> * /2/ValueSpecification maxint;
+}

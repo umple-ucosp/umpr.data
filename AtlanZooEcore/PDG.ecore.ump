@@ -1,0 +1,41 @@
+namespace PDG;
+
+class MProgramDependenceGraph
+{
+	0..1 -> 1..* EnterNode node;
+}
+
+class EnterNode
+{
+	String name;
+	0..1 -> * ExpressionNode controlDependenceNodes;
+}
+
+class ExpressionNode
+{
+	String name;
+	0..1 -> 1..* Expression expression;
+	0..1 -> * ExpressionNode dataDependenceNodes;
+	0..1 -> * ExpressionNode controlDependenceNodes;
+}
+
+class Expression
+{
+	String name;
+	Boolean isIdentifier;
+	0..1 -> * Expression innerExpressions;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class String
+{
+}
+
+class Integer
+{
+}

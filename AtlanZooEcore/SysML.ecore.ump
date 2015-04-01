@@ -1,0 +1,391 @@
+namespace SysML;
+
+class Entity
+{
+}
+
+class NamedElement
+{
+	isA Entity;
+	String name;
+}
+
+class Dependency
+{
+	isA NamedElement;
+}
+
+class Conform
+{
+	isA Dependency;
+	0..1 -> 1..* Viewpoint target;
+	0..1 -> 1..* View source;
+}
+
+class Package
+{
+	isA NamedElement;
+}
+
+class View
+{
+	isA Package;
+	0..1 -> 1..* Viewpoint conformsTo;
+}
+
+class Class
+{
+	isA Classifier;
+	String name;
+}
+
+class Viewpoint
+{
+	isA Class;
+	String[] stakeholders;
+	String purpose;
+	String[] concerns;
+	String[] languages;
+	String[] methods;
+}
+
+class Comment
+{
+	isA Entity;
+	String content;
+}
+
+class Rationale
+{
+	isA Comment;
+}
+
+class Problem
+{
+	isA Comment;
+}
+
+class Block
+{
+	isA Class;
+	Boolean isEncapsulated;
+}
+
+class ConstraintBlock
+{
+	isA Block;
+}
+
+class Property
+{
+	isA Entity;
+}
+
+class BlockProperty
+{
+	isA Property;
+}
+
+class ConstraintProperty
+{
+	isA BlockProperty;
+}
+
+class DistributedProperty
+{
+	isA BlockProperty;
+}
+
+class DataType
+{
+	isA Entity;
+}
+
+class ValueType
+{
+	isA DataType;
+	0..1 -> * Unit unit;
+	0..1 -> * Dimension dimension;
+}
+
+class Unit
+{
+	isA ValueType;
+}
+
+class Dimension
+{
+	isA ValueType;
+}
+
+class ConnectorEnd
+{
+	isA Entity;
+}
+
+class NestedConnectorEnd
+{
+	isA ConnectorEnd;
+	0..1 -> 2..* Property propertyPath;
+}
+
+class Port
+{
+	isA Property;
+	Boolean isBehavior;
+}
+
+class FlowPort
+{
+	isA Port;
+	Boolean isAtomic;
+	FlowDirection direction;
+	Boolean isConjugated;
+}
+
+class FlowProperty
+{
+	isA Property;
+	FlowDirection direction;
+}
+
+class Interface
+{
+	isA Entity;
+}
+
+class FlowSpecification
+{
+	isA Interface;
+	0..1 -> * FlowProperty ownedFlowProperty;
+}
+
+class Classifier
+{
+	isA Entity;
+}
+
+class InformationItem
+{
+	isA Classifier;
+	0..1 -> * Classifier represented;
+}
+
+class InformationFlow
+{
+	isA Entity;
+	0..1 -> 1..* Classifier conveyed;
+	0..1 -> 1..* NamedElement source;
+	0..1 -> 1..* NamedElement target;
+}
+
+class ItemFlow
+{
+	isA InformationFlow;
+	0..1 -> * BlockProperty itemProperty;
+}
+
+class Parameter
+{
+	isA Entity;
+}
+
+class ActivityEdge
+{
+	isA Entity;
+}
+
+class ParameterSet
+{
+	isA Entity;
+}
+
+class Optional
+{
+	isA Parameter;
+}
+
+class Rate
+{
+	isA Parameter ;
+	0..1 -> 1..* InstanceSpecification instance;
+}
+
+class InstanceSpecification
+{
+	isA Entity;
+}
+
+class Continous
+{
+	isA Rate;
+}
+
+class Discrete
+{
+	isA Rate;
+}
+
+class Probability
+{
+	isA ActivityEdge ;
+	0..1 -> 1..* ValueSpecification probability;
+}
+
+class ValueSpecification
+{
+	isA Entity;
+}
+
+class Behavior
+{
+	isA Entity;
+}
+
+class Operation
+{
+	isA Entity;
+}
+
+class ControlOperation
+{
+	isA Behavior ;
+}
+
+class ObjectNode
+{
+	isA Entity;
+}
+
+class NoBuffer
+{
+	isA ObjectNode;
+}
+
+class Overwrite
+{
+	isA ObjectNode;
+}
+
+class Abstraction
+{
+	isA Entity;
+}
+
+class Allocate
+{
+	isA Abstraction;
+}
+
+class Allocated
+{
+	isA NamedElement;
+	0..1 -> * NamedElement allocatedFrom;
+	0..1 -> * NamedElement allocatedTo;
+}
+
+class ActivityPartition
+{
+	isA Entity;
+}
+
+class AllocateActivityPartition
+{
+	isA ActivityPartition;
+}
+
+class Trace
+{
+	isA Entity;
+}
+
+class DeriveReqt
+{
+	isA Trace;
+}
+
+class Verify
+{
+	isA Trace;
+}
+
+class Copy
+{
+	isA Trace;
+}
+
+class Realization
+{
+	isA Entity;
+}
+
+class Satisfy
+{
+	isA Realization;
+}
+
+class Requirement
+{
+	isA Class;
+	String text;
+	String id;
+	0..1 -> * Requirement derived;
+	0..1 -> * Requirement derivedFrom;
+	0..1 -> * NamedElement satisfiedBy;
+	0..1 -> * NamedElement refinedBy;
+	0..1 -> * NamedElement tracedTo;
+	0..1 -> * TestCase verifiedBy;
+	0..1 -> 1..* Requirement master;
+}
+
+class TestCase
+{
+	isA Behavior ;
+}
+
+class RequirementRelated
+{
+	isA NamedElement;
+	0..1 -> * Requirement verifies;
+	0..1 -> * Requirement tracedFrom;
+	0..1 -> * Requirement satisfies;
+	0..1 -> * Requirement refines;
+}
+
+class BasicInterval
+{
+	isA DistributedProperty;
+	Integer min;
+	Integer max;
+}
+
+class Interval
+{
+	isA BasicInterval;
+}
+
+class Uniform
+{
+	isA BasicInterval;
+}
+
+class Normal
+{
+	isA DistributedProperty;
+	Integer mean;
+	Integer standardDeviation;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}
+
+class Boolean
+{
+}

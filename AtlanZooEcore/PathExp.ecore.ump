@@ -1,0 +1,30 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+namespace PathExp;
+
+class Element
+{
+	String name;
+}
+
+class PathExp
+{
+	isA Element;
+	0..1 -> 1..* State states;
+	0..1 -> * Transition transitions;
+}
+
+class State
+{
+	0..1 target -- * Transition incoming;
+	1..* source -- * Transition outgoing;
+}
+
+class Transition
+{
+	isA Element;
+}

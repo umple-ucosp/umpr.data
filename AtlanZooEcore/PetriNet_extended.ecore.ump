@@ -1,0 +1,88 @@
+namespace PetriNet;
+
+class LocatedElement
+{
+	String location;
+}
+
+class NamedElement
+{
+	isA LocatedElement;
+	String name;
+}
+
+class PetriNet
+{
+	isA NamedElement;
+	1..* net -- * Element elements;
+	1..* net -- * Arc arcs;
+	1..* net -- * Execution execs;
+}
+
+class Element
+{
+	isA NamedElement;
+}
+
+class Place
+{
+	isA Element;
+	1..* from -- * PlaceToTransition outgoingArc;
+	1..* to -- * TransitionToPlace incomingArc;
+}
+
+class Transition
+{
+	isA Element;
+	1..* to -- 1..* PlaceToTransition incomingArc;
+	1..* from -- 1..* TransitionToPlace outgoingArc;
+}
+
+class Arc
+{
+	isA NamedElement;
+	Integer weight;
+}
+
+class PlaceToTransition
+{
+	isA Arc;
+}
+
+class TransitionToPlace
+{
+	isA Arc;
+}
+
+class Execution
+{
+	1..* exec -- * Marking markings;
+	1..* exec -- * Movement movements;
+}
+
+class Token
+{
+	0..1 -> 1..* Place placedAt;
+	* tokens -- 1..* Marking marking;
+}
+
+class Marking
+{
+}
+
+class Movement
+{
+	0..1 -> 1..* Transition fire;
+	0..1 -> 1..* Marking source;
+	0..1 -> 1..* Marking target;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

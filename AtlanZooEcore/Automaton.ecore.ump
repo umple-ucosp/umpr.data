@@ -1,0 +1,33 @@
+namespace Automatoon;
+
+class FiniteAutomaton
+{
+	String[] alphabet;
+	0..1 -> * Transition transitionSet;
+	0..1 -> 1..* State initialState;
+	0..1 -> 1..* State finalStateSet;
+	0..1 -> * State StateSet;
+}
+
+class Transition
+{
+	String letter;
+	0..1 -> 1..* State source;
+	0..1 -> 1..* State target;
+}
+
+class State
+{
+	String name;
+	0..1 -> 1..* State combination;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Integer
+{
+}

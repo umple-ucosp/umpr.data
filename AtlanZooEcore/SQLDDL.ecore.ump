@@ -1,0 +1,115 @@
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+namespace SQLDDL;
+
+class LocatedElement
+{
+	String location;
+	String[] commentsBefore;
+	String[] commentsAfter;
+}
+
+class NamedElement
+{
+	isA LocatedElement;
+	String name;
+}
+
+class Database
+{
+	isA NamedElement;
+	1..* database -- * Table tables;
+}
+
+class Table
+{
+	isA NamedElement;
+	1..* table -- * TableElement elements;
+	1..* referencedTable -- * ForeignKey referencedBy;
+	1..* table -- * Parameter parameters;
+}
+
+class TableElement
+{
+	isA LocatedElement;
+}
+
+class Column
+{
+	isA TableElement;
+	String name;
+	Boolean canBeNull;
+	0..1 -> 1..* Type type;
+	0..1 -> * Value default;
+	1..* columns -- * Key keys;
+	1..* referencedColumns -- * ForeignKey referencedBy;
+}
+
+class Key
+{
+	isA TableElement;
+	Boolean isUnique;
+	String name;
+}
+
+class SimpleKey
+{
+	isA Key;
+}
+
+class PrimaryKey
+{
+	isA Key;
+}
+
+class ForeignKey
+{
+	isA Key;
+}
+
+class Type
+{
+	isA NamedElement;
+	Integer[] length;
+	Boolean isUnsigned;
+}
+
+class Parameter
+{
+	isA NamedElement;
+	0..1 -> * Value value;
+}
+
+class Value
+{
+	isA LocatedElement;
+}
+
+class IntegerVal
+{
+	isA Value;
+	Integer value;
+}
+
+class NullVal
+{
+	isA Value;
+}
+
+class StringVal
+{
+	isA Value;
+	String value;
+}

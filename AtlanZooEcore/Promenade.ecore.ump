@@ -1,0 +1,112 @@
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+namespace Promenade;
+
+class Strong
+{
+	isA DynPrecedence ;
+}
+
+class Start
+{
+	isA DynPrecedence ;
+}
+
+class End
+{
+	isA DynPrecedence ;
+}
+
+class FeedBack
+{
+	isA DynPrecedence ;
+}
+
+class Weak
+{
+	isA DynPrecedence ;
+}
+
+class Grouping
+{
+	isA DynPrecedence ;
+}
+
+class Precedence
+{
+	1..* precs -- * DerPrecedence deprecs;
+	1..* precs -- * ParBinding parbind;
+}
+
+class DynPrecedence
+{
+	isA Precedence;
+}
+
+class DerPrecedence
+{
+	isA Precedence;
+	* dprecs -- * MetaTaskOccurence auxTasks;
+}
+
+class BasPrecedence
+{
+	isA Precedence;
+}
+
+class MetaTaskOccurence
+{
+	isA ModelElement;
+	* occurs -- * MetaTask taskCl;
+}
+
+class ParBinding
+{
+	Boolean inclusion;
+	0..1 parbindsTar -- 1..* ParameterPrec targetPar;
+	1..* parbindsSour -- 1..* ParameterPrec sourcePar;
+}
+
+class ParameterPrec
+{
+	isA ParameterUML;
+	1..* orParams -- 1..* ParameterPrec dstParams;
+	1..* dstParams -- 1..* ParameterPrec orParams;
+}
+
+class ModelElement
+{
+	0..1 suppier -- 1..* DependancyUML dependencyUMLsupp;
+	1..* client -- 1..* DependancyUML dependencyUMLcli;
+}
+
+class DependancyUML
+{
+}
+
+class MetaTask
+{
+	isA ModelElement;
+	1..* task -- 1..* ParameterUML params;
+}
+
+class ParameterUML
+{
+	1..* params -- 1..* MetaDocument doc;
+}
+
+class MetaDocument
+{
+}

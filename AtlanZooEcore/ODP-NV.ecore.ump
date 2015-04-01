@@ -1,0 +1,171 @@
+namespace ODPNV;
+
+class Node
+{
+	String location;
+	0..1 -> 1..* Nucleus manager;
+	0..1 -> * Capsule capsules;
+}
+
+class Nucleus
+{
+	isA EngineeringObject;
+	1..* nodeManager -- * EngineeringObject otherEngObjects;
+	1..* beoNodeManager -- * BEO beos;
+}
+
+class Capsule
+{
+	0..1 -> * EngineeringObject otherEngObjects;
+	0..1 -> 1..* CapsuleManager capsuleManager;
+	0..1 -> * ClusterManager clusterManagers;
+	0..1 -> * Cluster clusters;
+}
+
+class EngineeringObject
+{
+}
+
+class CapsuleManager
+{
+	isA EngineeringObject;
+	1..* capsuleManager -- * ClusterManager cmClusterManagers;
+}
+
+class Cluster
+{
+	0..1 -> * BEO clusterBeos;
+	1..* clusters -- 1..* ClusterManager clusterManager;
+}
+
+class ClusterManager
+{
+	isA EngineeringObject;
+	1..* beoManager -- * BEO clustermanagerBeos;
+}
+
+class BEO
+{
+	isA EngineeringObject;
+	* localbinds -- * BEO locallyBoundObjects;
+	* locallyBoundObjects -- * BEO localbinds;
+	1..* stBeo -- * Stub beoStub;
+	2..* chEndPoint -- * Channel beoChannel;
+}
+
+class Stub
+{
+	isA EngineeringObject;
+	1..* chBinder -- 1..* Binder stBinder;
+	2..* chStub -- 1..* Channel stChannel;
+}
+
+class Binder
+{
+	isA EngineeringObject;
+	1..* poBinder -- 1..* ProtocolObject bdProtocolObject;
+	2..* chBinder -- 1..* Channel bdChannel;
+}
+
+class ProtocolObject
+{
+	isA EngineeringObject;
+	String type;
+	0..1 -> * ProtocolObject poBoundProtocolObject;
+	2 intProtocolObject -- * Interceptor poInterceptor;
+	2..* chPObject -- 1..* Channel poChannel;
+}
+
+class Interceptor
+{
+	isA EngineeringObject;
+	* chInterceptor -- 1..* Channel intChannel;
+}
+
+class Channel
+{
+}
+
+class ClientServerChannel
+{
+	isA Channel;
+}
+
+class ControllingObject
+{
+	isA EngineeringObject;
+	1..* domControllingObject -- * Domain coDomain;
+}
+
+class SecurityAuthority
+{
+	isA ControllingObject;
+}
+
+class ManagementAuthority
+{
+	isA ControllingObject;
+}
+
+class AddressingAuthority
+{
+	isA ControllingObject;
+}
+
+class NamingAuthority
+{
+	isA ControllingObject;
+}
+
+class ControlledObject
+{
+	isA EngineeringObject;
+	* domMember -- * Domain cdoDomain;
+}
+
+class Domain
+{
+	1..* subDomain -- 1..* Domain parentDomain;
+	* parentDomain -- * Domain subDomain;
+}
+
+class SecurityDomain
+{
+	isA Domain;
+}
+
+class ManagementDomain
+{
+	isA Domain;
+}
+
+class AddressingDomain
+{
+	isA Domain;
+}
+
+class NamingDomain
+{
+	isA Domain;
+}
+
+class EngineeringInterfaceReferenceManagementDomain
+{
+	isA NamingDomain;
+	* eirmpManagementDomain -- 1..* EngineeringInterfaceReferenceManagementPolicy eirmdManagementPolicy;
+	1..* eirManagementDomain -- * EngineeringInterfaceReference eirmdReference;
+}
+
+class EngineeringInterfaceReferenceManagementPolicy
+{
+}
+
+class EngineeringInterfaceReference
+{
+}
+
+namespace datatypes;
+
+class String
+{
+}

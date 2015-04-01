@@ -1,0 +1,81 @@
+namespace QoSCharacteristic;
+
+class QoSCharacteristic
+{
+	0..1 -> 1..* BooleanExpression invariant;
+	0..1 -> 1..* MappingExpression parallel_and_composition;
+	0..1 -> 1..* MappingExpression parallel_or_composition;
+	0..1 -> 1..* MappingExpression sequential_composition;
+	0..1 -> 1..* MappingExpression values;
+	0..1 -> * StatisticalAttributekindKind statisticalAttribute;
+	0..1 -> 1..* Parameter parameter;
+	0..1 -> 1..* Domain domain;
+}
+
+class BooleanExpression
+{
+	String value;
+}
+
+class MappingExpression
+{
+	String value;
+}
+
+class StatisticalAttributekindKind
+{
+}
+
+class Parameter
+{
+}
+
+class DataType
+{
+}
+
+class Domain
+{
+	isA DataType;
+	0..1 -> 1..* DirectionKind direction;
+}
+
+class DirectionKind
+{
+	String value;
+}
+
+class Numeric
+{
+	isA Domain;
+}
+
+class Set
+{
+	isA Domain;
+	0..1 -> 1..* StringSet stringSet;
+}
+
+class Enumeration
+{
+	isA Domain;
+}
+
+class StringSet
+{
+	String[] string;
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}

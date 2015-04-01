@@ -1,0 +1,65 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Double
+{
+}
+
+namespace Statecharts;
+
+class BooleanExpression
+{
+	String value;
+}
+
+class StateMachine
+{
+	1..* state_container -- * State top;
+	* transSM_container -- * Transition transitions;
+}
+
+class State
+{
+	isA StateVertex;
+	* transS_container -- * Transition internalTransitions;
+	* targets -- * Event deferrableEvents;
+}
+
+class CompositeState
+{
+	isA State;
+	Boolean isConcurrent;
+	* sv_container -- * StateVertex subVertexes;
+}
+
+class Transition
+{
+	0..1 outgoing -- 1..* StateVertex source;
+	* incoming -- 1..* StateVertex target;
+	1..* gua_container -- * Guard guard;
+	* evt_container -- * Event trigger;
+}
+
+class StateVertex
+{
+}
+
+class Guard
+{
+	0..1 -> 1..* BooleanExpression expression;
+}
+
+class Event
+{
+}

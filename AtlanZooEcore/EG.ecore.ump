@@ -1,0 +1,82 @@
+namespace EG_MOF;
+
+class ExecutionGraph
+{
+	0..1 executionGraph -- 1..* Node node;
+	* nested -- 1..* Node nodeNested;
+}
+
+class Node
+{
+	* successor -- * Node predecessor;
+	* predecessor -- * Node successor;
+}
+
+class Start
+{
+	isA Node;
+}
+
+class End
+{
+	isA Node;
+}
+
+class Control
+{
+	isA Node;
+}
+
+class Basic
+{
+	isA Node;
+}
+
+class Branch
+{
+	isA Control;
+}
+
+class Loop
+{
+	isA Control;
+}
+
+class Fork
+{
+	isA Control;
+}
+
+class Join
+{
+	isA Control;
+}
+
+class Acquire
+{
+	isA Control;
+}
+
+class Release
+{
+	isA Control;
+}
+
+class Split
+{
+	isA Control;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}

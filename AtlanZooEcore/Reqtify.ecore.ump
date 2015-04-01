@@ -1,0 +1,73 @@
+namespace Reqtify;
+
+class Project
+{
+	1..* project -- 1..* Document documents;
+}
+
+class TypedElement
+{
+	String type;
+}
+
+class ElementWithIL
+{
+	isA TypedElement;
+	String name;
+	String label;
+}
+
+class Document
+{
+	isA ElementWithIL;
+	* document -- * Section sections;
+}
+
+class TextElement
+{
+	isA ElementWithIL;
+	String description;
+}
+
+class Section
+{
+	isA TextElement;
+	* sectionParent -- * Section sectionChildren;
+	* sectionChildren -- * Section sectionParent;
+	* section -- * AbstractRequirement requirements;
+}
+
+class AbstractRequirement
+{
+	isA TextElement;
+	0..1 -> * Attribute attribute;
+	* contains -- * MacroRequirement isContained;
+	0..1 -> * CoverLink coverLinks;
+}
+
+class Requirement
+{
+	isA AbstractRequirement;
+}
+
+class MacroRequirement
+{
+	isA AbstractRequirement;
+}
+
+class CoverLink
+{
+	isA TypedElement;
+}
+
+class Attribute
+{
+	isA TypedElement;
+	String value;
+}
+
+namespace PrimitiveTypes;
+
+class String
+{
+}

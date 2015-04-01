@@ -1,0 +1,95 @@
+namespace OCLOperations;
+
+class OperationExp
+{
+}
+
+class PropertyOperation
+{
+	isA OperationExp;
+	Boolean isMarkedPre;
+	* propertyOperations -- 1..* OclExpression source;
+}
+
+class OclOperation
+{
+	isA OperationExp;
+	* oclOperations -- 1..* OclExpression arguments;
+}
+
+class ConstExp
+{
+	isA OperationExp;
+}
+
+class IntegerConstExp
+{
+	isA ConstExp;
+	Integer value;
+}
+
+class StringConstExp
+{
+	isA ConstExp;
+	String value;
+}
+
+class RealConstExp
+{
+	isA ConstExp;
+	Double value;
+}
+
+class AttributeExp
+{
+	isA PropertyOperation;
+	* attrExp -- 1..* Attribute attr;
+}
+
+class Attribute
+{
+}
+
+class NaviguationExp
+{
+	isA PropertyOperation;
+	* navExp -- 1..* AssocationEnd assEnd;
+	* naviguationExps -- 1..* OclExpression qualifierValues;
+}
+
+class AssocationEnd
+{
+}
+
+class ClassifierOperation
+{
+	isA PropertyOperation;
+	* classOp -- 1..* Operation op;
+	* classifierOperations -- 1..* OclExpression arguments;
+}
+
+class Operation
+{
+}
+
+class OclExpression
+{
+}
+
+namespace PrimitiveTypes;
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
+
+class Double
+{
+}

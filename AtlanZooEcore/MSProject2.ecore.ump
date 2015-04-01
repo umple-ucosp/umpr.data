@@ -1,0 +1,65 @@
+namespace PrimitiveTypes;
+
+class Integer
+{
+}
+
+class Double
+{
+}
+
+class String
+{
+}
+
+namespace MSProject;
+
+class MSPProject
+{
+	1..* project -- * MSPTask task;
+	1..* project -- * MSPLink link;
+	1..* project -- * MSPResource resource;
+}
+
+class MSPTask
+{
+	0..1 -> 1..* Date finishDate;
+	0..1 -> 1..* Date startDate;
+	* subTask -- * MSPTask superTask;
+	* superTask -- * MSPTask subTask;
+	0..1 succ -- * MSPLink inLink;
+	1..* pred -- * MSPLink outLink;
+	1..* task -- * MSPAssignment assignment;
+}
+
+class MSPLink
+{
+}
+
+class MSPAssignment
+{
+	* assignment -- 1..* MSPResource resource;
+}
+
+class MSPResource
+{
+	Double cost;
+}
+
+class MSPHumanResource
+{
+	isA MSPResource;
+	String email;
+}
+
+class MSPMachine
+{
+	isA MSPResource;
+}
+
+class Date
+{
+	Integer day;
+	Integer month;
+	Integer year;
+}

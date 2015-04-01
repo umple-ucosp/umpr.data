@@ -1,0 +1,105 @@
+namespace DSL;
+
+class NamedElement
+{
+	//PrimitiveTypes/String name;
+	//PrimitiveTypes/String identity;
+}
+
+class LoadedElement
+{
+	isA //Namespace;
+	//PrimitiveTypes/Boolean isLoaded;
+}
+
+class Namespace
+{
+	isA //NamedElement;
+	//PrimitiveTypes/String namespace;
+}
+
+class DomainModel
+{
+	isA //LoadedElement;
+	0..1 domainModel -- * //Classifier classifiers;
+	0..1 -> * //Type types;
+}
+
+class Classifier
+{
+	isA //LoadedElement;
+	//PrimitiveTypes/Boolean isAbstract;
+	0..1 owner -- * //ValueProperty properties;
+	0..1 subTypes -- * //Classifier superType;
+	0..1 superType -- * //Classifier subTypes;
+	0..1 classifiers -- 1..* //DomainModel domainModel;
+}
+
+class Class
+{
+	isA //Classifier;
+	//PrimitiveTypes/Boolean isSerializationRoot;
+}
+
+class Relationship
+{
+	isA //Classifier;
+	//PrimitiveTypes/Boolean isEmbedding;
+	0..1 relation -- 2 //Role roles;
+}
+
+class Role
+{
+	isA //NamedElement;
+	//PrimitiveTypes/Integer min;
+	//PrimitiveTypes/Integer max;
+	//PrimitiveTypes/Boolean isUnbounded;
+	//PrimitiveTypes/String accepts;
+	//PrimitiveTypes/Boolean isOrdered;
+	//PrimitiveTypes/Boolean isNavigableFrom;
+	//PrimitiveTypes/Boolean isPropertyGenerator;
+	0..1 -> 1..* //Classifier source;
+	0..1 -> 1..* //Classifier type;
+	0..1 roles -- 1..* //Relationship relation;
+}
+
+class ValueProperty
+{
+	isA //NamedElement;
+	0..1 properties -- 1..* //Classifier owner;
+	0..1 -> 1..* //Type type;
+}
+
+class Type
+{
+	isA //Namespace;
+}
+
+class SimpleType
+{
+	isA //Type;
+}
+
+class EnumerationLiteral
+{
+	isA //NamedElement;
+	//PrimitiveTypes/Integer value;
+}
+
+class Enumeration
+{
+	isA //Type;
+	0..1 -> * //EnumerationLiteral literals;
+}
+
+class Boolean
+{
+}
+
+class Integer
+{
+}
+
+class String
+{
+}
