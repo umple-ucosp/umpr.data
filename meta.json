@@ -1,8 +1,8 @@
 {
-  "date" : 1427926340785,
-  "time" : 1427926340785,
+  "date" : 1428524324792,
+  "time" : 1428524324792,
   "umple" : "/Users/kevin/dev/workspace/umpr.data",
-  "src" : "/Users/kevin/dev/workspace/umpr.data",
+  "src" : "/var/folders/tg/xbv4gqj101dgb0_2f1t7mflr0000gn/T/cruise.umple.umpr.core.ConsoleMain$Config-ImportFiles2996622747920152472",
   "repositories" : [ {
     "path" : "AtlanZooEcore",
     "description" : "The Metamodel Zoos are a collaborative open source research effort intended to produce experimental material that may be used by all in the domain of Model Driven Engineering.\nThis Repository uses the eCore version located at: http://www.emn.fr/z-info/atlanmod/index.php/Ecore.",
@@ -11,338 +11,59 @@
     "successRate" : 0.5737704918032787,
     "failRate" : 0.42622950819672134,
     "files" : [ {
-      "path" : "Sharengo.ecore",
+      "path" : "Program.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "CWMCore.ecore",
+      "path" : "PetriNet_extended.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "MoMM.ecore",
+      "path" : "BMM.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "WTIP_SimpleRDBMS.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ODP-IV.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ODP-TV.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 9 on line 22 of file \"MoMM.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+      "message" : "Error 5 on line 5 of file \"ODP-TV.ecore.ump\":\nAssociation end '//ImplementableStandard' is not a class or interface\n"
     }, {
-      "path" : "QoS_Statement.ecore",
+      "path" : "FeatureDiagrams.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "WikiTable.ecore",
+      "path" : "SPEM.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "JavaProject.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "DoDAF-SV5.ecore",
+      "path" : "XUL-Interactorl.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 19 on line 65 of file \"DoDAF-SV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isParentFor'\nError 19 on line 65 of file \"DoDAF-SV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isChildFor'\nError 19 on line 108 of file \"DoDAF-SV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 108 of file \"DoDAF-SV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isSubordinateOf'\n"
+      "message" : "Warning 101 on line 74 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'vbox' should start with a capital letter\nWarning 101 on line 79 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'hbox' should start with a capital letter\nWarning 101 on line 150 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'row' should start with a capital letter\nWarning 101 on line 155 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'column' should start with a capital letter\nWarning 101 on line 209 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'onClick' should start with a capital letter\n"
     }, {
-      "path" : "WebApplications_ConceptualModel.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 61 of file \"WebApplications_ConceptualModel.ecore.ump\":\nAssociation end 'Server/Data' is not a class or interface\n"
-    }, {
-      "path" : "EXPRESSb.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 15 of file \"EXPRESSb.ecore.ump\":\nAttribute type name 'mof/Boolean' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "COBOL.ecore",
+      "path" : "Metrics.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "GWPNV0.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PIF.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 64 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class ActivityStatus does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 64 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class ActivityStatus does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 69 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Succesor does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\n"
-    }, {
-      "path" : "DTMP.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "TroposIntegratingActorConcept.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 10 of file \"TroposIntegratingActorConcept.ecore.ump\":\nAssociation end '//Position' is not a class or interface\n"
-    }, {
-      "path" : "MiningMart_ViewCaseRepresentation.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 134 of file \"MiningMart_ViewCaseRepresentation.ecore.ump\":\nClass name 'MSL-Tool' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "UEMLExtensionCapturingAgents.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 115 of file \"UEMLExtensionCapturingAgents.ecore.ump\":\nAssociation end '//AssociationConnector' is not a class or interface\n"
-    }, {
-      "path" : "PluginEclipse.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 5 of file \"PluginEclipse.ecore.ump\":\nAttribute type name '/2/String' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "Pascal.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "AnyLogic.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "AsmL.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "M.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 138 of file \"M.ecore.ump\":\nAssociation end 'Expressions/QueryExpression' is not a class or interface\n"
-    }, {
-      "path" : "UsiXML-task.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 39 of file \"UsiXML-task.ecore.ump\":\nAttribute name 'UnaryType' should start with a lower-case letter\nError 19 on line 18 of file \"UsiXML-task.ecore.ump\":\nClass 'Task' may not have multiple associations with the same name 'decompositionTasks'\nError 19 on line 18 of file \"UsiXML-task.ecore.ump\":\nClass 'Task' may not have multiple associations with the same name 'decomposedTask'\n"
-    }, {
-      "path" : "GeoTrans.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 9 on line 32 of file \"GeoTrans.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
-    }, {
-      "path" : "ACME.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "ATL.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 5 of file \"ATL.ecore.ump\":\nAttribute type name '/2/String' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "FlatSignalFlow.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 23 of file \"FlatSignalFlow.ecore.ump\":\nAttribute name 'WCET' should start with a lower-case letter\n"
-    }, {
-      "path" : "GWPNV4.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Requirement.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "ekaw.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 7 of file \"ekaw.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "OCCAM.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "confious.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 21 of file \"confious.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "CORBAComponent.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "CDE.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Extended_UML_Core_Package.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PCS.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Import",
-      "successful" : false,
-      "message" : "java.lang.ArrayIndexOutOfBoundsException"
-    }, {
-      "path" : "UnifiedOntologyLanguage.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "DocBook.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "EAI.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "HierarchicalStateMachine.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "DoDAF.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UIML-3.0.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 18 of file \"UIML-3.0.ecore.ump\":\nAttribute type name '/3/String' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "XMorphLanguage_abstractSyntax.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 28 of file \"XMorphLanguage_abstractSyntax.ecore.ump\":\nClass name 'MOF::Property' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "SyncCharts.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "SDM.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PNML_basic.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "DSL.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 33 of file \"DSL.ecore.ump\":\nAssociation end '//Classifier' is not a class or interface\n"
-    }, {
-      "path" : "DSLModel.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 54 of file \"DSLModel.ecore.ump\":\nAssociation end '//Value' is not a class or interface\n"
-    }, {
-      "path" : "UML_withReuseContracts.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 13 of file \"UML_withReuseContracts.ecore.ump\":\nClass 'Dependency' may not have multiple associations with the same name 'owningDependency'\nError 19 on line 13 of file \"UML_withReuseContracts.ecore.ump\":\nClass 'Dependency' may not have multiple associations with the same name 'subDependency'\n"
-    }, {
-      "path" : "ClassDiagram.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MTRANS.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "GWPNV2.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "AWKPrograms.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MSVisio_DatadiagramMLTextFormat.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 161 of file \"MSVisio_DatadiagramMLTextFormat.ecore.ump\":\nAttribute name 'ID' should start with a lower-case letter\nWarning 131 on line 166 of file \"MSVisio_DatadiagramMLTextFormat.ecore.ump\":\nAttribute name 'UniqueID' should start with a lower-case letter\nWarning 131 on line 477 of file \"MSVisio_DatadiagramMLTextFormat.ecore.ump\":\nAttribute name 'ViewCenterY' should start with a lower-case letter\n"
-    }, {
-      "path" : "Problem.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "SCADE.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 32 on line 25 of file \"SCADE.ecore.ump\":\nThe role name 'model' has a conflict. Please don't use plural form of class name as a role name\n"
-    }, {
-      "path" : "CWMRelationalData.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "GenericEditor.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "LQN.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 67 of file \"LQN.ecore.ump\":\nAttribute name 'COV' should start with a lower-case letter\n"
-    }, {
-      "path" : "mlhim2.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 263 of file \"mlhim2.ecore.ump\":\nAssociation end 'EObject' is not a class or interface\n"
-    }, {
-      "path" : "WfMC.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "GenericOutline.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "DTD.ecore",
+      "path" : "Grafcet.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -352,26 +73,117 @@
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "PetriNet.ecore",
+      "path" : "SimulinkStateFlow.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "SeminarSchedulingSystem.ecore",
+      "path" : "TextualPathExp.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "EXPRESS.ecore",
+      "path" : "ControllerUML.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 100 on line 3 of file \"EXPRESS.ecore.ump\":\nClass name 'Express_metamodel::java::lang::void' must be alphanumeric and start with an alpha character, or _\n"
+      "message" : "Error 19 on line 35 of file \"ControllerUML.ecore.ump\":\nClass 'State' may not have multiple associations with the same name 'substates'\nError 19 on line 35 of file \"ControllerUML.ecore.ump\":\nClass 'State' may not have multiple associations with the same name 'theContainer'\n"
     }, {
-      "path" : "Parameters.ecore",
+      "path" : "KM3.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
+    }, {
+      "path" : "SDM.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MSOfficeExcel_SpreadsheetMLWorkbookProp.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MSOfficeExcel_SpreadsheetMLSimplified.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UEMLExtensionCapturingAgents.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 115 of file \"UEMLExtensionCapturingAgents.ecore.ump\":\nAssociation end '//AssociationConnector' is not a class or interface\n"
+    }, {
+      "path" : "DOT.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MSProject2.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 29 of file \"MSProject2.ecore.ump\":\nClass 'MSPTask' may not have multiple associations with the same name 'superTask'\nError 19 on line 29 of file \"MSProject2.ecore.ump\":\nClass 'MSPTask' may not have multiple associations with the same name 'subTask'\n"
+    }, {
+      "path" : "Automaton.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Publication.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Architectural_Description.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Relational.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Jess.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ASM.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 67 of file \"ASM.ecore.ump\":\nAttribute type name '/2/AsmType' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "OCL_Types.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 6 of file \"OCL_Types.ecore.ump\":\nClass 'Type' may not have multiple associations with the same name 'supertype'\nError 19 on line 6 of file \"OCL_Types.ecore.ump\":\nClass 'Type' may not have multiple associations with the same name 'subtype'\n"
+    }, {
+      "path" : "MSVisio_DatadiagramMLTextFormat.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 161 of file \"MSVisio_DatadiagramMLTextFormat.ecore.ump\":\nAttribute name 'ID' should start with a lower-case letter\nWarning 131 on line 166 of file \"MSVisio_DatadiagramMLTextFormat.ecore.ump\":\nAttribute name 'UniqueID' should start with a lower-case letter\nWarning 131 on line 477 of file \"MSVisio_DatadiagramMLTextFormat.ecore.ump\":\nAttribute name 'ViewCenterY' should start with a lower-case letter\n"
+    }, {
+      "path" : "GWPNV0.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "EQN.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "confOf.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 7 of file \"confOf.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
     }, {
       "path" : "UMLDI.ecore",
       "type" : "ECore",
@@ -379,88 +191,51 @@
       "successful" : false,
       "message" : "Warning 31 on line 3 of file \"UMLDI.ecore.ump\":\nDeclared namespace UML was not used before declaring Collaborations\nWarning 1007 on line 7 of file \"UMLDI.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 140 on line 141 of file \"UMLDI.ecore.ump\":\nAttribute type name '/2/String' must be alphanumeric, starting with a letter\n"
     }, {
-      "path" : "OCL_Values.ecore",
+      "path" : "SecureUML.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "KML.ecore",
+      "path" : "ebXML.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "SPL.ecore",
+      "path" : "Perceptory.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 140 on line 68 of file \"SPL.ecore.ump\":\nAttribute type name '/2/Direction' must be alphanumeric, starting with a letter\n"
+      "message" : "Error 9 on line 62 of file \"Perceptory.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
     }, {
-      "path" : "IEEE1471ViewpointM2.ecore",
+      "path" : "SBVRvoc.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "cmt.owl.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 5 on line 9 of file \"IEEE1471ViewpointM2.ecore.ump\":\nAssociation end '//Stakeholder' is not a class or interface\n"
+      "message" : "Error 100 on line 7 of file \"cmt.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
     }, {
-      "path" : "Person.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "BusinessProcessModel.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Cocus.owl.ecore",
+      "path" : "Reqtify.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 100 on line 7 of file \"Cocus.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
+      "message" : "Error 19 on line 36 of file \"Reqtify.ecore.ump\":\nClass 'Section' may not have multiple associations with the same name 'sectionChildren'\nError 19 on line 36 of file \"Reqtify.ecore.ump\":\nClass 'Section' may not have multiple associations with the same name 'sectionParent'\n"
     }, {
-      "path" : "Book.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "TroposGoalAndPlanConcepts.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MonitorProgram.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Program.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "RelationalDBSchema.ecore",
+      "path" : "EG.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Warning 131 on line 11 of file \"RelationalDBSchema.ecore.ump\":\nAttribute name 'SGBDname' should start with a lower-case letter\n"
+      "message" : "Error 19 on line 6 of file \"EG.ecore.ump\":\nClass 'ExecutionGraph' may not have multiple associations with the same name 'nodeNested'\nError 19 on line 12 of file \"EG.ecore.ump\":\nClass 'Node' may not have multiple associations with the same name 'predecessor'\nError 19 on line 12 of file \"EG.ecore.ump\":\nClass 'Node' may not have multiple associations with the same name 'successor'\nError 19 on line 6 of file \"EG.ecore.ump\":\nClass 'Node' may not have multiple associations with the same name 'nested'\n"
     }, {
-      "path" : "OWL.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 1007 on line 218 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 302 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 307 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 312 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 352 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 370 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 191 of file \"OWL.ecore.ump\":\nAssociation end '/2/OWLGraph' is not a class or interface\n"
-    }, {
-      "path" : "RSS-2.0.ecore",
+      "path" : "MavenProject.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "Gantt.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 47 of file \"Gantt.ecore.ump\":\nAttribute name 'Id' should start with a lower-case letter\n"
-    }, {
-      "path" : "QoS.ecore",
+      "path" : "MSOfficeExcel_SpreadsheetMLPrintingSetup.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -471,161 +246,122 @@
       "successful" : false,
       "message" : "Error 5 on line 31 of file \"IntegrationOfOCL_ExpressionsInUML.ecore.ump\":\nAssociation end 'Core/ModelElement' is not a class or interface\n"
     }, {
-      "path" : "PathExp.ecore",
+      "path" : "MSOfficeWord_WordprocessingMLStyles.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "MSOfficeExcel_SpreadsheetMLPrintingSetup.ecore",
+      "path" : "FiniteStateMachine.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "OCL_Operations.ecore",
+      "path" : "PNML_simplified.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "GWPNV5.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Statecharts.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UnixFS.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "ATOM.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "J2SE5.ecore",
+      "path" : "RDFS.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 19 on line 231 of file \"J2SE5.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'initializers'\nError 19 on line 232 of file \"J2SE5.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'updaters'\n"
+      "message" : "Error 19 on line 7 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'seeAlso'\nError 19 on line 7 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'referringResource'\nError 19 on line 9 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'member'\nError 19 on line 9 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'container'\nError 19 on line 28 of file \"RDFS.ecore.ump\":\nClass 'List' may not have multiple associations with the same name 'rest'\nError 19 on line 28 of file \"RDFS.ecore.ump\":\nClass 'List' may not have multiple associations with the same name 'originalList'\nError 19 on line 55 of file \"RDFS.ecore.ump\":\nClass 'Property' may not have multiple associations with the same name 'subPropertyOf'\nError 19 on line 55 of file \"RDFS.ecore.ump\":\nClass 'Property' may not have multiple associations with the same name 'superProperty'\nError 19 on line 88 of file \"RDFS.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'subClassOf'\nError 19 on line 88 of file \"RDFS.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'superClass'\n"
     }, {
-      "path" : "BPEL.ecore",
+      "path" : "UEMLExtensionDynamicAspects.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 140 on line 14 of file \"BPEL.ecore.ump\":\nAttribute type name '/2/EBoolean' must be alphanumeric, starting with a letter\n"
+      "message" : "Warning 1007 on line 33 of file \"UEMLExtensionDynamicAspects.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 128 of file \"UEMLExtensionDynamicAspects.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 35 of file \"UEMLExtensionDynamicAspects.ecore.ump\":\nAssociation end '//Process' is not a class or interface\n"
     }, {
-      "path" : "Promenade.ecore",
+      "path" : "DoDAF-SV4.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 9 on line 85 of file \"Promenade.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+      "message" : "Error 19 on line 86 of file \"DoDAF-SV4.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 86 of file \"DoDAF-SV4.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 127 of file \"DoDAF-SV4.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 127 of file \"DoDAF-SV4.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 140 of file \"DoDAF-SV4.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isParentFor'\nError 19 on line 140 of file \"DoDAF-SV4.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isChildFor'\n"
     }, {
-      "path" : "USECASE2.ecore",
+      "path" : "AWKPrograms.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "MoDAF-AV.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "DXF.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Grafcet.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "KDMSimplified.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MSOfficeWord_WordprocessingMLTableElts.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "SimpleSBVR.ecore",
+      "path" : "UML_withReuseContracts.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 19 on line 50 of file \"SimpleSBVR.ecore.ump\":\nClass 'ObjectType' may not have multiple associations with the same name 'specializes'\nError 19 on line 50 of file \"SimpleSBVR.ecore.ump\":\nClass 'ObjectType' may not have multiple associations with the same name 'generalizes'\n"
+      "message" : "Error 19 on line 13 of file \"UML_withReuseContracts.ecore.ump\":\nClass 'Dependency' may not have multiple associations with the same name 'owningDependency'\nError 19 on line 13 of file \"UML_withReuseContracts.ecore.ump\":\nClass 'Dependency' may not have multiple associations with the same name 'subDependency'\n"
     }, {
-      "path" : "CPP.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MavenMaven.ecore",
+      "path" : "WebApplications_AbstractModel.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 32 on line 223 of file \"MavenMaven.ecore.ump\":\nThe role name 'path' has a conflict. Please don't use plural form of class name as a role name\n"
+      "message" : "Error 5 on line 29 of file \"WebApplications_AbstractModel.ecore.ump\":\nAssociation end 'Client/ClientPage' is not a class or interface\n"
     }, {
-      "path" : "XML.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "AbstractSyntaxStereotypesUML1.4.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "XAML-ResourceDictionary.ecore",
+      "path" : "ekaw.owl.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Warning 131 on line 54 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'Brush' should start with a lower-case letter\nWarning 131 on line 60 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'OffsetX' should start with a lower-case letter\nWarning 131 on line 61 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'OffsetY' should start with a lower-case letter\nWarning 131 on line 62 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'OffsetZ' should start with a lower-case letter\nWarning 131 on line 68 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'ScaleX' should start with a lower-case letter\nWarning 131 on line 69 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'ScaleY' should start with a lower-case letter\nWarning 131 on line 70 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'ScaleZ' should start with a lower-case letter\nWarning 131 on line 76 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'CenterX' should start with a lower-case letter\nWarning 131 on line 77 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'CenterY' should start with a lower-case letter\n"
+      "message" : "Error 100 on line 7 of file \"ekaw.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
     }, {
-      "path" : "CompanyStructure.ecore",
+      "path" : "QoS_Characteristic.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "BibTeX.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "IRL.ecore",
+      "path" : "DeploymentReport.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 5 on line 241 of file \"IRL.ecore.ump\":\nAssociation end 'IRLRules/RuleVariable' is not a class or interface\n"
+      "message" : "Error 32 on line 61 of file \"DeploymentReport.ecore.ump\":\nThe role name 'zone' has a conflict. Please don't use plural form of class name as a role name\n"
     }, {
-      "path" : "SVG.ecore",
+      "path" : "PIF.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 69 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Succesor does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 69 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Succesor does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 64 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class ActivityStatus does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 69 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Succesor does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 9 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Activity does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 14 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Object does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 19 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Timepoint does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 24 of file \"PIF.ecore.ump\":\nThe indicated superclass //Entity of class Relation does not exist and has been ignored. Declare //Entity to be external if it is defined outside this Umple system\nWarning 33 on line 29 of file \"PIF.ecore.ump\":\nThe indicated superclass //Activity of class Decision does not exist and has been ignored. Declare //Activity to be external if it is defined outside this Umple system\nWarning 33 on line 34 of file \"PIF.ecore.ump\":\nThe indicated superclass //Object of class Agent does not exist and has been ignored. Declare //Object to be external if it is defined outside this Umple system\nWarning 33 on line 39 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Creates does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 44 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Modifies does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 49 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Before does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 54 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Uses does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 59 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Performs does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 64 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class ActivityStatus does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\nWarning 33 on line 69 of file \"PIF.ecore.ump\":\nThe indicated superclass //Relation of class Succesor does not exist and has been ignored. Declare //Relation to be external if it is defined outside this Umple system\n"
+    }, {
+      "path" : "Problem.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "GAIA.ecore",
+      "path" : "Ant.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 9 on line 10 of file \"GAIA.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+      "message" : "Error 32 on line 168 of file \"Ant.ecore.ump\":\nThe role name 'path' has a conflict. Please don't use plural form of class name as a role name\n"
     }, {
-      "path" : "ODP-IV.ecore",
+      "path" : "BQL.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "MAS.ecore",
+      "path" : "AsmL.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "SCADE.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Warning 1007 on line 12 of file \"MAS.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 16 of file \"MAS.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 130 on line 28 of file \"MAS.ecore.ump\":\nAttribute name 'pre-conditions' must be alphanumeric, starting with a lower-case letter\n"
+      "message" : "Error 32 on line 25 of file \"SCADE.ecore.ump\":\nThe role name 'model' has a conflict. Please don't use plural form of class name as a role name\n"
     }, {
-      "path" : "UML_UseCases.ecore",
+      "path" : "COBOL.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Class.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "DoDAF.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "OCCAM.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -641,51 +377,154 @@
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "GWPNV1.ecore",
+      "path" : "DoDAF-OV5.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 59 of file \"DoDAF-OV5.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 59 of file \"DoDAF-OV5.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 124 of file \"DoDAF-OV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 124 of file \"DoDAF-OV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 138 of file \"DoDAF-OV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isParentFor'\nError 19 on line 138 of file \"DoDAF-OV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isChildFor'\n"
+    }, {
+      "path" : "SeminarSchedulingSystem.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "UDDI_meta-model_fragment.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 17 of file \"UDDI_meta-model_fragment.ecore.ump\":\nAssociation end '//BusinessContact' is not a class or interface\n"
-    }, {
-      "path" : "sbvrEclipse.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 101 on line 1881 of file \"sbvrEclipse.ecore.ump\":\nClass name 'integer' should start with a capital letter\nError 19 on line 1188 of file \"sbvrEclipse.ecore.ump\":\nClass 'CommunityHasSubcommunity' may not have multiple associations with the same name 'subcommunity'\n"
-    }, {
-      "path" : "ChocoModel.ecore",
+      "path" : "Repository.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "UEMLExtensionDynamicAspects.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 1007 on line 33 of file \"UEMLExtensionDynamicAspects.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 128 of file \"UEMLExtensionDynamicAspects.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 35 of file \"UEMLExtensionDynamicAspects.ecore.ump\":\nAssociation end '//Process' is not a class or interface\n"
-    }, {
-      "path" : "ControllerUML.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 35 of file \"ControllerUML.ecore.ump\":\nClass 'State' may not have multiple associations with the same name 'substates'\nError 19 on line 35 of file \"ControllerUML.ecore.ump\":\nClass 'State' may not have multiple associations with the same name 'theContainer'\n"
-    }, {
-      "path" : "DOT.ecore",
+      "path" : "HierarchicalSignalFlow.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "JAVA3.ecore",
+      "path" : "UnixFS.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "EQN.ecore",
+      "path" : "OCL_Operations.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Make.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "WSLink.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 35 of file \"WSLink.ecore.ump\":\nAttribute name 'URL' should start with a lower-case letter\n"
+    }, {
+      "path" : "CML.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 101 of file \"CML.ecore.ump\":\nClass name '_StringBuiltin' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "OpenConf.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Import",
+      "successful" : false,
+      "message" : "java.lang.ArrayIndexOutOfBoundsException"
+    }, {
+      "path" : "MSVisio_DatadiagramMLSimplified.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 30 of file \"MSVisio_DatadiagramMLSimplified.ecore.ump\":\nAttribute name 'ID' should start with a lower-case letter\nWarning 131 on line 35 of file \"MSVisio_DatadiagramMLSimplified.ecore.ump\":\nAttribute name 'UniqueID' should start with a lower-case letter\nWarning 131 on line 253 of file \"MSVisio_DatadiagramMLSimplified.ecore.ump\":\nAttribute name 'ViewCenterY' should start with a lower-case letter\n"
+    }, {
+      "path" : "Marte.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 10 of file \"Marte.ecore.ump\":\nAttribute type name 'MARTE_PrimitivesTypes/Real' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "PDG.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "vb.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 51 of file \"vb.ecore.ump\":\nAttribute type name 'obeo/psm/vb/projects/VB_1/enumerations/EnablementEnum' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "Person.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "BPEL.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 14 of file \"BPEL.ecore.ump\":\nAttribute type name '/2/EBoolean' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "MiningMart_ViewCaseRepresentation.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 134 of file \"MiningMart_ViewCaseRepresentation.ecore.ump\":\nClass name 'MSL-Tool' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "CSharp.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Matlab.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "BibTeX1.1.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "XSchema.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "CompanyStructure.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Scilab.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 198 of file \"Scilab.ecore.ump\":\nAttribute name 'Verb' should start with a lower-case letter\nWarning 131 on line 218 of file \"Scilab.ecore.ump\":\nAttribute name 'Verb' should start with a lower-case letter\n"
+    }, {
+      "path" : "UML_UseCases.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "KDM.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 529 of file \"KDM.ecore.ump\":\nAssociation end '//code/CodeItem' is not a class or interface\n"
+    }, {
+      "path" : "SimpleSBVR.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 50 of file \"SimpleSBVR.ecore.ump\":\nClass 'ObjectType' may not have multiple associations with the same name 'specializes'\nError 19 on line 50 of file \"SimpleSBVR.ecore.ump\":\nClass 'ObjectType' may not have multiple associations with the same name 'generalizes'\n"
+    }, {
+      "path" : "AntScripts.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "HPROF.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -696,117 +535,97 @@
       "successful" : false,
       "message" : "Warning 131 on line 72 of file \"PL1.ecore.ump\":\nAttribute name 'IBound' should start with a lower-case letter\nWarning 131 on line 80 of file \"PL1.ecore.ump\":\nAttribute name 'IBound' should start with a lower-case letter\nWarning 131 on line 89 of file \"PL1.ecore.ump\":\nAttribute name 'IBoundToAllocate' should start with a lower-case letter\nWarning 131 on line 96 of file \"PL1.ecore.ump\":\nAttribute name 'IBoundToAllocate' should start with a lower-case letter\n"
     }, {
-      "path" : "MSOfficeExcel_SpreadsheetMLWorkbookProp.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UEMLExtensionModelingAspects.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 35 of file \"UEMLExtensionModelingAspects.ecore.ump\":\nAssociation end '//Activity' is not a class or interface\n"
-    }, {
-      "path" : "ODP-CV.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 157 of file \"ODP-CV.ecore.ump\":\nAssociation end '//Behaviour' is not a class or interface\n"
-    }, {
-      "path" : "UEMLExtensionCapturingSocialEffects.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 111 of file \"UEMLExtensionCapturingSocialEffects.ecore.ump\":\nAssociation end '//AssociationConnector' is not a class or interface\n"
-    }, {
-      "path" : "GWPNV3.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "WSDL.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MICRO.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Import",
-      "successful" : false,
-      "message" : "java.lang.ArrayIndexOutOfBoundsException"
-    }, {
-      "path" : "SWRC.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 9 on line 187 of file \"SWRC.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
-    }, {
-      "path" : "OpenConf.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Import",
-      "successful" : false,
-      "message" : "java.lang.ArrayIndexOutOfBoundsException"
-    }, {
-      "path" : "FeatureDiagrams.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "ODP-TV.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 5 of file \"ODP-TV.ecore.ump\":\nAssociation end '//ImplementableStandard' is not a class or interface\n"
-    }, {
       "path" : "SimpleAirlineDomain.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "R2ML.ecore",
+      "path" : "Promenade.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 5 on line 579 of file \"R2ML.ecore.ump\":\nAssociation end 'Vocabulary/VocBasic/Class' is not a class or interface\n"
+      "message" : "Error 9 on line 85 of file \"Promenade.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
     }, {
-      "path" : "PNML_simplified.ecore",
+      "path" : "MSOfficeExcel_SpreadsheetMLBasicDef.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "DeploymentReport.ecore",
+      "path" : "KDMSimplified.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "GWPNV2.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Mantis.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MAS.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 32 on line 61 of file \"DeploymentReport.ecore.ump\":\nThe role name 'zone' has a conflict. Please don't use plural form of class name as a role name\n"
+      "message" : "Warning 1007 on line 12 of file \"MAS.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 16 of file \"MAS.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 130 on line 28 of file \"MAS.ecore.ump\":\nAttribute name 'pre-conditions' must be alphanumeric, starting with a lower-case letter\n"
     }, {
-      "path" : "DSLtools.ecore",
+      "path" : "JavaAbstractSyntax.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 5 on line 61 of file \"DSLtools.ecore.ump\":\nAssociation end '//Classifier' is not a class or interface\n"
+      "message" : "Warning 1007 on line 116 of file \"JavaAbstractSyntax.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 270 of file \"JavaAbstractSyntax.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 19 on line 330 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ClassInstanceCreation' may not have multiple associations with the same name 'typeArguments'\nError 19 on line 338 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ConditionalExpression' may not have multiple associations with the same name 'thenExpression'\nError 19 on line 429 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'SuperMethodInvocation' may not have multiple associations with the same name 'qualifier'\nError 19 on line 457 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'AssertStatement' may not have multiple associations with the same name 'message'\nError 19 on line 516 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'initializers'\nError 19 on line 517 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'updaters'\nError 19 on line 617 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ParameterizedType' may not have multiple associations with the same name 'typeArguments'\n"
     }, {
-      "path" : "SPEM.ecore",
+      "path" : "BIBTEXML.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "SQLDDL.ecore",
+      "path" : "TroposIntegratingActorConcept.ecore",
       "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 10 of file \"TroposIntegratingActorConcept.ecore.ump\":\nAssociation end '//Position' is not a class or interface\n"
     }, {
-      "path" : "PtolemyII.ecore",
+      "path" : "QVT.ecore",
       "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 20 of file \"QVT.ecore.ump\":\nAttribute type name '/7/CollectionKind' must be alphanumeric, starting with a letter\n"
     }, {
-      "path" : "Relational.ecore",
+      "path" : "IEEE1471ViewpointM2.ecore",
       "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 9 of file \"IEEE1471ViewpointM2.ecore.ump\":\nAssociation end '//Stakeholder' is not a class or interface\n"
     }, {
-      "path" : "MySQL.ecore",
+      "path" : "XMorphLanguage_abstractSyntax.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 28 of file \"XMorphLanguage_abstractSyntax.ecore.ump\":\nClass name 'MOF::Property' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "CPR.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 24 of file \"CPR.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "GAIA.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 10 of file \"GAIA.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "IMSTransactionMessage.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 31 of file \"IMSTransactionMessage.ecore.ump\":\nAttribute name 'OIMAPrefixFormat' should start with a lower-case letter\n"
+    }, {
+      "path" : "MSOfficeExcel_SpreadsheetMLWorksheetOpt.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -816,18 +635,18 @@
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "ebXML.ecore",
+      "path" : "SWRC.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 187 of file \"SWRC.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "UML_metamodel_fragment.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "RelationalDBContent.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 11 of file \"RelationalDBContent.ecore.ump\":\nAttribute name 'SGBDname' should start with a lower-case letter\n"
-    }, {
-      "path" : "AntScripts.ecore",
+      "path" : "Contact.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -837,52 +656,32 @@
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "Make.ecore",
+      "path" : "ODP-CV.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 157 of file \"ODP-CV.ecore.ump\":\nAssociation end '//Behaviour' is not a class or interface\n"
+    }, {
+      "path" : "XQuery.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "QVT_SimpleUML.ecore",
+      "path" : "yUML.ecore",
       "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 36 of file \"QVT_SimpleUML.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'general'\nError 19 on line 36 of file \"QVT_SimpleUML.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'generalOpposite'\n"
+      "lastState" : "Completed",
+      "successful" : true
     }, {
-      "path" : "CPR.ecore",
+      "path" : "AtlantEcore",
       "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 9 on line 24 of file \"CPR.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+      "lastState" : "Completed",
+      "successful" : true
     }, {
-      "path" : "MSProject2.ecore",
+      "path" : "Cocus.owl.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 19 on line 29 of file \"MSProject2.ecore.ump\":\nClass 'MSPTask' may not have multiple associations with the same name 'superTask'\nError 19 on line 29 of file \"MSProject2.ecore.ump\":\nClass 'MSPTask' may not have multiple associations with the same name 'subTask'\n"
-    }, {
-      "path" : "MSVisio_DatadiagramMLBasicDef.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 119 of file \"MSVisio_DatadiagramMLBasicDef.ecore.ump\":\nAttribute name 'ID' should start with a lower-case letter\nWarning 131 on line 124 of file \"MSVisio_DatadiagramMLBasicDef.ecore.ump\":\nAttribute name 'UniqueID' should start with a lower-case letter\nWarning 131 on line 342 of file \"MSVisio_DatadiagramMLBasicDef.ecore.ump\":\nAttribute name 'ViewCenterY' should start with a lower-case letter\n"
-    }, {
-      "path" : "MiningMart.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 330 of file \"MiningMart.ecore.ump\":\nAttribute type name 'CaseRepresentation/ParameterType' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "CML.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 101 of file \"CML.ecore.ump\":\nClass name '_StringBuiltin' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "KDM.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 529 of file \"KDM.ecore.ump\":\nAssociation end '//code/CodeItem' is not a class or interface\n"
+      "message" : "Error 100 on line 7 of file \"Cocus.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
     }, {
       "path" : "UMLDI-Collaborations.ecore",
       "type" : "ECore",
@@ -890,17 +689,96 @@
       "successful" : false,
       "message" : "Error 140 on line 37 of file \"UMLDI-Collaborations.ecore.ump\":\nAttribute type name '/2/VisibilityKind' must be alphanumeric, starting with a letter\n"
     }, {
+      "path" : "UMLDI-ActivityGraphs.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 11 of file \"UMLDI-ActivityGraphs.ecore.ump\":\nAttribute type name '/5/Boolean' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "SysML.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "DocBook.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "IEEE1471ConceptualModel.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
       "path" : "Table.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "USECASE1.ecore",
+      "path" : "Cristal.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "BibTeX1.1.ecore",
+      "path" : "MTRANS.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "PNML_structured.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "GWPNV4.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "J2SE5.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 231 of file \"J2SE5.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'initializers'\nError 19 on line 232 of file \"J2SE5.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'updaters'\n"
+    }, {
+      "path" : "GraphVizDot.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Parameters.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "PtolemyII.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MSOfficeWord_WordprocessingMLSimplified.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ifc2x3.ecore",
+      "type" : "ECore",
+      "lastState" : "Import",
+      "successful" : false,
+      "message" : "java.lang.ArrayIndexOutOfBoundsException"
+    }, {
+      "path" : "PRR.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 90 of file \"PRR.ecore.ump\":\nAssociation end 'PRRActions/CreateAction' is not a class or interface\n"
+    }, {
+      "path" : "ComponentUML.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Extended_UML_Core_Package.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -911,142 +789,94 @@
       "successful" : false,
       "message" : "Error 9 on line 370 of file \"MSOfficeExcel_SpreadsheetMLStyles.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
     }, {
+      "path" : "OpenQVT.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 19 of file \"OpenQVT.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "UEMLExtensionModelingAspects.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 35 of file \"UEMLExtensionModelingAspects.ecore.ump\":\nAssociation end '//Activity' is not a class or interface\n"
+    }, {
+      "path" : "GWPNV3.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
       "path" : "RequisitePro.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
       "message" : "Error 19 on line 57 of file \"RequisitePro.ecore.ump\":\nClass 'Requirement' may not have multiple associations with the same name 'parent'\nError 19 on line 57 of file \"RequisitePro.ecore.ump\":\nClass 'Requirement' may not have multiple associations with the same name 'children'\n"
     }, {
-      "path" : "ComponentUML.ecore",
+      "path" : "GenericOutline.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "WTIP_SimpleClass.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UMLForOOClassModeling.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "XSchema.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "OCL_Expressions.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "yUML.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PNML_structured.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Family.ecore",
+      "path" : "ADELFE.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 5 on line 14 of file \"Family.ecore.ump\":\nAssociation end '//Person' is not a class or interface\n"
+      "message" : "Error 5 on line 56 of file \"ADELFE.ecore.ump\":\nAssociation end '//CooperativeAgent' is not a class or interface\n"
     }, {
-      "path" : "iasted.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Import",
-      "successful" : false,
-      "message" : "1"
-    }, {
-      "path" : "Ant.ecore",
+      "path" : "UEML.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 32 on line 168 of file \"Ant.ecore.ump\":\nThe role name 'path' has a conflict. Please don't use plural form of class name as a role name\n"
+      "message" : "Error 5 on line 136 of file \"UEML.ecore.ump\":\nAssociation end '//Anchor' is not a class or interface\n"
     }, {
-      "path" : "GraphVizDot.ecore",
+      "path" : "PNML_basic.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "HPROF.ecore",
+      "path" : "DTMP.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "HTML.ecore",
+      "path" : "QoS_Statement.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "PetriNet.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "LaTeX.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MSOfficeWord_WordprocessingMLBasicDef.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Agate.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 9 on line 27 of file \"HTML.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+      "message" : "Warning 131 on line 69 of file \"Agate.ecore.ump\":\nAttribute name 'DCSSI' should start with a lower-case letter\nWarning 131 on line 289 of file \"Agate.ecore.ump\":\nAttribute name 'Statut' should start with a lower-case letter\n"
     }, {
-      "path" : "IMSTransactionMessage.ecore",
+      "path" : "TroposActorConcept.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Warning 131 on line 31 of file \"IMSTransactionMessage.ecore.ump\":\nAttribute name 'OIMAPrefixFormat' should start with a lower-case letter\n"
+      "message" : "Error 5 on line 39 of file \"TroposActorConcept.ecore.ump\":\nAssociation end '//Plan' is not a class or interface\n"
     }, {
-      "path" : "Amble.ecore",
+      "path" : "AnyLogic.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "Conference.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 7 of file \"Conference.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "HierarchicalSignalFlow.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PetriNet_extended.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "ASM.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 67 of file \"ASM.ecore.ump\":\nAttribute type name '/2/AsmType' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "ODP-NV.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 9 on line 128 of file \"ODP-NV.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
-    }, {
-      "path" : "SimulinkStateFlow.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UML_metamodel_fragment.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "BQL.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "crs_dr.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 7 of file \"crs_dr.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "EclipseLaunchConfigurations.ecore",
+      "path" : "Sharengo.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -1057,46 +887,179 @@
       "successful" : false,
       "message" : "Warning 1007 on line 149 of file \"XHTML.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 101 on line 214 of file \"XHTML.ecore.ump\":\nClass name 'inline' should start with a capital letter\nWarning 101 on line 240 of file \"XHTML.ecore.ump\":\nClass name 'block' should start with a capital letter\nError 130 on line 367 of file \"XHTML.ecore.ump\":\nAttribute name 'xml:space' must be alphanumeric, starting with a lower-case letter\n"
     }, {
-      "path" : "ADELFE.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 56 of file \"ADELFE.ecore.ump\":\nAssociation end '//CooperativeAgent' is not a class or interface\n"
-    }, {
-      "path" : "XAML-Perspective.ecore",
+      "path" : "XML.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "IEEE1471ConceptualModel.ecore",
+      "path" : "Family.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 14 of file \"Family.ecore.ump\":\nAssociation end '//Person' is not a class or interface\n"
+    }, {
+      "path" : "R2ML.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 579 of file \"R2ML.ecore.ump\":\nAssociation end 'Vocabulary/VocBasic/Class' is not a class or interface\n"
+    }, {
+      "path" : "JAVA3.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "confOf.owl.ecore",
+      "path" : "WTIP_SimpleClass.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "DTD.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "BPMN.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Bossa.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "AbstractSyntaxStereotypesUML1.4.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MiningMart_SimplifiedMetamodel.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 100 on line 7 of file \"confOf.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
+      "message" : "Error 5 on line 27 of file \"MiningMart_SimplifiedMetamodel.ecore.ump\":\nAssociation end '//Attribute' is not a class or interface\n"
     }, {
-      "path" : "ifc2x3.ecore",
+      "path" : "EXPRESS.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 3 of file \"EXPRESS.ecore.ump\":\nClass name 'Express_metamodel::java::lang::void' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "PathExp.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Conference.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 7 of file \"Conference.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "MavenMaven.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 32 on line 223 of file \"MavenMaven.ecore.ump\":\nThe role name 'path' has a conflict. Please don't use plural form of class name as a role name\n"
+    }, {
+      "path" : "MiningMart.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 330 of file \"MiningMart.ecore.ump\":\nAttribute type name 'CaseRepresentation/ParameterType' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "SignalFlow.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "GWPNV1.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "WSDL.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "PCS.owl.ecore",
       "type" : "ECore",
       "lastState" : "Import",
       "successful" : false,
       "message" : "java.lang.ArrayIndexOutOfBoundsException"
     }, {
-      "path" : "JavaAbstractSyntax.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 1007 on line 116 of file \"JavaAbstractSyntax.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 270 of file \"JavaAbstractSyntax.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 19 on line 330 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ClassInstanceCreation' may not have multiple associations with the same name 'typeArguments'\nError 19 on line 338 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ConditionalExpression' may not have multiple associations with the same name 'thenExpression'\nError 19 on line 429 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'SuperMethodInvocation' may not have multiple associations with the same name 'qualifier'\nError 19 on line 457 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'AssertStatement' may not have multiple associations with the same name 'message'\nError 19 on line 516 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'initializers'\nError 19 on line 517 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ForStatement' may not have multiple associations with the same name 'updaters'\nError 19 on line 617 of file \"JavaAbstractSyntax.ecore.ump\":\nClass 'ParameterizedType' may not have multiple associations with the same name 'typeArguments'\n"
-    }, {
-      "path" : "KM3.ecore",
+      "path" : "SVG.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "paperdyne.owl.ecore",
+      "path" : "MoDAF-AV.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "USECASE2.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Pascal.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Amble.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "CPL.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UMLDI-StateMachines.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 11 of file \"UMLDI-StateMachines.ecore.ump\":\nAttribute type name '/3/Boolean' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "useCase.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "DXF.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "Book.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "DSLtools.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 61 of file \"DSLtools.ecore.ump\":\nAssociation end '//Classifier' is not a class or interface\n"
+    }, {
+      "path" : "ODP-NV.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 128 of file \"ODP-NV.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "XAML-ResourceDictionary.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 54 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'Brush' should start with a lower-case letter\nWarning 131 on line 60 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'OffsetX' should start with a lower-case letter\nWarning 131 on line 61 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'OffsetY' should start with a lower-case letter\nWarning 131 on line 62 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'OffsetZ' should start with a lower-case letter\nWarning 131 on line 68 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'ScaleX' should start with a lower-case letter\nWarning 131 on line 69 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'ScaleY' should start with a lower-case letter\nWarning 131 on line 70 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'ScaleZ' should start with a lower-case letter\nWarning 131 on line 76 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'CenterX' should start with a lower-case letter\nWarning 131 on line 77 of file \"XAML-ResourceDictionary.ecore.ump\":\nAttribute name 'CenterY' should start with a lower-case letter\n"
+    }, {
+      "path" : "MICRO.owl.ecore",
       "type" : "ECore",
       "lastState" : "Import",
       "successful" : false,
@@ -1108,201 +1071,19 @@
       "successful" : false,
       "message" : "Warning 131 on line 17 of file \"Trace.ecore.ump\":\nAttribute name 'DBAccessesNumber' should start with a lower-case letter\nWarning 131 on line 18 of file \"Trace.ecore.ump\":\nAttribute name 'DBRowsNumber' should start with a lower-case letter\nWarning 131 on line 19 of file \"Trace.ecore.ump\":\nAttribute name 'CPUTime' should start with a lower-case letter\n"
     }, {
-      "path" : "SysML.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Scilab.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 198 of file \"Scilab.ecore.ump\":\nAttribute name 'Verb' should start with a lower-case letter\nWarning 131 on line 218 of file \"Scilab.ecore.ump\":\nAttribute name 'Verb' should start with a lower-case letter\n"
-    }, {
-      "path" : "BIBTEXML.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Bossa.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Publication.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "RDFS.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 7 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'seeAlso'\nError 19 on line 7 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'referringResource'\nError 19 on line 9 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'member'\nError 19 on line 9 of file \"RDFS.ecore.ump\":\nClass 'Resource' may not have multiple associations with the same name 'container'\nError 19 on line 28 of file \"RDFS.ecore.ump\":\nClass 'List' may not have multiple associations with the same name 'rest'\nError 19 on line 28 of file \"RDFS.ecore.ump\":\nClass 'List' may not have multiple associations with the same name 'originalList'\nError 19 on line 55 of file \"RDFS.ecore.ump\":\nClass 'Property' may not have multiple associations with the same name 'subPropertyOf'\nError 19 on line 55 of file \"RDFS.ecore.ump\":\nClass 'Property' may not have multiple associations with the same name 'superProperty'\nError 19 on line 88 of file \"RDFS.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'subClassOf'\nError 19 on line 88 of file \"RDFS.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'superClass'\n"
-    }, {
-      "path" : "CSM.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UMLDI-UseCases.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 80 of file \"UMLDI-UseCases.ecore.ump\":\nAttribute type name '/4/String' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "ACG.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
       "path" : "sbvrOMG.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
       "message" : "Warning 101 on line 1047 of file \"sbvrOMG.ecore.ump\":\nClass name 'integer' should start with a capital letter\n"
     }, {
-      "path" : "SEE_Design.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "sigkdd.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Import",
-      "successful" : false,
-      "message" : "java.lang.ArrayIndexOutOfBoundsException"
-    }, {
-      "path" : "DotNET_SystemReflection.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "OpenQVT.ecore",
+      "path" : "LQN.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 9 on line 19 of file \"OpenQVT.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+      "message" : "Warning 131 on line 67 of file \"LQN.ecore.ump\":\nAttribute name 'COV' should start with a lower-case letter\n"
     }, {
-      "path" : "ODP-EV.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 27 of file \"ODP-EV.ecore.ump\":\nAssociation end '//EO_P_D' is not a class or interface\n"
-    }, {
-      "path" : "LaTeX.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PRR.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 90 of file \"PRR.ecore.ump\":\nAssociation end 'PRRActions/CreateAction' is not a class or interface\n"
-    }, {
-      "path" : "SecureUML.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Matlab.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "METAH.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "QVT_SimpleRDBMS.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Java-20040316.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "OCL_Types.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 6 of file \"OCL_Types.ecore.ump\":\nClass 'Type' may not have multiple associations with the same name 'supertype'\nError 19 on line 6 of file \"OCL_Types.ecore.ump\":\nClass 'Type' may not have multiple associations with the same name 'subtype'\n"
-    }, {
-      "path" : "Maude.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MiningMart_SimplifiedMetamodel.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 27 of file \"MiningMart_SimplifiedMetamodel.ecore.ump\":\nAssociation end '//Attribute' is not a class or interface\n"
-    }, {
-      "path" : "Metrics.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "ProMarte.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 9 on line 458 of file \"ProMarte.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
-    }, {
-      "path" : "CPL.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "EG.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 6 of file \"EG.ecore.ump\":\nClass 'ExecutionGraph' may not have multiple associations with the same name 'nodeNested'\nError 19 on line 12 of file \"EG.ecore.ump\":\nClass 'Node' may not have multiple associations with the same name 'predecessor'\nError 19 on line 12 of file \"EG.ecore.ump\":\nClass 'Node' may not have multiple associations with the same name 'successor'\nError 19 on line 6 of file \"EG.ecore.ump\":\nClass 'Node' may not have multiple associations with the same name 'nested'\n"
-    }, {
-      "path" : "Marte.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 10 of file \"Marte.ecore.ump\":\nAttribute type name 'MARTE_PrimitivesTypes/Real' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "AtlantEcore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Architectural_Description.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Contact.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Reqtify.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 36 of file \"Reqtify.ecore.ump\":\nClass 'Section' may not have multiple associations with the same name 'sectionChildren'\nError 19 on line 36 of file \"Reqtify.ecore.ump\":\nClass 'Section' may not have multiple associations with the same name 'sectionParent'\n"
-    }, {
-      "path" : "BMM.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MSOfficeWord_WordprocessingMLStyles.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PDG.ecore",
+      "path" : "Requirement.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -1313,11 +1094,10 @@
       "successful" : false,
       "message" : "Error 140 on line 10 of file \"UMLDI-ModelManagement.ecore.ump\":\nAttribute type name '/2/String' must be alphanumeric, starting with a letter\n"
     }, {
-      "path" : "bmmOmg.ecore",
+      "path" : "Maude.ecore",
       "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 1007 on line 76 of file \"bmmOmg.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 68 of file \"bmmOmg.ecore.ump\":\nAssociation end '//Asset' is not a class or interface\n"
+      "lastState" : "Completed",
+      "successful" : true
     }, {
       "path" : "ClassicModels.ecore",
       "type" : "ECore",
@@ -1325,47 +1105,31 @@
       "successful" : false,
       "message" : "Warning 131 on line 45 of file \"ClassicModels.ecore.ump\":\nAttribute name 'MSRP' should start with a lower-case letter\nError 19 on line 93 of file \"ClassicModels.ecore.ump\":\nClass 'Order' may not have multiple associations with the same name 'requiredDate'\nError 19 on line 94 of file \"ClassicModels.ecore.ump\":\nClass 'Order' may not have multiple associations with the same name 'shippedDate'\n"
     }, {
-      "path" : "Automaton.ecore",
+      "path" : "EclipsePlugIn.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "DoDAF-SV4.ecore",
+      "path" : "MySQL.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ODP-EV.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 19 on line 86 of file \"DoDAF-SV4.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 86 of file \"DoDAF-SV4.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 127 of file \"DoDAF-SV4.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 127 of file \"DoDAF-SV4.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 140 of file \"DoDAF-SV4.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isParentFor'\nError 19 on line 140 of file \"DoDAF-SV4.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isChildFor'\n"
+      "message" : "Error 5 on line 27 of file \"ODP-EV.ecore.ump\":\nAssociation end '//EO_P_D' is not a class or interface\n"
     }, {
-      "path" : "TextualPathExp.ecore",
+      "path" : "CSM.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "Jess.ecore",
+      "path" : "SEE_Design.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
-    }, {
-      "path" : "MSOfficeExcel_SpreadsheetMLWorksheetOpt.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "PNML_modular.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Repository.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UEMLExtended.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 1007 on line 33 of file \"UEMLExtended.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 131 of file \"UEMLExtended.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 192 of file \"UEMLExtended.ecore.ump\":\nAssociation end '//Service' is not a class or interface\n"
     }, {
       "path" : "UML2.ecore",
       "type" : "ECore",
@@ -1373,29 +1137,132 @@
       "successful" : false,
       "message" : "Error 19 on line 32 of file \"UML2.ecore.ump\":\nClass 'Element' may not have multiple associations with the same name 'ownedElement'\nError 19 on line 32 of file \"UML2.ecore.ump\":\nClass 'Element' may not have multiple associations with the same name 'owner'\nError 19 on line 140 of file \"UML2.ecore.ump\":\nClass 'Property' may not have multiple associations with the same name 'qualifier'\nError 19 on line 140 of file \"UML2.ecore.ump\":\nClass 'Property' may not have multiple associations with the same name 'associationEnd'\nError 19 on line 179 of file \"UML2.ecore.ump\":\nClass 'Package' may not have multiple associations with the same name 'nestedPackage'\nError 19 on line 179 of file \"UML2.ecore.ump\":\nClass 'Package' may not have multiple associations with the same name 'nestingPackage'\nError 19 on line 183 of file \"UML2.ecore.ump\":\nClass 'Package' may not have multiple associations with the same name 'packageExtension'\nError 19 on line 278 of file \"UML2.ecore.ump\":\nClass 'BehavioralFeature' may not have multiple associations with the same name 'formalParameter'\nError 19 on line 279 of file \"UML2.ecore.ump\":\nClass 'BehavioralFeature' may not have multiple associations with the same name 'returnResult'\nError 19 on line 394 of file \"UML2.ecore.ump\":\nClass 'Behavior' may not have multiple associations with the same name 'formalParameter'\nError 19 on line 395 of file \"UML2.ecore.ump\":\nClass 'Behavior' may not have multiple associations with the same name 'returnResult'\nError 19 on line 822 of file \"UML2.ecore.ump\":\nClass 'Clause' may not have multiple associations with the same name 'predecessorClause'\nError 19 on line 822 of file \"UML2.ecore.ump\":\nClass 'Clause' may not have multiple associations with the same name 'successorClause'\nError 19 on line 919 of file \"UML2.ecore.ump\":\nClass 'TemplateSignature' may not have multiple associations with the same name 'nestedSignature'\nError 19 on line 919 of file \"UML2.ecore.ump\":\nClass 'TemplateSignature' may not have multiple associations with the same name 'nestingSignature'\nError 19 on line 943 of file \"UML2.ecore.ump\":\nClass 'StringExpression' may not have multiple associations with the same name 'subExpression'\nError 19 on line 943 of file \"UML2.ecore.ump\":\nClass 'StringExpression' may not have multiple associations with the same name 'owningExpression'\nError 19 on line 928 of file \"UML2.ecore.ump\":\nClass 'ParameterableElement' may not have multiple associations with the same name 'owningParameter'\nError 19 on line 1025 of file \"UML2.ecore.ump\":\nClass 'ActivityPartition' may not have multiple associations with the same name 'subgroup'\nError 19 on line 1025 of file \"UML2.ecore.ump\":\nClass 'ActivityPartition' may not have multiple associations with the same name 'superPartition'\n"
     }, {
+      "path" : "PNML_modular.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UnifiedOntologyLanguage.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "HAL.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "CORBAComponent.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "JavaProject.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "OCL_Expressions.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ProMarte.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 458 of file \"ProMarte.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "iasted.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Import",
+      "successful" : false,
+      "message" : "1"
+    }, {
+      "path" : "BusinessEntityModel.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "paperdyne.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Import",
+      "successful" : false,
+      "message" : "java.lang.ArrayIndexOutOfBoundsException"
+    }, {
+      "path" : "KML.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UMLForOOClassModeling.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UsiXML-task.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 39 of file \"UsiXML-task.ecore.ump\":\nAttribute name 'UnaryType' should start with a lower-case letter\nError 19 on line 18 of file \"UsiXML-task.ecore.ump\":\nClass 'Task' may not have multiple associations with the same name 'decompositionTasks'\nError 19 on line 18 of file \"UsiXML-task.ecore.ump\":\nClass 'Task' may not have multiple associations with the same name 'decomposedTask'\n"
+    }, {
+      "path" : "QoS_Profile.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
       "path" : "XPDL-1.14.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
       "message" : "Warning 31 on line 17 of file \"XPDL-1.14.ecore.ump\":\nDeclared namespace DataTypes was not used before declaring XPDL\nError 5 on line 58 of file \"XPDL-1.14.ecore.ump\":\nAssociation end '/2/Pool' is not a class or interface\n"
     }, {
-      "path" : "MSVisio_DatadiagramMLSimplified.ecore",
+      "path" : "DotNET_SystemReflection.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "IRL.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Warning 131 on line 30 of file \"MSVisio_DatadiagramMLSimplified.ecore.ump\":\nAttribute name 'ID' should start with a lower-case letter\nWarning 131 on line 35 of file \"MSVisio_DatadiagramMLSimplified.ecore.ump\":\nAttribute name 'UniqueID' should start with a lower-case letter\nWarning 131 on line 253 of file \"MSVisio_DatadiagramMLSimplified.ecore.ump\":\nAttribute name 'ViewCenterY' should start with a lower-case letter\n"
+      "message" : "Error 5 on line 241 of file \"IRL.ecore.ump\":\nAssociation end 'IRLRules/RuleVariable' is not a class or interface\n"
     }, {
-      "path" : "SignalFlow.ecore",
+      "path" : "PASSI.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 1502 on line 3 of file \"PASSI.ecore.ump\":\nParsing error: Structure of 'class' invalid\n"
+    }, {
+      "path" : "SQLDDL.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "MSOfficeExcel_SpreadsheetMLSimplified.ecore",
+      "path" : "GeoTrans.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 32 of file \"GeoTrans.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "ACG.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "MSOfficeWord_WordprocessingMLBasicDef.ecore",
+      "path" : "bmmOmg.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 1007 on line 76 of file \"bmmOmg.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 68 of file \"bmmOmg.ecore.ump\":\nAssociation end '//Asset' is not a class or interface\n"
+    }, {
+      "path" : "OWL.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 1007 on line 218 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 302 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 307 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 312 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 352 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 370 of file \"OWL.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 191 of file \"OWL.ecore.ump\":\nAssociation end '/2/OWLGraph' is not a class or interface\n"
+    }, {
+      "path" : "ACME.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -1406,96 +1273,103 @@
       "successful" : false,
       "message" : "Warning 131 on line 16 of file \"MSProject.ecore.ump\":\nAttribute name 'UID' should start with a lower-case letter\n"
     }, {
-      "path" : "WSLink.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 35 of file \"WSLink.ecore.ump\":\nAttribute name 'URL' should start with a lower-case letter\n"
-    }, {
-      "path" : "vb.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 51 of file \"vb.ecore.ump\":\nAttribute type name 'obeo/psm/vb/projects/VB_1/enumerations/EnablementEnum' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "Cristal.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "SQLDML.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Perceptory.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 9 on line 62 of file \"Perceptory.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
-    }, {
-      "path" : "QoS_Characteristic.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
       "path" : "SoftwareQualityControl.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "MSOfficeWord_WordprocessingMLSimplified.ecore",
+      "path" : "GenericEditor.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "UEML.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 136 of file \"UEML.ecore.ump\":\nAssociation end '//Anchor' is not a class or interface\n"
-    }, {
-      "path" : "DoDAF-OV5.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 19 on line 59 of file \"DoDAF-OV5.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 59 of file \"DoDAF-OV5.ecore.ump\":\nClass 'IE' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 124 of file \"DoDAF-OV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 124 of file \"DoDAF-OV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isSubordinateOf'\nError 19 on line 138 of file \"DoDAF-OV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isParentFor'\nError 19 on line 138 of file \"DoDAF-OV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isChildFor'\n"
-    }, {
-      "path" : "cmt.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 7 of file \"cmt.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "useCase.ecore",
+      "path" : "GUI.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "UMLDI-ActivityGraphs.ecore",
+      "path" : "Gantt.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 140 on line 11 of file \"UMLDI-ActivityGraphs.ecore.ump\":\nAttribute type name '/5/Boolean' must be alphanumeric, starting with a letter\n"
+      "message" : "Warning 131 on line 47 of file \"Gantt.ecore.ump\":\nAttribute name 'Id' should start with a lower-case letter\n"
     }, {
-      "path" : "SBVRvoc.ecore",
+      "path" : "DiagramInterchange.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "Collaborations_Interactions_UML.ecore",
+      "path" : "OCL_Values.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "News.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "CPP.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "PluginEclipse.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 19 on line 57 of file \"Collaborations_Interactions_UML.ecore.ump\":\nClass 'Message' may not have multiple associations with the same name 'message'\nError 19 on line 57 of file \"Collaborations_Interactions_UML.ecore.ump\":\nClass 'Message' may not have multiple associations with the same name 'activator'\n"
+      "message" : "Error 140 on line 5 of file \"PluginEclipse.ecore.ump\":\nAttribute type name '/2/String' must be alphanumeric, starting with a letter\n"
     }, {
-      "path" : "TroposActorConcept.ecore",
+      "path" : "DSLModel.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 5 on line 39 of file \"TroposActorConcept.ecore.ump\":\nAssociation end '//Plan' is not a class or interface\n"
+      "message" : "Error 5 on line 54 of file \"DSLModel.ecore.ump\":\nAssociation end '//Value' is not a class or interface\n"
     }, {
-      "path" : "FiniteStateMachine.ecore",
+      "path" : "MonitorProgram.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "SyncCharts.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MSVisio_DatadiagramMLBasicDef.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 119 of file \"MSVisio_DatadiagramMLBasicDef.ecore.ump\":\nAttribute name 'ID' should start with a lower-case letter\nWarning 131 on line 124 of file \"MSVisio_DatadiagramMLBasicDef.ecore.ump\":\nAttribute name 'UniqueID' should start with a lower-case letter\nWarning 131 on line 342 of file \"MSVisio_DatadiagramMLBasicDef.ecore.ump\":\nAttribute name 'ViewCenterY' should start with a lower-case letter\n"
+    }, {
+      "path" : "Klaper.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 22 of file \"Klaper.ecore.ump\":\nClass 'Service' may not have multiple associations with the same name 'behaviorUsed'\nError 19 on line 22 of file \"Klaper.ecore.ump\":\nClass 'Behavior' may not have multiple associations with the same name 'usedService'\nError 19 on line 50 of file \"Klaper.ecore.ump\":\nClass 'Step' may not have multiple associations with the same name 'predecessor'\nError 19 on line 50 of file \"Klaper.ecore.ump\":\nClass 'Step' may not have multiple associations with the same name 'successor'\n"
+    }, {
+      "path" : "mlhim2.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 263 of file \"mlhim2.ecore.ump\":\nAssociation end 'EObject' is not a class or interface\n"
+    }, {
+      "path" : "QVT_SimpleRDBMS.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "BibTeX.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "BusinessProcessModel.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "GWPNV5.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -1506,114 +1380,12 @@
       "successful" : false,
       "message" : "Warning 1007 on line 136 of file \"MiningMart_ViewDataRepresentation.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 146 of file \"MiningMart_ViewDataRepresentation.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 182 of file \"MiningMart_ViewDataRepresentation.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 211 of file \"MiningMart_ViewDataRepresentation.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 171 of file \"MiningMart_ViewDataRepresentation.ecore.ump\":\nAssociation end '/2/DomainDataType' is not a class or interface\n"
     }, {
-      "path" : "Bugzilla.ecore",
+      "path" : "WfMC.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "PASSI.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 1502 on line 3 of file \"PASSI.ecore.ump\":\nParsing error: Structure of 'class' invalid\n"
-    }, {
-      "path" : "Agate.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 131 on line 69 of file \"Agate.ecore.ump\":\nAttribute name 'DCSSI' should start with a lower-case letter\nWarning 131 on line 289 of file \"Agate.ecore.ump\":\nAttribute name 'Statut' should start with a lower-case letter\n"
-    }, {
-      "path" : "GUI.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MavenProject.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "MSOfficeExcel_SpreadsheetMLBasicDef.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "BPMN.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "XQuery.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "UMLDI-StateMachines.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 11 of file \"UMLDI-StateMachines.ecore.ump\":\nAttribute type name '/3/Boolean' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "QVT.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 140 on line 20 of file \"QVT.ecore.ump\":\nAttribute type name '/7/CollectionKind' must be alphanumeric, starting with a letter\n"
-    }, {
-      "path" : "Class.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "CSharp.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "News.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "Mantis.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "QoS_Profile.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "HAL.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "EclipsePlugIn.ecore",
-      "type" : "ECore",
-      "lastState" : "Completed",
-      "successful" : true
-    }, {
-      "path" : "WebApplications_AbstractModel.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 5 on line 29 of file \"WebApplications_AbstractModel.ecore.ump\":\nAssociation end 'Client/ClientPage' is not a class or interface\n"
-    }, {
-      "path" : "edas.owl.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Error 100 on line 7 of file \"edas.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
-    }, {
-      "path" : "XUL-Interactorl.ecore",
-      "type" : "ECore",
-      "lastState" : "Model",
-      "successful" : false,
-      "message" : "Warning 101 on line 74 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'vbox' should start with a capital letter\nWarning 101 on line 79 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'hbox' should start with a capital letter\nWarning 101 on line 150 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'row' should start with a capital letter\nWarning 101 on line 155 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'column' should start with a capital letter\nWarning 101 on line 209 of file \"XUL-Interactorl.ecore.ump\":\nClass name 'onClick' should start with a capital letter\n"
-    }, {
-      "path" : "XSLT.ecore",
+      "path" : "CDE.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -1624,7 +1396,12 @@
       "successful" : false,
       "message" : "Warning 131 on line 196 of file \"MSVisio_DatadiagramMLXForm.ecore.ump\":\nAttribute name 'ID' should start with a lower-case letter\nWarning 131 on line 201 of file \"MSVisio_DatadiagramMLXForm.ecore.ump\":\nAttribute name 'UniqueID' should start with a lower-case letter\nWarning 131 on line 527 of file \"MSVisio_DatadiagramMLXForm.ecore.ump\":\nAttribute name 'ViewCenterY' should start with a lower-case letter\n"
     }, {
-      "path" : "DiagramInterchange.ecore",
+      "path" : "CWMCore.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "QoS.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -1635,17 +1412,100 @@
       "successful" : false,
       "message" : "Warning 101 on line 92 of file \"GraphML.ecore.ump\":\nClass name 'double' should start with a capital letter\n"
     }, {
-      "path" : "BusinessEntityModel.ecore",
+      "path" : "Bugzilla.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "CADM.ecore",
+      "path" : "crs_dr.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 7 of file \"crs_dr.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "edas.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 7 of file \"edas.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "Java-20040316.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "JavaSource.ecore",
+      "path" : "USECASE1.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "SPL.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 68 of file \"SPL.ecore.ump\":\nAttribute type name '/2/Direction' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "RelationalDBContent.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 11 of file \"RelationalDBContent.ecore.ump\":\nAttribute name 'SGBDname' should start with a lower-case letter\n"
+    }, {
+      "path" : "Collaborations_Interactions_UML.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 57 of file \"Collaborations_Interactions_UML.ecore.ump\":\nClass 'Message' may not have multiple associations with the same name 'message'\nError 19 on line 57 of file \"Collaborations_Interactions_UML.ecore.ump\":\nClass 'Message' may not have multiple associations with the same name 'activator'\n"
+    }, {
+      "path" : "WikiTable.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "CWMRelationalData.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UEMLExtended.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 1007 on line 33 of file \"UEMLExtended.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nWarning 1007 on line 131 of file \"UEMLExtended.ecore.ump\":\nAttribute or Association syntax could not be processed. It has been considered as Extra Code\nError 5 on line 192 of file \"UEMLExtended.ecore.ump\":\nAssociation end '//Service' is not a class or interface\n"
+    }, {
+      "path" : "XSLT.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "HierarchicalStateMachine.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "TroposGoalAndPlanConcepts.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UDDI_meta-model_fragment.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 17 of file \"UDDI_meta-model_fragment.ecore.ump\":\nAssociation end '//BusinessContact' is not a class or interface\n"
+    }, {
+      "path" : "HTML.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 27 of file \"HTML.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "Statecharts.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ATOM.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
@@ -1655,16 +1515,156 @@
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "WTIP_SimpleRDBMS.ecore",
+      "path" : "MoMM.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 9 on line 22 of file \"MoMM.ecore.ump\":\nReflexive association with multiplicity '1..*' has lower bound > 0\n"
+    }, {
+      "path" : "XAML-Perspective.ecore",
       "type" : "ECore",
       "lastState" : "Completed",
       "successful" : true
     }, {
-      "path" : "Klaper.ecore",
+      "path" : "UEMLExtensionCapturingSocialEffects.ecore",
       "type" : "ECore",
       "lastState" : "Model",
       "successful" : false,
-      "message" : "Error 19 on line 22 of file \"Klaper.ecore.ump\":\nClass 'Service' may not have multiple associations with the same name 'behaviorUsed'\nError 19 on line 22 of file \"Klaper.ecore.ump\":\nClass 'Behavior' may not have multiple associations with the same name 'usedService'\nError 19 on line 50 of file \"Klaper.ecore.ump\":\nClass 'Step' may not have multiple associations with the same name 'predecessor'\nError 19 on line 50 of file \"Klaper.ecore.ump\":\nClass 'Step' may not have multiple associations with the same name 'successor'\n"
+      "message" : "Error 5 on line 111 of file \"UEMLExtensionCapturingSocialEffects.ecore.ump\":\nAssociation end '//AssociationConnector' is not a class or interface\n"
+    }, {
+      "path" : "RSS-2.0.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "METAH.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "WebApplications_ConceptualModel.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 61 of file \"WebApplications_ConceptualModel.ecore.ump\":\nAssociation end 'Server/Data' is not a class or interface\n"
+    }, {
+      "path" : "M.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 138 of file \"M.ecore.ump\":\nAssociation end 'Expressions/QueryExpression' is not a class or interface\n"
+    }, {
+      "path" : "DSL.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 5 on line 33 of file \"DSL.ecore.ump\":\nAssociation end '//Classifier' is not a class or interface\n"
+    }, {
+      "path" : "ChocoModel.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "EAI.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "FlatSignalFlow.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 23 of file \"FlatSignalFlow.ecore.ump\":\nAttribute name 'WCET' should start with a lower-case letter\n"
+    }, {
+      "path" : "EXPRESSb.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 15 of file \"EXPRESSb.ecore.ump\":\nAttribute type name 'mof/Boolean' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "EclipseLaunchConfigurations.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ATL.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 5 of file \"ATL.ecore.ump\":\nAttribute type name '/2/String' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "JavaSource.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "MSOfficeWord_WordprocessingMLTableElts.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "ClassDiagram.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "confious.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 100 on line 21 of file \"confious.owl.ecore.ump\":\nClass name 'Meta-Reviewer' must be alphanumeric and start with an alpha character, or _\n"
+    }, {
+      "path" : "sbvrEclipse.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 101 on line 1881 of file \"sbvrEclipse.ecore.ump\":\nClass name 'integer' should start with a capital letter\nError 19 on line 1188 of file \"sbvrEclipse.ecore.ump\":\nClass 'CommunityHasSubcommunity' may not have multiple associations with the same name 'subcommunity'\n"
+    }, {
+      "path" : "SQLDML.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "UIML-3.0.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 18 of file \"UIML-3.0.ecore.ump\":\nAttribute type name '/3/String' must be alphanumeric, starting with a letter\n"
+    }, {
+      "path" : "CADM.ecore",
+      "type" : "ECore",
+      "lastState" : "Completed",
+      "successful" : true
+    }, {
+      "path" : "sigkdd.owl.ecore",
+      "type" : "ECore",
+      "lastState" : "Import",
+      "successful" : false,
+      "message" : "java.lang.ArrayIndexOutOfBoundsException"
+    }, {
+      "path" : "QVT_SimpleUML.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 36 of file \"QVT_SimpleUML.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'general'\nError 19 on line 36 of file \"QVT_SimpleUML.ecore.ump\":\nClass 'Class' may not have multiple associations with the same name 'generalOpposite'\n"
+    }, {
+      "path" : "DoDAF-SV5.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 19 on line 65 of file \"DoDAF-SV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isParentFor'\nError 19 on line 65 of file \"DoDAF-SV5.ecore.ump\":\nClass 'PA' may not have multiple associations with the same name 'isChildFor'\nError 19 on line 108 of file \"DoDAF-SV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isOrdinateOf'\nError 19 on line 108 of file \"DoDAF-SV5.ecore.ump\":\nClass 'AMPA' may not have multiple associations with the same name 'isSubordinateOf'\n"
+    }, {
+      "path" : "RelationalDBSchema.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Warning 131 on line 11 of file \"RelationalDBSchema.ecore.ump\":\nAttribute name 'SGBDname' should start with a lower-case letter\n"
+    }, {
+      "path" : "UMLDI-UseCases.ecore",
+      "type" : "ECore",
+      "lastState" : "Model",
+      "successful" : false,
+      "message" : "Error 140 on line 80 of file \"UMLDI-UseCases.ecore.ump\":\nAttribute type name '/4/String' must be alphanumeric, starting with a letter\n"
     } ]
   }, {
     "path" : "SCXML Standards Examples",
@@ -1674,13 +1674,13 @@
     "successRate" : 0.0,
     "failRate" : 1.0,
     "files" : [ {
-      "path" : "Traffic-Report.scxml",
+      "path" : "calc.scxml",
       "type" : "State-Chart XML",
       "lastState" : "Import",
       "successful" : false,
       "message" : "java.util.EmptyStackException"
     }, {
-      "path" : "calc.scxml",
+      "path" : "microwave-02.scxml",
       "type" : "State-Chart XML",
       "lastState" : "Import",
       "successful" : false,
@@ -1692,13 +1692,13 @@
       "successful" : false,
       "message" : "java.util.EmptyStackException"
     }, {
-      "path" : "Blackjack.scxml",
+      "path" : "Traffic-Report.scxml",
       "type" : "State-Chart XML",
       "lastState" : "Import",
       "successful" : false,
       "message" : "java.util.EmptyStackException"
     }, {
-      "path" : "microwave-02.scxml",
+      "path" : "Blackjack.scxml",
       "type" : "State-Chart XML",
       "lastState" : "Import",
       "successful" : false,
